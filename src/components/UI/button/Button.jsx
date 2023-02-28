@@ -23,6 +23,7 @@ const Button = ({ outline, disabled, text }) => {
           : "button normal_btn"
       }
       style={styles}
+      disabled={disabled ? true : false}
     >
       {text}
     </button>
