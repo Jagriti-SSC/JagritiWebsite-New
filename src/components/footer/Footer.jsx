@@ -13,7 +13,7 @@ const Footer = () => {
             src="../assets/kashiUtkarsh.svg"
             alt="SSCmain"
             className="md:w-[63.92px] md:h-[66.43px]"
-          ></img>
+          ></img>      
           <p>Kashi Utkarsh</p>
         </div>
         <div className="flex flex-col justify-items-center items-center">

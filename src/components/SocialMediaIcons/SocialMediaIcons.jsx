@@ -16,15 +16,15 @@ const SocialMediaIcons = () => {
     </div>
     <div >
     <img src='../assets/ellipse.svg' alt='ellipse'></img>
-    <img src='../assets/mail.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
+    <img src='../assets/fb.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
     </div>
     <div >
     <img src='../assets/ellipse.svg' alt='ellipse'></img>
-    <img src='../assets/mail.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
+    <img src='../assets/linkedin.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
     </div>
     <div >
     <img src='../assets/ellipse.svg' alt='ellipse'></img>
-    <img src='../assets/mail.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
+    <img src='../assets/youtube.svg' className='relative m-auto left-auto right-auto top-auto bottom-7' alt='mail  '></img>    
     </div>
     
     </div>
