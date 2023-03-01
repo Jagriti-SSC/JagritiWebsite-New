@@ -1,9 +1,14 @@
 import React from 'react'
-import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div>footer</div>
+    <div className='bg-light-black h-auto'>
+    <div className=''>
+     
+    </div>
+
+
+    </div>
   )
 }
 
