@@ -2,19 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./button.css";
 
-const Button = ({ outline, disabled, text }) => {
-  const backgroundColor = outline ? "transparent" : disabled ? "#E4E4E4" : "#27AE60";
-  const textColor = outline ? "white" : disabled ? "#696969" : "white";
-  const borderColor = disabled ? "#E4E4E4" : "#427e3a";
-
-// const Button = ({ outline, disabled, text, buttonColor }) => {
-//   const backgroundColor = outline
-//     ? "transparent"
-//     : disabled
-//     ? "#E4E4E4"
-//     : "#427e3a";
-//   const textColor = outline ? buttonColor : disabled ? "#696969" : "white";
-//   const borderColor = disabled ? "#E4E4E4" : buttonColor;
+const Button = ({ outline, disabled, text, buttonColor }) => {
+  const backgroundColor = outline
+    ? "transparent"
+    : disabled
+    ? "#E4E4E4"
+    : "#27AE60";
+  const textColor = outline ? buttonColor : disabled ? "#696969" : "white";
+  const borderColor = disabled ? "#E4E4E4" : buttonColor;
 
 
   const styles = {
