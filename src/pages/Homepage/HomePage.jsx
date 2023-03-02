@@ -86,6 +86,7 @@ const HomePage = () => {
         </div>
       </div>
 
+  <Sponsor></Sponsor>
 
 
 
