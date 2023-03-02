@@ -70,7 +70,6 @@ const HomePage = () => {
             />
             <Button
               outline
-              disabled
               text="Guest talk"
               buttonColor="white"
             />
