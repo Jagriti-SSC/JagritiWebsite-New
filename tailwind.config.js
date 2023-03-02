@@ -18,6 +18,7 @@ module.exports = {
         Montserrat : ["Montserrat","sans-serif"],
         popins : ["Poppins","sans-serif"]
       },
+    
     },
     screens: {
       xs: "480px",
