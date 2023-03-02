@@ -5,12 +5,14 @@ import { useEffect, useState } from 'react';
 import Clock from "../../components/Clock/Clock"
 import Button from "../../components/UI/button/Button"
 import desktop from "../../assets/desktop.mp4"
+// import mobile from "../../assets/mobile.mp4"
 
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
   const [timerHours, setTimerHours] = useState();
   const [timerMinutes, setTimerMinutes] = useState();
   const [timerSeconds, setTimerSeconds] = useState();
+  const [width, setWidth] = useState(window.innerWidth);
 
   let interval;
 
@@ -48,6 +50,14 @@ const HomePage = () => {
   useEffect(() => {
     startTimer();
   });
+
+  const updateWidth = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
   return (
     <>
       <div className='home-page'>

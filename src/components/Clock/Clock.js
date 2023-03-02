@@ -8,30 +8,39 @@ const Clock = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
             <br />
             <p className='jagriti'>Jagriti will go live on 7 April 2023.</p>
         </div> */}
-            <section className="timer">
-                <div className="clock">
+        <section className="timer">
+            <div className="clock">
+                <div className="days">
                     <section id='days'>
                         <p>{timerDays}</p>
-                        <small>Days</small>
                     </section>
+                    <small className='text-btn'>DAYS</small>
+                </div>
 
+                <div className="hours">
                     <section id='hours'>
                         <p>{timerHours}</p>
-                        <small>Hours</small>
                     </section>
+                    <small className='text-btn'>HOURS</small>
+                </div>
 
+                <div className="minutes">
                     <section id='minutes'>
                         <p>{timerMinutes}</p>
-                        <small>Minutes</small>
                     </section>
+                    <small className='text-btn'>MINUTES</small>
+                </div>
 
+                <div className="seconds">
                     <section id='seconds'>
                         <p>{timerSeconds}</p>
-                        <small>Seconds</small>
                     </section>
+                    <small className='text-btn'>SECONDS</small>
                 </div>
-            </section>
-            {/* <img id="imgs" src={require('../Assets/timer.png')} alt="..." /> */}
+
+            </div>
+        </section>
+        {/* <img id="imgs" src={require('../Assets/timer.png')} alt="..." /> */}
     </Fragment>
 };
 
