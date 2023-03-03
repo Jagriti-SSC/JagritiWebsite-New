@@ -1,10 +1,12 @@
 import React from "react";
+// import { useLocation } from "react-router-dom";
+import Button from "../UI/button";
+import "./Navbar.css";
 import { Link, Outlet } from "react-router-dom";
-import Button from "../UI/button/Button";
 
 const Navbar = () => {
-  // let curr = useLocation();
-  // console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
+  //  let curr  = useLocation();
+  //  console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
   return (
     <>

@@ -3,8 +3,3 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
-@layer base {
-  html {
-    font-family: Montserrat, system-ui, sans-serif;
-  }
-}
