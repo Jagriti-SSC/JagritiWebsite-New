@@ -13,12 +13,11 @@ const HomePage = () => {
   const [timerHours, setTimerHours] = useState();
   const [timerMinutes, setTimerMinutes] = useState();
   const [timerSeconds, setTimerSeconds] = useState();
-  const [width, setWidth] = useState(window.innerWidth);
 
   let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("April 7,2023 ").getTime();
+    const countDownDate = new Date("April 7,2023").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -52,13 +51,6 @@ const HomePage = () => {
     startTimer();
   });
 
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  }, []);
   return (
     <>
       <div className='home-page'>
@@ -79,8 +71,8 @@ const HomePage = () => {
             />
             <Button
               outline
-              disabled
               text="Guest talk"
+              buttonColor="white"
             />
           </div>
         </div>
