@@ -1,0 +1,129 @@
+.timer {
+  /* width: 100vw; */
+  height: 155px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+.clock {
+  display: flex;
+  flex-direction: row;
+}
+.clock small {
+  color: #ffffff;
+  font-size: 15px;
+}
+#days p {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+}
+#hours p {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+}
+#minutes p {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+}
+#seconds p {
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+}
+.text-btn {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 2%;
+  /* font-size: 2rem; */
+  /* align-items: center; */
+}
+#days {
+  /* height: auto; */
+  width: 77px;
+  /* margin-bottom: 20%; */
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  background: rgba(242, 224, 210, 0.35);
+  border-radius: 12px;
+}
+#hours {
+  background-color: #f2e0d2;
+  /* height: auto; */
+  width: 77px;
+  /* color: #dd6a2b; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 12px;
+  /* margin-bottom: 20%; */
+  /* width: fit-content; */
+  background: rgba(242, 224, 210, 0.35);
+  margin-right: 20px;
+}
+#minutes {
+  background-color: #f2e0d2;
+  /* height: auto; */
+  padding: 1rem;
+  width: 77px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: #dd6a2b; */
+  border-radius: 12px;
+  /* width: fit-content; */
+  background: rgba(242, 224, 210, 0.35);
+  /* margin-bottom: 20%; */
+  margin-right: 20px;
+}
+#seconds {
+  background-color: #f2e0d2;
+  /* height: auto; */
+  width: 77px;
+  border-radius: 12px;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* color: #dd6a2b; */
+  /* margin-bottom: 20%; */
+  background: rgba(242, 224, 210, 0.35);
+  /* padding: 1.2rem; */
+  /* width: fit-content; */
+}
+
+@media screen and (max-width: 875px) {
+  .seconds {
+    display: none;
+  }
+}
+@media screen and (max-width: 350px) {
+  #days {
+    padding: 1.3rem;
+  }
+  #hours {
+    padding: 1.3rem;
+  }
+  #minutes {
+    padding: 1rem;
+  }
+}
