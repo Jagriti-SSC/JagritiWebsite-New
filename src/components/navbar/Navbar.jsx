@@ -1,7 +1,6 @@
 import React from "react";
 // import { useLocation } from "react-router-dom";
-import Button from "../UI/button";
-import "./Navbar.css";
+import Button from "../UI/button/Button";
 import { Link, Outlet } from "react-router-dom";
 
 const Navbar = () => {
@@ -15,7 +14,7 @@ const Navbar = () => {
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
-                src="/icons/Jagriti_logo.png"
+                src="/icons/Jagriti_nav_logo.png"
                 className="h-6 mr-3 sm:h-9"
                 alt="Jagriti_Logo"
               />
@@ -114,32 +113,30 @@ const Navbar = () => {
                 </button>
                 <div className="py-4 overflow-y-auto">
                   <ul className="space-y-6 text-center">
-                    <li>
+                    <li className="mt-8">
                       <Link
                         to="/about"
-                        className="flex items-center  p-2 text-base font-normal text-black rounded-lg"
+                        className="items-center p-2 text-base font-normal text-black rounded-lg"
                       >
-                        <span className="flex-1 whitespace-nowrap mt-5">
-                          About
-                        </span>
+                        <span className="whitespace-nowrap">About</span>
                       </Link>
                       <hr className="h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
                       <Link
                         to="/team"
-                        className="flex items-center  p-2 text-base font-normal text-black rounded-lg"
+                        className="items-center p-2 text-base font-normal text-black rounded-lg"
                       >
-                        <span className="flex-1 whitespace-nowrap">Team</span>
+                        <span className="whitespace-nowrap">Team</span>
                       </Link>
                       <hr className="h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
                       <Link
                         to="/events"
-                        className="flex items-center  p-2 text-base font-normal text-black rounded-lg"
+                        className="items-center p-2 text-base font-normal text-black rounded-lg"
                       >
-                        <span className="flex-1 whitespace-nowrap">Events</span>
+                        <span className="whitespace-nowrap">Events</span>
                       </Link>
                       <hr className="h-px bg-black border-0 mx-3"></hr>
                     </li>
