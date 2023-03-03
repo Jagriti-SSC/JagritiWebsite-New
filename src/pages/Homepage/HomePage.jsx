@@ -78,16 +78,12 @@ const HomePage = () => {
             />
             <Button
               outline
-              disabled
+              buttonColor='white'
               text="Guest talk"
             />
           </div>
         </div>
       </div>
-
-
-
-
     </>
   );
 };
