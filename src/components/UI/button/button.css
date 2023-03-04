@@ -1,16 +1,14 @@
 .button {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 10px 36px;
   border-width: 1.5px;
   border-radius: 8px;
-  /* border-color: #427e3a; */
   font-size: 18px;
   font-family: "Poppins";
   font-weight: 500;
-  /* background-color: #427e3a;
-  color: white; */
+  width: 235px;
 }
 
 .normal_btn:hover {
