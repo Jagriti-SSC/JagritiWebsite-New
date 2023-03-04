@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+.upper-content{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.testimonial-heading {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 44px;
+  color: #1a589b;
+  text-align: center;
+}
+
+.testimonial-para {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: justify;
+  color: #0b1641;
+  padding-left: 370px;
+  padding-right: 370px;
+}
+
+.carousel {
+  margin-top: 70px;
+  padding-left: 70px;
+  padding-right: 70px;
+  background: #ffffff;
+  box-shadow: 0px 12px 37px rgba(109, 66, 11, 0.25);
+  border-radius: 16px;
+}
+
+.wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card img {
+  display: block;
+  margin: auto;
+  width: 190px;
+  height: 160px;
+  margin-bottom: 20px;
+  margin-right: 80px;
+}
+
+.card-heading {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: #0b1641;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.card-subheading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #a9a9a9;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card-para {
+  height: 230px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+  color: #212121;
+  margin-bottom: -110px;
+}
+
+@media (max-width: 640px) { 
+  .testimonial-heading{
+    text-align: center;
+  }
+  .testimonial-para{
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+  .card-para{
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 17px;
+    height: 250px;
+  }
+  .card img{
+    margin-right: 95px;
+  }
+  .wrapper{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

@@ -1,9 +1,12 @@
 import React from 'react'
+import Testimonial from '../../components/Testimonial/Testimonial'
 import "./HomePage.css"
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <Testimonial/>
+    </div>
   )
 }
 
