@@ -1,11 +1,39 @@
-import React from "react";
-// import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Button from "../UI/button/Button";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  //  let curr  = useLocation();
-  //  console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
+  let curr = useLocation();
+  console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
+
+  const [navbar_menu_color, setNavbar_menu_color] = useState("text-white");
+
+  const changeNavbarColor = () => {
+    if (curr.pathname !== "/") {
+      console.log(curr.pathname);
+      document.getElementById("navbar_logo_change").src =
+        "/icons/Jagriti_nav_logo_Black.png";
+
+      setNavbar_menu_color("text-black");
+    } else {
+      if (window.scrollY >= 800) {
+        document.getElementById("navbar_logo_change").src =
+          "/icons/Jagriti_nav_logo_Black.png";
+
+        setNavbar_menu_color("text-black");
+      } else {
+        document.getElementById("navbar_logo_change").src =
+          "/icons/Jagriti_nav_logo.png";
+        setNavbar_menu_color("text-white");
+      }
+    }
+  };
+
+  useEffect(() => {
+    changeNavbarColor();
+  }, [curr.pathname]);
+
+  window.addEventListener("scroll", changeNavbarColor);
 
   return (
     <>
@@ -17,6 +45,7 @@ const Navbar = () => {
                 src="/icons/Jagriti_nav_logo.png"
                 className="h-6 mr-3 sm:h-9"
                 alt="Jagriti_Logo"
+                id="navbar_logo_change"
               />
             </Link>
             <div
@@ -53,6 +82,7 @@ const Navbar = () => {
                     text="Join CA Program"
                     outline={true}
                     buttonColor={"white"}
+                    path={"/ca"}
                   />
                 </li>
               </ul>
@@ -61,7 +91,7 @@ const Navbar = () => {
               {/* <!-- drawer init and show --> */}
               <div className="text-center">
                 <button
-                  className="text-white bg-transparent  focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
+                  className={`${navbar_menu_color} bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2`}
                   type="button"
                   data-drawer-target="drawer-right-example"
                   data-drawer-show="drawer-right-example"
@@ -141,13 +171,13 @@ const Navbar = () => {
                       <hr className="h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
-                      <Link to="/ca">
-                        <Button
-                          text="Join CA Program"
-                          outline={true}
-                          buttonColor={"green"}
-                        />
-                      </Link>
+                      <Button
+                        text="Join CA Program"
+                        outline={true}
+                        buttonColor={"green"}
+                        customStyle={{ width: "224px" }}
+                        path={"/ca"}
+                      />
                     </li>
                   </ul>
                 </div>
