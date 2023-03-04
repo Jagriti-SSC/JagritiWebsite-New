@@ -6,6 +6,7 @@ import Clock from "../../components/Clock/Clock"
 import Button from "../../components/UI/button/Button"
 import desktop from "../../assets/desktop.mp4"
 // import mobile from "../../assets/mobile.mp4"
+import Timeline from "../../components/Timeline"
 
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
@@ -79,6 +80,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <Timeline/>
     </>
   );
 };
