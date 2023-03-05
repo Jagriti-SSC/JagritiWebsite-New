@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.upper-content{
+.upper-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .testimonial-heading {
@@ -24,34 +25,50 @@
   line-height: 28px;
   text-align: justify;
   color: #0b1641;
-  padding-left: 370px;
-  padding-right: 370px;
+  padding-left: 350px;
+  padding-right: 350px;
+  margin-bottom: 60px;
 }
 
-.carousel {
-  margin-top: 70px;
-  padding-left: 70px;
-  padding-right: 70px;
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
   background: #ffffff;
-  box-shadow: 0px 12px 37px rgba(109, 66, 11, 0.25);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background: white;
+  border-right: 3px solid white;
   border-radius: 16px;
+  box-shadow: 0px 12px 35px rgba(26, 88, 155, 0.25);
 }
 
-.wrapper {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.card img {
+.swiper-content-img img {
   display: block;
   margin: auto;
-  width: 190px;
-  height: 160px;
-  margin-bottom: 20px;
-  margin-right: 80px;
+  padding-right: 40px;
+  padding-top: 5px;
 }
 
-.card-heading {
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
@@ -59,10 +76,11 @@
   line-height: 26px;
   color: #0b1641;
   text-align: center;
-  margin-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-.card-subheading {
+.content h4 {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -73,8 +91,7 @@
   margin-bottom: 18px;
 }
 
-.card-para {
-  height: 230px;
+.content p {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -82,28 +99,50 @@
   line-height: 24px;
   text-align: justify;
   color: #212121;
-  margin-bottom: -110px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
-@media (max-width: 640px) { 
-  .testimonial-heading{
-    text-align: center;
+.swiper {
+  width: 80%;
+  height: 440px;
+  border-radius: 16px;
+  box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
+}
+
+.swiper-button-prev {
+}
+
+.swiper-button-next {
+}
+
+@media (max-width: 414px) {
+  .testimonial-para {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 18px;
   }
-  .testimonial-para{
-    padding-left: 90px;
-    padding-right: 90px;
+  .content p{
+    padding-left: 30px;
+    padding-right: 30px;
   }
-  .card-para{
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 17px;
-    height: 250px;
+  .swiper{
+    height: 420px;
+    width: 70%;
   }
-  .card img{
-    margin-right: 95px;
+}
+
+@media (max-width:1024px) and (min-width:415px){
+  .testimonial-para {
+    padding-left: 80px;
+    padding-right: 80px;
+    font-size: 18px;
   }
-  .wrapper{
-    padding-left: 50px;
-    padding-right: 50px;
+   .content p{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .swiper{
+    height: 530px;
   }
 }

@@ -1,15 +1,22 @@
-import React from "react";
 import "./Testimonial.css";
-import Carousel from "../Carousel/Carousel";
-import group1 from "../images/Group 33609.png";
-import group2 from "../images/Group 33609 (1).png";
-import group3 from "../images/Group 33614 (1).png";
-import { useState } from "react";
-import { useLayoutEffect } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import SwiperCore, { Virtual, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/bundle";
+import "swiper/css";
+import group1 from "../images/Group 33631 (3).png"
+import group2 from "../images/Group 33632.png"
+import group3 from "../images/Group 33631 (2).png"
+
+SwiperCore.use([Virtual, Navigation, Pagination]);
 
 function Testimonial() {
+  const [swiperRef, setSwiperRef] = useState(null);
+  const [slides, setSlides] = useState(
+    Array.from({ length: 6 }).map((_, index) => `Slide ${index + 1}`)
+  );
 
-  //function for window width and height
+  // function for window width and height
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
@@ -38,109 +45,95 @@ function Testimonial() {
           and drawing attention from our surplus lives.
         </p>
       </div>
-      <Carousel show={width>640?3:1}>
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group1} alt="placeholder" />
-                <h1 className="card-heading">Itishree Behera</h1>
-                <h4 className="card-subheading">Program Manager, ThinkZone</h4>
-                <p className="card-para">
-                  Access to education is an issue we all speak about, and the
-                  digital divide during the pandemic shows us the truth.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group2} alt="placeholder" />
-                <h1 className="card-heading">Chhavi Khandelwal</h1>
-                <h4 className="card-subheading">
-                  Co-Founder, Saturday Art Class
-                </h4>
-                <p className="card-para">
-                  I want to thank the team for inviting me as a guest for
-                  Aarohan 2021. We discussed about how art could change the
-                  character and attitude of a child.
-                </p>
-              </div>
-            </div>
+      <Swiper
+        onSwiper={setSwiperRef}
+        slidesPerView={width > 640 ? 3 : 1}
+        spaceBetween={40}
+        navigation={true}
+        virtual
+      >
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group1} alt="#"></img>
           </div>
-        </div>
-
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group3} alt="placeholder" />
-                <h1 className="card-heading">Anupam Bansal</h1>
-                <h4 className="card-subheading">Founder, Kashi Utkarsh</h4>
-                <p className="card-para">
-                  Being invited to speak in Jagriti '21 was one of the most
-                  amazing experiences I had last year.
-                </p>
-              </div>
-            </div>
+          <div className="content">
+            <h1>Itishree Behera</h1>
+            <h4>Program Manager, ThinkZone</h4>
+            <p>
+              Access to education is an issue we all speak about, and the
+              digital divide during the pandemic shows us the truth.
+            </p>
           </div>
-        </div>
-
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group1} alt="placeholder" />
-                <h1 className="card-heading">Itishree Behera</h1>
-                <h4 className="card-subheading">Program Manager, ThinkZone</h4>
-                <p className="card-para">
-                  Access to education is an issue we all speak about, and the
-                  digital divide during the pandemic shows us the truth.
-                </p>
-              </div>
-            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group2} alt="#"></img>
           </div>
-        </div>
-
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group2} alt="placeholder" />
-                <h1 className="card-heading">Chhavi Khandelwal</h1>
-                <h4 className="card-subheading">
-                  Co-Founder, Saturday Art Class
-                </h4>
-                <p className="card-para">
-                  I want to thank the team for inviting me as a guest for
-                  Aarohan 2021. We discussed about how art could change the
-                  character and attitude of a child.
-                </p>
-              </div>
-            </div>
+          <div className="content">
+            <h1>Chhavi Khandelwal</h1>
+            <h4>Co-Founder, Saturday Art Class</h4>
+            <p>
+              I want to thank the team for inviting me as a guest for Aarohan
+              2021. We discussed about how art could change the character and
+              attitude of a child.
+            </p>
           </div>
-        </div>
-
-        <div className="wrapper">
-          <div className="carousel">
-            <div className="card" style={{ padding: 8 }}>
-              <div className="inner-content">
-                <img src={group3} alt="placeholder" />
-                <h1 className="card-heading">Anupam Bansal</h1>
-                <h4 className="card-subheading">Founder, Kashi Utkarsh</h4>
-                <p className="card-para">
-                  Being invited to speak in Jagriti '21 was one of the most
-                  amazing experiences I had last year.
-                </p>
-              </div>
-            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group3} alt="#"></img>
           </div>
-        </div>
-      </Carousel>
+          <div className="content">
+            <h1>Anupam Bansal</h1>
+            <h4>Founder, Kashi Utkarsh</h4>
+            <p>
+              Being invited to speak in Jagriti '21 was one of the most amazing
+              experiences I had last year
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group1} alt="#"></img>
+          </div>
+          <div className="content">
+            <h1>Itishree Behera</h1>
+            <h4>Program Manager, ThinkZone</h4>
+            <p>
+              Access to education is an issue we all speak about, and the
+              digital divide during the pandemic shows us the truth.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group2} alt="#"></img>
+          </div>
+          <div className="content">
+            <h1>Chhavi Khandelwal</h1>
+            <h4>Co-Founder, Saturday Art Class</h4>
+            <p>
+              I want to thank the team for inviting me as a guest for Aarohan
+              2021. We discussed about how art could change the character and
+              attitude of a child.
+            </p>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-content-img">
+            <img src={group3} alt="#"></img>
+          </div>
+          <div className="content">
+            <h1>Anupam Bansal</h1>
+            <h4>Founder, Kashi Utkarsh</h4>
+            <p>
+              Being invited to speak in Jagriti '21 was one of the most amazing
+              experiences I had last year
+            </p>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 }
