@@ -37,9 +37,12 @@
   filter: brightness(0.6);
 }
 .explore-btn {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 @media screen and (max-width: 1000px) {
     .jagriti-img {
