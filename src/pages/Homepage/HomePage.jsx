@@ -1,5 +1,6 @@
 import React from 'react'
 import "./HomePage.css"
+import Sponsor from '../../components/Sponsor/Sponsor'
 import jagriti from "../../assets/Jagriti.png";
 import { useEffect, useState } from 'react';
 import Clock from "../../components/Clock/Clock"
@@ -79,6 +80,11 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+  <Sponsor></Sponsor>
+
+
+
     </>
   );
 };
