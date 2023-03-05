@@ -1,26 +1,22 @@
-.vertical-timeline::before{
-    background: #1fac10;
+.vertical-timeline::before {
+  background: #1fac10;
 }
-.TimelineSpan{
-  
-width: 236px;
-height: 44px;
-
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 40px;
-line-height: 44px;
-
-color: #1A589B;
-
-flex: none;
+.TimelineSpan {
+  width: 100%;
+  /* height: 44px; */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  /* line-height: 44px; */
+  color: #1a589b;
+  /* flex: none;
 order: 0;
-flex-grow: 0;
-text-align: center;
-font-size: 3.125vw;
+flex-grow: 0; */
+  text-align: center;
+  /* font-size: 3.125vw; */
 }
 
-.TimelineHeading{
+/* .TimelineHeading{
     margin-bottom: 1%;
-}
+} */
