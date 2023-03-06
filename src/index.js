@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { FirebaseProvider } from "./context/Firebase";
+import "../node_modules/flowbite/dist/flowbite";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

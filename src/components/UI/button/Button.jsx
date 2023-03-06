@@ -18,7 +18,7 @@ const Button = ({
     ? "transparent"
     : disabled
     ? "#E4E4E4"
-    : "#427e3a";
+    : "#1A589B";
   const textColor = outline ? buttonColor : disabled ? "#696969" : "white";
   const borderColor = disabled ? "#E4E4E4" : buttonColor;
 
@@ -51,7 +51,7 @@ Button.defaultProps = {
   outline: false,
   disabled: false,
   text: "Button",
-  buttonColor: "#427e3a",
+  buttonColor: "#1A589B",
   customStyle: {},
   path: "",
   showArrow: false,
