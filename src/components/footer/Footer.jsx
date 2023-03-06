@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
         <div className="bg-white w-0.5 h-[126px] hidden md:block"></div>
 
-        <div className="flex flex-col items-center justify-around gap-7 w-[80%]  ">
+        <div className="flex flex-col items-center justify-around gap-7 w-[80%] ">
           <div>
             <h3 className="md:text-3xl text-xl">Connect with us</h3>
           </div>
