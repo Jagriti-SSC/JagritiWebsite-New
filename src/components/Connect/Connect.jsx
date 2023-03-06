@@ -24,7 +24,10 @@ const Connect = () => {
         saveData,
         {
           loading: "Setting Email Reminder",
-          success: "We will be remind you!",
+          success: (data)=>{
+              setEmail("");
+              return "We will remind you!"
+          },
           error: "Error while setting reminder!",
         }
       );
