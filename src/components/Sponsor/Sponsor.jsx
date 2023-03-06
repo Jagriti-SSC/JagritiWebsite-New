@@ -11,6 +11,21 @@ const Sponsor = () => {
         console.log(carousel.current.offsetWidth);
         console.log(carousel.current.scrollWidth);
     },[])
+
+    const variants = {
+        animate:{
+            x: [0,-1035],
+            transition:{
+                x:{
+                    repeat: Infinity,
+                    repeatType : "loop",
+                    duration: 10,
+                    ease: "linear",
+                }
+            },
+        },
+    }
+
   return (
     <div className='flex flex-col gap-8 py-8 mb-7'>
     <div className='flex justify-center'>
@@ -19,11 +34,11 @@ const Sponsor = () => {
         </h3>
     </div>
     <div className=' mx-auto w-full'>
-        <motion.div className='  cursor-grab  overflow-hidden' ref={carousel}>
-            <motion.div className='flex items-center gap-9 ' drag="x" dragConstraints={{right:0}}>
+        <motion.div className='overflow-hidden' ref={carousel}>
+            <motion.div className='flex items-center gap-9 ' >
                 {
                     array.map(item => 
-                    <motion.div className='md:min-w-[15rem] min-w-[10rem]'>
+                    <motion.div className='md:min-w-[15rem] sm:min-w-[6rem] min-w-[4rem] ml-5' variants={variants} animate="animate" >
                     <Corousel>
 
                     </Corousel>
