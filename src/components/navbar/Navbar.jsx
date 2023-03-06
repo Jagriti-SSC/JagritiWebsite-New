@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 function Navbar() {
   let curr = useLocation();
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
-
+ 
+  const closeButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
 
-  const changeNavbarColor = () => {
-    if (curr.pathname !== "/") {
-      setNavbar_bg("bg-light-black");
-    } else {
-      setNavbar_bg("bg-transparent");
-    }
-  };
-
   useEffect(() => {
+    const changeNavbarColor = () => {
+      if (curr.pathname !== "/") {
+        setNavbar_bg("bg-light-black");
+      } else {
+        setNavbar_bg("bg-transparent");
+      }
+    };
     changeNavbarColor();
   }, [curr.pathname]);
+
   return (
     <>
       <header>
         {/* Desktop Navbar */}
-        <nav className={`hidden md:block ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}>
+        <nav
+          className={`hidden md:block ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}
+        >
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
@@ -40,7 +43,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/about"
-                    className="block hover:underline hover:decoration-4 hover:decoration-blue py-2 pl-3 pr-4 text-white font-medium md:p-0"
+                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
                   >
                     About
                   </Link>
@@ -48,7 +51,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/team"
-                    className="block hover:underline hover:decoration-4 hover:decoration-blue py-2 pl-3 pr-4 text-white font-medium md:p-0"
+                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
                   >
                     Team
                   </Link>
@@ -56,9 +59,17 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/events"
-                    className="block hover:underline hover:decoration-4 hover:decoration-blue py-2 pl-3 pr-4 text-white font-medium md:p-0"
+                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
                   >
                     Events
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/faqs"
+                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                  >
+                    FAQs
                   </Link>
                 </li>
                 <li>
@@ -74,7 +85,9 @@ function Navbar() {
           </div>
         </nav>
         {/* Mobile Navbar */}
-        <nav className={`md:hidden ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}>
+        <nav
+          className={`md:hidden ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}
+        >
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
@@ -118,6 +131,7 @@ function Navbar() {
               aria-labelledby="drawer-right-label"
             >
               <button
+                ref={closeButton}
                 type="button"
                 data-drawer-hide="drawer-right-example"
                 aria-controls="drawer-right-example"
@@ -141,8 +155,9 @@ function Navbar() {
                 <ul className="space-y-6 text-center">
                   <li className="mt-8">
                     <Link
+                    onClick={()=>closeButton.current.click()}
                       to="/about"
-                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-normal text-black rounded-lg"
+                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
                       <span className="whitespace-nowrap">About</span>
                     </Link>
@@ -150,19 +165,31 @@ function Navbar() {
                   </li>
                   <li>
                     <Link
+                    onClick={()=>closeButton.current.click()}
                       to="/team"
-                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-normal text-black rounded-lg"
+                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
                       <span className="whitespace-nowrap">Team</span>
+                    </Link>
+                    <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>  
+                  </li>
+                  <li>
+                    <Link
+                    onClick={()=>closeButton.current.click()}
+                      to="/events"
+                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">Events</span>
                     </Link>
                     <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                   </li>
                   <li>
                     <Link
-                      to="/events"
-                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-normal text-black rounded-lg"
+                    onClick={()=>closeButton.current.click()}
+                      to="/faqs"
+                      className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
-                      <span className="whitespace-nowrap">Events</span>
+                      <span className="whitespace-nowrap">FAQs</span>
                     </Link>
                     <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                   </li>
@@ -171,7 +198,7 @@ function Navbar() {
                       text="Join CA Program"
                       outline={true}
                       buttonColor={"#1A589B"}
-                      customStyle={{ width: 224,fontSize:14 }}
+                      customStyle={{ width: 224, fontSize: 14 }}
                       path={"/ca"}
                     />
                   </li>
