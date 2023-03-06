@@ -34,7 +34,7 @@ const Sponsor = () => {
         </h3>
     </div>
     <div className=' mx-auto w-full'>
-        <motion.div className='  cursor-grab  overflow-hidden' ref={carousel}>
+        <motion.div className='overflow-hidden' ref={carousel}>
             <motion.div className='flex items-center gap-9 ' >
                 {
                     array.map(item => 
