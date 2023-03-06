@@ -110,33 +110,80 @@ body {
   box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
 }
 
+.swiper-button-prev {
+  background-image: url("../../components/images/Group\ 33633\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next {
+  background-image: url("../../components/images/Group\ 33632\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.prev-btn button {
+  background-image: url("../../components/images/Group\ 33633\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-left: 120px;
+  margin-top: 180px;
+  width: 100px;
+  height: 100px;
+}
+
+.next-btn button {
+  background-image: url("../../components/images/Group\ 33632\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-right: 120px;
+  margin-top: 180px;
+  width: 100px;
+  height: 100px;
+}
+
 @media (max-width: 414px) {
   .testimonial-para {
     padding-left: 30px;
     padding-right: 30px;
     font-size: 18px;
   }
-  .content p{
+  .content p {
     padding-left: 30px;
     padding-right: 30px;
   }
-  .swiper{
+  .swiper {
     height: 420px;
     width: 70%;
   }
 }
 
-@media (max-width:1024px) and (min-width:415px){
+@media (max-width: 1024px) and (min-width: 415px) {
   .testimonial-para {
     padding-left: 80px;
     padding-right: 80px;
     font-size: 18px;
   }
-   .content p{
+  .content p {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .swiper{
+  .swiper {
     height: 530px;
   }
 }
