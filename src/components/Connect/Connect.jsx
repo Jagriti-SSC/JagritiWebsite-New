@@ -45,7 +45,7 @@ const Connect = () => {
         className=" font-popins ml-4 md:h-[58px] ss:h-12 h-9 text-black border-none focus:ring-0 flex basis-3"
         placeholder="Your Email Address"
         required
-        size={15}
+        size={12}
       ></input>
       <button
         className="md:w-[30%] h-[60%] md:h-[75%] sm:h-[75%] p-3 bg-light-black  rounded-md flex justify-center items-center outline-none mr-1 md:mx-2 "
