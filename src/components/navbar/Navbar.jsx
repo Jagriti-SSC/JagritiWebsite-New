@@ -171,7 +171,7 @@ function Navbar() {
                       text="Join CA Program"
                       outline={true}
                       buttonColor={"#1A589B"}
-                      customStyle={{ width: "224px" }}
+                      customStyle={{ width: 224,fontSize:14 }}
                       path={"/ca"}
                     />
                   </li>
