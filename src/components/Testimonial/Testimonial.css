@@ -110,12 +110,6 @@ body {
   box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
 }
 
-.swiper-button-prev {
-}
-
-.swiper-button-next {
-}
-
 @media (max-width: 414px) {
   .testimonial-para {
     padding-left: 30px;

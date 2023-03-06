@@ -1,12 +1,12 @@
-import React from 'react'
-import Testimonial from '../../components/Testimonial/Testimonial'
-import "./HomePage.css"
-import Sponsor from '../../components/Sponsor/Sponsor'
+import React from "react";
+import Testimonial from "../../components/Testimonial/Testimonial";
+import "./HomePage.css";
+import Sponsor from "../../components/Sponsor/Sponsor";
 import jagriti from "../../assets/Jagriti.png";
-import { useEffect, useState } from 'react';
-import Clock from "../../components/Clock/Clock"
-import Button from "../../components/UI/button/Button"
-import desktop from "../../assets/desktop.mp4"
+import { useEffect, useState } from "react";
+import Clock from "../../components/Clock/Clock";
+import Button from "../../components/UI/button/Button";
+import desktop from "../../assets/desktop.mp4";
 // import mobile from "../../assets/mobile.mp4"
 
 const HomePage = () => {
@@ -54,11 +54,11 @@ const HomePage = () => {
 
   return (
     <>
-      <div className='home-page'>
+      <div className="home-page">
         <div className="timing">
-          <img className='jagriti-img' src={jagriti} alt="hero" />
+          <img className="jagriti-img" src={jagriti} alt="hero" />
           <video className="videoPlay" autoPlay loop muted>
-            <source src={desktop} type='video/mp4' />
+            <source src={desktop} type="video/mp4" />
           </video>
           <Clock
             timerDays={timerDays}
@@ -67,27 +67,16 @@ const HomePage = () => {
             timerSeconds={timerSeconds}
           />
           <div className="explore-btn">
-            <Button
-              text="Explore Events"
-              showArrow
-              path='/events'
-            />
-            <Button
-              outline
-              text="Guest talk"
-              buttonColor="white"
-              showArrow
-            />
+            <Button text="Explore Events" showArrow path="/events" />
+            <Button outline text="Guest talk" buttonColor="white" showArrow />
           </div>
         </div>
       </div>
 
-  <Sponsor></Sponsor>
-
-
-
+      <Testimonial />
+      <Sponsor></Sponsor>
     </>
   );
 };
 
-export default HomePage
+export default HomePage;
