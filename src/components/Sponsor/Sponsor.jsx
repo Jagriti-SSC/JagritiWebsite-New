@@ -19,7 +19,7 @@ const Sponsor = () => {
                 x:{
                     repeat: Infinity,
                     repeatType : "loop",
-                    duration: 7,
+                    duration: 10,
                     ease: "linear",
                 }
             },
