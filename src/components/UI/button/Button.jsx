@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./button.css";
 import { useNavigate } from "react-router-dom";
-import arrow from "../../../assets/arrow.png"
+import { useLocation } from "react-router-dom";
+import arrow from "../../../assets/arrow.png";
 
 const Button = ({
   outline,
@@ -12,20 +13,35 @@ const Button = ({
   customStyle, // to add your own styles to the button
   path, // the path where you want to navigate on the click of the button
   showArrow, // to show a arrow svg in the button
+  onPress,
 }) => {
   const navigate = useNavigate();
-  const backgroundColor = outline
+  const curr = useLocation();
+  let backgroundColor = outline
     ? "transparent"
     : disabled
     ? "#E4E4E4"
     : "#1A589B";
-  const textColor = outline ? buttonColor : disabled ? "#696969" : "white";
-  const borderColor = disabled ? "#E4E4E4" : buttonColor;
+  let textColor = outline ? buttonColor : disabled ? "#696969" : "white";
+  let borderColor = disabled ? "#E4E4E4" : buttonColor;
+
+  if (curr.pathname == "/ca") {
+    if (window.innerWidth > 1060) {
+      backgroundColor = "white";
+      textColor = "black";
+      borderColor = "#212121";
+    } else {
+      backgroundColor = "#1A589B";
+      textColor = "white";
+      borderColor = "#1A589B";
+    }
+  }
 
   const styles = {
     backgroundColor: backgroundColor,
     color: textColor,
     borderColor: borderColor,
+    justifyContent: showArrow ? "space-between" : "center",
   };
 
   return (
@@ -39,10 +55,13 @@ const Button = ({
       }
       style={{ ...styles, ...customStyle }}
       disabled={disabled ? true : false}
-      onClick = {() => navigate(path)}
+      onClick={() => {
+        onPress();
+        navigate(path);
+      }}
     >
       {text}
-      {showArrow && <img className="arrow" src={arrow} alt="arrow"/>}
+      {showArrow && <img className="arrow" src={arrow} alt="arrow" />}
     </button>
   );
 };
@@ -55,6 +74,7 @@ Button.defaultProps = {
   customStyle: {},
   path: "",
   showArrow: false,
+  onPress: () => {},
 };
 
 Button.propTypes = {
@@ -65,6 +85,7 @@ Button.propTypes = {
   customStyle: PropTypes.object,
   path: PropTypes.string,
   showArrow: PropTypes.bool,
+  onPress: PropTypes.func,
 };
 
 export default Button;
