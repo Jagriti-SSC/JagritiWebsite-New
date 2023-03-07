@@ -69,11 +69,10 @@ function Testimonial() {
             "--swiper-navigation-size": "150px",
           }}
           onSwiper={setSwiperRef}
-          slidesPerView={width > 640 ? 3 : 1}
+          slidesPerView={width < 640 ? 1 : width < 950 ? 2 : 3}
           spaceBetween={30}
           virtual
         >
-
           <SwiperSlide>
             <div className="swiper-content-img">
               <img src={group1} alt="#"></img>
