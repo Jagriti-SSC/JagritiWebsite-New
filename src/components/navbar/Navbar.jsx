@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import "./Navbar.css"
 
 function Navbar() {
   let curr = useLocation();
@@ -43,7 +44,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/about"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
                   >
                     About
                   </Link>
@@ -51,7 +52,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/team"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
                   >
                     Team
                   </Link>
@@ -59,7 +60,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/events"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
                   >
                     Events
                   </Link>
@@ -67,7 +68,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/faqs"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
                   >
                     FAQs
                   </Link>
