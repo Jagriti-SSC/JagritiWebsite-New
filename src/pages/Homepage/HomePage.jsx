@@ -9,6 +9,7 @@ import Button from "../../components/UI/button/Button";
 import desktop from "../../assets/desktop.mp4";
 // import mobile from "../../assets/mobile.mp4"
 
+
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
   const [timerHours, setTimerHours] = useState();
