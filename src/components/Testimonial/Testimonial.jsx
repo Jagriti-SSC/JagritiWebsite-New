@@ -65,9 +65,6 @@ function Testimonial() {
           <button onClick={handlePrevious}></button>
         </div>
         <Swiper
-          style={{
-            "--swiper-navigation-size": "150px",
-          }}
           onSwiper={setSwiperRef}
           slidesPerView={width < 640 ? 1 : width < 950 ? 2 : 3}
           spaceBetween={30}

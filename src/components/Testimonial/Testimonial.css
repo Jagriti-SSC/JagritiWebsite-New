@@ -15,6 +15,7 @@
   line-height: 44px;
   color: #1a589b;
   text-align: center;
+  margin-top: 15px;
 }
 
 .testimonial-para {
@@ -139,26 +140,34 @@ body {
   .testimonial-para {
     padding-left: 30px;
     padding-right: 30px;
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 40px;
   }
+  .testimonial-heading {
+    margin-top: 35px;
+    font-size: 35px;
+  }
   .content p {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .swiper {
     height: 460px;
     width: 70%;
   }
-  .prev-btn button{
+  .prev-btn button {
     margin-left: 0px;
     margin-top: 170px;
+    width: 80px;
+    height: 80px;
   }
-  .next-btn button{
+  .next-btn button {
     margin-right: 0px;
     margin-top: 170px;
+    width: 80px;
+    height: 80px;
   }
-  .upper-content{
+  .upper-content {
     gap: 1.5rem;
   }
 }
@@ -169,6 +178,9 @@ body {
     padding-right: 100px;
     font-size: 18px;
   }
+  .testimonial-heading{
+    margin-top: 50px;
+  }
   .content p {
     padding-left: 20px;
     padding-right: 20px;
@@ -176,12 +188,16 @@ body {
   .swiper {
     height: 530px;
   }
-   .prev-btn button{
+  .prev-btn button {
     margin-left: 0px;
     margin-top: 200px;
+    width: 90px;
+    height: 90px;
   }
-  .next-btn button{
+  .next-btn button {
     margin-right: 0px;
     margin-top: 200px;
+    width: 90px;
+    height: 90px;
   }
 }
