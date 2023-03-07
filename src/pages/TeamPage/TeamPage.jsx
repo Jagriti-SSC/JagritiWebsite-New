@@ -1,9 +1,12 @@
-import React from 'react'
-import "./TeamPage.css"
+import React, { useState } from 'react'
+import Dropdown from './Dropdown/Dropdown'
 
 const TeamPage = () => {
+  const[selected, setSelected]= useState("Convenors");
   return (
-    <div>TeamPage</div>
+    <div>
+      <Dropdown selected={selected} setSelected={setSelected} />
+    </div>
   )
 }
 
