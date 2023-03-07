@@ -1,13 +1,13 @@
 import React from "react";
 import "./HomePage.css";
 import Sponsor from "../../components/Sponsor/Sponsor";
+import Throwback from "../../components/Throwback/Throwback";
 import jagriti from "../../assets/Jagriti_white.png";
 import { useEffect, useState } from "react";
 import Clock from "../../components/Clock/Clock";
 import Button from "../../components/UI/button/Button";
 import desktop from "../../assets/desktop.mp4";
-import Group1 from"../../assets/33630.png"
-import Group2 from"../../assets/33631.png"
+
 
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
@@ -73,34 +73,7 @@ const HomePage = () => {
         </div>
       </div>
 
-
-
-
-
-      <div className="throwback">
-    
-    <div className="head">
-      <p>Throwback</p>
-    </div>
-    <div className="img3">
-      <img src={Group1} alt="Italian Trulli" />
-    </div>
-    <div className="content">
-      Here's the glimpse of the previous editions of Jagriti. Exciting events ranging from <br /> guest talks to competitions were successfully held,inundated with participants <br />from all over India.
-    </div>
-        
-      <div className="img1">
-        <img src={Group2} alt="Italian Trulli" />
-      </div>
-      <div className="img2">
-        <img src={Group1} alt="Italian Trulli" />
-      </div>
-  
-    </div>
-  
-  
-
-
+     <Throwback></Throwback>
 
       <Sponsor></Sponsor>
     </>
