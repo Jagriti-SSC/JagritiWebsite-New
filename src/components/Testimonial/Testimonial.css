@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.upper-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.testimonial-heading {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 44px;
+  color: #1a589b;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.testimonial-para {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: justify;
+  color: #0b1641;
+  padding-left: 350px;
+  padding-right: 350px;
+  margin-bottom: 60px;
+}
+
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #ffffff;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background: white;
+  border-right: 3px solid white;
+  border-radius: 16px;
+  box-shadow: 0px 12px 35px rgba(26, 88, 155, 0.25);
+}
+
+.swiper-content-img img {
+  display: block;
+  margin: auto;
+  padding-right: 40px;
+  padding-top: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: #0b1641;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.content h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #a9a9a9;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.content p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+  color: #212121;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.swiper {
+  width: 80%;
+  height: 440px;
+  border-radius: 16px;
+  box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
+}
+
+.swiper-main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.prev-btn button {
+  background-image: url("../../components/images/Group\ 33633\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-left: 120px;
+  margin-top: 180px;
+  width: 100px;
+  height: 100px;
+}
+
+.next-btn button {
+  background-image: url("../../components/images/Group\ 33632\ \(1\).png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-right: 120px;
+  margin-top: 180px;
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 414px) {
+  .testimonial-para {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 17px;
+    margin-bottom: 40px;
+  }
+  .testimonial-heading {
+    margin-top: 35px;
+    font-size: 35px;
+  }
+  .content p {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .swiper {
+    height: 460px;
+    width: 70%;
+  }
+  .prev-btn button {
+    margin-left: 0px;
+    margin-top: 170px;
+    width: 80px;
+    height: 80px;
+  }
+  .next-btn button {
+    margin-right: 0px;
+    margin-top: 170px;
+    width: 80px;
+    height: 80px;
+  }
+  .upper-content {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 415px) {
+  .testimonial-para {
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 18px;
+  }
+  .testimonial-heading{
+    margin-top: 50px;
+  }
+  .content p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .swiper {
+    height: 530px;
+  }
+  .prev-btn button {
+    margin-left: 0px;
+    margin-top: 200px;
+    width: 90px;
+    height: 90px;
+  }
+  .next-btn button {
+    margin-right: 0px;
+    margin-top: 200px;
+    width: 90px;
+    height: 90px;
+  }
+}
