@@ -19,7 +19,7 @@ export const GalleryData = [
     },
     {
         id:4,
-        title:"car",
+        title:"car2",
         name: "Rahul",
         image:"./images/a4.jpg"
     },
@@ -37,7 +37,7 @@ export const GalleryData = [
     },
     {
         id:7,
-        title:"car",
+        title:"car2",
         name:"John",
         image:"./images/a1.jpg"
     },
