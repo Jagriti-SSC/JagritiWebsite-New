@@ -1,90 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&display=swap");
 
-  @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&display=swap');
+/* html {
+  font-size: 62.5%;
+} */
 
-html{
-    font-size: 62.5%;
+/* .throwback{
+    height: 100vh;
+} */
+
+.head {
+  display: flex;
+  justify-content: center;
 }
-
-
-
-
-.head{
-
-
-padding: 0px;
-
-margin-left: 63.9rem;
-width: 23.5rem;
-height: 4.4rem;
-
+.head p {
+  margin: 30px 0px;
+  text-align: center;
+  /* width: 235px;
+  height: 44px; */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 44px;
+  /* color: #1a589b; */
+  /* flex: none;
+  order: 0;
+  flex-grow: 0; */
 }
-p{
-    
-margin-top:3rem;
-
-text-align: center;
-width: 23.5rem;
-height: 4.4rem;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 4.0rem;
-line-height: 4.4rem;
-color: #1A589B;
-flex: none;
-order: 0;
-flex-grow: 0;
-
-}    
-.content{ 
-width: 80rem;
-height: 8.4rem;
-
-margin-left: 60rem;
-margin-top:7rem;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 1.8rem;
-line-height: 2.8rem;
-/* or 175% */
-
-text-align: center;
-
-color: #0B1641;
-    }
-.allimg{
+.throwback-wrapper{
     display: flex;
-    flex-direction: row;
-    margin-bottom: 5rem;
-    gap:3rem;
+    justify-content: space-around;
+    padding: 0px 65px;
+    background-color: #1a589b;
+    /* height: 100vh; */
+}
+.content {
+  /* width: 800px;
+  height: 840px;
+
+  margin-left: 600px;
+  margin-top: 70px; */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  /* or 175% */
+  /* text-align: center; */
+  color: #0b1641;
+}
+/* .allimg {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5rem;
+  gap: 3rem;
+} */
+
+.img1 {
+  align-self: flex-end;
+}
+.img1size {
+  width: 86rem;
 }
 
-.img1{
+.right-wrapper{
+    display: flex;
+    flex-direction: column;
+}
 
-width: 86rem;
-height: 59rem;
-margin-left:11rem;
-
- }
- .img1size{
-    width:86rem;
- }
-
-
-.img2{
-        
-    
-    width: 44rem;
-    height: 36.5rem;
+/* .img2 {
+  width: 44rem;
+  height: 36.5rem;
   margin-top: 12rem;
-    margin-left:4rem;
-    }
+  margin-left: 4rem;
+}*/
 
-    .img2size{
-        width:44rem;
-     }
+.img2size {
+  width: 365px;
+  float: right;
+}
 /*.img3{
         position: absolute;
         width: 25rem;
@@ -92,8 +86,6 @@ margin-left:11rem;
         align-content: center;
         top: 13.6rem;
 }*/
-
-
 
 /*
     
@@ -391,4 +383,4 @@ margin-left:11rem;
         }
 
 
-    }*/
+    } */
