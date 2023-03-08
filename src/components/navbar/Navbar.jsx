@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import "./Navbar.css"
 
 function Navbar() {
   let curr = useLocation();
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
- 
+
   const closeButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
 
@@ -43,7 +44,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/about"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
                   >
                     About
                   </Link>
@@ -51,7 +52,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/team"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
                   >
                     Team
                   </Link>
@@ -59,7 +60,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/events"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
                   >
                     Events
                   </Link>
@@ -67,7 +68,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/faqs"
-                    className="block hover:animate-bounce py-2 pl-3 pr-4 text-white font-semibold md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
                   >
                     FAQs
                   </Link>
@@ -155,7 +156,7 @@ function Navbar() {
                 <ul className="space-y-6 text-center">
                   <li className="mt-8">
                     <Link
-                    onClick={()=>closeButton.current.click()}
+                      onClick={() => closeButton.current.click()}
                       to="/about"
                       className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
@@ -165,17 +166,17 @@ function Navbar() {
                   </li>
                   <li>
                     <Link
-                    onClick={()=>closeButton.current.click()}
+                      onClick={() => closeButton.current.click()}
                       to="/team"
                       className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
                       <span className="whitespace-nowrap">Team</span>
                     </Link>
-                    <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>  
+                    <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                   </li>
                   <li>
                     <Link
-                    onClick={()=>closeButton.current.click()}
+                      onClick={() => closeButton.current.click()}
                       to="/events"
                       className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
@@ -185,7 +186,7 @@ function Navbar() {
                   </li>
                   <li>
                     <Link
-                    onClick={()=>closeButton.current.click()}
+                      onClick={() => closeButton.current.click()}
                       to="/faqs"
                       className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                     >
@@ -199,6 +200,7 @@ function Navbar() {
                       outline={true}
                       buttonColor={"#1A589B"}
                       customStyle={{ width: 224, fontSize: 14 }}
+                      onPress={() => closeButton.current.click()}
                       path={"/ca"}
                     />
                   </li>
