@@ -45,7 +45,14 @@ const Modal = ({ data, close }) => {
 
     <motion.div className=" w-[100%] mb-[40px] min-h-[50%]">
       {
-        (content==="Overview") ? <p className=' md:text-lg sm:text-sm text-xs font-light from-event-text-grey '>{data.overview}</p> : (<p>hello</p>)
+        (content==="Overview") ? <p className=' md:text-lg sm:text-sm text-xs font-light from-event-text-grey '>{data.overview}</p> : 
+        ((content==="Contact")? (
+          //Contact
+          <motion.div className=' text-blue md:text-lg sm:text-sm text-xs'>
+            {data.contact.map((item)=>
+            <p>{item.contactName} : {item.number}</p>
+            )}
+        </motion.div>):(<p>Timeline</p>))
       }
     </motion.div>
 

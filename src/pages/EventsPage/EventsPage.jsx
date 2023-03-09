@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EventsPage.css"
 import { useFirebase } from "../../context/Firebase";
-import {eventData} from "../../components/data";
 import Events from "../../components/Events/Events";
 import {motion} from "framer-motion";
 import Button from "../../components/UI/button/Button";
@@ -57,7 +56,7 @@ console.log(firebase.eventData)
       {
         
         
-        eventData.map((data) => (
+        firebase.eventData.map((data) => (
         <div >
        <Events data={data} key={data.id}></Events>
       </div>
