@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+}
+.skewedBox{
+    background: linear-gradient(260.35deg, #1A589B 13.84%, #1B78DC 89.85%);
+    padding: 40px 0;
+    width: 100%;
+    transform: skew(0deg, -10deg) translateY(-120px);
+}
+.container{
+    padding: 150px 200px;
+    transform: skew(0deg, 10deg);
+}
+.container h1{
+    margin: 0;
+    padding: 20px 0;
+    font-size: 3em;
+}
+.container p{
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+    width: 80%;
+}

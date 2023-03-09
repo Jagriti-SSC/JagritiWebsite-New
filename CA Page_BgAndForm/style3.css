@@ -1,0 +1,153 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    
+}
+.skewedBox{
+    background: linear-gradient(260.35deg, #1A589B 13.84%, #1B78DC 89.85%);
+    padding: 40px 0;
+    width: 100%;
+    transform: skew(0deg, -10deg) translateY(-120px);
+    z-index: -1;
+}
+.container{
+    padding: 150px 200px;
+    transform: skew(0deg, 10deg);
+}
+.container h1{
+    margin: 0;
+    padding: 20px 0;
+    font-size: 3em;
+}
+.container p{
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5em;
+    width: 80%;
+}
+@
+*{
+    box-sizing: border-box;    
+}
+body{
+    
+    font-family: 'Montserrat',
+        sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.08em;
+    color: #1A589B;
+    align-items: center;
+    
+}
+form{
+    align-items: center;
+}
+input, select, button{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.08em;
+    color: #9F9F9F;
+}
+h3,h6{
+    margin: 0;
+    
+    width: 406px;
+    height: 27px;
+    left: 222px;
+    top: 248px;
+    
+}
+img{
+    max-width: 100%;
+    position: absolute;
+    width: 340.3px;
+    height: 247px;
+    left: 728px;
+    top: 289px;
+    
+}
+:focus{
+    outline: none;
+}
+.wrapper{
+    position: absolute;
+    width: 340.3px;
+    height: 247px;
+    left: 728px;
+    top: 289px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+.inner{
+    padding: 20px;
+    background: #F5F5FF;
+    width: 430px;
+    height: 50px;
+    left: 223px;
+    top: 685px;
+    margin: auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.inner .image-holder{
+    width: 50%;
+}
+.inner form{
+    width: 50%;
+}
+.inner h3 {
+    font-size: 22px;
+    text-align: center;
+}
+
+
+.form-wrapper{
+    position: relative;
+    /*display: flex;
+    flex-direction: row-reverse;*/
+}
+.form-control{ 
+    border: none;
+    /* position: absolute; */
+    width: 430px;
+    height: 50px;
+    left: 223px;
+    top: 345px;
+    padding: 30px;
+}
+button{ 
+    border: none;
+    width: 430px;
+    height: 50px;
+    left: 223px;
+    top: 685px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1A589B;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.08em;
+    color: #FFFFFF;
+}
+@media (max-width: 767px) {
+    .inner{
+        display: block;
+    }
+    .inner .image-holder{
+        width: 100%;
+    }
+}*/
+
+
+
+
+
