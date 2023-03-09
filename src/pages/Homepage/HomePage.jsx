@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Clock from "../../components/Clock/Clock"
 import Button from "../../components/UI/button/Button"
 import desktop from "../../assets/desktop.mp4"
+import Testimonials from "../../components/testimonials/Testimonials"
 // import mobile from "../../assets/mobile.mp4"
 
 const HomePage = () => {
@@ -79,6 +80,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <Testimonials/>
     </>
   );
 };
