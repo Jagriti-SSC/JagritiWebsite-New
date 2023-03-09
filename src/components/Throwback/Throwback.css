@@ -22,7 +22,7 @@
   font-weight: 700;
   font-size: 40px;
   line-height: 44px;
-  /* color: #1a589b; */
+  color: #1a589b; 
   /* flex: none;
   order: 0;
   flex-grow: 0; */
@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-around;
     padding: 0px 65px;
-    background-color: #1a589b;
+    background-color: #ffffff;
     /* height: 100vh; */
 }
 .content {
