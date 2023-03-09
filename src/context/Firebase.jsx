@@ -1,4 +1,4 @@
-import { createContext, useContext,useState} from "react";
+import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
 
@@ -28,26 +28,24 @@ export const FirebaseProvider = (props) => {
   // const [allDocuments, setallDocuments] = useState([]);
 
   // Create the required function for using the internal functions of the utility imported
-  const [eventData,setEventData] = useState([])
-  
+  const [eventData, setEventData] = useState([]);
+
   async function getAllDocuments(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
-      
-      if(collectionName === "events"){
+
+      if (
+        collectionName === "pre-event" ||
+        collectionName === "events" ||
+        collectionName === "guest-talk"
+      ) {
         setEventData([]);
-        collectionData.forEach((doc) =>
-        {
+        collectionData.forEach((doc) => {
           setEventData((prev) => {
-            return [...prev,doc.data()];
+            return [...prev, doc.data()];
           });
-          console.log(doc.data())
-        
-        }  
-       
-        );
-  
-        
+          console.log(doc.data());
+        });
       }
     } catch (error) {
       console.log(error);
