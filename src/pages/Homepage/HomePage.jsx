@@ -2,6 +2,7 @@ import React from "react";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import "./HomePage.css";
 import Sponsor from "../../components/Sponsor/Sponsor";
+import Throwback from "../../components/Throwback/Throwback";
 import jagriti from "../../assets/Jagriti_white.png";
 import { useEffect, useState } from "react";
 import Clock from "../../components/Clock/Clock";
@@ -73,9 +74,11 @@ const HomePage = () => {
         </div>
       </div>
 
-      <Testimonial />
-      <Sponsor></Sponsor>
+      <Testimonial></Testimonial>
 
+     <Throwback></Throwback>
+
+      <Sponsor></Sponsor>
     </>
   );
 };
