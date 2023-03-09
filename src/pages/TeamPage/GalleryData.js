@@ -61,13 +61,13 @@ export const GalleryData = [
     },
     {
         id:11,
-        title:"bike2",
+        title:"bike",
         name: "Rocky",
         image:"./images/b1.jpg"
     },
     {
         id:12,
-        title:"bike2",
+        title:"bike",
         name: "Jack",
         image:"./images/b2.jpg"
     },
