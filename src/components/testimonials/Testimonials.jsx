@@ -16,11 +16,11 @@ function Testimonials(){
     />
 
      <Testimonialelement 
-    name="ABHISEK ANAND" 
+    name="UTKARSH SRIVASTAVA" 
     post="CO CONVENOR"
     />
     <Testimonialelement 
-    name="AYUSH SINGROLI" 
+    name="UTKARSH SRIVASTAVA" 
     post="CO CONVENOR"
     />
     </div>
@@ -35,11 +35,11 @@ function Testimonials(){
     />
 
     <Testimonialelement 
-    name="ABHISEK ANAND" 
+    name="UTKARSH SRIVASTAVA" 
     post="CO CONVENOR"
     />
     <Testimonialelement 
-    name="AYUSH SINGROLI" 
+    name="UTKARSH SRIVASTAVA" 
     post="CO CONVENOR"
     />
     </div>

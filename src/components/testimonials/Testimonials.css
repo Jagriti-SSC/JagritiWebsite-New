@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after{
@@ -15,6 +14,7 @@
     overflow: hidden;
     position: relative;
     transition: transform 500ms ease;
+    background-color: antiquewhite;
 }
 
 .cardbox:hover,
@@ -30,7 +30,7 @@
         hsl(20 0% 0% / 0.3) 20%,
         hsl(0 0% 0% / 1)
     );    
-    
+
 }
 
 .cardbox:hover .card-content>*:not(.card-title),
@@ -43,7 +43,7 @@
     position: relative;
     width: max-content;
     font-size: larger;
-    
+
 }
 
 .card-title::after{
@@ -54,7 +54,7 @@
     bottom: 0px;
     width:calc(100% + var(--padding));
     background-color: rgb(12, 245, 32);;
-    
+
 }
 .cardbox:hover .card-title::after,
 .cardbox:focus-within .card-title::after{
@@ -92,8 +92,8 @@
         transform-origin: left;
         transition  : transform 500ms ease;
         transition-delay: 500ms;
-       
-       
+
+
     }
 }
 
@@ -112,19 +112,6 @@
 .buttn:hover,
 .buttn:focus{
     background-color: var(--clr-neutral-100);
-}
-
-@media (max-width:816px) {
-    .Testimonialsdiv{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    }
-    .cardbox{
-        margin-bottom: 2rem;
-    }
-
 }
 .Testimonialsdiv{
     display:flex;
@@ -147,8 +134,20 @@
     text-align: center;
     font-size: 3.125vw;
     }
-    
+
     .Testimonialheading{
         margin-bottom: 2%;
         margin-top: 2%;
     }
+
+@media (max-width:816px) {
+    .Testimonialsdiv{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    }
+    .cardbox{
+        margin-bottom: 2rem;
+    }
+}
