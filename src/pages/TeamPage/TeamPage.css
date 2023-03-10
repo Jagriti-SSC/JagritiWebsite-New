@@ -1,16 +1,8 @@
-.Testimonialsdiv{
+.teamCardDiv{
     margin: 50px;
     display:flex;
-    justify-content: space-around;
-}
-@media (max-width:816px) {
-    .Testimonialsdiv{
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
-    align-content: center;
-    }
-    .cardbox{
-        margin-bottom: 2rem;
-    }
+    align-items: center;
+   
 }
