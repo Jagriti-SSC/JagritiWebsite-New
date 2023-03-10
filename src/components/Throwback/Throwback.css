@@ -75,6 +75,8 @@
     font-size: 15px;
     line-height: 25px;
     text-align: start;
+    padding-top: 10px;
+    padding-bottom:10px;
     order:2;
   }
   .throwback_img2size {
