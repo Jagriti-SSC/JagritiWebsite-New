@@ -4,7 +4,7 @@ import { Gmail } from "@styled-icons/boxicons-logos/Gmail";
 import { Instagram } from "@styled-icons/boxicons-logos/Instagram";
 import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin";
 
-function Testimonialelement(props) {
+function TeamCard(props) {
     console.log(props.image);
   return (
     <div className="cardbox" style={{backgroundImage: `url(${props.image})`}}>
@@ -29,4 +29,4 @@ function Testimonialelement(props) {
   );
 }
 
-export default Testimonialelement;
+export default TeamCard;
