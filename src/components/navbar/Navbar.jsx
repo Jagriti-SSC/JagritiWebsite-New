@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Navbar.css"
 
-function Navbar() {
+const Navbar = forwardRef((props,ref) => {
   let curr = useLocation();
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
@@ -23,7 +23,7 @@ function Navbar() {
 
   return (
     <>
-      <header>
+      <header ref={ref}>
         {/* Desktop Navbar */}
         <nav
           className={`hidden md:block ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}
@@ -213,6 +213,6 @@ function Navbar() {
       <Outlet />
     </>
   );
-}
+});
 
 export default Navbar;

@@ -2,24 +2,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .ca-main {
-  margin-bottom: -400px;
+  /* margin-bottom: -400px; */
+  /* height: calc(100vh - 95px); */
+  height: 100vh;
+  width: 100%;
 }
 
 .skewed-bg {
   background: linear-gradient(260.35deg, #1a589b 13.84%, #1b78dc 89.85%);
-  padding: 200px 0;
-  transform: skew(0deg, -10deg) translateY(-890px);
+  padding: 30vh 0;
+  transform: skew(0deg, -10deg) translateY(-125px);
   position: relative;
   z-index: -1;
 }
 
-.ca-form-box{
+.ca-form-box {
   position: absolute;
   display: flex;
   flex-direction: row;
+  top: 50%; 
+  left: 50%;
+  /* transform: translate(-50%, calc(-50% + 95px));  */
 }
 
-.ca-main-box{
+.ca-main-box {
   background: #ffffff;
   padding: 30px 50px;
   border-radius: 16px;
@@ -166,7 +172,7 @@
   /* margin-top: 5px; */
 }
 
-.ca-details a:hover{
+.ca-details a:hover {
   color: #1a589b;
 }
 
@@ -296,10 +302,10 @@
   .right-ca img {
     padding-top: 7px;
     margin-bottom: 9px;
-    margin-left:11px;
+    margin-left: 11px;
   }
 
-  .left-content{
+  .left-content {
     margin-right: -88px;
   }
 }
