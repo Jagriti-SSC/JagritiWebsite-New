@@ -10,11 +10,7 @@ const EventsPage = () => {
   const firebase = useFirebase();
   // const [eventData, seteventData] = useState([]);
   const [eventType,setEventType] = useState("events")
-  const buttonStyle = {
-    height:"43px",
-    
-
-  }
+  
 
 
   const fetchEventData = (name) => {
@@ -37,13 +33,13 @@ const EventsPage = () => {
 
     <motion.div className=" flex justify-around md:w-[70%] mx-auto mt-[44px]">
       <div>
-      <Button text="Pre-Events" outline={eventType!=="pre-event"} onPress={()=>setEventType("pre-event")} customStyle={buttonStyle}></Button>
+      <Button text="Pre-Events" outline={eventType!=="pre-event"} onPress={()=>setEventType("pre-event")} ></Button>
       </div>
      <div>
-     <Button text="Events" outline={eventType!=="events"} onPress={()=>setEventType("events")} customStyle={buttonStyle}></Button>
+     <Button text="Events" outline={eventType!=="events"} onPress={()=>setEventType("events")} ></Button>
      </div>
      <div>
-     <Button text="Guest talks" outline={eventType!=="guest-talk"} onPress={()=>setEventType("guest-talk")} customStyle={buttonStyle}></Button>
+     <Button text="Guest talks" outline={eventType!=="guest-talk"} onPress={()=>setEventType("guest-talk")} ></Button>
      </div>
       
     
@@ -56,14 +52,14 @@ const EventsPage = () => {
       
       {
         
-        (eventType === "Pre-Events")?
+        (eventType === "pre-Event")?
         
         (firebase.PreEventData.map((data) => (
         <div >
        <Events data={data} key={data.id}></Events>
       </div>
 
-      ))) : ((eventType === "Events")? (firebase.eventData.map((data) => (
+      ))) : ((eventType === "events")? (firebase.eventData.map((data) => (
         <div >
        <Events data={data} key={data.id}></Events>
       </div>
