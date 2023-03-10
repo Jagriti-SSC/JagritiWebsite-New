@@ -9,7 +9,7 @@ import Button from "../../components/UI/button/Button";
 const EventsPage = () => {
   const firebase = useFirebase();
   // const [eventData, seteventData] = useState([]);
-  const [eventType,setEventType] = useState("Pre-Events")
+  const [eventType,setEventType] = useState("events")
   const buttonStyle = {
     height:"43px",
     
@@ -37,13 +37,13 @@ const EventsPage = () => {
 
     <motion.div className=" flex justify-around md:w-[70%] mx-auto mt-[44px]">
       <div>
-      <Button text="Pre-Events" outline={eventType!=="Pre-Events"} onPress={()=>setEventType("Pre-Events")} customStyle={buttonStyle}></Button>
+      <Button text="Pre-Events" outline={eventType!=="pre-event"} onPress={()=>setEventType("pre-event")} customStyle={buttonStyle}></Button>
       </div>
      <div>
-     <Button text="Events" outline={eventType!=="Events"} onPress={()=>setEventType("Events")} customStyle={buttonStyle}></Button>
+     <Button text="Events" outline={eventType!=="events"} onPress={()=>setEventType("events")} customStyle={buttonStyle}></Button>
      </div>
      <div>
-     <Button text="Guest talks" outline={eventType!=="Guest talks"} onPress={()=>setEventType("Guest talks")} customStyle={buttonStyle}></Button>
+     <Button text="Guest talks" outline={eventType!=="guest-talk"} onPress={()=>setEventType("guest-talk")} customStyle={buttonStyle}></Button>
      </div>
       
     
