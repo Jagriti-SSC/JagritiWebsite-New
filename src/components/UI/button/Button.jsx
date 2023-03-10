@@ -25,7 +25,7 @@ const Button = ({
   let textColor = outline ? buttonColor : disabled ? "#696969" : "white";
   let borderColor = disabled ? "#E4E4E4" : buttonColor;
 
-  if (curr.pathname == "/ca") {
+  if (curr.pathname === "/ca") {
     if (window.innerWidth > 1060) {
       backgroundColor = "white";
       textColor = "black";
