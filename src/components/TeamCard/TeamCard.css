@@ -21,6 +21,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
+  
   transition: transform 500ms ease;
   background-color: antiquewhite;
 }
@@ -32,6 +33,7 @@
 
 .card-content {
   --padding: 2rem;
+  
   padding: var(--padding);
   background: linear-gradient(
     hsl(0 0% 0% / 0),
