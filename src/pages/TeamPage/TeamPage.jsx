@@ -1,9 +1,11 @@
 import React from 'react'
 import "./TeamPage.css"
-
+import TeamCard from "../../components/TeamCard/TeamCard"
 const TeamPage = () => {
   return (
-    <div>TeamPage</div>
+    <div className='Testimonialsdiv'>
+      <TeamCard name="Manu Shukla" post="Tech Head"/>
+    </div>
   )
 }
 
