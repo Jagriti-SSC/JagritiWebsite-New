@@ -17,17 +17,18 @@ const EventsPage = () => {
   }
 
 
-  const fetchEventData =  () => {
-    const Data =  firebase.getAllDocuments("events");
-    // seteventData([...data]);
+  const fetchEventData = (name) => {
+    const Data =  firebase.getAllDocuments(name);
+    
   };
 
   useEffect(() => {
-    fetchEventData();
+    Promise.all([fetchEventData("events"),fetchEventData("pre-event"),fetchEventData("guest-talk")]);
+    
     
   }, []);
 
-console.log(firebase.eventData)
+
 
 
   return (
@@ -51,17 +52,39 @@ console.log(firebase.eventData)
     </motion.div>
 
 
- <div  className="md:grid md:grid-cols-2 z-50 md:mx-[195px] md:gap-y-[60px] mt-9 md:grid-flow-row flex flex-col gap-12 ">
+ <div  className="md:grid md:grid-cols-2 z-50 md:mx-[195px] md:gap-y-[60px] mt-9 md:grid-flow-row flex flex-col gap-12 mb-9 ">
       
       {
         
+        (eventType === "Pre-Events")?
         
-        firebase.eventData.map((data) => (
+        (firebase.PreEventData.map((data) => (
         <div >
        <Events data={data} key={data.id}></Events>
       </div>
 
-      ))}
+      ))) : ((eventType === "Events")? (firebase.eventData.map((data) => (
+        <div >
+       <Events data={data} key={data.id}></Events>
+      </div>
+
+      ))): (firebase.GuestTalkData.map((data) => (
+        <div >
+       <Events data={data} key={data.id}></Events>
+      </div>
+
+      ))))
+      
+      
+      
+      
+      }
+
+
+
+
+
+
 
 
     </div>

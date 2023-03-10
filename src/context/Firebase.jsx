@@ -28,13 +28,16 @@ export const FirebaseProvider = (props) => {
   // const [allDocuments, setallDocuments] = useState([]);
 
   // Create the required function for using the internal functions of the utility imported
-  const [eventData,setEventData] = useState([])
+  const [eventData,setEventData] = useState([]);
+  const [PreEventData,setPreEventData] = useState([]);
+  const [GuestTalkData,setGuestTalkData] = useState([]);
   
   async function getAllDocuments(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
       
-      if(collectionName === "events"){
+      
+    if(collectionName === "events"){
         setEventData([]);
         collectionData.forEach((doc) =>
         {
@@ -49,6 +52,39 @@ export const FirebaseProvider = (props) => {
   
         
       }
+      if(collectionName === "guest-talk"){
+        setGuestTalkData([]);
+        collectionData.forEach((doc) =>
+        {
+          setGuestTalkData((prev) => {
+            return [...prev,doc.data()];
+          });
+          console.log(doc.data())
+        
+        }  
+       
+        );
+  
+        
+      }
+
+      if(collectionName === "pre-event"){
+        setPreEventData([]);
+        collectionData.forEach((doc) =>
+        {
+          setPreEventData((prev) => {
+            return [...prev,doc.data()];
+          });
+          console.log(doc.data())
+        
+        }  
+       
+        );
+  
+        
+      }
+      
+
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +106,8 @@ export const FirebaseProvider = (props) => {
         getAllDocuments,
         addDocument,
         eventData,
+        PreEventData,
+        GuestTalkData,
       }}
     >
       {props.children}

@@ -36,7 +36,7 @@ const Modal = ({ data, close }) => {
     <motion.img src={data.imageURL} className="rounded-2xl md:w-[75%] h-[50%] md:h-[70%] "  variants={imageVariants}></motion.img>
     </motion.div>
     
-    <motion.div className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]">
+    <motion.div className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]" variants={imageVariants}>
     <motion.div className="flex  md:text-2xl sm:text-xl ss:text-lg text-sm py-[15px] items-center justify-between w-[100%]">
     <a className="hover:underline" onClick={()=> setContent("Overview")} href="#jgf">Overview</a>
     <a className="hover:underline" onClick={()=> setContent("Timeline")} href="#ouygvp">Timeline</a>
