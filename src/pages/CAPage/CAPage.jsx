@@ -15,8 +15,8 @@ const CAPage = () => {
   return (
     <div ref={divRef} style={{ position: "relative" }}>
       <CAForm ref={formRef} />
+      <div className="skewed-bg" />
     </div>
-    // <div>hi</div>
   );
 };
 
