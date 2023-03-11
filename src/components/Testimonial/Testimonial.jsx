@@ -47,7 +47,7 @@ function Testimonial() {
   const [width, height] = useWindowSize();
 
   return (
-    <div className="testimonial">
+    <div>
       <div className="upper-content">
         <h1 className="testimonial-heading">What is Jagriti?</h1>
         <p className="testimonial-para">
