@@ -114,8 +114,14 @@
 
   margin-top: 1px;
 }
-
-
+.teamLogo img{
+  height: 33px;
+  width: 33px;
+  border-radius: 1px;
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+}
 @media (max-width: 816px) {
   
   .cardbox {

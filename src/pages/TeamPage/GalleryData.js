@@ -95,7 +95,7 @@ export const GalleryData = [
         title:"Social Media",
         name: "Jack",
         image:"./images/b2.jpg",
-        icon:"./images/socailMedia.png"
+        icon:"./images/socialMedia.png"
     },
     {
         id:15,
