@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
-import toast, { Toaster } from "react-hot-toast";
-// import useMediaQuery from "../../hooks/useMediaQuery"
+import toast from "react-hot-toast";
+
 const Connect = () => {
-  // const islower = useMediaQuery()
+  
   const firebase = useFirebase();
 
   const [email, setEmail] = useState("");
@@ -55,7 +55,7 @@ const Connect = () => {
           Remind me
         </p>
       </button>
-      <Toaster position="top-right" />
+      
     </div>
   );
 };

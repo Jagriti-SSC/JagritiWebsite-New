@@ -1,6 +1,8 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import  { Toaster } from "react-hot-toast";
+
 import AboutPage from "./pages/AboutPage/AboutPage";
 import CAPage from "./pages/CAPage/CAPage";
 import EventsPage from "./pages/EventsPage/EventsPage";
@@ -23,6 +25,7 @@ function App() {
         <Route exact path="/ca" element={<CAPage />} />
       </Routes>
       <Footer />
+      <Toaster position="top-right" />
     </BrowserRouter>
   );
 }
