@@ -4,7 +4,7 @@ import Group1 from "../../assets/33630.png";
 import Group2 from "../../assets/33631.png";
 function Throwback() {
   return (
-    <div>
+   
       <div className="throwback">
         <div className="throwback_head">
           <p>Throwback</p>
@@ -25,7 +25,7 @@ function Throwback() {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 
