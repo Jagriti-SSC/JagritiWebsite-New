@@ -1,8 +1,12 @@
-/* FIXME: reduce media query size by reducing padding and width of elements many form */
+/* FIXME: make socials repsonsive on mobile screne width 
+and height od div container according to height of form */
 
 .flex-wrapper {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 .grid-wrapper {
   display: grid;
@@ -170,6 +174,7 @@
     grid-template-rows: auto auto auto auto;
     gap: 20px 0;
     padding: 30px 20px;
+    border-bottom-right-radius: 0px;
   }
   .heading {
     grid-row: 1/2;
@@ -188,7 +193,7 @@
   .contact-details {
     grid-row: 4/5;
     grid-column: 1/2;
-    gap:13px;
+    gap: 13px;
     margin-top: 10px;
     margin-left: 0px;
   }
@@ -229,7 +234,7 @@
   .ca-details img {
     width: 20px;
   }
-  .socials{
+  .socials {
     margin-bottom: 0px;
   }
 }
@@ -240,7 +245,9 @@
     padding-left: 25px;
     padding-right: 25px;
   }
-  .ca-form input,.ca-form textarea,.ca-form button{
+  .ca-form input,
+  .ca-form textarea,
+  .ca-form button {
     width: 350px;
   }
 }

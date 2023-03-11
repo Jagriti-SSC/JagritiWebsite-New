@@ -8,13 +8,10 @@ import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 
-const CAForm = () => {
+const CAForm = ({ navHeight }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
-
-  // const socialRef = useRef();
-  // const socialStyle = {};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,18 +19,13 @@ const CAForm = () => {
     console.log("name", name, "email", email, "note", note);
   };
 
-  // useLayoutEffect(() => {
-  //   const socialWidth = (socialRef.current.offsetWidth);
-  //   const documentWidth = document.documentElement.clientWidth;
-  //   if(documentWidth <= 1050){
-  //     socialStyle = {
-  //       left: -socialWidth,
-  //     }
-  //   }
-  // },[])
-
   return (
-    <div className="flex-wrapper">
+    <div
+      className="flex-wrapper"
+      style={{
+        transform: `translateX(-50%) translateY(calc(-50% + 0px)`,
+      }}
+    >
       <div className="grid-wrapper">
         <div className="heading">
           <h1 className="ca-heading">Become a Campus Ambassador</h1>
