@@ -118,7 +118,7 @@ const CAForm = forwardRef((props, ref) => {
               required
               type="text"
               name="note"
-              placeholder="Go ahead, We are listening..."
+              placeholder="Go ahead, We are listening... Atleast 20 characters!"
               value={note}
               onChange={(e) => setNote(e.target.value)}
             ></textarea>
