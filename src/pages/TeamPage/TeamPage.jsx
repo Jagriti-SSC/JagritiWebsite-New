@@ -88,7 +88,7 @@ function TeamPage() {
                 key={item.id}
                 className="galleryItem"
               >
-                <TeamCard name={item.name} image={item.image} />
+                <TeamCard name={item.name} image={item.image} post={item.title} />
               </motion.div>
             ))}
           </AnimatePresence>
