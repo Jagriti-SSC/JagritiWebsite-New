@@ -7,7 +7,7 @@ and height od div container according to height of form */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%)
+  transform: translateX(-50%) translateY(-50%);
 }
 .grid-wrapper {
   display: grid;
@@ -175,7 +175,6 @@ and height od div container according to height of form */
     grid-template-rows: auto auto auto auto;
     gap: 20px 0;
     padding: 30px 20px;
-    border-bottom-right-radius: 0px;
   }
   .heading {
     grid-row: 1/2;
@@ -237,6 +236,14 @@ and height od div container according to height of form */
   }
   .socials {
     margin-bottom: 0px;
+    border-bottom-right-radius: 16px;
+    justify-content: space-evenly;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    max-width: 40px;
+  }
+  .flex-wrapper{
+    display: block;
   }
 }
 

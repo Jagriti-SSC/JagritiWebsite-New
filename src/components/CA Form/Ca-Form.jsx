@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react";
+import React, { useState, forwardRef,useLayoutEffect,useRef } from "react";
 import "./Ca-Form.css";
 import ca_img from "../../assets/ca_page/photo.jpg";
 import email_img from "../../assets/ca_page/email.png";
@@ -13,18 +13,33 @@ const CAForm = forwardRef((props, ref) => {
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
 
+  const contactRef = useRef();
+  const socialRef = useRef();
+  const gridRef = useRef();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form submitted");
     console.log("name", name, "email", email, "note", note);
   };
 
+  useLayoutEffect(() => {
+    if(document.documentElement.clientWidth <= 750){
+      // socialRef.current.style.display = 'none'
+    socialRef.current.style.height = `${contactRef.current.clientHeight + 30}px`;
+    socialRef.current.style.position = 'relative';
+    socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
+    socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth}px`;
+    console.log(contactRef.current.clientHeight);
+    }
+  },[])
+
   return (
     <div
       className="flex-wrapper"
       ref={ref}
     >
-      <div className="grid-wrapper">
+      <div className="grid-wrapper" ref={gridRef}>
         <div className="heading">
           <h1 className="ca-heading">Become a Campus Ambassador</h1>
           <h4 className="ca-subheading">Fill the form and connect us</h4>
@@ -61,7 +76,7 @@ const CAForm = forwardRef((props, ref) => {
             <button type="submit">Submit</button>
           </form>
         </div>
-        <div className="contact-details">
+        <div className="contact-details" ref={contactRef}>
           <div className="ca-details">
             <img src={location_img} alt="#"></img>
             <a href="https://www.iitbhu.ac.in/" target="_blank">
@@ -78,7 +93,7 @@ const CAForm = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      <div className="socials">
+      <div className="socials" ref={socialRef}>
         <a href="##">
           <Facebook style={{ color: "white", width: 30 }} />
         </a>
