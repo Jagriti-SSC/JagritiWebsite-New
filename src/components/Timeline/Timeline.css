@@ -1,0 +1,31 @@
+
+.timeline{
+    margin: 0% 5%;
+}
+
+.TimelineSpan {
+  width: 100%;
+  margin-bottom: 1%;
+  
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+ 
+  color: #1a589b;
+
+  text-align: center;
+
+}
+
+.box{
+    font-family: "poppins";
+}
+.title{
+    font-size: 18px;
+    font-weight: 500;
+}
+.content{
+    font-size: 12px;
+    font-weight: 400;
+}
