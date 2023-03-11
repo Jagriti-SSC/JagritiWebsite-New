@@ -7,6 +7,7 @@ and height od div container according to height of form */
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translateX(-50%) translateY(-50%)
 }
 .grid-wrapper {
   display: grid;

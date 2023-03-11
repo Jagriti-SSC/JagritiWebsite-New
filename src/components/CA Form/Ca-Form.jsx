@@ -8,7 +8,7 @@ import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 
-const CAForm = forwardRef(({ navHeight }, ref) => {
+const CAForm = forwardRef((props, ref) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -23,9 +23,6 @@ const CAForm = forwardRef(({ navHeight }, ref) => {
     <div
       className="flex-wrapper"
       ref={ref}
-      style={{
-        transform: `translateX(-50%) translateY(calc(-50% + 0px)`,
-      }}
     >
       <div className="grid-wrapper">
         <div className="heading">

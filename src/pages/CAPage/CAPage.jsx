@@ -4,7 +4,7 @@ import CAForm from "../../components/CA Form/Ca-Form";
 
 //FIXME: remove navheight if not required
 
-const CAPage = ({ navHeight }) => {
+const CAPage = () => {
   const formRef = useRef();
   const divRef = useRef();
 
@@ -14,7 +14,7 @@ const CAPage = ({ navHeight }) => {
 
   return (
     <div ref={divRef} style={{ position: "relative" }}>
-      <CAForm ref={formRef} navHeight={navHeight} />
+      <CAForm ref={formRef} />
     </div>
     // <div>hi</div>
   );
