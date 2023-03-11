@@ -1,3 +1,4 @@
+import { useState, useRef, useLayoutEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import AboutPage from "./pages/AboutPage/AboutPage";

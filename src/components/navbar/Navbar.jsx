@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import "./Navbar.css"
+import "./Navbar.css";
 
-function Navbar() {
+const Navbar = () => {
   let curr = useLocation();
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
@@ -213,6 +213,6 @@ function Navbar() {
       <Outlet />
     </>
   );
-}
+};
 
 export default Navbar;
