@@ -167,7 +167,7 @@ and height od div container according to height of form */
   padding: 20px 7px 40px 7px;
 }
 
-@media (max-width: 885px) {
+@media (max-width: 750px) {
   .grid-wrapper {
     display: grid;
     grid-template-columns: auto;
@@ -239,7 +239,7 @@ and height od div container according to height of form */
   }
 }
 
-@media (min-width: 886px) and (max-width: 1050px) {
+@media (min-width: 750px) and (max-width: 1050px) {
   .grid-wrapper {
     column-gap: 40px;
     padding-left: 25px;
@@ -249,5 +249,13 @@ and height od div container according to height of form */
   .ca-form textarea,
   .ca-form button {
     width: 350px;
+  }
+  .ca-details {
+    gap: 10px;
+    margin-left: 0px;
+  }
+  .contact-details {
+    gap: 20px;
+    margin-right: 12px;
   }
 }

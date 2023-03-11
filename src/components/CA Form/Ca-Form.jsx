@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useRef } from "react";
+import React, { useState, forwardRef } from "react";
 import "./Ca-Form.css";
 import ca_img from "../../assets/ca_page/photo.jpg";
 import email_img from "../../assets/ca_page/email.png";
@@ -8,7 +8,7 @@ import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 
-const CAForm = ({ navHeight }) => {
+const CAForm = forwardRef(({ navHeight }, ref) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -22,6 +22,7 @@ const CAForm = ({ navHeight }) => {
   return (
     <div
       className="flex-wrapper"
+      ref={ref}
       style={{
         transform: `translateX(-50%) translateY(calc(-50% + 0px)`,
       }}
@@ -93,6 +94,6 @@ const CAForm = ({ navHeight }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CAForm;
