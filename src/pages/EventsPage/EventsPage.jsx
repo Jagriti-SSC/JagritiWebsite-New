@@ -52,7 +52,7 @@ const EventsPage = () => {
       
       {
         
-        (eventType === "pre-Event")?
+        (eventType === "pre-event")?
         
         (firebase.PreEventData.map((data) => (
         <div >
