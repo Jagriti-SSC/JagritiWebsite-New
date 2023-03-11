@@ -31,7 +31,7 @@ const EventsPage = () => {
     
   <>
 
-    <motion.div className=" flex justify-around md:w-[70%] mx-auto mt-[44px]">
+    <motion.div className=" flex justify-around md:w-[70%] mx-auto mt-[44px] md:flex-row flex-col items-center md:gap-0 gap-3">
       <div>
       <Button text="Pre-Events" outline={eventType!=="pre-event"} onPress={()=>setEventType("pre-event")} ></Button>
       </div>

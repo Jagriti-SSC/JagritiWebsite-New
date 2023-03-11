@@ -29,11 +29,13 @@ const Modal = ({ data, close }) => {
   };
 
   return (
-    <motion.div className=" md:bg-event-grey bg-white flex gap-3  md:flex-row  flex-col    md:w-[890px] md:h-[402px]   w-[70%]   xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]  font-popins m-0 p-0 rounded-2xl" variants={modalVariants}
-    onClick={(e) => e.stopPropagation()} >
+    
+    // xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]
+    <motion.div className=" md:bg-event-grey bg-white flex gap-3  md:flex-row  flex-col    md:w-[890px] md:h-[402px]   w-[70%]  h-max  font-popins m-0 p-0 rounded-2xl" variants={modalVariants}
+    onClick={(e) => e.stopPropagation()}   >
     <motion.div className=" rounded-2xl bg-white z-40 flex md:flex-col flex-row-reverse md:items-center justify-evenly md:min-w-[300px] md:max-w-[300px] max-h-[200px] md:max-h-full p-1 ">
     <motion.h1 className=" md:text-3xl  sm:text-2xl ss:text-xl text-lg font-bold md:mt-0 mt-4">{data.eventName}</motion.h1>
-    <motion.img src={data.imageURL} className="rounded-2xl md:w-[75%] h-[80%] md:h-[70%] md:mt-0 mt-4 "  variants={imageVariants}></motion.img>
+    <motion.img src={data.imageURL} className="rounded-2xl md:w-[75%]  md:h-[70%] md:mt-0 mt-4 w-[40%] sm:w-[30%]  "  variants={imageVariants}></motion.img>
     </motion.div>
     
     <motion.div className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]" variants={imageVariants}>
@@ -66,6 +68,7 @@ const Modal = ({ data, close }) => {
     
 
     </motion.div>
+  
   )
 
 }
