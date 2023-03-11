@@ -16,7 +16,7 @@ const Sponsor = () => {
 
     const variants = {
         animate:{
-            x: [0,-width],
+            x: [0,-1040],
             transition:{
                 x:{
                     repeat: Infinity,
