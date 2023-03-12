@@ -23,12 +23,12 @@ function Timeline() {
           contentArrowStyle={{
             borderRight: `7px solid #1A589B`,
           }}
-          iconStyle={{ background: "#1A589B", color: "#ffffff"}}
-          icon={<FlagFill   style={{height:"30px" , width:"30px"}}/>}
+          iconStyle={{ background: "#1A589B", color: "#ffffff" }}
+          icon={<FlagFill style={{ padding:0 }}/>}
         >
           <h3 className="title">Jagriti was formed</h3>
 
-          <p className="content">Jagriti was formed by the social service council</p>
+          <p className="timeline-content">Jagriti was formed by the social service council</p>
         </VerticalTimelineElement>
         
         <VerticalTimelineElement
@@ -41,11 +41,11 @@ function Timeline() {
             borderRight: `7px solid #1A589B`,
           }}
           iconStyle={{ background: "#1A589B", color: "#ffffff" }}
-          icon={<FlagFill  style={{height:"30px" , width:"30px"}}/>}
+          icon={<FlagFill style={{ padding:0 }}/>}
         >
           <h3 className="title">Photography Pre-Event</h3>
 
-          <p className="content">Testing</p>
+          <p className="timeline-content">Testing</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="box"
@@ -57,11 +57,11 @@ function Timeline() {
             borderRight: `7px solid #1A589B`,
           }}
           iconStyle={{ background: "#1A589B", color: "#ffffff" }}
-          icon={<FlagFill style={{height:"30px" , width:"30px"}} />}
+          icon={<FlagFill style={{ padding:0 }} />}
         >
           <h3 className="title">Photography Pre-Event</h3>
 
-          <p className="content">Testing</p>
+          <p className="timeline-content">Testing</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="box"
@@ -73,17 +73,17 @@ function Timeline() {
             borderRight: `7px solid #1A589B`,
           }}
           iconStyle={{ background: "#1A589B", color: "#ffffff" }}
-          icon={<FlagFill  style={{height:"30px" , width:"30px"}} />}
+          icon={<FlagFill style={{ padding:0 }} />}
         >
           <h3 className="title">Photography Pre-Event</h3>
 
-          <p className="content">Testing</p>
+          <p className="timeline-content">Testing</p>
         </VerticalTimelineElement>
 
 
         <VerticalTimelineElement
         iconStyle={{ background: "#1A589B", color: "#ffffff" }}
-        icon={<CheckCircleFill style={{height:"30px" , width:"30px"}}/>}
+        icon={<CheckCircleFill style={{ padding:0 }}/>}
         
         ></VerticalTimelineElement>
         
