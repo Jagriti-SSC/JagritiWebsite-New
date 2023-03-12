@@ -13,6 +13,8 @@ function TeamPage() {
   const [width, setWidth] = useState(0);
   const carousel = useRef(null);
   const innerCarousel = useRef(null);
+  const galleryRef = useRef(null);
+  const cardRef = useRef(null);
 
 
   useEffect(() => {
@@ -22,6 +24,22 @@ function TeamPage() {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth );
     console.log(carousel.current.scrollWidth, carousel.current.offsetWidth)
   }, [innerCarousel.current]);
+
+
+  useEffect(() => {
+    
+    const totalCards = Math.floor(galleryRef.current?.offsetWidth / (cardRef.current?.offsetWidth+20))
+    if(data.length <totalCards)
+    {
+      galleryRef.current.style.justifyContent = "flex-start";
+    }
+    else
+    {
+      galleryRef.current.style.justifyContent = "center";
+    }
+
+  }, [active, data.length])
+  
 
   const gallery_filter = (itemData) => {
     const filterData = GalleryData.filter((item) => item.title === itemData);
@@ -76,7 +94,7 @@ function TeamPage() {
             </motion.div>
           </motion.div>
         </div>
-        <motion.div layout className="galleryContainer">
+        <motion.div layout className="galleryContainer" ref={galleryRef}>
           <AnimatePresence>
             {data.map((item) => (
               <motion.div
@@ -87,6 +105,7 @@ function TeamPage() {
                 layout
                 key={item.id}
                 className="galleryItem"
+                ref={cardRef}
               >
                 <TeamCard name={item.name} image={item.image} post={item.title} icon={item.icon} />
               </motion.div>
