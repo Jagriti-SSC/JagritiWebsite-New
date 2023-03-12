@@ -23,7 +23,7 @@ const AboutPage = () => {
         </p>
       </div>
       <hr className=" h-[2px] bg-light-blue-700  mx-20" />
-      <div className="text-center my-20 mx-5">
+      <div className="text-center my-10 mx-5">
         <img
           className="w-[300px] mx-auto my-3"
           src="/assets/SSC_logo.png"
@@ -44,7 +44,7 @@ const AboutPage = () => {
           benefit the society as a whole.
         </p>
       </div>
-      <hr className=" h-[2px] bg-light-blue-700  mx-20" />
+      <hr className=" h-[2px] bg-light-blue-700 mx-20 mb-10" />
 
       {/* <div className="grid gap-4 lg:grid-cols-2 lg:grid-rows-2 justify-center"> */}
       <div className="clubBox">
@@ -60,7 +60,7 @@ const AboutPage = () => {
           clubDescription="Kashi Utkarsh, as the name suggests, is the development of Kashi. The development is a process that creates growth and positive change, and the volunteers of Kashi Utkarsh strive to get this change in bastis (slums). The prime motto of Kashi Utkarsh is to improve the quality of life of basti people by alleviating poverty through children's education."
         />
       </div>
-      <div className="clubBox">
+      <div className="clubBox mb-10 mt-5">
         <ClubCard
           clubLogo="HHC_logo.png"
           clubName="Health and Hygiene Club"
