@@ -5,12 +5,16 @@ import { Instagram } from "@styled-icons/boxicons-logos/Instagram";
 import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin";
 
 function TeamCard(props) {
-    console.log(props.image);
+    // console.log(props.image);
   return (
     <div className="cardbox" style={{backgroundImage: `url(${props.image})`}}>
       <div className="card-content">
         <h2 className="card-title">{props.name}</h2>
-        <p className="card-body">{props.post}</p>
+        <div className="teamPost">
+          <img src={props.icon} alt="logo" srcset="" />
+          <p className="card-body">{props.post}</p>
+        </div>
+        
         <div className="btn">
           <a href={"mailto:"+props.gmail}>
             <Gmail className=" h-8 text-white hover:text-red"></Gmail>

@@ -1,7 +1,7 @@
-:root{
-    --clr-neutral-900: hsl(207, 19%, 9%);
-    --clr-neutral-100: hsl(0, 0%, 100%);
-    --clr-accent-400: hsl(142, 90%, 61%)
+:root {
+  --clr-neutral-900: hsl(207, 19%, 9%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(142, 90%, 61%);
 }
 
 *,
@@ -21,6 +21,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
+
   transition: transform 500ms ease;
   background-color: antiquewhite;
 }
@@ -32,6 +33,7 @@
 
 .card-content {
   --padding: 2rem;
+
   padding: var(--padding);
   background: linear-gradient(
     hsl(0 0% 0% / 0),
@@ -49,7 +51,7 @@
 .card-title {
   position: relative;
   width: max-content;
-  font-size:x-large;
+  font-size: x-large;
   font-weight: 600;
 }
 
@@ -112,10 +114,19 @@
 
   margin-top: 1px;
 }
-
-
+.teamPost {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.teamPost img {
+  background-color: #1a589b;
+  margin: auto;
+  height: 33px;
+  /* background-size: cover; */
+  border-radius: 12px;
+  width: 33px;
+}
 @media (max-width: 816px) {
-  
   .cardbox {
     margin-bottom: 1rem;
   }

@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
 .head {
   display: flex;
   justify-content: center;
+}
+.throwback{
+  margin: 7% 0%;
 }
 .throwback_head p {
   margin: 30px 0px;
@@ -47,10 +46,16 @@
   text-align: center;
   /* flex:1; */
 }
+.throwback_img2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 5vh; */
+}
 
 .throwback_img2size {
   /* width: 440px; */
-  float: right;
+  
 }
 
 @media (max-width: 600px) {
@@ -76,6 +81,7 @@
     line-height: 25px;
     text-align: start;
     order:2;
+    margin-bottom: 15px;
   }
   .throwback_img2size {
     order: 1;
