@@ -95,7 +95,11 @@ function Timeline() {
         </VerticalTimelineElement>
 
         <VerticalTimelineElement
-          iconStyle={{ background: "#1A589B", color: "#ffffff" }}
+          iconStyle={{
+            background: "white",
+            color: "#1A589B",
+            border: "1px solid #1A589B",
+          }}
           icon={<CheckCircleFill style={{ padding: 0 }} />}
         ></VerticalTimelineElement>
       </VerticalTimeline>
