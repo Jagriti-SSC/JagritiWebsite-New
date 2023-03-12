@@ -48,8 +48,8 @@
   color: rgb(65, 98, 168);
   border-radius: 8px;
   font-family: "Poppins";
-  border: 2px solid rgb(65, 98, 168);
-  font-weight: bold;
+  border: 1.5px solid rgb(65, 98, 168);
+  font-weight: 550;
   cursor: pointer;
  
 }
