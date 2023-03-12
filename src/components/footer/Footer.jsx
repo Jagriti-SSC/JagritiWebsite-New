@@ -11,7 +11,7 @@ const Footer = () => {
     alt:"Kashi Utkarsh",
   },{
     name:"Social Projects Club",
-    img:"../assets/kashiUtkarsh.svg",
+    img:"../assets/SPC_logo.png",
     alt:"Social Projects Club",
   },{
     name:"SSCmain",

@@ -1,9 +1,13 @@
 import React,{useState} from 'react'
 import { motion } from "framer-motion";
 import Button from '../UI/button/Button';
+import { CloseOutline } from 'styled-icons/evaicons-outline';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { C } from 'styled-icons/simple-icons';
 
 const Modal = ({ data, close }) => {
     const [content,setContent] = useState("Overview");
+    const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
 
   const modalVariants = {
     open: {
@@ -31,14 +35,20 @@ const Modal = ({ data, close }) => {
   return (
     
     // xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]
-    <motion.div className=" md:bg-event-grey bg-white flex gap-3  md:flex-row  flex-col    md:w-[890px] md:h-[402px]   w-[70%]  h-max  font-popins m-0 p-0 rounded-2xl" variants={modalVariants}
+    <motion.div className=" md:bg-event-grey  flex gap-3  md:flex-row  flex-col    md:w-[890px] md:h-[402px]   w-[70%]  h-max  font-popins m-0 p-0  rounded-tl-[25px] rounded-br-[25px] bg-event-grey  my-auto " variants={modalVariants}
     onClick={(e) => e.stopPropagation()}   >
-    <motion.div className=" rounded-2xl bg-white z-40 flex md:flex-col flex-row-reverse md:items-center justify-evenly md:min-w-[300px] md:max-w-[300px] max-h-[200px] md:max-h-full p-1 ">
-    <motion.h1 className=" md:text-3xl  sm:text-2xl ss:text-xl text-lg font-bold md:mt-0 mt-4">{data.eventName}</motion.h1>
-    <motion.img src={data.imageURL} className="rounded-2xl md:w-[75%]  md:h-[70%] md:mt-0 mt-4 w-[40%] sm:w-[30%]  "  variants={imageVariants}></motion.img>
+    
+    <motion.div className=" rounded-2xl md:bg-white z-40 flex flex-col items-center justify-evenly md:min-w-[300px] md:max-w-[300px]  md:max-h-full p-1 rounded-tl-[25px] ">
+    
+    <motion.div className=' relative left-[45%] mr-1 md:hidden'><CloseOutline onClick={close} className=' ' size="50px" ></CloseOutline></motion.div>
+
+    <motion.h1 className=" md:text-3xl sm:text-4xl xxs:text-3xl text-xl text-blue font-bold md:mt-0 ">{data.eventName}</motion.h1>
+    <motion.img src={data.imageURL} className="rounded-2xl md:w-[75%]  md:h-[70%] md:mt-0 mt-4 w-[40%] sm:w-[30%] md:mb-0 mb-5 "  variants={imageVariants}></motion.img>
     </motion.div>
     
-    <motion.div className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]" variants={imageVariants}>
+    {
+      isAboveLargeScreen ? 
+      (<><motion.div className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]" variants={imageVariants}>
     <motion.div className="flex  md:text-2xl sm:text-xl ss:text-lg text-sm py-[15px] items-center justify-between w-[100%]">
     <a className="hover:underline" onClick={()=> setContent("Overview")} href="#jgf">Overview</a>
     <a className="hover:underline" onClick={()=> setContent("Timeline")} href="#ouygvp">Timeline</a>
@@ -58,7 +68,8 @@ const Modal = ({ data, close }) => {
       }
     </motion.div>
 
-      <motion.div className='md:mb-[37px] mb-[20px] mt-auto'>
+    
+    <motion.div className='md:mb-[37px] mb-[20px] mt-auto mx-auto'>
       <Button text="Register" path="/" ></Button>
       </motion.div>
     
@@ -66,6 +77,43 @@ const Modal = ({ data, close }) => {
     
     </motion.div>
     
+</>):
+(<>
+<motion.div className=' mx-6' variants={imageVariants}>
+
+<motion.h2 className='text-2xl sm:text-4xl ss:text-3xl'>Overview</motion.h2>
+<motion.p className='xs:text-lg ss:text-xl text-sm  text-blue mb-6'>{data.overview}</motion.p>
+
+<motion.h2 className=' text-2xl sm:text-4xl ss:text-3xl'>Timeline</motion.h2>
+<motion.p className='text-blue xs:text-lg ss:text-xl text-sm  mb-6'>Timeline</motion.p>
+ 
+<motion.h2 className=' text-2xl sm:text-4xl ss:text-3xl'>contact</motion.h2>
+ <motion.div className=' text-blue xs:text-lg ss:text-xl text-sm mb-6'>
+            {data.contact.map((item)=>
+            <p>{item.contactName} : {item.number}</p>
+            )}
+        </motion.div>
+  
+       
+    
+
+</motion.div>
+
+</>)
+    
+
+    
+    
+    }
+    
+  
+    <motion.div className='md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden'>
+      <Button text="Register" path="/" ></Button>
+      </motion.div>
+
+
+
+
 
     </motion.div>
   
