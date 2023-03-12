@@ -20,7 +20,7 @@ const FooterIcons = (props) => {
                 <img
                     src={props.img}
                     alt={props.alt}
-                    className="md:w-[63.92px] md:h-[66.43px]"
+                    className="md:w-[63.92px] md:h-[66.43px] h-[50px] w-[50px]"
                 ></img>      
                 <p className=' text-xs sm:text-sm md:text-xl'>{props.name}</p>
                 </div>
