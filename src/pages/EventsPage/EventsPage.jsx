@@ -57,19 +57,19 @@ const EventsPage = () => {
         
         (eventType === "pre-event")?
         
-        (firebase.PreEventData.map((data) => (
+        (firebase.PreEventData.map((data,index) => (
         <div >
-       <Events data={data} key={data.id}></Events>
+       <Events data={data} key={data.id} index={index}></Events>
       </div>
 
-      ))) : ((eventType === "events")? (firebase.eventData.map((data) => (
+      ))) : ((eventType === "events")? (firebase.eventData.map((data,index) => (
         <div >
-       <Events data={data} key={data.id}></Events>
+       <Events data={data} key={data.id} index={index}></Events>
       </div>
 
-      ))): (firebase.GuestTalkData.map((data) => (
+      ))): (firebase.GuestTalkData.map((data,index) => (
         <div >
-       <Events data={data} key={data.id}></Events>
+       <Events data={data} key={data.id} index={index}></Events>
       </div>
 
       ))))

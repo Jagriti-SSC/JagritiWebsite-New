@@ -4,7 +4,7 @@ import Card from '../EventCard/Card';
 import Modal from '../EventCard/Modal';
 import Overlay from '../EventCard/Overlay';
 
-const Events = ({data}) => {
+const Events = ({data,index}) => {
   const [open, setOpen] = useState(false);
 
   const openModal = () => {
@@ -16,7 +16,7 @@ const Events = ({data}) => {
   };
   return (
     <>
-    <Card data={data} open={openModal}></Card>
+    <Card data={data} open={openModal} index={index}></Card>
 
     <AnimatePresence>
       {
