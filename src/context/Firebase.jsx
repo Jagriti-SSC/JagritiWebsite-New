@@ -31,6 +31,7 @@ export const FirebaseProvider = (props) => {
   const [eventData,setEventData] = useState([]);
   const [PreEventData,setPreEventData] = useState([]);
   const [GuestTalkData,setGuestTalkData] = useState([]);
+  const [teamData, setTeamData] = useState([]);
   
   async function getAllDocuments(collectionName) {
     try {
@@ -80,6 +81,22 @@ export const FirebaseProvider = (props) => {
         }  
        
         );
+
+      }
+      if(collectionName === "team"){
+        setTeamData([]);
+
+        collectionData.forEach((doc) =>
+        {
+         
+          setTeamData((prev) => {
+            return [...prev , doc.data()];
+          });
+          // console.log(doc.data())
+        
+        }  
+       
+        );
   
         
       }
@@ -98,6 +115,8 @@ export const FirebaseProvider = (props) => {
     }
   };
 
+
+
   return (
     <FirebaseContext.Provider
       value={{
@@ -108,6 +127,7 @@ export const FirebaseProvider = (props) => {
         eventData,
         PreEventData,
         GuestTalkData,
+        teamData
       }}
     >
       {props.children}
