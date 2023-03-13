@@ -18,10 +18,10 @@ export default function Example() {
         <h1 className="mx-1 mt-10 font-Montserrat block text-5xl text-blue font-bold text-center">
           Frequently Asked Questions
         </h1>
-        <div className="md:flex mt-10">
+        <div className="md:flex mt-10 mb-10">
           <div>
             <img
-              className="mx-auto lg:mx-10"
+              className="mx-auto lg:mx-10 mb-10"
               src="/assets/FAQ_Hero.png"
               alt="FAQ_Hero"
             />
