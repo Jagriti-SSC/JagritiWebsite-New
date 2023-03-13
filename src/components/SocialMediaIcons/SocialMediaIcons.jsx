@@ -7,23 +7,23 @@ import React from "react";
 
 const SocialMediaIcons = () => {
   return (
-    <div className=" cursor-pointer flex  items-center md:w-[283px] md:h-[47px] w-[60%] justify-evenly mx-auto">
+    <div className=" cursor-pointer flex  items-center md:w-[283px] md:h-[47px] w-[60%]  justify-evenly mx-auto">
       <a href="#fjhgh">
-        <Gmail className=" h-8 hover:text-red"></Gmail>
+        <Gmail className=" h-10  ss:h-14 hover:text-red"></Gmail>
       </a>
       <a href="#fjhgh">
-        <Instagram className=" h-8 hover:text-pink-400"></Instagram>
+        <Instagram className=" h-10  ss:h-14  hover:text-pink-400"></Instagram>
       </a>
       <a href="#fjhgh">
-        <Facebook className=" h-8 hover:text-blue"></Facebook>
-      </a>
-      <a href="#fjhgh">
-        {" "}
-        <LinkedinSquare className=" h-8 hover:text-blue"></LinkedinSquare>
+        <Facebook className=" h-10  ss:h-14 hover:text-blue"></Facebook>
       </a>
       <a href="#fjhgh">
         {" "}
-        <Youtube className=" h-8 hover:text-red"></Youtube>
+        <LinkedinSquare className=" h-10  ss:h-14 hover:text-blue"></LinkedinSquare>
+      </a>
+      <a href="#fjhgh">
+        {" "}
+        <Youtube className=" h-10 md:h-16 ss:h-14 hover:text-red"></Youtube>
       </a>
     </div>
   );
