@@ -53,7 +53,7 @@
   float: right;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
   .throwback-wrapper {
     display: flex;
@@ -84,6 +84,236 @@
     float: none;
     width: 250px;
     margin:0 auto;
+  }
+}
+
+@media screen and (max-width:725px) and (min-width:650px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 30px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 375px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 150px;
+    float: right;
+  }
+
+}
+
+
+
+@media screen and (max-width:780px) and (min-width:725px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 400px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 170px;
+    float: right;
+  }
+
+}
+
+
+@media screen and (max-width:880px) and (min-width:780px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 30px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 425px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 190px;
+    float: right;
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width:980px) and (min-width:880px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 450px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 225px;
+    float: right;
+  }
+
+}
+
+
+
+@media screen and (max-width:1100px) and (min-width:980px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 550px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 250px;
+    float: right;
+  }
+
+}
+
+@media screen and (max-width:1300px) and (min-width:1100px) {
+  .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 50px;
+  }
+  
+  .throwback_img1{
+    align-self: flex-end;
+  }
+  .throwback_img1size {
+  width: 650px;
+  }
+  
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .throwback_content {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: #0b1641;
+    text-align: center;
+    /* flex:1; */
+  }
+  
+  .throwback_img2size {
+    width: 300px;
+    float: right;
   }
 }
 
