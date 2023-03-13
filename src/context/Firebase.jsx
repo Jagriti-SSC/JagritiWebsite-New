@@ -28,80 +28,53 @@ export const FirebaseProvider = (props) => {
   // const [allDocuments, setallDocuments] = useState([]);
 
   // Create the required function for using the internal functions of the utility imported
-  const [eventData,setEventData] = useState([]);
-  const [PreEventData,setPreEventData] = useState([]);
-  const [GuestTalkData,setGuestTalkData] = useState([]);
-  const [teamData, setTeamData] = useState([]);
-  
+  const [eventData, setEventData] = useState([]);
+  const [PreEventData, setPreEventData] = useState([]);
+  const [GuestTalkData, setGuestTalkData] = useState([]);
+  // const [teamData, setTeamData] = useState([]);
+
   async function getAllDocuments(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
-      
-      
-    if(collectionName === "events"){
+
+      if (collectionName === "events") {
         setEventData([]);
-        collectionData.forEach((doc) =>
-        {
+        collectionData.forEach((doc) => {
           setEventData((prev) => {
-            return [...prev,doc.data()];
+            return [...prev, doc.data()];
           });
-          console.log(doc.data())
-        
-        }  
-       
-        );
-  
-        
+          console.log(doc.data());
+        });
       }
-      if(collectionName === "guest-talk"){
+      if (collectionName === "guest-talk") {
         setGuestTalkData([]);
-        collectionData.forEach((doc) =>
-        {
+        collectionData.forEach((doc) => {
           setGuestTalkData((prev) => {
-            return [...prev,doc.data()];
+            return [...prev, doc.data()];
           });
-          console.log(doc.data())
-        
-        }  
-       
-        );
-  
-        
+          console.log(doc.data());
+        });
       }
 
-      if(collectionName === "pre-event"){
+      if (collectionName === "pre-event") {
         setPreEventData([]);
-        collectionData.forEach((doc) =>
-        {
+        collectionData.forEach((doc) => {
           setPreEventData((prev) => {
-            return [...prev,doc.data()];
+            return [...prev, doc.data()];
           });
-          console.log(doc.data())
-        
-        }  
-       
-        );
-
+          console.log(doc.data());
+        });
       }
-      if(collectionName === "team"){
-        setTeamData([]);
+      if (collectionName === "team") {
+        let teamData = [];
 
-        collectionData.forEach((doc) =>
-        {
-         
-          setTeamData((prev) => {
-            return [...prev , doc.data()];
-          });
+        collectionData.forEach((doc) => {
+         teamData.push(doc.data());
           // console.log(doc.data())
-        
-        }  
-       
-        );
-  
+        });
+        return teamData;
         
       }
-      
-
     } catch (error) {
       console.log(error);
     }
@@ -115,8 +88,6 @@ export const FirebaseProvider = (props) => {
     }
   };
 
-
-
   return (
     <FirebaseContext.Provider
       value={{
@@ -127,7 +98,7 @@ export const FirebaseProvider = (props) => {
         eventData,
         PreEventData,
         GuestTalkData,
-        teamData
+    
       }}
     >
       {props.children}

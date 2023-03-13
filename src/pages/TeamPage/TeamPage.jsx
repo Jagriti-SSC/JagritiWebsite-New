@@ -21,15 +21,32 @@ function TeamPage() {
   const innerCarousel = useRef(null);
   const galleryRef = useRef(null);
   const cardRef = useRef(null);
+  const teamPageRef = useRef(null);
+  const spinnerRef = useRef(null);
 
   // Team Fetching
-  const fetchTeamData = () => {
-    const Data = firebase.getAllDocuments("team");
+  const fetchTeamData = async () => {
+    const Data = await firebase.getAllDocuments("team");
+    const sortedData = [...Data].sort((a, b) => {
+      return a.teamRank - b.teamRank;
+    });
+    console.log(sortedData);
+
+    setData(sortedData);
+    setFixedData(sortedData);
+    setMemberCount(0);
+    sortedData.forEach((item) =>
+      setMemberCount((prev) => prev + item.members.length)
+    );
+    setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
+    setTimeout(() => {
+      teamPageRef.current.style.display = "unset";
+      spinnerRef.current.style.display = "none";
+    }, 1000);
   };
 
   useEffect(() => {
     fetchTeamData();
-    // console.log(firebase.teamData);
   }, []);
 
   useEffect(() => {
@@ -43,7 +60,7 @@ function TeamPage() {
     const totalCards = Math.floor(
       galleryRef.current?.offsetWidth / (cardRef.current?.offsetWidth + 20)
     );
-    console.log(memberCount)
+    console.log(memberCount);
     if (memberCount < totalCards) {
       galleryRef.current.style.justifyContent = "flex-start";
     } else {
@@ -52,28 +69,34 @@ function TeamPage() {
     // console.log(totalCards, data.length, data)
   }, [active, memberCount]);
 
-  useEffect(() => {
-    const sortedData = [...firebase.teamData].sort((a, b) => {
-      return a.teamRank - b.teamRank;
-    });
+  // useEffect(() => {
+  //   const sortedData = [...firebase.teamData].sort((a, b) => {
+  //     return a.teamRank - b.teamRank;
+  //   });
+  //   console.log(sortedData);
 
-    setData(sortedData);
-    setFixedData(sortedData);
-    setCollection([
-      ...new Set(
-        sortedData.map((item) => {
-          setMemberCount((prev) => prev + item.members.length);
-          return item.teamTitle;
-        })
-      ),
-    ]);
-  }, [firebase.teamData]);
+  //   setData(sortedData);
+  //   setFixedData(sortedData);
+  //   setMemberCount(0);
+  //   sortedData.forEach((item) =>
+  //     setMemberCount((prev) => prev + item.members.length)
+  //   );
+  //   setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
+  //   setTimeout(() => {
+  //     teamPageRef.current.style.display = "unset";
+  //     spinnerRef.current.style.display = "none";
+  //   }, 1000);
+  // }, []);
+
+  // useEffect(() => {
+
+  // }, []);
 
   const gallery_filter = (itemData) => {
     setMemberCount(0);
     const filterData = fixedData.filter((item) => {
-      if(item.teamTitle === itemData)
-      setMemberCount((prev) => prev + item.members.length);
+      if (item.teamTitle === itemData)
+        setMemberCount((prev) => prev + item.members.length);
       return item.teamTitle === itemData;
     });
 
@@ -83,9 +106,9 @@ function TeamPage() {
   };
   function setColor() {
     setMemberCount(0);
-    fixedData.forEach((item, index)=>{
-      setMemberCount((prev)=>prev+item.members.length);
-    })
+    fixedData.forEach((item, index) => {
+      setMemberCount((prev) => prev + item.members.length);
+    });
     setData(fixedData);
     setActiveBtn("Our Team");
     setActive("Our Team");
@@ -93,7 +116,17 @@ function TeamPage() {
 
   return (
     <div>
-      <div className="galleryWrapper">
+      <div className="flex items-center justify-center m-10" ref={spinnerRef}>
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      </div>
+      <div className="galleryWrapper hidden" ref={teamPageRef}>
         <div className="filterItem">
           <div className="our-team">
             <h1>{active}</h1>
@@ -153,6 +186,9 @@ function TeamPage() {
                     image={member.imageUrl}
                     post={item.teamTitle}
                     icon={item.iconUrl}
+                    gmail={member.email}
+                    instagram={member.instagram}
+                    linkedin={member.linkedin}
                   />
                 </motion.div>
               ))
