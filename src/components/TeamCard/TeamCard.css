@@ -16,6 +16,7 @@
   padding: 10rem 0 0;
   min-width: 28ch;
   max-width: 35ch;
+  /* width: 30ch; */
   margin: 10px;
   flex: 100%;
   border-radius: 0.5rem;
@@ -70,7 +71,7 @@
 }
 
 .card-body {
-  color: rgb(255 255 255 / 0.85);
+  color: white;
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 0px;
@@ -115,15 +116,18 @@
   margin-top: 1px;
 }
 .teamPost {
-  display: grid;
-  grid-template-columns: 30% 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+ 
 }
 .teamPost img {
-  background-color: #1a589b;
-  margin: auto;
+  /* background-color: #1a589b; */
+  /* margin: auto; */
+  /* color:#1a589b;  */
   height: 33px;
   /* background-size: cover; */
-  border-radius: 12px;
+  /* border-radius: 12px; */
   width: 33px;
 }
 @media (max-width: 816px) {
