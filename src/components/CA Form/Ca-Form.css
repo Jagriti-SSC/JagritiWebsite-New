@@ -51,6 +51,7 @@ and height od div container according to height of form */
   grid-column: 2/3;
   grid-row: 2/3;
   margin-bottom: 20px;
+  width: 350px;
 }
 
 .ca-form-div {
@@ -176,7 +177,7 @@ and height od div container according to height of form */
   padding: 20px 7px 40px 7px;
 }
 
-@media (max-width: 750px) {
+@media screen and (max-width: 750px) {
   .grid-wrapper {
     display: grid;
     grid-template-columns: auto;
@@ -255,11 +256,11 @@ and height od div container according to height of form */
   }
 }
 
-@media (min-width: 750px) and (max-width: 1050px) {
+@media screen and (min-width: 750px) and (max-width: 1050px) {
   .grid-wrapper {
     column-gap: 40px;
     padding-left: 25px;
-    padding-right: 25px;
+    padding-right: 22px;
   }
   .ca-form input,
   .ca-form textarea,
@@ -273,5 +274,12 @@ and height od div container according to height of form */
   .contact-details {
     gap: 20px;
     margin-right: 12px;
+  }
+  .ca-img{
+    width: 250px;
+  }
+  .socials{
+    padding-left: 3px;
+    padding-right: 3px;
   }
 }
