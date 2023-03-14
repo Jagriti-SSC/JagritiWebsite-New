@@ -1056,6 +1056,12 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+@media (min-width: 280px) {
+  .container {
+    max-width: 280px;
+  }
+}
+
 @media (min-width: 400px) {
   .container {
     max-width: 400px;
@@ -1792,8 +1798,8 @@ input:checked + .toggle-bg {
   height: 2px;
 }
 
-.h-\[45\%\] {
-  height: 45%;
+.h-\[35\%\] {
+  height: 35%;
 }
 
 .h-\[58px\] {
@@ -1806,6 +1812,10 @@ input:checked + .toggle-bg {
 
 .h-\[600px\] {
   height: 600px;
+}
+
+.h-\[70\%\] {
+  height: 70%;
 }
 
 .h-\[74px\] {
@@ -1854,18 +1864,6 @@ input:checked + .toggle-bg {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[90\%\] {
-  height: 90%;
-}
-
-.h-\[0\%\] {
-  height: 0%;
-}
-
-.h-\[70\%\] {
-  height: 70%;
 }
 
 .max-h-96 {
@@ -2028,10 +2026,6 @@ input:checked + .toggle-bg {
   width: 40%;
 }
 
-.w-\[50\%\] {
-  width: 50%;
-}
-
 .w-\[58px\] {
   width: 58px;
 }
@@ -2064,6 +2058,10 @@ input:checked + .toggle-bg {
   width: 85%;
 }
 
+.w-\[90\%\] {
+  width: 90%;
+}
+
 .w-\[min\(480px\2c 75vw\)\] {
   width: min(480px,75vw);
 }
@@ -2089,10 +2087,6 @@ input:checked + .toggle-bg {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[90\%\] {
-  width: 90%;
 }
 
 .min-w-\[100vw\] {
@@ -2238,6 +2232,10 @@ input:checked + .toggle-bg {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.basis-4\/6 {
+  flex-basis: 66.666667%;
 }
 
 .basis-5\/12 {
@@ -8266,10 +8264,6 @@ input:checked + .toggle-bg {
     height: 400px;
   }
 
-  .sm\:h-\[60\%\] {
-    height: 60%;
-  }
-
   .sm\:h-\[600px\] {
     height: 600px;
   }
@@ -8332,10 +8326,6 @@ input:checked + .toggle-bg {
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .sm\:text-\[28px\] {
-    font-size: 28px;
   }
 
   .sm\:text-sm {
@@ -8409,6 +8399,10 @@ input:checked + .toggle-bg {
     display: none;
   }
 
+  .md\:h-16 {
+    height: 4rem;
+  }
+
   .md\:h-\[128px\] {
     height: 128px;
   }
@@ -8443,10 +8437,6 @@ input:checked + .toggle-bg {
 
   .md\:h-full {
     height: 100%;
-  }
-
-  .md\:h-16 {
-    height: 4rem;
   }
 
   .md\:max-h-\[80\%\] {
@@ -8625,6 +8615,11 @@ input:checked + .toggle-bg {
     line-height: 2.25rem;
   }
 
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -8638,11 +8633,6 @@ input:checked + .toggle-bg {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 
   .md\:font-medium {
@@ -8702,6 +8692,13 @@ input:checked + .toggle-bg {
   }
 }
 
+@media (min-width: 280px) {
+  .txs\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
 @media (min-width: 400px) {
   .xxs\:h-\[500px\%\] {
     height: 500px%;
@@ -8731,33 +8728,28 @@ input:checked + .toggle-bg {
     width: 70%;
   }
 
-  .xs\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  .xs\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .xs\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-
-  .xs\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
 }
 
 @media (min-width: 620px) {
+  .ss\:h-10 {
+    height: 2.5rem;
+  }
+
   .ss\:h-12 {
     height: 3rem;
   }
 
   .ss\:h-\[350px\] {
     height: 350px;
-  }
-
-  .ss\:h-14 {
-    height: 3.5rem;
   }
 
   .ss\:min-h-\[30\%\] {
@@ -8782,6 +8774,10 @@ input:checked + .toggle-bg {
     font-size: 16px;
   }
 
+  .ss\:text-\[22px\] {
+    font-size: 22px;
+  }
+
   .ss\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -8790,18 +8786,6 @@ input:checked + .toggle-bg {
   .ss\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .ss\:text-\[28px\] {
-    font-size: 28px;
-  }
-
-  .ss\:text-\[24px\] {
-    font-size: 24px;
-  }
-
-  .ss\:text-\[22px\] {
-    font-size: 22px;
   }
 }
 
@@ -8858,17 +8842,13 @@ input:checked + .toggle-bg {
     padding-right: 1rem;
   }
 
-  .smd\:text-\[24px\] {
-    font-size: 24px;
+  .smd\:text-\[22px\] {
+    font-size: 22px;
   }
 
   .smd\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .smd\:text-\[22px\] {
-    font-size: 22px;
   }
 
   .smd\:font-medium {

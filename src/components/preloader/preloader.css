@@ -1,0 +1,14 @@
+.preloader{
+    background-color: #000 ;
+    height: 100vh;
+    width: 100%;
+    z-index: 5000;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader >*{
+    display: flex;
+}
