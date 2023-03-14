@@ -9,6 +9,7 @@ const Events = ({data,index}) => {
 
   const openModal = () => {
     setOpen(true);
+    window.scrollTo(0, 0);
   };
 
   const closeModal = () => {

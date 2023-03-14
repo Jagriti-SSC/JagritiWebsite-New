@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Button from '../UI/button/Button';
 import { CloseOutline } from 'styled-icons/evaicons-outline';
 import useMediaQuery from '../../hooks/useMediaQuery';
-import { C } from 'styled-icons/simple-icons';
+
 
 const Modal = ({ data, close }) => {
     const [content,setContent] = useState("Overview");
