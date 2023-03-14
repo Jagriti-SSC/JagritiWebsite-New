@@ -17,6 +17,7 @@ const CAForm = forwardRef((props, ref) => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
+  let done = false;
 
   const contactRef = useRef();
   const socialRef = useRef();
@@ -72,7 +73,9 @@ const CAForm = forwardRef((props, ref) => {
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
-      // socialRef.current.style.display = 'none'
+      
+      if(done == false)
+        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight}px`
       socialRef.current.style.height = `${
         contactRef.current.clientHeight + 30
       }px`;
@@ -81,7 +84,7 @@ const CAForm = forwardRef((props, ref) => {
       socialRef.current.style.left = `${
         gridRef.current.clientWidth - socialRef.current.clientWidth
       }px`;
-      console.log(contactRef.current.clientHeight);
+      done = true;
     }
   }, []);
 
