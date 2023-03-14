@@ -118,13 +118,6 @@
   font-size: 18px;
 }
 
-svg {
-  padding: 0 5px;
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-}
-
 .card:hover h1,
 .card:hover p {
   opacity: 1;
