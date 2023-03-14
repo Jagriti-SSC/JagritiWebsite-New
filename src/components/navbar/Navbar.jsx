@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import "./Navbar.css"
+import "./Navbar.css";
 
-function Navbar() {
+const Navbar = () => {
   let curr = useLocation();
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
@@ -26,25 +26,25 @@ function Navbar() {
       <header>
         {/* Desktop Navbar */}
         <nav
-          className={`hidden md:block ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
         >
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
                 src="/assets/Jagriti_nav_logo.png"
-                className="h-6 mr-3 sm:h-9"
+                className="h-6 mr-3 smd:h-9"
                 alt="Jagriti_Logo"
               />
             </Link>
             <div
-              className="hidden w-full md:block md:w-auto"
+              className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
-              <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent">
+              <ul className="flex flex-col p-4 mt-4 smd:flex-row smd:space-x-8 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
                 <li className="place-self-center">
                   <Link
                     to="/about"
-                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
                   >
                     About
                   </Link>
@@ -52,7 +52,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/team"
-                    className="navitem block py-2 pl-3 pr-4 text-white  md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
                   >
                     Team
                   </Link>
@@ -60,7 +60,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/events"
-                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
                   >
                     Events
                   </Link>
@@ -68,7 +68,7 @@ function Navbar() {
                 <li className="place-self-center">
                   <Link
                     to="/faqs"
-                    className="navitem block py-2 pl-3 pr-4 text-white md:p-0"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
                   >
                     FAQs
                   </Link>
@@ -87,13 +87,13 @@ function Navbar() {
         </nav>
         {/* Mobile Navbar */}
         <nav
-          className={`md:hidden ${navbar_bg} px-2 sm:px-4 py-2.5 font-Montserrat`}
+          className={`smd:hidden ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
         >
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
                 src="/assets/Jagriti_nav_logo.png"
-                className="h-6 mr-3 sm:h-9"
+                className="h-6 mr-3 smd:h-9"
                 alt="Jagriti_Logo"
                 id="navbar_logo_change_mobile"
               />
@@ -213,6 +213,6 @@ function Navbar() {
       <Outlet />
     </>
   );
-}
+};
 
 export default Navbar;

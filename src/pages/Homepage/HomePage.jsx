@@ -1,14 +1,15 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import "./HomePage.css";
 import Sponsor from "../../components/Sponsor/Sponsor";
 import Throwback from "../../components/Throwback/Throwback";
 import jagriti from "../../assets/Jagriti_white.png";
-import { useEffect, useState } from "react";
 import Clock from "../../components/Clock/Clock";
 import Button from "../../components/UI/button/Button";
 import desktop from "../../assets/desktop.mp4";
-// import mobile from "../../assets/mobile.mp4"
+import Timeline from "../../components/Timeline/Timeline";
+
 
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
@@ -75,6 +76,7 @@ const HomePage = () => {
       </div>
 
       <Testimonial></Testimonial>
+      <Timeline></Timeline>
 
      <Throwback></Throwback>
 

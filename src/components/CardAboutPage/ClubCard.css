@@ -1,0 +1,9 @@
+.club_card {
+  box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
+  border-radius: 16px 16px 16px 16px;
+  transition: ease-in 0.1s;
+}
+.club_card:hover{
+  transform: scale(1.05);
+}
+

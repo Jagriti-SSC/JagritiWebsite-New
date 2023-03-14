@@ -1,4 +1,4 @@
-import { createContext, useContext} from "react";
+import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
 
@@ -28,18 +28,63 @@ export const FirebaseProvider = (props) => {
   // const [allDocuments, setallDocuments] = useState([]);
 
   // Create the required function for using the internal functions of the utility imported
-
+  const [eventData,setEventData] = useState([]);
+  const [PreEventData,setPreEventData] = useState([]);
+  const [GuestTalkData,setGuestTalkData] = useState([]);
+  
   async function getAllDocuments(collectionName) {
     try {
       const collectionData = await getDocs(collection(db, collectionName));
+      
+      
+    if(collectionName === "events"){
+        setEventData([]);
+        collectionData.forEach((doc) =>
+        {
+          setEventData((prev) => {
+            return [...prev,doc.data()];
+          });
+          console.log(doc.data())
+        
+        }  
+       
+        );
+  
+        
+      }
+      if(collectionName === "guest-talk"){
+        setGuestTalkData([]);
+        collectionData.forEach((doc) =>
+        {
+          setGuestTalkData((prev) => {
+            return [...prev,doc.data()];
+          });
+          console.log(doc.data())
+        
+        }  
+       
+        );
+  
+        
+      }
 
-      let data = [];
-      // setallDocuments([]);
-      collectionData.forEach((doc) => data.push(doc.data()));
-      // console.log(data);
-      return data;
+      if(collectionName === "pre-event"){
+        setPreEventData([]);
+        collectionData.forEach((doc) =>
+        {
+          setPreEventData((prev) => {
+            return [...prev,doc.data()];
+          });
+          console.log(doc.data())
+        
+        }  
+       
+        );
+  
+        
+      }
+      
 
-      // console.log(EventData);
     } catch (error) {
       console.log(error);
     }
@@ -60,6 +105,9 @@ export const FirebaseProvider = (props) => {
 
         getAllDocuments,
         addDocument,
+        eventData,
+        PreEventData,
+        GuestTalkData,
       }}
     >
       {props.children}

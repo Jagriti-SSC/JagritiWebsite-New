@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
-import toast, { Toaster } from "react-hot-toast";
-// import useMediaQuery from "../../hooks/useMediaQuery"
+import toast from "react-hot-toast";
+
 const Connect = () => {
-  // const islower = useMediaQuery()
+  
   const firebase = useFirebase();
 
   const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ const Connect = () => {
         onChange={changeEmail}
         type="email"
         value={email}
-        className=" font-popins ml-4 md:h-[58px] ss:h-12 h-9 text-black border-none focus:ring-0 flex basis-3"
+        className=" font-popins ml-4 md:h-[58px] ss:h-12 h-9 text-black border-none focus:ring-0 flex basis-3  placeholder:md:text-sm placeholder:text-xs"
         placeholder="Your Email Address"
         required
         size={12}
@@ -51,11 +51,11 @@ const Connect = () => {
         className="md:w-[30%] h-[60%] md:h-[75%] sm:h-[75%] p-3 bg-light-black  rounded-md flex justify-center items-center outline-none mr-1 md:mx-2 "
         onClick={saveEmail}
       >
-        <p className=" sm:text-sm md:text-lg ss:text-[16px] text-[6px]">
+        <p className=" sm:text-sm md:text-lg ss:text-[16px] text-[8px]">
           Remind me
         </p>
       </button>
-      <Toaster position="top-right" />
+      
     </div>
   );
 };
