@@ -10,7 +10,7 @@ const AboutPage = () => {
           src="/assets/Jagriti_big_logo.png"
           alt=""
         />
-        <h2 className="text-5xl my-3 text-blue font-Montserrat tracking-tight font-bold">
+        <h2 className="text-4xl my-3 text-blue font-Montserrat tracking-tight font-bold">
           JAGRITI
         </h2>
         <p className="p-3 lg:text-xl w-[70vw] mx-auto tracking-normal text-[#0B1641] font-popins">
@@ -29,7 +29,7 @@ const AboutPage = () => {
           src="/assets/SSC_logo.png"
           alt=""
         />
-        <h2 className="text-blue font-Montserrat my-3 text-5xl tracking-tight font-bold">
+        <h2 className="text-blue font-Montserrat my-3 text-4xl tracking-tight font-bold">
           SOCIAL SERVICE COUNCIL
         </h2>
         <p className="p-3 lg:text-xl w-[70vw] mx-auto tracking-normal text-[#0B1641] font-popins">

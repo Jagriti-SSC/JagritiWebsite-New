@@ -3,8 +3,8 @@
   opacity: 1;
 }
 .galleryWrapper {
-  padding: 1.2% 7%;
-}
+    padding: 1.0% 7%;
+ }
 
 .galleryItem img {
   width: 100%;
@@ -14,12 +14,17 @@
 }
 
 .galleryContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  align-items:center;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+
+  flex-wrap: wrap;
+  justify-content:center;
   gap: 20px;
 }
 .carousel
 {
+  margin:  0 10px;
   overflow: hidden;
   white-space: nowrap;
   cursor: grab;
@@ -136,7 +141,7 @@
   font-family: "Montserrat";
   /* font-style: normal; */
   font-weight: 700;
-  font-size: 45px;
+  font-size: 40px;
   line-height: 44px;
   color: #1a589b;
 }
