@@ -26,15 +26,9 @@ const Button = ({
   let borderColor = disabled ? "#E4E4E4" : buttonColor;
 
   if (curr.pathname === "/ca") {
-    if (window.innerWidth > 1060) {
-      backgroundColor = "white";
-      textColor = "black";
-      borderColor = "#212121";
-    } else {
       backgroundColor = "#1A589B";
       textColor = "white";
       borderColor = "#1A589B";
-    }
   }
 
   const styles = {
