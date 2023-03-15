@@ -10,32 +10,32 @@ const Clock = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
         </div> */}
         <section className="timer">
             <div className="clock">
-                <div className="days">
-                    <section id='days'>
+                <div className="timer-count-div">
+                    <section className='timer-count'>
                         <p>{timerDays}</p>
                     </section>
-                    <small className='text-btn'>DAYS</small>
+                    <small className='text-small'>DAYS</small>
                 </div>
 
-                <div className="hours">
-                    <section id='hours'>
+                <div className="timer-count-div">
+                    <section className='timer-count'>
                         <p>{timerHours}</p>
                     </section>
-                    <small className='text-btn'>HOURS</small>
+                    <small className='text-small'>HOURS</small>
                 </div>
 
-                <div className="minutes">
-                    <section id='minutes'>
+                <div className="timer-count-div">
+                    <section className='timer-count'>
                         <p>{timerMinutes}</p>
                     </section>
-                    <small className='text-btn'>MINUTES</small>
+                    <small className='text-small'>MINUTES</small>
                 </div>
 
-                <div className="seconds">
-                    <section id='seconds'>
+                <div className="timer-count-div">
+                    <section className='timer-count'>
                         <p>{timerSeconds}</p>
                     </section>
-                    <small className='text-btn'>SECONDS</small>
+                    <small className='text-small'>SECONDS</small>
                 </div>
 
             </div>
@@ -45,10 +45,10 @@ const Clock = ({ timerDays, timerHours, timerMinutes, timerSeconds }) => {
 };
 
 Clock.defaultProps = {
-    timerDays: 10,
-    timerHours: 10,
-    timerMinutes: 10,
-    timerSeconds: 10,
+    timerDays: 0,
+    timerHours: 0,
+    timerMinutes: 0,
+    timerSeconds: 0,
 }
 
 export default Clock
