@@ -1,4 +1,3 @@
-import { GalleryData } from "./GalleryData";
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TeamPage.css";
@@ -68,29 +67,6 @@ function TeamPage() {
     }
     // console.log(totalCards, data.length, data)
   }, [active, memberCount]);
-
-  // useEffect(() => {
-  //   const sortedData = [...firebase.teamData].sort((a, b) => {
-  //     return a.teamRank - b.teamRank;
-  //   });
-  //   console.log(sortedData);
-
-  //   setData(sortedData);
-  //   setFixedData(sortedData);
-  //   setMemberCount(0);
-  //   sortedData.forEach((item) =>
-  //     setMemberCount((prev) => prev + item.members.length)
-  //   );
-  //   setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
-  //   setTimeout(() => {
-  //     teamPageRef.current.style.display = "unset";
-  //     spinnerRef.current.style.display = "none";
-  //   }, 1000);
-  // }, []);
-
-  // useEffect(() => {
-
-  // }, []);
 
   const gallery_filter = (itemData) => {
     setMemberCount(0);
