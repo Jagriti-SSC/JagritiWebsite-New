@@ -39,9 +39,8 @@ function TeamPage() {
     );
     setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
     setTimeout(() => {
-      teamPageRef.current.style.display = "unset";
       spinnerRef.current.style.display = "none";
-    }, 1000);
+    }, 1200);
   };
 
   useEffect(() => {
@@ -52,8 +51,8 @@ function TeamPage() {
     // console.log(carousel.current)
 
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    // console.log(carousel.current.scrollWidth, carousel.current.offsetWidth)
-  }, [innerCarousel.current]);
+    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth)
+  }, [fixedData]);
 
   useEffect(() => {
     const totalCards = Math.floor(
@@ -102,7 +101,7 @@ function TeamPage() {
           </span>
         </div>
       </div>
-      <div className="galleryWrapper hidden" ref={teamPageRef}>
+      <div className="galleryWrapper" ref={teamPageRef}>
         <div className="filterItem">
           <div className="our-team">
             <h1>{active}</h1>
