@@ -73,9 +73,10 @@ const CAForm = forwardRef((props, ref) => {
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
-      
-      if(done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight}px`
+      if (done === false)
+        ref.current.style.height = `${
+          ref.current.offsetHeight - socialRef.current.clientHeight
+        }px`;
       socialRef.current.style.height = `${
         contactRef.current.clientHeight + 30
       }px`;
@@ -138,7 +139,11 @@ const CAForm = forwardRef((props, ref) => {
         <div className="contact-details" ref={contactRef}>
           <div className="ca-details">
             <img src={location_img} alt="#"></img>
-            <a href="https://www.iitbhu.ac.in/" target="_blank">
+            <a
+              href="https://www.iitbhu.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               IIT (BHU) Varanasi
             </a>
           </div>
@@ -155,15 +160,24 @@ const CAForm = forwardRef((props, ref) => {
         </div>
       </div>
       <div className="socials" ref={socialRef}>
-        <a href="https://www.facebook.com/jagriti.iitbhu/" target="_blank">
+        <a
+          href="//facebook.com/jagriti.iitbhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Facebook style={{ color: "white", width: 30 }} />
         </a>
-        <a href="https://twitter.com/JagritiBhu" target="_blank">
+        <a
+          href="//twitter.com/JagritiBhu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Twitter style={{ color: "white", width: 25 }} />
         </a>
         <a
-          href="https://www.linkedin.com/company/jagriti-iitbhu/"
+          href="//linkedin.com/company/jagriti-iitbhu/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <LinkedinSquare style={{ color: "white", width: 25 }} />
         </a>

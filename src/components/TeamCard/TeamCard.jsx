@@ -19,11 +19,11 @@ function TeamCard(props) {
           <a href={"mailto:"+props.gmail}>
             <Gmail className=" h-8 text-white hover:text-red"></Gmail>
           </a>
-          <a href={"//"+props.linkedin} target="_blank">
+          <a href={"//"+props.linkedin} target="_blank" rel="noopener noreferrer" >
            
             <Linkedin className=" h-8 text-white hover:text-blue"></Linkedin>
           </a>
-          <a href={"//"+props.instagram} target="_blank">
+          <a href={"//"+props.instagram} target="_blank" rel="noopener noreferrer" >
             <Instagram className=" h-8 text-white hover:text-pink-400"></Instagram>
           </a>
 

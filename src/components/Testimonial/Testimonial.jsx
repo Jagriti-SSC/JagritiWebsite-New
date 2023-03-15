@@ -1,6 +1,5 @@
 import "./Testimonial.css";
 import React, {
-  useRef,
   useState,
   useLayoutEffect,
   useCallback,
@@ -18,9 +17,9 @@ SwiperCore.use([Virtual, Navigation, Pagination]);
 function Testimonial() {
   //swiper
   const [swiperRef, setSwiperRef] = useState(null);
-  const [slides, setSlides] = useState(
-    Array.from({ length: 6 }).map((_, index) => `Slide ${index + 1}`)
-  );
+  // const [slides, setSlides] = useState(
+  //   Array.from({ length: 6 }).map((_, index) => `Slide ${index + 1}`)
+  // );
 
   //previous and next buttons
   const handlePrevious = useCallback(() => {
@@ -32,6 +31,7 @@ function Testimonial() {
   }, [swiperRef]);
 
   // function for window width and height
+  //FIXME: resize not required
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
