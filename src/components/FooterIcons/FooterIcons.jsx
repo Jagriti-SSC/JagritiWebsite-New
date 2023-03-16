@@ -11,7 +11,7 @@ const FooterIcons = (props) => {
           <img
             src="../assets/SSCmain.svg"
             alt="SSCmain"
-            className="md:h-[128px] md:w-[259px] h-[80%] w-[70%] "
+            className="md:h-[128px] md:w-[259px] h-[80%] w-[70%] max-w-[300px] "
           ></img>
         </div>
 
@@ -20,7 +20,7 @@ const FooterIcons = (props) => {
                 <img
                     src={props.img}
                     alt={props.alt}
-                    className="md:w-[63.92px] md:h-[66.43px] h-[40%] w-[35%]"
+                    className="md:w-[63.92px] md:h-[66.43px] h-[40%] w-[35%]  max-h-40 max-w-[150px] "
                 ></img>      
                 <p className=' text-xs txs:text-sm xs:text-lg ss:text-[22px] smd:text-[22px]  md:text-xl text-center'>{props.name}</p>
                 </div>
