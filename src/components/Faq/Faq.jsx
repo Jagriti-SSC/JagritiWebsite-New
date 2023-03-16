@@ -15,7 +15,7 @@ export default function Example() {
   return (
     <>
       <div className="mx-10">
-        <h1 className="mx-1 mt-10 font-Montserrat block text-5xl text-blue font-bold text-center">
+        <h1 className="mx-1 mt-10 font-Montserrat block text-4xl text-blue font-bold text-center">
           Frequently Asked Questions
         </h1>
         <div className="md:flex mt-10 mb-10">

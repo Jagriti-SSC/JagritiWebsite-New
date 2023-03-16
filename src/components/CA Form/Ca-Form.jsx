@@ -17,6 +17,7 @@ const CAForm = forwardRef((props, ref) => {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
+  let done = false;
 
   const contactRef = useRef();
   const socialRef = useRef();
@@ -32,7 +33,6 @@ const CAForm = forwardRef((props, ref) => {
     const mobileValid = mobile.length === 10;
     const noteValid = note.length >= 20;
 
-
     return emailValid && mobileValid && noteValid;
   };
 
@@ -40,23 +40,31 @@ const CAForm = forwardRef((props, ref) => {
     event.preventDefault();
 
     if (validateDetails()) {
-      const saveData = firebase.addDocument("ca-form", {name, mobile, email, note });
-      toast.promise(saveData, {
-        loading: "Submitting the Form",
-        success: (data) => {
-          setName("");
-          setEmail("");
-          setMobile("");
-          setNote("");
-          return "Form Submitted Successfully!";
-        },
-        error: "Error while submitting Form!",
-      },{
-       
-        success: {
-          duration: 5000
-        },
+      const saveData = firebase.addDocument("ca-form", {
+        name,
+        mobile,
+        email,
+        note,
       });
+      toast.promise(
+        saveData,
+        {
+          loading: "Submitting the Form",
+          success: (data) => {
+            setName("");
+            setEmail("");
+            setMobile("");
+            setNote("");
+            return "Form Submitted Successfully!";
+          },
+          error: "Error while submitting Form!",
+        },
+        {
+          success: {
+            duration: 5000,
+          },
+        }
+      );
     } else {
       toast.error("Either of the Details is Invalid");
       return;
@@ -65,7 +73,9 @@ const CAForm = forwardRef((props, ref) => {
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
-      // socialRef.current.style.display = 'none'
+      
+      if(done == false)
+        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight}px`
       socialRef.current.style.height = `${
         contactRef.current.clientHeight + 30
       }px`;
@@ -74,7 +84,7 @@ const CAForm = forwardRef((props, ref) => {
       socialRef.current.style.left = `${
         gridRef.current.clientWidth - socialRef.current.clientWidth
       }px`;
-      console.log(contactRef.current.clientHeight);
+      done = true;
     }
   }, []);
 
@@ -85,7 +95,7 @@ const CAForm = forwardRef((props, ref) => {
           <h1 className="ca-heading">Become a Campus Ambassador</h1>
           <h4 className="ca-subheading">Fill the form and connect us</h4>
         </div>
-        <div className="img">
+        <div className="ca-img">
           <img src={ca_img} alt="aesthetic-image"></img>
         </div>
         <div className="ca-form-div">
@@ -138,7 +148,9 @@ const CAForm = forwardRef((props, ref) => {
           </div>
           <div className="ca-details">
             <img src={email_img} alt="#"></img>
-            <a href="mailto:jagriti.ssc@iitbhu.ac.in">jagriti.ssc@iitbhu.ac.in</a>
+            <a href="mailto:jagriti.ssc@iitbhu.ac.in">
+              jagriti.ssc@iitbhu.ac.in
+            </a>
           </div>
         </div>
       </div>
@@ -149,7 +161,10 @@ const CAForm = forwardRef((props, ref) => {
         <a href="https://twitter.com/JagritiBhu" target="_blank">
           <Twitter style={{ color: "white", width: 25 }} />
         </a>
-        <a href="https://www.linkedin.com/company/jagriti-iitbhu/" target="_blank">
+        <a
+          href="https://www.linkedin.com/company/jagriti-iitbhu/"
+          target="_blank"
+        >
           <LinkedinSquare style={{ color: "white", width: 25 }} />
         </a>
       </div>

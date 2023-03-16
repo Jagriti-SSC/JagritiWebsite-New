@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {motion, AnimatePresence} from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 import Card from '../EventCard/Card';
 import Modal from '../EventCard/Modal';
 import Overlay from '../EventCard/Overlay';
