@@ -11,7 +11,7 @@ function TeamCard(props) {
       <div className="card-content">
         <h2 className="card-title">{props.name}</h2>
         <div className="teamPost">
-          <img src={props.icon} alt="logo" srcset="" />
+          <img src={props.icon} alt="logo"  />
           <p className="card-body">{props.post}</p>
         </div>
         

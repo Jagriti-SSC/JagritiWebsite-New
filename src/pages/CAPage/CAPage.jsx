@@ -2,8 +2,6 @@ import React, { useLayoutEffect, useRef } from "react";
 import "./CAPage.css";
 import CAForm from "../../components/CA Form/Ca-Form";
 
-//FIXME: remove navheight if not required
-
 const CAPage = () => {
   const formRef = useRef();
   const divRef = useRef();
