@@ -111,7 +111,9 @@ body {
 }
 
 .swiper {
+  min-width: 175px;
   width: 80%;
+  max-height: 550px;
   height: 440px;
   border-radius: 16px;
   box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
@@ -155,8 +157,8 @@ body {
     font-weight: 700;
   }
   .content p {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .swiper {
     height: 460px;
@@ -179,7 +181,7 @@ body {
   }
 }
 
-@media (max-width: 1024px) and (min-width: 415px) {
+@media (max-width: 1190px) and (min-width: 415px) {
   .testimonial-para {
     /* padding-left: 100px;
     padding-right: 100px; */

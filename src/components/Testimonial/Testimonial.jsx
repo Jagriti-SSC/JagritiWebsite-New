@@ -66,7 +66,7 @@ function Testimonial() {
         </div>
         <Swiper
           onSwiper={setSwiperRef}
-          slidesPerView={width < 640 ? 1 : width < 950 ? 2 : 3}
+          slidesPerView={width < 740 ? 1 : width < 1500 ? 2 : 3}
           spaceBetween={30}
           virtual
         >
