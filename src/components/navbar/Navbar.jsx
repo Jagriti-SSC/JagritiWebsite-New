@@ -8,6 +8,7 @@ const Navbar = () => {
   console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
   const closeButton = useRef(null);
+  const openButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
 
   useEffect(() => {
@@ -99,8 +100,12 @@ const Navbar = () => {
               />
             </Link>
             {/* <!-- drawer init and show --> */}
-            <div className="text-center">
+            <div
+              className="text-center"
+              onClick={() => openButton.current.click()}
+            >
               <button
+                ref={openButton}
                 className="text-white bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
                 type="button"
                 data-drawer-target="drawer-right-example"
