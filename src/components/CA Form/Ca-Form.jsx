@@ -73,9 +73,10 @@ const CAForm = forwardRef((props, ref) => {
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
-      
-      if(done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight}px`
+      if (done == false)
+        ref.current.style.height = `${
+          ref.current.offsetHeight - socialRef.current.clientHeight
+        }px`;
       socialRef.current.style.height = `${
         contactRef.current.clientHeight + 30
       }px`;
@@ -124,14 +125,54 @@ const CAForm = forwardRef((props, ref) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <textarea
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            {/* <textarea
               required
               type="text"
               name="note"
               placeholder="Go ahead, We are listening... Atleast 20 characters!"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-            ></textarea>
+            ></textarea> */}
             <button type="submit">Submit</button>
           </form>
         </div>
