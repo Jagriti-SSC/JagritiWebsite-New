@@ -62,8 +62,9 @@ const Footer = () => {
             <h3 className="md:text-4xl xs:text-3xl text-xl ">Connect with us</h3>
           </div>
 
-          <div className="w-full flex mx-auto ">
+          <div className="w-full flex mx-auto max-w-full ">
             <Connect></Connect>
+            
           </div>
         </div>
       </div>
