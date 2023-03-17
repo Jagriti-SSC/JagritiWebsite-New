@@ -16,7 +16,7 @@ const FooterIcons = (props) => {
         </div>
 
           ) :(
-                <div className="flex flex-col  items-center md:justify-around justify-evenly">
+                <div className="flex flex-col py-5  items-center md:justify-around justify-evenly">
                 <img
                     src={props.img}
                     alt={props.alt}

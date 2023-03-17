@@ -43,7 +43,7 @@ const Connect = () => {
    <>
    
 
-<div className="flex justify-between  md:basis-4/5 xs:basis-3/4 basis-full rounded-lg bg-white items-stretch mx-auto py-2 px-[6px] max-w-full gap-1">
+<div className="flex justify-between ss:max-w-[500px]  md:basis-4/5 xs:basis-3/4 basis-full rounded-lg bg-white items-stretch mx-auto py-2 px-[6px] max-w-full gap-1">
     <input  onChange={changeEmail}
         type="email"
         value={email} required className=" text-black  pl-1 w-[70%] md:pl-8  outline-none border-none focus:ring-0 placeholder:md:text-start placeholder:text-center " placeholder="email address" />
