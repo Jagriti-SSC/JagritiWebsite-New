@@ -21,6 +21,8 @@ const Navbar = () => {
     changeNavbarColor();
   }, [curr.pathname]);
 
+  // const [toggle, setToggle] = useState(false);
+
   return (
     <>
       <header>
@@ -133,6 +135,7 @@ const Navbar = () => {
             >
               <button
                 ref={closeButton}
+                // onClick={()=>setToggle(!toggle)}
                 type="button"
                 data-drawer-hide="drawer-right-example"
                 aria-controls="drawer-right-example"
@@ -152,6 +155,7 @@ const Navbar = () => {
                 </svg>
                 <span className="sr-only">Close menu</span>
               </button>
+
               <div className="py-4 overflow-y-auto">
                 <ul className="space-y-6 text-center">
                   <li className="mt-8">
