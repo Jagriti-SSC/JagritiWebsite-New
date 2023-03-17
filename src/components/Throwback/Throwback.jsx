@@ -1,7 +1,7 @@
 import React from "react";
 import "./Throwback.css";
-import Group1 from "../../assets/33630.png";
-import Group2 from "../../assets/33631.png";
+import Group1 from "../../assets/33630.webp";
+import Group2 from "../../assets/33631.webp";
 function Throwback() {
   return (
    

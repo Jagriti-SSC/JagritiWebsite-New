@@ -22,7 +22,7 @@ export default function Example() {
           <div>
             <img
               className="mx-auto lg:mx-10 mb-10"
-              src="/assets/FAQ_Hero.png"
+              src="/assets/FAQ_Hero.webp"
               alt="FAQ_Hero"
             />
           </div>
@@ -105,7 +105,7 @@ export default function Example() {
       <div>
         <img
           className="w-screen"
-          src="/assets/waves_in_FAQ.png"
+          src="/assets/waves_in_FAQ.webp"
           alt="waves_in_FAQ"
         />
       </div>

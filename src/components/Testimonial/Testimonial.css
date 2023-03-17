@@ -122,7 +122,7 @@ body {
 }
 
 .prev-btn button {
-  background-image: url("../../components/images/Group\ 33633\ \(1\).png");
+  background-image: url("../../assets/testimonials/left_arrow.webp");
   background-repeat: no-repeat;
   background-size: 100% auto;
   margin-left: 120px;
@@ -132,7 +132,7 @@ body {
 }
 
 .next-btn button {
-  background-image: url("../../components/images/Group\ 33632\ \(1\).png");
+  background-image: url("../../assets/testimonials/right_arrow.webp");
   background-repeat: no-repeat;
   background-size: 100% auto;
   margin-right: 120px;
