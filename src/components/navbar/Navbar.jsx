@@ -103,7 +103,7 @@ const Navbar = () => {
               />
             </Link>
             {/* <!-- drawer init and show --> */}
-            {!toggle ? (
+            {/* {!toggle ? ( */}
               <div className="text-center" onClick={() => setToggle(true)}>
                 <button
                   ref={openButton}
@@ -124,7 +124,7 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
-            ) : null}
+            {/* ) : null} */}
 
             {/* <!-- drawer component --> */}
 
