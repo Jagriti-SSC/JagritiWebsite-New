@@ -9,9 +9,9 @@ import SwiperCore, { Virtual, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import "swiper/css";
-import group1 from "../images/Group 33631 (3).png";
-import group2 from "../images/Group 33632.png";
-import group3 from "../images/Group 33631 (2).png";
+import group1 from "../../assets/testimonials/dp1.webp";
+import group2 from "../../assets/testimonials/dp2.webp";
+import group3 from "../../assets/testimonials/dp3.webp";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 

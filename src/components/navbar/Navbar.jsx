@@ -32,7 +32,7 @@ const Navbar = () => {
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <Link to="/" className="items-center">
               <img
-                src="/assets/Jagriti_nav_logo.png"
+                src="/assets/Jagriti_nav_logo.webp"
                 className="h-6 mr-3 smd:h-9"
                 alt="Jagriti_Logo"
               />

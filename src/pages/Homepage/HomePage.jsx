@@ -4,10 +4,10 @@ import Testimonial from "../../components/Testimonial/Testimonial";
 import "./HomePage.css";
 import Sponsor from "../../components/Sponsor/Sponsor";
 import Throwback from "../../components/Throwback/Throwback";
-import jagriti from "../../assets/Jagriti_white.png";
+import jagriti from "../../assets/Jagriti_white.webp";
 import Clock from "../../components/Clock/Clock";
 import Button from "../../components/UI/button/Button";
-import desktop from "../../assets/desktop.mp4";
+import desktop from "../../assets/desktop.webm";
 import Timeline from "../../components/Timeline/Timeline";
 
 
