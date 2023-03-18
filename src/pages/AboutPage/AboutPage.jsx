@@ -7,7 +7,7 @@ const AboutPage = () => {
       <div className="text-center my-10 mx-5">
         <img
           className="mx-auto my-3"
-          src="/assets/Jagriti_big_logo.png"
+          src="/assets/Jagriti_big_logo.webp"
           alt=""
         />
         <h2 className="text-4xl my-3 text-blue font-Montserrat tracking-tight font-bold">
@@ -26,7 +26,7 @@ const AboutPage = () => {
       <div className="text-center my-10 mx-5">
         <img
           className="w-[300px] mx-auto my-3"
-          src="/assets/SSC_logo.png"
+          src="/assets/SSC_logo.webp"
           alt=""
         />
         <h2 className="text-blue font-Montserrat my-3 text-4xl tracking-tight font-bold">
@@ -49,26 +49,26 @@ const AboutPage = () => {
       {/* <div className="grid gap-4 lg:grid-cols-2 lg:grid-rows-2 justify-center"> */}
       <div className="clubBox">
         <ClubCard
-          clubLogo="SC_logo.png"
+          clubLogo="SC_logo.webp"
           clubName="Sahyog Club"
           clubDescription='Sahyog Club, with a mission of "improving quality education in government schools," collaborates with school teachers to improve the basic literacy and numeracy skills of children, leading to uplift their family conditions and background.'
         />
 
         <ClubCard
-          clubLogo="KUC_logo.png"
+          clubLogo="KUC_logo.webp"
           clubName="Kashi Utkarsh Club"
           clubDescription="Kashi Utkarsh, as the name suggests, is the development of Kashi. The development is a process that creates growth and positive change, and the volunteers of Kashi Utkarsh strive to get this change in bastis (slums). The prime motto of Kashi Utkarsh is to improve the quality of life of basti people by alleviating poverty through children's education."
         />
       </div>
       <div className="clubBox mb-10 mt-5">
         <ClubCard
-          clubLogo="HHC_logo.png"
+          clubLogo="HHC_logo.webp"
           clubName="Health and Hygiene Club"
           clubDescription="The Health & Hygiene club promotes and advocates a safe and healthy environment for the society. Our various initiatives involve organising blood donation camps, medicine collection drive and spreading awareness on sensitive issues such as menstruation, diseases, healthy habits, sustainability, etc."
         />
 
         <ClubCard
-          clubLogo="SPC_logo.png"
+          clubLogo="SPC_logo.webp"
           clubName="Social Projects' Club"
           clubDescription="Social Projects' Club has taken the challenge of empowering society by employing simple and effective methods. We identify the public's problems and incorporate our technical skills with proper planning and strategy to come up with innovative solutions."
         />
