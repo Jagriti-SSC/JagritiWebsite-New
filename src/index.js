@@ -5,6 +5,8 @@ import App from "./App";
 import { FirebaseProvider } from "./context/Firebase";
 // import "../node_modules/flowbite/dist/flowbite";
 import "flowbite";
+import "bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap/dist/js/bootstrap";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
