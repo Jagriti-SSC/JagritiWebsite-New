@@ -16,7 +16,7 @@ const Card = ({data,open,index}) => {
       {data.eventName}
     </motion.h2>
     <motion.img src={data.imageURL} className=" h-[70%] md:max-h-[80%] rounded-3xl w-[90%] sm:h-[80%] "></motion.img>
-    <motion.button className=" outline outline-1 outline-black py-1  px-8 rounded-lg font-popins mb-2 text-blue">Know More</motion.button>
+    <motion.button className=" outline outline-1 hover:bg-blue hover:text-white outline-black py-1  px-8 rounded-lg font-popins mb-2 text-blue">Know More</motion.button>
   </motion.div>
 
   )
