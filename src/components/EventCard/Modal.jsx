@@ -64,7 +64,7 @@ const Modal = ({ data, close }) => {
             {data.contact.map((item)=>
             <p>{item.contactName} : {item.number}</p>
             )}
-        </motion.div>):(<p>Timeline</p>))
+        </motion.div>):(<p>{data.timeline}</p>))
       }
     </motion.div>
 
