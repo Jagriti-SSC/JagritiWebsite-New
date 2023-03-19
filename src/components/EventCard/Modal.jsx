@@ -64,7 +64,7 @@ const Modal = ({ data, close }) => {
             {data.contact.map((item)=>
             <p>{item.contactName} : {item.number}</p>
             )}
-        </motion.div>):(<p>{data.timeline}</p>))
+        </motion.div>):(<p dangerouslySetInnerHTML={{__html: data.timeline}}></p>))
       }
     </motion.div>
 
@@ -85,7 +85,7 @@ const Modal = ({ data, close }) => {
 <motion.p className='xs:text-lg  text-[12px]  text-blue mb-6'>{data.overview}</motion.p>
 
 <motion.h2 className=' text-xl sm:text-3xl ss:text-2xl'>Timeline</motion.h2>
-<motion.p className='text-blue xs:text-lg  text-[12px]  mb-6'>{data.timeline}</motion.p>
+<motion.p className='text-blue xs:text-lg  text-[12px]  mb-6' dangerouslySetInnerHTML={{__html: data.timeline}}></motion.p>
  
 <motion.h2 className=' text-xl sm:text-3xl ss:text-2xl'>Contact</motion.h2>
  <motion.div className=' text-blue xs:text-lg ss:text-xl text-sm mb-6'>
