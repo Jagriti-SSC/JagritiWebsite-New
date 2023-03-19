@@ -1,12 +1,12 @@
 import React from 'react'
 import "./preloader.css";
-import HashLoader from "react-spinners/HashLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Preloader = (props) => {
-  const color = "#eab12f"
+  const color = "#000000"
   return (
-    <div className='preloader'>
-      <HashLoader
+    <div className = "preloader" >
+      <ClipLoader  
         color= {color}
         loading={props.loading}
         size={50}
