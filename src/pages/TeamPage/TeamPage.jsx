@@ -25,7 +25,7 @@ function TeamPage() {
 
   // Team Fetching
   const fetchTeamData = async () => {
-    const Data = await firebase.getAllDocuments("team");
+    const Data = await firebase.getAllDocuments("teams");
     const sortedData = [...Data].sort((a, b) => {
       return a.teamRank - b.teamRank;
     });
