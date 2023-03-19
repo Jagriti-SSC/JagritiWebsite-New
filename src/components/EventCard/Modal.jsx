@@ -70,7 +70,7 @@ const Modal = ({ data, close }) => {
 
     
     <motion.div className='md:mb-[37px] mb-[20px] mt-auto mx-auto'>
-      <Button text={registration? `register`:`registration disabled `} path={registration? data.link : ""} disabled={!registration} ></Button>
+      <Button text={registration? `Register`:`Registeration Closed `} path={registration? data.link : ""} disabled={!registration} ></Button>
       </motion.div>
     
     
@@ -87,7 +87,7 @@ const Modal = ({ data, close }) => {
 <motion.h2 className=' text-xl sm:text-3xl ss:text-2xl'>Timeline</motion.h2>
 <motion.p className='text-blue xs:text-lg  text-[12px]  mb-6'>{data.timeline}</motion.p>
  
-<motion.h2 className=' text-xl sm:text-3xl ss:text-2xl'>contact</motion.h2>
+<motion.h2 className=' text-xl sm:text-3xl ss:text-2xl'>Contact</motion.h2>
  <motion.div className=' text-blue xs:text-lg ss:text-xl text-sm mb-6'>
             {data.contact.map((item)=>
             <p>{item.contactName} : {item.number}</p>
@@ -108,7 +108,7 @@ const Modal = ({ data, close }) => {
     
   
     <motion.div className='md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden'>
-      <Button text={registration? `register`:`registration disabled`} path={registration? data.link : ""} disabled={!registration} ></Button>
+      <Button text={registration? `Register`:`Registration Closed`} path={registration? data.link : ""} disabled={!registration} ></Button>
       </motion.div>
 
 
