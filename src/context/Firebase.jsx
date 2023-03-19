@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
+import { getFirestore, getDocs, collection, addDoc  } from "firebase/firestore";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 // Import Required Firebase Utility
 
@@ -19,19 +20,20 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Create an instance of the imported firebase utility
 
 const db = getFirestore(firebaseApp);
+const storage  = getStorage(firebaseApp);
 
 export const useFirebase = () => {
   return useContext(FirebaseContext);
 };
 
 export const FirebaseProvider = (props) => {
-  // const [allDocuments, setallDocuments] = useState([]);
+
 
   // Create the required function for using the internal functions of the utility imported
   const [eventData, setEventData] = useState([]);
   const [PreEventData, setPreEventData] = useState([]);
   const [GuestTalkData, setGuestTalkData] = useState([]);
-  // const [teamData, setTeamData] = useState([]);
+  
 
   async function getAllDocuments(collectionName) {
     try {
@@ -88,6 +90,20 @@ export const FirebaseProvider = (props) => {
     }
   };
 
+  const uploadFile = (location, file)=>{
+    const storageRef = ref(storage, location);
+
+    return new Promise((resolve, reject)=>{
+      uploadBytes(storageRef, file).then((snapshot) => {
+       resolve();
+      }).catch(err =>{
+          reject();
+      });
+
+    })
+  }
+
+
   return (
     <FirebaseContext.Provider
       value={{
@@ -98,6 +114,7 @@ export const FirebaseProvider = (props) => {
         eventData,
         PreEventData,
         GuestTalkData,
+        uploadFile
     
       }}
     >
