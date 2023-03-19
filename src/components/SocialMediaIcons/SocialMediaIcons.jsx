@@ -11,16 +11,32 @@ const SocialMediaIcons = () => {
       <a href="mailto:jagriti.ssc@itbhu.ac.in">
         <Gmail className=" h-8 hover:text-red"></Gmail>
       </a>
-      <a href="//instagram.com/jagriti_iitbhu?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener noreferrer">
+      <a
+        href="//instagram.com/jagriti_iitbhu?igshid=YmMyMTA2M2Y="
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Instagram className=" h-8 hover:text-pink-400"></Instagram>
       </a>
-      <a href="//facebook.com/jagriti.iitbhu/" target="_blank" rel="noopener noreferrer">
+      <a
+        href="//facebook.com/jagriti.iitbhu/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Facebook className=" h-8 hover:text-blue"></Facebook>
       </a>
-      <a href="//linkedin.com/company/jagriti-iitbhu/" target="_blank" rel="noopener noreferrer">
+      <a
+        href="//linkedin.com/company/jagriti-iitbhu/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <LinkedinSquare className=" h-8 hover:text-blue"></LinkedinSquare>
       </a>
-      <a href="//youtube.com/@jagritiiitbhu6436" target="_blank" rel="noopener noreferrer">
+      <a
+        href="//youtube.com/@jagritiiitbhu6436"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Youtube className=" h-8 hover:text-red"></Youtube>
       </a>
     </div>

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useFirebase } from "../../context/Firebase";
 import toast from "react-hot-toast";
 
+
 const Connect = () => {
   
+ 
   const firebase = useFirebase();
 
   const [email, setEmail] = useState("");
@@ -37,26 +39,22 @@ const Connect = () => {
     }
   };
   return (
-    <div className="md:w-[456px] md:h-[58px] sm-w-[470x]  flex  items-center bg-white rounded-lg  ss-w-full  ss:h-12 mx-auto justify-between h-9 gap-2">
-      <input
-        onChange={changeEmail}
+
+   <>
+   
+
+<div className="flex justify-between ss:max-w-[500px]  md:basis-4/5 xs:basis-3/4 basis-full rounded-lg bg-white items-stretch mx-auto py-2 px-[6px] max-w-full gap-1">
+    <input  onChange={changeEmail}
         type="email"
-        value={email}
-        className=" font-popins ml-4 md:h-[58px] ss:h-12 h-9 text-black border-none focus:ring-0 flex basis-3  placeholder:md:text-sm placeholder:text-xs"
-        placeholder="Your Email Address"
-        required
-        size={12}
-      ></input>
-      <button
-        className="md:w-[30%] h-[60%] md:h-[75%] sm:h-[75%] p-3 bg-light-black  rounded-md flex justify-center items-center outline-none mr-1 md:mx-2 "
-        onClick={saveEmail}
-      >
-        <p className=" sm:text-sm md:text-lg ss:text-[16px] text-[8px]">
-          Remind me
-        </p>
-      </button>
-      
-    </div>
+        value={email} required className=" text-black  pl-1 w-[70%] md:pl-8  outline-none border-none focus:ring-0 placeholder:md:text-start placeholder:text-center " placeholder="Email Address" />
+    <label onClick={saveEmail} className=" bg-black cursor-pointer shrink-0 text-white px-4 md:px-6 py-2 rounded-lg sm:text-sm md:text-lg ss:text-[16px] text-[14px] min-w-max">Remind Me</label>
+</div>
+
+
+</>
+
+
+
   );
 };
 
