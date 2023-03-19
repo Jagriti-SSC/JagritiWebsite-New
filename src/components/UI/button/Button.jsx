@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./button.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import arrow from "../../../assets/arrow.png";
+import arrow from "../../../assets/arrow.webp";
 
 const Button = ({
   outline,
