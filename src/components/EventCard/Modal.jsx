@@ -22,15 +22,15 @@ const Modal = ({ data, close }) => {
     closed: { opacity: 0, y: "-10vh" },
   };
 
-  const modalInfoVariants = {
-    open: { opacity: 1, transition: { staggerChildren: 0.2 } },
-    closed: { opacity: 0 },
-  };
+  // const modalInfoVariants = {
+  //   open: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  //   closed: { opacity: 0 },
+  // };
 
-  const modalRowVariants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: "10%" },
-  };
+  // const modalRowVariants = {
+  //   open: { opacity: 1, x: 0 },
+  //   closed: { opacity: 0, x: "10%" },
+  // };
 
   return (
     

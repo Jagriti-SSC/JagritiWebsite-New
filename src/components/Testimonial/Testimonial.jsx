@@ -18,9 +18,9 @@ SwiperCore.use([Virtual, Navigation, Pagination]);
 function Testimonial() {
   //swiper
   const [swiperRef, setSwiperRef] = useState(null);
-  const [slides, setSlides] = useState(
-    Array.from({ length: 6 }).map((_, index) => `Slide ${index + 1}`)
-  );
+  // const [slides, setSlides] = useState(
+  //   Array.from({ length: 6 }).map((_, index) => `Slide ${index + 1}`)
+  // );
 
   //previous and next buttons
   const handlePrevious = useCallback(() => {
