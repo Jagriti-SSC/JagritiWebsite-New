@@ -9,9 +9,9 @@ import SwiperCore, { Virtual, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import "swiper/css";
-import group1 from "../../assets/testimonials/dp1.webp";
-import group2 from "../../assets/testimonials/dp2.webp";
-import group3 from "../../assets/testimonials/dp3.webp";
+import Anupam_Bansal from "../../assets/testimonials/dp1.webp";
+import Itishree_Behera from "../../assets/testimonials/dp2.webp";
+import Chhavi_Khandelwal from "../../assets/testimonials/dp3.webp";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
@@ -72,7 +72,7 @@ function Testimonial() {
         >
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group1} alt="#"></img>
+              <img src={Itishree_Behera} alt="#"></img>
             </div>
             <div className="content">
               <h1>Itishree Behera</h1>
@@ -85,7 +85,7 @@ function Testimonial() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group2} alt="#"></img>
+              <img src={Chhavi_Khandelwal} alt="#"></img>
             </div>
             <div className="content">
               <h1>Chhavi Khandelwal</h1>
@@ -99,7 +99,7 @@ function Testimonial() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group3} alt="#"></img>
+              <img src={Anupam_Bansal} alt="#"></img>
             </div>
             <div className="content">
               <h1>Anupam Bansal</h1>
@@ -112,7 +112,7 @@ function Testimonial() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group1} alt="#"></img>
+              <img src={Itishree_Behera} alt="#"></img>
             </div>
             <div className="content">
               <h1>Itishree Behera</h1>
@@ -125,7 +125,7 @@ function Testimonial() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group2} alt="#"></img>
+              <img src={Chhavi_Khandelwal} alt="#"></img>
             </div>
             <div className="content">
               <h1>Chhavi Khandelwal</h1>
@@ -139,7 +139,7 @@ function Testimonial() {
           </SwiperSlide>
           <SwiperSlide>
             <div className="swiper-content-img">
-              <img src={group3} alt="#"></img>
+              <img src={Anupam_Bansal} alt="#"></img>
             </div>
             <div className="content">
               <h1>Anupam Bansal</h1>
