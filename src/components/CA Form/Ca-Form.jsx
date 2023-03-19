@@ -125,14 +125,41 @@ const CAForm = forwardRef((props, ref) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <textarea
+            <input
               required
               type="text"
-              name="note"
-              placeholder="Go ahead, We are listening... Atleast 20 characters!"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-            ></textarea>
+              name="collegeName"
+              placeholder="Name of Your College"
+              value={college}
+              onChange={(e) => setCollege(e.target.value)}
+            ></input>
+            <input
+              required
+              type="text"
+              name="department"
+              placeholder="Name of your Branch/Dept."
+              value={branch}
+              onChange={(e) => setBranch(e.target.value)}
+            ></input>
+            <input
+              required
+              type="text"
+              name="rollNo"
+              placeholder="Enter your Roll No."
+              value={roll}
+              onChange={(e) => setRoll(e.target.value)}
+            ></input>
+            <label htmlFor="icard">College ID Card</label>
+            <input
+              required
+              id="icard"
+              type="file"
+              name="icard"
+              placeholder="College ID Card"
+              onChange={(e) => {
+                setId(e.target.files[0]);
+              }}
+            ></input>
             <button type="submit">Submit</button>
           </form>
         </div>
