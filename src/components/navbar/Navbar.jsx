@@ -12,7 +12,6 @@ const Navbar = () => {
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
   const [toggle, setToggle] = useState(false);
 
-
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
@@ -23,6 +22,8 @@ const Navbar = () => {
     };
     changeNavbarColor();
   }, [curr.pathname]);
+
+  // const [toggle, setToggle] = useState(false);
 
   return (
     <>
@@ -102,11 +103,8 @@ const Navbar = () => {
               />
             </Link>
             {/* <!-- drawer init and show --> */}
-            { !toggle ? (
-              <div
-                className="text-center"
-                onClick={() => setToggle(true)}
-              >
+            {/* {!toggle ? ( */}
+              <div className="text-center" onClick={() => setToggle(true)}>
                 <button
                   ref={openButton}
                   className="text-white bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
@@ -126,7 +124,7 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
-            ) : null}
+            {/* ) : null} */}
 
             {/* <!-- drawer component --> */}
 
@@ -137,7 +135,7 @@ const Navbar = () => {
               >
                 <button
                   ref={closeButton}
-                  onClick={()=>setToggle(false)}
+                  onClick={() => setToggle(false)}
                   type="button"
                   className="text-white bg-black rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center"
                 >
