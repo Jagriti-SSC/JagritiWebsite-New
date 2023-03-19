@@ -14,12 +14,12 @@ const EventsPage = () => {
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)")
   const [loading, setLoading]=useState(false);
 
-  // useEffect(()=>{
-  //   setLoading(true)
-  //   setTimeout(()=>{
-  //     setLoading(false);
-  //   },2000)
-  // },[]);
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false);
+    },2000)
+  },[]);
 
   console.log(isAboveLargeScreen);
 
