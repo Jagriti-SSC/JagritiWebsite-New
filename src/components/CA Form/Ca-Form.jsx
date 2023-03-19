@@ -216,7 +216,7 @@ const CAForm = forwardRef((props, ref) => {
           </div>
           <div className="ca-details">
             <img src={telephone_img} alt="#"></img>
-            <a href="tel:+91-97998889787">+91-97998889787</a>
+            <a href="tel:+91-7004405828">+91-7004405828</a>
           </div>
           <div className="ca-details">
             <img src={email_img} alt="#"></img>
