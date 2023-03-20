@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc  } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getAnalytics } from "firebase/analytics";
 
 // Import Required Firebase Utility
 
@@ -12,6 +13,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const FirebaseContext = createContext(null);
@@ -21,6 +23,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const db = getFirestore(firebaseApp);
 const storage  = getStorage(firebaseApp);
+const analytics = getAnalytics(firebaseApp);
 
 export const useFirebase = () => {
   return useContext(FirebaseContext);
