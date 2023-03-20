@@ -19,6 +19,7 @@ const EventsPage = () => {
     setTimeout(()=>{
       setLoading(false);
     },2000)
+    document.title = "Our Events | Jagriti IIT (BHU)"
   },[]);
 
   console.log(isAboveLargeScreen);

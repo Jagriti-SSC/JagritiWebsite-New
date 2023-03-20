@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AboutPage.css";
 import ClubCard from "../../components/CardAboutPage/ClubCard";
 const AboutPage = () => {
+  
+  useEffect(() => {
+    document.title = "About Us | Jagriti IIT (BHU)"
+  }, [])
+  
   return (
     <>
       <div className="text-center my-10 mx-5">

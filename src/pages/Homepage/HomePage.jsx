@@ -52,7 +52,8 @@ const HomePage = () => {
 
   useEffect(() => {
     startTimer();
-  });
+    document.title = "Jagriti - IIT (BHU)"
+  }, []);
 
   return (
     <>

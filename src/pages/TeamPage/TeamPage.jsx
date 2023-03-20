@@ -45,6 +45,7 @@ function TeamPage() {
 
   useEffect(() => {
     fetchTeamData();
+    document.title = "Our Team | Jagriti - IIT (BHU)"
   }, []);
 
   useEffect(() => {

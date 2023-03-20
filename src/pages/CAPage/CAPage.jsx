@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import "./CAPage.css";
 import CAForm from "../../components/CA Form/Ca-Form";
 
@@ -9,6 +9,11 @@ const CAPage = () => {
   useLayoutEffect(() => {
     divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
   }, [formRef, divRef]);
+
+  useEffect(() => {
+    document.title = "Campus Ambassador Program | Jagriti IIT (BHU)"
+  }, [])
+  
 
   return (
     <div ref={divRef} style={{ position: "relative" }}>
