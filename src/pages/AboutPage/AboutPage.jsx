@@ -17,7 +17,7 @@ const AboutPage = () => {
           Jagriti is an enlightening and edifying annual social service fest
           concentrated primarily on raising awareness through an assortment of
           educative and profound thinking events. We conduct an array of events
-          circulating the theme of social issues. Jognitiis on eller to
+          circulating the theme of social issues. Jagriti is on way to
           self-contentment wherein we help the underprivileged, borrowing time
           and drawing attention from our surplus lives.
         </p>
