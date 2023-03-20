@@ -14,7 +14,7 @@ const AboutPage = () => {
           JAGRITI
         </h2>
         <p className="p-3 lg:text-xl w-[70vw] mx-auto tracking-normal text-[#0B1641] font-popins">
-          Jagriti is an enlightening and edifying annual social service fast
+          Jagriti is an enlightening and edifying annual social service fest
           concentrated primarily on raising awareness through an assortment of
           educative and profound thinking events. We conduct an array of events
           circulating the theme of social issues. Jognitiis on eller to
