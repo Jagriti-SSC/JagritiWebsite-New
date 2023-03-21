@@ -113,8 +113,8 @@ body {
 .swiper {
   min-width: 175px;
   width: 80%;
-  max-height: 550px;
-  height: 440px;
+  max-height: 560px;
+  height: 480px;
   border-radius: 16px;
   box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
 }
@@ -161,7 +161,7 @@ body {
     padding-right: 10px;
   }
   .swiper {
-    height: 460px;
+    height: 500px;
     width: 70%;
   }
   .prev-btn button {
