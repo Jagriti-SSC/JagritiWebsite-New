@@ -91,7 +91,7 @@ const CAForm = forwardRef((props, ref) => {
         },
         {
           success: {
-            duration: 5000,
+            duration: 10000,
           },
         }
       );
