@@ -62,7 +62,7 @@ const CAForm = forwardRef((props, ref) => {
     if (validateDetails()) {
       const promise = Promise.all([
         firebase.addDocument("ca-form", {
-          userId,
+          userId : `${userId}.${id.name.split(".").pop()}`,
           name,
           mobile,
           email,
