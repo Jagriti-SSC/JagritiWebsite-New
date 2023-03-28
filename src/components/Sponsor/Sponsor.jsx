@@ -1,7 +1,7 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import Corousel from "../corousel/Corousel";
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// import Corousel from "../corousel/Corousel";
+
 
 const Sponsor = () => {
   return (
@@ -15,9 +15,11 @@ const Sponsor = () => {
         </h3>
       </div>
       <Marquee style={{overflow:"hidden"}} gradient={false} speed="35" className=" mx-auto w-full">
-        {array.map((item, index) => (
+        {/* {array.map((item, index) => (
           <Corousel key={index}></Corousel>
-        ))}
+        ))} */}
+        <a className="cursor-pointer" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src="./assets/sponsors/lwt.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+
       </Marquee>
     </div>
   );
