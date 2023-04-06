@@ -18,7 +18,11 @@ const Sponsor = () => {
         {/* {array.map((item, index) => (
           <Corousel key={index}></Corousel>
         ))} */}
-        <a className="cursor-pointer" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src="./assets/sponsors/lwt.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src="./assets/sponsors/umeed.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src="./assets/sponsors/pfc.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src="./assets/sponsors/pregrad.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src="./assets/sponsors/projectfolks.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
+        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src="./assets/sponsors/lwt.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
 
       </Marquee>
     </div>
