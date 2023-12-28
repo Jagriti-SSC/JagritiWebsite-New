@@ -83,6 +83,17 @@ const Navbar = () => {
                     path={"/ca"}
                   />
                 </li>
+                <li className="place-self-center">
+                     <Link className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin">
+                         Sign In
+                     </Link>
+                </li>
+                <li className="place-self-center">
+                     <Link className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup">
+                         Sign Up
+                     </Link>
+                </li>
+
               </ul>
             </div>
           </div>
@@ -202,6 +213,17 @@ const Navbar = () => {
                         path={"/ca"}
                       />
                     </li>
+                    <li className="mt-[10px]">
+                         <Link className="  whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin">
+                            <button className="w-[184px]">Sign In</button>
+                         </Link>
+                    </li>
+                    <li className="mt-[10px]">
+                         <Link className=" whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup">
+                           <button className="w-[184px]">Sign Up</button>
+                         </Link>
+                    </li>
+                    
                   </ul>
                 </div>
               </div>

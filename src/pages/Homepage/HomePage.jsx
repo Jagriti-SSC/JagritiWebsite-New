@@ -9,6 +9,8 @@ import Clock from "../../components/Clock/Clock";
 import Button from "../../components/UI/button/Button";
 import desktop from "../../assets/desktop.webm";
 import Timeline from "../../components/Timeline/Timeline";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 
 const HomePage = () => {
@@ -57,6 +59,7 @@ const HomePage = () => {
 
   return (
     <>
+    <Navbar />
       <div className="home-page">
         <div className="timing">
           <img className="jagriti-img" src={jagriti} alt="hero" />
@@ -82,6 +85,7 @@ const HomePage = () => {
      <Throwback></Throwback>
 
       <Sponsor></Sponsor>
+      <Footer />
     </>
   );
 };

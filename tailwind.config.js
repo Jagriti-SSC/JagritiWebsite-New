@@ -14,6 +14,8 @@ module.exports = withMT({
         "light-black":"#212121",
         "event-grey" : "#D9D9D9",
         "event-text-grey" : "#0B1641",
+        'gry': '#F3F3F3',
+        'dark-gry': '#6B6B6B',
         
 
       },
@@ -21,7 +23,9 @@ module.exports = withMT({
         playfair: ["Playfair Display", "serif"],
         opensans: ["Open Sans", "sans-serif"],
         Montserrat : ["Montserrat","sans-serif"],
-        popins : ["Poppins","sans-serif"]
+        popins : ["Poppins","sans-serif"],
+        inter: ["'Inter'", "sans-serif"],
+        gelasio: ["'Gelasio'", "serif"]
       },
     
     },
