@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import "./CAPage.css";
 import CAForm from "../../components/CA Form/Ca-Form";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const CAPage = () => {
   const formRef = useRef();
@@ -16,10 +18,14 @@ const CAPage = () => {
   
 
   return (
-    <div ref={divRef} style={{ position: "relative" }}>
+    <>
+      <Navbar />
+      <div ref={divRef} style={{ position: "relative" }}>
       <CAForm ref={formRef} />
       <div className="skewed-bg" />
     </div>
+    <Footer />
+    </>
   );
 };
 

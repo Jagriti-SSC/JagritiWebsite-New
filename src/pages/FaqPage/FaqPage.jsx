@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import Faq from "../../components/Faq/Faq"
+import Navbar from '../../components/navbar/Navbar'
+import Footer from '../../components/footer/Footer'
 
 const FaqPage = () => {
 
@@ -9,7 +11,11 @@ const FaqPage = () => {
   
 
   return (
+    <>
+      <Navbar />
     <Faq></Faq>
+    <Footer />
+    </>
   )
 }
 

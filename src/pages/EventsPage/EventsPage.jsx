@@ -6,6 +6,8 @@ import {motion} from "framer-motion";
 import Button from "../../components/UI/button/Button";
 import useMediaQuery from "../../hooks/useMediaQuery"
 import Preloader from "../../components/preloader/Preloader";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const EventsPage = () => {
   const firebase = useFirebase();
@@ -40,7 +42,7 @@ const EventsPage = () => {
 
   return (
    <>
-
+    <Navbar />
     {
       loading ? <Preloader loading={loading} ></Preloader> : <>
 
@@ -167,7 +169,7 @@ const EventsPage = () => {
   
   
   
-   
+   <Footer />
   </>
     
   );
