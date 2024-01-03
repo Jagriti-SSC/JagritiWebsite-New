@@ -2,15 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Navbar.css";
+import { useAuth } from "../../context/AuthContext";
+
 
 const Navbar = () => {
   let curr = useLocation();
-  console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
+  // console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
 
   const closeButton = useRef(null);
   const openButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
   const [toggle, setToggle] = useState(false);
+  
+  const {loading} = useAuth();
 
   useEffect(() => {
     const changeNavbarColor = () => {
@@ -22,6 +26,26 @@ const Navbar = () => {
     };
     changeNavbarColor();
   }, [curr.pathname]);
+console.log(localStorage.getItem("user"))
+
+const userString = localStorage.getItem("user");
+
+
+const userObject = JSON.parse(userString);
+
+
+const accessToken = userObject?.stsTokenManager?.accessToken;
+
+
+console.log("Access Token:", accessToken);
+
+useEffect(()=> {
+   console.log(accessToken)
+},[loading])
+
+
+
+
 
   return (
     <>
@@ -75,7 +99,7 @@ const Navbar = () => {
                     FAQs
                   </Link>
                 </li>
-                <li>
+                <li className="place-self-center">
                   <Button
                     text="Join CA Program"
                     outline={true}
@@ -83,14 +107,19 @@ const Navbar = () => {
                     path={"/ca"}
                   />
                 </li>
-                <li className="place-self-center">
-                     <Link className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin">
+                <li className={"place-self-center" + (localStorage.getItem('user')==null? " ":" w-[0px] m-0")}>
+                     <Link className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin" style={{width:localStorage.getItem('user')!=null?"0px":null,display:localStorage.getItem('user')!=null?"contents":"",fontSize:localStorage.getItem('user')!=null?"0px":''}}>
                          Sign In
                      </Link>
                 </li>
-                <li className="place-self-center">
-                     <Link className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup">
+                <li className={"place-self-center" + (localStorage.getItem('user')==null? " ":" w-[0px] m-0")}>
+                     <Link className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup" style={{width:localStorage.getItem('user')!=null?"0px":null,display:localStorage.getItem('user')!=null?"contents":"",fontSize:localStorage.getItem('user')!=null?"0px":''}}>
                          Sign Up
+                     </Link>
+                </li>
+                <li className={"place-self-center " + (localStorage.getItem('user')==null? " w-[0px] m-0":"")}>
+                     <Link className="whitespace-nowrap text-white bg-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium place-self-center " to="/profile" style={{width:localStorage.getItem('user')==null?"0px":null,display:localStorage.getItem('user')==null?"contents":"",fontSize:localStorage.getItem('user')==null?"0px":''}}>
+                         Profile
                      </Link>
                 </li>
 
@@ -213,16 +242,23 @@ const Navbar = () => {
                         path={"/ca"}
                       />
                     </li>
-                    <li className="mt-[10px]">
-                         <Link className="  whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin">
-                            <button className="w-[184px]">Sign In</button>
-                         </Link>
-                    </li>
-                    <li className="mt-[10px]">
-                         <Link className=" whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup">
-                           <button className="w-[184px]">Sign Up</button>
-                         </Link>
-                    </li>
+                   
+
+                <li className={"place-self-center mt-[10px]" + (localStorage.getItem('user')==null? " ":" w-[0px] h-[0px] m-0")}>
+                     <Link className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signin" style={{width:localStorage.getItem('user')!=null?"0px":null,display:localStorage.getItem('user')!=null?"contents":"",fontSize:localStorage.getItem('user')!=null?"0px":''}}>
+                         <button className="w-[184px]">Sign In</button>
+                     </Link>
+                </li>
+                <li className={"place-self-center mt-[10px]" + (localStorage.getItem('user')==null? " ":" w-[0px] h-[0px] m-0")}>
+                     <Link className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium " to="/signup" style={{width:localStorage.getItem('user')!=null?"0px":null,display:localStorage.getItem('user')!=null?"contents":"",fontSize:localStorage.getItem('user')!=null?"0px":''}}>
+                     <button className="w-[184px]">Sign Up</button>
+                     </Link>
+                </li>
+                <li className={"place-self-center mt-[10px]" + (localStorage.getItem('user')==null? " w-[0px] h-[0px] m-0":"")}>
+                     <Link className="whitespace-nowrap text-white bg-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium place-self-center " to="/profile" style={{width:localStorage.getItem('user')==null?"0px":null,display:localStorage.getItem('user')==null?"contents":"",fontSize:localStorage.getItem('user')==null?"0px":''}}>
+                     <button className="w-[184px]">Profile</button>
+                     </Link>
+                </li>
                     
                   </ul>
                 </div>

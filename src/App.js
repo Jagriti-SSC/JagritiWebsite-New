@@ -12,9 +12,13 @@ import Footer from "./components/footer/Footer";
 import FaqPage from "./pages/FaqPage/FaqPage";
 import UserAuthForm from "./pages/UserAuthForm/UserAuthForm.page"
 import Preloader from "./components/preloader/Preloader";
+import { AuthProvider } from "./context/AuthContext";
+import Profile from "./pages/UserAuthForm/Profile.jsx";
+import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx"
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
     
     <Routes>
@@ -26,10 +30,13 @@ function App() {
       <Route exact path="/ca" element={<CAPage />} />
       <Route exact path="/signin" element={<UserAuthForm type="sign-in"/>} />
       <Route exact path="/signup" element={<UserAuthForm type="sign-up"/>} />
+      <Route exact path="/profile" element={<Profile />} />
+      <Route exact path="/reset" element={<ResetPassword />} />
     </Routes>
      
     <Toaster />
   </BrowserRouter>
+  </AuthProvider>
 
   );
 }
