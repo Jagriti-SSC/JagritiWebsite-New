@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, addDoc  } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth,GoogleAuthProvider } from "firebase/auth";
+
 
 // Import Required Firebase Utility
 
@@ -125,3 +127,11 @@ export const FirebaseProvider = (props) => {
     </FirebaseContext.Provider>
   );
 };
+
+
+
+const auth = getAuth(firebaseApp);
+const provider = new GoogleAuthProvider();
+
+
+export  {auth,provider};
