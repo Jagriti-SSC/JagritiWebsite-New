@@ -1,0 +1,136 @@
+:root {
+  --clr-neutral-900: hsl(207, 19%, 9%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(142, 90%, 61%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.cardbox {
+  color: var(--clr-neutral-100);
+  background-size: cover;
+  padding: 10rem 0 0;
+  min-width: 28ch;
+  max-width: 35ch;
+  /* width: 30ch; */
+  margin: 10px;
+  flex: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+
+  transition: transform 500ms ease;
+  background-color: antiquewhite;
+}
+
+.cardbox:hover,
+.cardbox:focus-within {
+  transform: scale(1.05);
+}
+
+.card-content {
+  --padding: 2rem;
+
+  padding: var(--padding);
+  background: linear-gradient(
+    hsl(0 0% 0% / 0),
+    hsl(20 0% 0% / 0.3) 20%,
+    hsl(0 0% 0% / 1)
+  );
+}
+
+.cardbox:hover .card-content > *:not(.card-title),
+.cardbox:focus-within .card-content > *:not(.card-title) {
+  opacity: 1;
+  transition-delay: 1000ms;
+}
+
+.card-title {
+  position: relative;
+  width: max-content;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.card-title::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  left: calc(var(--padding) * -1);
+  bottom: 0px;
+  width: calc(100% + var(--padding));
+  background-color: #1b7adf;
+}
+.cardbox:hover .card-title::after,
+.cardbox:focus-within .card-title::after {
+  transform: scaleX(1);
+}
+
+.card-body {
+  color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0px;
+  font-size: large;
+  font-weight: bold;
+}
+
+@media (hover) {
+  .card-content {
+    transform: translateY(52%);
+    transition: transform 500ms ease;
+  }
+  .cardbox:hover .card-content,
+  .cardbox:focus-within .card-content {
+    transform: translateY(0);
+    transition-delay: 500ms;
+  }
+
+  .cardbox:focus-within .card-content {
+    transition-duration: 0ms;
+  }
+  .card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+  }
+  .card-title::after {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+    transition-delay: 500ms;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+
+  padding: 0.5em 1.25em;
+
+  margin-top: 1px;
+}
+.teamPost {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.teamPost img {
+  /* background-color: #1a589b; */
+  /* margin: auto; */
+  /* color:#1a589b;  */
+  height: 33px;
+  /* background-size: cover; */
+  /* border-radius: 12px; */
+  width: 33px;
+}
+@media (max-width: 816px) {
+  .cardbox {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,10 @@
+.navitem {
+  @apply relative ml-10 text-gray-200  tracking-[1px] font-extrabold
+         hover:text-light-blue-800;
+}
+.navitem::after {
+  @apply content-[''] bg-light-blue-800 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
+}
+.navitem:hover::after {
+  @apply w-[100%];
+}
