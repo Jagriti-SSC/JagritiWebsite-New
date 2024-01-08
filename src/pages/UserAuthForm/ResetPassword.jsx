@@ -4,7 +4,8 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import InputBox from '../../components/InputBox/InputBox.component';
 import {useRef} from 'react'
 import { Link } from 'react-router-dom'
-
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const ResetPassword = () => {
 
@@ -29,7 +30,8 @@ const ResetPassword = () => {
 
 
   return (
- 
+    <div>
+      <Navbar />
       <section className="h-[100vh] flex justify-center items-center">
         <form
           className="w-[80%] max-w-[400px] border p-8 rounded-[20px]  "
@@ -57,8 +59,9 @@ const ResetPassword = () => {
           
         </form>
       </section>
-  
+      <Footer />
+    </div>
   )
 }
 
-export default ResetPassword
+export default ResetPassword;
