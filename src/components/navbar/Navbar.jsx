@@ -3,6 +3,7 @@ import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../../context/AuthContext";
+import profile_default from "./profile.png";
 
 const Navbar = () => {
   let curr = useLocation();
@@ -14,7 +15,6 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   const { loading } = useAuth();
-
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
@@ -45,21 +45,23 @@ const Navbar = () => {
       <header>
         {/* Desktop Navbar */}
         <nav
-          className={`hidden smd:block ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-2 smd:px-4 font-Montserrat`}
         >
           <div className="flex flex-wrap items-center justify-between ml-20">
             <div
               className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
-              <ul className="flex flex-col p-4 mt-4 smd:flex-row smd:space-x-8 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
-                <Link to="/" className="items-center ">
-                  <img
-                    src="/assets/Jagriti_nav_logo.webp"
-                    className="h-5 mr-10 smd:h-9"
-                    alt="Jagriti_Logo"
-                  />
-                </Link>
+              <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-8 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
+                <li className="place-self-center">
+                  <Link to="/" className="items-center ">
+                    <img
+                      src="/assets/Jagriti_nav_logo.webp"
+                      className="h-5 mr-10 smd:h-9"
+                      alt="Jagriti_Logo"
+                    />
+                  </Link>
+                </li>
 
                 <li className="place-self-center">
                   <Link
@@ -83,6 +85,14 @@ const Navbar = () => {
                     className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
                   >
                     Events
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/gallery"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
+                  >
+                    Gallery
                   </Link>
                 </li>
                 <li className="place-self-center">
@@ -167,7 +177,7 @@ const Navbar = () => {
                     <Link to="/profile">
                       <img
                         alt="profile_img"
-                        src={`${profile_img}`}
+                        src={`${profile_img ? profile_img : profile_default}`}
                         className="w-full h-full object-cover rounded-full"
                       />
                     </Link>
@@ -269,6 +279,16 @@ const Navbar = () => {
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
                         <span className="whitespace-nowrap">Events</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/events"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Gallery</span>
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>

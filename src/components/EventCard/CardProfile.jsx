@@ -24,11 +24,14 @@ const CardProfile = ({ data, open, index }) => {
       >
         Know More
       </motion.button>
-      <button class="btn btn-success">
-        <i class="fi fi-ss-check-circle"></i> Payment Validated
+      <button className="bg-[#42bb2a] text-white py-2 px-4 rounded pointer-events-none">
+        <i class="fi fi-ss-check-circle"></i> Payment Confirmed
       </button>
-      <button className=" btn btn-danger">
-        <i class="fi fi-sr-cross-circle"></i> Payment Not Validated
+      <button className="bg-[#FCD336] text-black py-2 px-3 rounded pointer-events-none">
+        <i class="fi fi-rr-loading"></i> Payment Confirmation Pending
+      </button>
+      <button className="bg-[#fc3636] text-white py-2 px-3 rounded pointer-events-none">
+        <i class="fi fi-sr-cross-circle"></i> Payment Rejected
       </button>
     </motion.div>
   );
