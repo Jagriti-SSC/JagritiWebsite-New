@@ -45,23 +45,21 @@ const Navbar = () => {
       <header>
         {/* Desktop Navbar */}
         <nav
-          className={`hidden smd:block ${navbar_bg} px-2 smd:px-4 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-4 py-1.5 smd:px-4 font-Montserrat`}
         >
           <div className="flex flex-wrap items-center justify-between ml-20">
+          <Link to="/" className="items-center ">
+            <img
+              src="/assets/Jagriti_nav_logo.webp"
+                className="h-5 mr-10 smd:h-9"
+                alt="Jagriti_Logo"
+            />
+          </Link>
             <div
               className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
-              <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-8 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
-                <li className="place-self-center">
-                  <Link to="/" className="items-center ">
-                    <img
-                      src="/assets/Jagriti_nav_logo.webp"
-                      className="h-5 mr-10 smd:h-9"
-                      alt="Jagriti_Logo"
-                    />
-                  </Link>
-                </li>
+              <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
 
                 <li className="place-self-center">
                   <Link
@@ -120,7 +118,7 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium "
+                    className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-3 text-lg capitalize hover:bg-opacity-80 font-medium "
                     to="/signin"
                     style={{
                       width:
@@ -143,7 +141,7 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium "
+                    className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-3 text-lg capitalize hover:bg-opacity-80 font-medium "
                     to="/signup"
                     style={{
                       width:
@@ -164,7 +162,7 @@ const Navbar = () => {
                   }
                 >
                   <button
-                    className="rounded-full w-12 h-12 mt-2 ml-40"
+                    className="rounded-full w-12 h-12 mt-2 ml-20 mr-20"
                     style={{
                       width:
                         localStorage.getItem("user") == null ? "0px" : null,
