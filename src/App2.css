@@ -145,40 +145,13 @@ h3 > span {
   border-left: 10px solid #c2c2c2; /*7e8c8d*/
 }
 
-.btn {
-  border: none;
-
-  border-bottom: 4px solid;
-  -webkit-transition:
-    border-color 0.1s ease-in-out 0s,
-    background-color 0.1s ease-in-out 0s;
-  transition:
-    border-color 0.1s ease-in-out 0s,
-    background-color 0.1s ease-in-out 0s;
-  outline: none;
-}
-
-.btn-success {
-  background-color: #8dc859;
-  border-color: #77ab49;
-}
-
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active,
-.btn-success.active,
-.open .dropdown-toggle.btn-success {
-  background-color: #77ab49;
+.btnlogout {
+  color: #ffffff !important;
+  background-color: #1a589b !important;
+  border-color: #1a589b !important;
 }
 
 .btn-danger {
   background-color: #fe635f;
   border-color: #dd504c;
-}
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger:active,
-.btn-danger.active,
-.open .dropdown-toggle.btn-danger {
-  background-color: #dd504c;
 }

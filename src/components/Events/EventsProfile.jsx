@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import CardProfile from "../EventCard/CardProfile";
-import Modal from "../EventCard/Modal";
+import ModalCard from "../EventCard/ModalCard";
 import Overlay from "../EventCard/Overlay";
 
-const Events = ({ data, index }) => {
+const EventsProfile = ({ data, index }) => {
   const [open, setOpen] = useState(false);
 
   const openModal = () => {
@@ -22,7 +22,7 @@ const Events = ({ data, index }) => {
       <AnimatePresence>
         {open && (
           <Overlay close={closeModal}>
-            <Modal data={data} close={closeModal}></Modal>
+            <ModalCard data={data} close={closeModal}></ModalCard>
           </Overlay>
         )}
       </AnimatePresence>
@@ -30,4 +30,4 @@ const Events = ({ data, index }) => {
   );
 };
 
-export default Events;
+export default EventsProfile;

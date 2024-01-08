@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { signOut } from "firebase/auth";
-import { auth, useFirebase } from "../../context/Firebase";
+import React, { useEffect, useState } from "react";
+import { signOut, updateProfile } from "firebase/auth";
+import { collection, getDocs } from "firebase/firestore";
+import { auth, useFirebase, db } from "../../context/Firebase";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import "../../App2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import profile_default from "./profile.png";
 import EventsProfile from "../../components/Events/EventsProfile";
 
 const Profile = () => {
@@ -34,6 +36,53 @@ const Profile = () => {
   useEffect(() => {
     Promise.all([fetchEventData("events")]);
   }, []);
+
+  // For Editing user info after login
+
+  // const [userDetails, setUserDetails] = useState({});
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [saving, setSaving] = useState(false);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const docSnap = await db
+  //         .collection("users")
+  //         .doc(auth.currentUser.uid)
+  //         .get();
+  //       const fetchedUserData = docSnap.data();
+  //       setUserDetails(fetchedUserData);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setError("Failed to retrieve user data.");
+  //     }
+  //   };
+
+  //   fetchUserData();
+  // }, []);
+
+  // const handleEditToggle = () => {
+  //   setIsEditing(!isEditing);
+  // };
+
+  // const handleSave = async () => {
+  //   setSaving(true);
+  //   setError(null);
+
+  //   try {
+  //     await auth?.currentUser?.updateProfile(userDetails);
+  //     await db.collection("users").doc(auth.currentUser.uid).set(userDetails);
+
+  //     console.log("User information updated successfully!");
+  //     setIsEditing(false);
+  //   } catch (error) {
+  //     console.error("Error updating user information:", error);
+  //     setError("Failed to update user information. Please try again.");
+  //   } finally {
+  //     setSaving(false);
+  //   }
+  // };
 
   //   const jsonData = {
   //     user: {
@@ -82,17 +131,13 @@ const Profile = () => {
       <Navbar />
 
       <div>
-        <link
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-          rel="stylesheet"
-        />
-        <div class="container bootstrap snippets bootdeys">
+        <div class="container ">
           <div class="row" id="user-profile">
             <div class="col-lg-3 col-md-4 col-sm-4">
               <div class="main-box clearfix">
                 <h2>{userObject?.displayName}</h2>
                 <img
-                  src={`${profile_img}`}
+                  src={`${profile_img ? profile_img : profile_default}`}
                   alt=""
                   class="profile-img img-responsive center-block rounded-full "
                 />
@@ -118,29 +163,83 @@ const Profile = () => {
                   <h3>
                     <span>User info</span>
                   </h3>
+                  <div className="flex">
+                    <button onClick={logout} class="btn btnlogout edit-profile">
+                      Logout
+                    </button>
 
-                  <button onClick={logout} class="btn btn-primary edit-profile">
-                    Logout
-                  </button>
+                    {/* {saving && (
+                      <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                    )}
+                    {error && <div className="alert alert-danger">{error}</div>}
+
+                    <button
+                      onClick={isEditing ? handleSave : handleEditToggle}
+                      className="bg-blue text-white rounded py-0.5 px-2 ml-[376px] "
+                    >
+                      <i class="fi fi-rr-pencil"></i>
+                      {isEditing ? "   Save" : "   Edit"}
+                    </button> */}
+                  </div>
                 </div>
 
                 <div class="row profile-user-info">
                   <div class="col-sm-8">
                     <div class="profile-user-details clearfix">
-                      <div class="profile-user-details-label">First Name:</div>
+                      <div class="profile-user-details-label">Name:</div>
                       <div class="profile-user-details-value">
-                        {userObject?.displayName}
+                        {/* {isEditing ? (
+                          <input
+                            className="border-blue"
+                            type="text"
+                            value={userDetails.displayName}
+                            onChange={(e) =>
+                              setUserDetails({
+                                ...userDetails,
+                                displayName: e.target.value,
+                              })
+                            }
+                          />
+                        ) : ( */}
+                        <span>
+                          {userObject?.displayName
+                            ? `${userObject?.providerData?.year}`
+                            : "null"}
+                        </span>
+                        {/* )} */}
                       </div>
                     </div>
 
                     <div class="profile-user-details clearfix">
                       <div class="profile-user-details-label">Institute:</div>
-                      <div class="profile-user-details-value">IIT BHU</div>
+                      <div class="profile-user-details-value">
+                        {userObject?.providerData?.institute
+                          ? `${userObject?.providerData?.institute}`
+                          : "null"}
+                      </div>
+                    </div>
+                    <div class="profile-user-details clearfix">
+                      <div class="profile-user-details-label">Course:</div>
+                      <div class="profile-user-details-value">
+                        {userObject?.providerData?.course
+                          ? `${userObject?.providerData?.course}`
+                          : "null"}
+                      </div>
+                    </div>
+                    <div class="profile-user-details clearfix">
+                      <div class="profile-user-details-label">Year:</div>
+                      <div class="profile-user-details-value">
+                        {userObject?.providerData?.year
+                          ? `${userObject?.providerData?.year}`
+                          : "null"}
+                      </div>
                     </div>
                     <div class="profile-user-details clearfix">
                       <div class="profile-user-details-label">Email:</div>
                       <div class="profile-user-details-value">
-                        {userObject?.email}
+                        {userObject?.email ? `${userObject?.email}` : "null"}
                       </div>
                     </div>
                     <div class="profile-user-details clearfix">
@@ -148,6 +247,23 @@ const Profile = () => {
                       <div class="profile-user-details-value">
                         {userObject?.providerData?.phoneNumber
                           ? `${userObject?.providerData?.phoneNumber}`
+                          : "null"}
+                      </div>
+                    </div>
+
+                    <div class="profile-user-details clearfix">
+                      <div class="profile-user-details-label">Gender:</div>
+                      <div class="profile-user-details-value">
+                        {userObject?.providerData?.gender
+                          ? `${userObject?.providerData?.gender}`
+                          : "null"}
+                      </div>
+                    </div>
+                    <div class="profile-user-details clearfix">
+                      <div class="profile-user-details-label">Nationality:</div>
+                      <div class="profile-user-details-value">
+                        {userObject?.providerData?.nationality
+                          ? `${userObject?.providerData?.nationality}`
                           : "null"}
                       </div>
                     </div>
