@@ -5,7 +5,8 @@ import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
 import { useRef, useState,useContext,createContext } from "react";
 import { auth, provider } from "../../context/Firebase";
-
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const userContext = createContext();
@@ -113,7 +114,9 @@ const [authState,setAuthState] = useState(true)
 
 
   return (
-    <AnimationWrapper keyValue={type}>
+    <div>
+      <Navbar />
+]    <AnimationWrapper keyValue={type}>
       <section className="h-[100vh] flex justify-center items-center">
         <form
           className="w-[80%] max-w-[400px] border p-8 rounded-[20px]  "
@@ -154,7 +157,7 @@ const [authState,setAuthState] = useState(true)
             ref={passwordRef}
           />
           
-          {type== "sign-in" ?(<Link to="/reset"><button className="text-red underline" >Forget Password ?</button></Link>):""}
+          {type== "sign-in" ?(<Link to="/reset"><button className="text-red underline" >Forgot Password ?</button></Link>):""}
           <button
             disabled={loading}
             className="whitespace-nowrap bg-black text-white rounded-full py-3 px-6 text-xl capitalize hover:bg-opacity-80 block mx-auto mt-14"
@@ -196,6 +199,8 @@ const [authState,setAuthState] = useState(true)
         </form>
       </section>
     </AnimationWrapper>
+    <Footer />
+    </div>
   );
 };
 
