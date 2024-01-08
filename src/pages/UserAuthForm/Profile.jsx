@@ -205,7 +205,7 @@ const Profile = () => {
                         ) : ( */}
                         <span>
                           {userObject?.displayName
-                            ? `${userObject?.providerData?.year}`
+                            ? `${userObject?.displayName}`
                             : "null"}
                         </span>
                         {/* )} */}
