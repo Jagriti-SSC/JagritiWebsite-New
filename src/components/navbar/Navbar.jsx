@@ -307,7 +307,7 @@ const Navbar = () => {
                         buttonColor={"#1A589B"}
                         customStyle={{ width: 224, fontSize: 14 }}
                         onPress={() => closeButton.current.click()}
-                        path={"/CA"}
+                        path={"/campusambassador"}
                       />
                     </li>
 

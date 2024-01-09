@@ -46,21 +46,21 @@ const CA = () => {
     </div>
     <div className='container mx-auto '>
         
-        <div className=' flex items-center justify-center mb-[80px] '>
+        <div className=' flex  items-center justify-center mb-[80px] '>
             <div className='flex items-center justify-between  gap-x-20'>
                 <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-2 text-[#1A589B]'>What is Campus Ambassador</div>
                     <div className='max-w-md'>A Campus Ambassador for Jagriti is a student who acts as a liaison between the organizing committee of Jagriti, which is an annual social awareness fest held at IIT BHU (Indian Institute of Technology, Banaras Hindu University), and the student population that is present on the campus. A Campus Ambassador's primary responsibility is publicizing Jagriti-related events inside their institution.
                     </div>
                 </motion.div>
-                <motion.div variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                <motion.div className="md:invisible" variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                     <img src={img6} alt="" />
                 </motion.div>
             </div>
         </div>
         <hr className=" h-[2px] bg-light-blue-700  mx-20 mb-[80px]" />
         <div className='flex items-center justify-center mb-20 '>
-            <div className='flex items-center justify-between gap-x-20 '>
+            <div className='flex md:flex-row items-center justify-between gap-x-20 '>
                 <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                     <img src={img7} alt="" />
                 </motion.div>
@@ -144,8 +144,7 @@ const CA = () => {
         
         <hr className=" h-[2px] bg-light-blue-700  mx-20 mb-[80px]" />
         <div className='flex-row items-center justify-center'>
-
-        
+            
             <div className='flex items-center justify-center mb-5'>
                 <div className='flex items-center justify-between gap-x-20 '>
                     <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
