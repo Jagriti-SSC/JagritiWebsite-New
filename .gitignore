@@ -6,7 +6,7 @@
 .pnp.js
 
 .env
-
+yarn.lock
 # testing
 /coverage
 
