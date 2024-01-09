@@ -129,7 +129,7 @@ function TeamPage() {
             >
               <button
                 onClick={setColor}
-                className={activebtn === "Our Team" ? "selected" : " "}
+                // className={activebtn === "Our Team" ? "selected" : " "}
               >
                 All
               </button>
