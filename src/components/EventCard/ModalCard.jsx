@@ -4,7 +4,7 @@ import Button from "../UI/button/Button";
 import { CloseOutline } from "styled-icons/evaicons-outline";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-const Modal = ({ data, close }) => {
+const ModalCard = ({ data, close }) => {
   const [content, setContent] = useState("Overview");
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
   const registration = data.status;
@@ -109,13 +109,6 @@ const Modal = ({ data, close }) => {
                 <p dangerouslySetInnerHTML={{ __html: data.timeline }}></p>
               )}
             </motion.div>
-
-            <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
-              <Button
-                text={isLoggedIn ? "Register" : "Log In"}
-                path={isLoggedIn ? "/profile" : "/signin"}
-              />
-            </motion.div>
           </motion.div>
         </>
       ) : (
@@ -149,15 +142,8 @@ const Modal = ({ data, close }) => {
           </motion.div>
         </>
       )}
-
-      <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
-        <Button
-          text={isLoggedIn ? "Register" : "Log In"}
-          path={isLoggedIn ? "/profile" : "/signin"}
-        />
-      </motion.div>
     </motion.div>
   );
 };
 
-export default Modal;
+export default ModalCard;

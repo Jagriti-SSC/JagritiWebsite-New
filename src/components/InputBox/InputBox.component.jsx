@@ -1,18 +1,22 @@
-import { useState } from "react";
+import React ,{ useState, useRef } from "react";
 
-
-const InputBox = ({ name , type , id , value , placeholder,icon }) => {
+//{ name , type , id , value , placeholder,icon, ref }
+const InputBox = React.forwardRef(({ name , type , id , value , placeholder,icon},ref) => {
 
     const [passwordVisisble, setPasswordVisisble] = useState(false);
+    // const fullnameRef = useRef()
+    // const emailRef = useRef()
+    // const passwordRef = useRef()
 
     return(
         <div className="relative w-[100%] mb-4">
-            <input
+            <input 
               name={name}
               type={type == "password" ? passwordVisisble ? "text":"password" : type}
               placeholder={placeholder}
               defaultValue={value}
               id={id}
+              ref={ref}
               className="w-[100%] rounded-md p-4 bg-gry pl-12 border border-gry focus:bg-transparent placeholder:text-black"
             >
             </input>
@@ -29,6 +33,6 @@ const InputBox = ({ name , type , id , value , placeholder,icon }) => {
 
         </div>
     )
-}
+})
 
 export default InputBox

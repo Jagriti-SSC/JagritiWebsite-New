@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, addDoc  } from "firebase/firestore";
+import { getFirestore, getDocs, collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 // Import Required Firebase Utility
 
@@ -22,7 +23,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Create an instance of the imported firebase utility
 
 const db = getFirestore(firebaseApp);
-const storage  = getStorage(firebaseApp);
+const storage = getStorage(firebaseApp);
 const analytics = getAnalytics(firebaseApp);
 
 export const useFirebase = () => {
@@ -30,13 +31,10 @@ export const useFirebase = () => {
 };
 
 export const FirebaseProvider = (props) => {
-
-
   // Create the required function for using the internal functions of the utility imported
   const [eventData, setEventData] = useState([]);
   const [PreEventData, setPreEventData] = useState([]);
   const [GuestTalkData, setGuestTalkData] = useState([]);
-  
 
   async function getAllDocuments(collectionName) {
     try {
@@ -74,11 +72,10 @@ export const FirebaseProvider = (props) => {
         let teamData = [];
 
         collectionData.forEach((doc) => {
-         teamData.push(doc.data());
+          teamData.push(doc.data());
           // console.log(doc.data())
         });
         return teamData;
-        
       }
     } catch (error) {
       console.log(error);
@@ -93,19 +90,19 @@ export const FirebaseProvider = (props) => {
     }
   };
 
-  const uploadFile = (location, file)=>{
+  const uploadFile = (location, file) => {
     const storageRef = ref(storage, location);
 
-    return new Promise((resolve, reject)=>{
-      uploadBytes(storageRef, file).then((snapshot) => {
-       resolve();
-      }).catch(err =>{
+    return new Promise((resolve, reject) => {
+      uploadBytes(storageRef, file)
+        .then((snapshot) => {
+          resolve();
+        })
+        .catch((err) => {
           reject();
-      });
-
-    })
-  }
-
+        });
+    });
+  };
 
   return (
     <FirebaseContext.Provider
@@ -117,11 +114,15 @@ export const FirebaseProvider = (props) => {
         eventData,
         PreEventData,
         GuestTalkData,
-        uploadFile
-    
+        uploadFile,
       }}
     >
       {props.children}
     </FirebaseContext.Provider>
   );
 };
+
+const auth = getAuth(firebaseApp);
+const provider = new GoogleAuthProvider();
+
+export { auth, provider, db };
