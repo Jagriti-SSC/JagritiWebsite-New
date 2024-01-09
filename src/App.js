@@ -30,7 +30,7 @@ function App() {
       <Route exact path="/ca" element={<CAPage />} />
       <Route exact path="/signin" element={<UserAuthForm type="sign-in"/>} />
       <Route exact path="/signup" element={<UserAuthForm type="sign-up"/>} />
-      <Route exact path="/profile" element={<Profile />} />
+      <Route exact path="/profile" element={localStorage.getItem("user")!=null? <Profile /> : <UserAuthForm type="sign-in"/>}/>
       <Route exact path="/reset" element={<ResetPassword />} />
     </Routes>
      
