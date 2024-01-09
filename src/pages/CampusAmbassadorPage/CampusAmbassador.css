@@ -23,26 +23,28 @@ button {
 @keyframes change{
     0%
     {
-        background-image: url(../../assets/images/img1.jpg);
+        background-image: url(../../assets/images/jagriti_img1.png);
+        
     }
-    20%
+    25%
     {
-        background-image: url(../../assets/images/img2.jpg);
+        background-image: url(../../assets/images/jagriti_img2.png);
+        
     }
-    40%
+    50%
     {
-        background-image: url(../../assets/images/image.jpg);
+        background-image: url(../../assets/images/jagriti_img3.png);
+        
     }
-    60%
+    75%
     {
-        background-image: url(../../assets/images/img4.jpg);
-    }
-    80%
-    {
-        background-image: url(../../assets/images/img5.jpg);
+        background-image: url(../../assets/images/jagriti_img4.png);
+        
     }
     100%
     {
-        background-image: url(../../assets/images/img1.jpg);
+        background-image: url(../../assets/images/jagriti_img5.png);
+        
     }
+   
 }

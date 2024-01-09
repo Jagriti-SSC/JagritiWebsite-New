@@ -80,7 +80,7 @@ const Navbar = () => {
                     text="Join CA Program"
                     outline={true}
                     buttonColor={"white"}
-                    path={"/ca"}
+                    path={"/CampusAmbassador"}
                   />
                 </li>
                 <li className="place-self-center">
@@ -210,7 +210,7 @@ const Navbar = () => {
                         buttonColor={"#1A589B"}
                         customStyle={{ width: 224, fontSize: 14 }}
                         onPress={() => closeButton.current.click()}
-                        path={"/ca"}
+                        path={"/CA"}
                       />
                     </li>
                     <li className="mt-[10px]">
