@@ -8,7 +8,7 @@ import img5 from '../../assets/images/jagriti_img5.png';
 import img6 from '../../assets/images/jagriti_img6.png';
 import img7 from '../../assets/images/jagriti_img7.png';
 import img8 from '../../assets/images/jagriti_img8.png';
-import img9 from '../../assets/images/jagriti_img9.png';
+// import img9 from '../../assets/images/jagriti_img9.png';
 import img10 from '../../assets/images/jagriti_img10.png';
 
 import {FaGithub,FaYoutube,FaDribbble} from 'react-icons/fa';
@@ -46,23 +46,23 @@ const CA = () => {
     </div>
     <div className='container mx-auto '>
         
-        <div className=' flex  items-center justify-center mb-[80px] '>
-            <div className='flex items-center justify-between  gap-x-20'>
+        <div className=' flex  items-center justify-center mb-[10px] md:mb-[80px] '>
+            <div className='flex items-center justify-between  gap-x-20  '>
                 <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
-                    <div className='text-5xl mb-2 text-[#1A589B]'>What is Campus Ambassador</div>
+                    <ediv className='text-5xl mb-2 text-[#1A589B]'>What is Campus Ambassador</ediv>
                     <div className='max-w-md'>A Campus Ambassador for Jagriti is a student who acts as a liaison between the organizing committee of Jagriti, which is an annual social awareness fest held at IIT BHU (Indian Institute of Technology, Banaras Hindu University), and the student population that is present on the campus. A Campus Ambassador's primary responsibility is publicizing Jagriti-related events inside their institution.
                     </div>
                 </motion.div>
-                <motion.div className="md:invisible" variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                <motion.div className="" variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                     <img src={img6} alt="" />
                 </motion.div>
             </div>
         </div>
-        <hr className=" h-[2px] bg-light-blue-700  mx-20 mb-[80px]" />
-        <div className='flex items-center justify-center mb-20 '>
+        <hr className=" h-[2px] bg-light-blue-700 mx-5px md:mx-20 mb-[10px] md:mb-[80px]" />
+        <div className=' flex  items-center justify-center mb-[10px] md:mb-[20px] '>
             <div className='flex md:flex-row items-center justify-between gap-x-20 '>
-                <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
-                    <img src={img7} alt="" />
+                <motion.div className="" variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                    <img src={img8} alt="" />
                 </motion.div>
                 <motion.div variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-2 text-[#1A589B]'>Why Campus Ambassador?</div>
@@ -98,56 +98,48 @@ const CA = () => {
                 
             </div>
         </div>
-
-        <hr className=" h-[2px] bg-light-blue-700  mx-20 mb-[80px]" />
-        <div className='flex items-center justify-center mb-20 '>
-            <div className='flex items-center justify-between gap-x-20 '>
+        <hr className=" h-[2px] bg-light-blue-700 mx-5px md:mx-20 mb-[10px] md:mb-[80px]" />
+        <div className=' flex  items-center justify-center mb-[10px] md:mb-[20px] '>
+            <div className='flex md:flex-row items-center justify-between gap-x-20 '>
                 
-                <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
+                <motion.div className="min-w-3/5"variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-2 text-[#1A589B]'>Incentives</div>
                     <div className='max-w-md'>
                         <ul className='list-decimal'>
-                            <li>
-                            Certificates of Distinction: Personalized certificates recognizing the dedicated contribution and impactful efforts of Campus Ambassadors towards Jagriti’24, emphasizing their commitment to driving social awareness.
+                        <li>
+                            Certificates of Distinction: Personalized certificates recognizing the dedicated contribution and impactful efforts of Campus Ambassadors towards Jagriti’24.
                             </li>
                             <li>
-                            Exclusive Event Merchandise: Branded merchandise like sustainable apparel, accessories, or eco-friendly items unique to Jagriti’24, serving as tokens of appreciation for their active involvement.
+                            Exclusive Event Merchandise: Branded merchandise like sustainable apparel, accessories items unique to Jagriti’24, serving as tokens of appreciation.
                             </li>
                             <li>
-                            Tailored Letter of Recommendation: Individualized letters highlighting the Ambassador's proactive engagement, achievements, and influence as part of Jagriti’24, offering a commendable endorsement for their future pursuits.
+                            Tailored Letter of Recommendation: Individualized letters highlighting the Ambassador's proactive engagement, achievements, and influence as part of Jagriti’24.
                             </li>
                             <li>
-                            Pioneering Mentorship Sessions: Engage Ambassadors in one-on-one mentorship sessions with industry experts in social entrepreneurship, innovation, or activism. These sessions focus on skill enrichment, personal growth, and strategies for creating lasting societal impact.
+                            Access to Exclusive Resources: Grant access to specialized workshops, webinars, or resource materials pertinent to social impact.
                             </li>
                             <li>
-                            Recognition for Exceptional Impact: Public acknowledgement or spotlight features during the event for Ambassadors showcasing remarkable outreach, engagement, or innovative methods in advancing awareness.
+                            Networking Platforms: Curate dedicated networking avenues or forums enabling Ambassadors to connect with peers, experts, and influential figures.
                             </li>
                             <li>
-                            Access to Exclusive Workshops and Resources: Grant access to specialized workshops, webinars, or resource materials pertinent to social impact, empowering Ambassadors with specialized knowledge and tools.
-                            </li>
-                            <li>
-                            Networking Platforms: Curate dedicated networking avenues or forums enabling Ambassadors to connect with peers, experts, and influential figures, fostering a collaborative community for ongoing support and inspiration.
-                            </li>
-                            <li>
-                            Exposure: Get exposure to IIT faculties and Jagriti teams and opportunities to learn their coordination for working on a fest
+                            Exposure to IIT Faculties and Teams:Opportunities to learn fest coordination and network with IIT faculties
                             </li>
                         </ul>
                     </div>
-                    
                 </motion.div>
-                <motion.div className='mt-5' variants={fadeIn('left', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
-                    <img src={img10} alt="" className='h-[700px]' />
+                <motion.div className="" variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                        <img src={img7} alt="" />
                 </motion.div>
                 
             </div>
         </div>
+
         
-        <hr className=" h-[2px] bg-light-blue-700  mx-20 mb-[80px]" />
+        <hr className=" h-[2px] bg-light-blue-700 mx-5px md:mx-20 mb-[10px] md:mb-[80px]" />
         <div className='flex-row items-center justify-center'>
-            
             <div className='flex items-center justify-center mb-5'>
                 <div className='flex items-center justify-between gap-x-20 '>
-                    <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                    <motion.div className="" variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                         <img src={img5} alt="" />
                     </motion.div>
                     
