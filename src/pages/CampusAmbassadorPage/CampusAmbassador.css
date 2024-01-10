@@ -2,6 +2,7 @@
     animation: change 10s infinite ease-in-out;
 }
 
+
 button {
     margin-right: 0.8rem;
     /* min-width: 5rem; */
@@ -18,6 +19,11 @@ button {
     font-weight: 800;
     cursor: pointer;
    
+  }
+@media only screen and (max-width: 600px) {
+    .Invisible2{
+        visibility:hidden;
+    }
   }
   
 @keyframes change{
