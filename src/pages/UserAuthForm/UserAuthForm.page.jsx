@@ -136,7 +136,7 @@ const options = [
   return (
     <div className={type != "sign-in" ? ("mt-[180px] mb-[300px]") : ("mt-[10px] mb-[10px]")}>
       
-]    <AnimationWrapper keyValue={type}>
+    <AnimationWrapper keyValue={type}>
       <section className="h-[100vh] flex justify-center items-center m-[100px]">
         <form
           className="w-[80%] max-w-[400px] border p-8 rounded-[20px]  "
@@ -233,7 +233,7 @@ const options = [
           )}
 
 
-{selectedOption.value=="College Student"? (type != "sign-in" ? (
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
            <InputBox
            name="course"
            type="text"
@@ -246,7 +246,7 @@ const options = [
           )):""}
 
 
-{selectedOption.value=="College Student"? (type != "sign-in" ? (
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
             <InputBox
             name="year"
             type="text"
@@ -261,7 +261,7 @@ const options = [
 
 
 
-   {selectedOption.value=="College Student"? (type != "sign-in" ? (
+   {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
           <InputBox
           name="college"
           type="text"
