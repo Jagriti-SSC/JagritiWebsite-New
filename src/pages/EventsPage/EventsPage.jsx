@@ -42,7 +42,7 @@ const EventsPage = () => {
 
   return (
    <>
-    <Navbar />
+    
     {
       loading ? <Preloader loading={loading} ></Preloader> : <>
 
@@ -169,7 +169,7 @@ const EventsPage = () => {
   
   
   
-   <Footer />
+   
   </>
     
   );

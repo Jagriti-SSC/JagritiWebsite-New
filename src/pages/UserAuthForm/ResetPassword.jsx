@@ -31,7 +31,7 @@ const ResetPassword = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <section className="h-[100vh] flex justify-center items-center">
         <form
           className="w-[80%] max-w-[400px] border p-8 rounded-[20px]  "
@@ -59,7 +59,7 @@ const ResetPassword = () => {
           
         </form>
       </section>
-      <Footer />
+    
     </div>
   )
 }
