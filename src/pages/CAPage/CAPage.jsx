@@ -19,12 +19,12 @@ const CAPage = () => {
 
   return (
     <>
-      <Navbar />
+      
       <div ref={divRef} style={{ position: "relative" }}>
       <CAForm ref={formRef} />
       <div className="skewed-bg" />
     </div>
-    <Footer />
+    
     </>
   );
 };

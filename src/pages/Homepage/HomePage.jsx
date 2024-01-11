@@ -59,7 +59,7 @@ const HomePage = () => {
 
   return (
     <>
-    <Navbar />
+    
       <div className="home-page">
         <div className="timing">
           <img className="jagriti-img" src={jagriti} alt="hero" />
@@ -85,7 +85,7 @@ const HomePage = () => {
      <Throwback></Throwback>
 
       <Sponsor></Sponsor>
-      <Footer />
+      
     </>
   );
 };
