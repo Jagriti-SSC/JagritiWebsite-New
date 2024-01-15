@@ -11,7 +11,7 @@ const AboutPage = () => {
   
   return (
     <>
-    <Navbar />
+   
       <div className="text-center my-10 mx-5">
         <img
           className="mx-auto my-3"
@@ -81,7 +81,7 @@ const AboutPage = () => {
           clubDescription="Social Projects' Club has taken the challenge of empowering society by employing simple and effective methods. We identify the public's problems and incorporate our technical skills with proper planning and strategy to come up with innovative solutions."
         />
       </div>
-      <Footer />
+      
     </>
   );
 };

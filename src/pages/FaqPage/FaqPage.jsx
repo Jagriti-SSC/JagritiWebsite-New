@@ -12,9 +12,9 @@ const FaqPage = () => {
 
   return (
     <>
-      <Navbar />
+     
     <Faq></Faq>
-    <Footer />
+    
     </>
   )
 }

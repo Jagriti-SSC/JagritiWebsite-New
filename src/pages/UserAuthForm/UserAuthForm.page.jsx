@@ -5,8 +5,9 @@ import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
 import { useRef, useState,useContext,createContext } from "react";
 import { auth, provider } from "../../context/Firebase";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+
+
+import Select from 'react-select';
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const userContext = createContext();
@@ -18,6 +19,13 @@ export function useUser() {
 const UserAuthForm = ({ type }) => {
 
 const [authState,setAuthState] = useState(true)
+
+const options = [
+  { value: 'School Student', label: 'School Student' },
+  { value: 'College Student', label: 'College Student' },
+  { value: 'Working', label: 'Working' },
+  { value: 'other', label: 'Other' }
+];
   
   
   const { signup } = useAuth();
@@ -26,9 +34,17 @@ const [authState,setAuthState] = useState(true)
   const fullnameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const genderRef = useRef();
+  const nationalityRef = useRef();
+  const occupationRef = useRef();
+  const courseRef = useRef();
+  const yearRef = useRef();
+  const collegeRef = useRef();
+  const mobileNumberRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
   const navigate = useNavigate();
+  
 
 
   const handleAuthState  = () => {
@@ -109,15 +125,19 @@ const [authState,setAuthState] = useState(true)
   };
   
 
+  
+
+  const [selectedOption, setSelectedOption] = useState(null);
+  console.log(selectedOption)
 
   
 
 
   return (
-    <div>
-      <Navbar />
-]    <AnimationWrapper keyValue={type}>
-      <section className="h-[100vh] flex justify-center items-center">
+    <div className={type != "sign-in" ? ("mt-[180px] mb-[300px]") : ("mt-[10px] mb-[10px]")}>
+      
+    <AnimationWrapper keyValue={type}>
+      <section className="h-[100vh] flex justify-center items-center m-[100px]">
         <form
           className="w-[80%] max-w-[400px] border p-8 rounded-[20px]  "
            onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
@@ -134,7 +154,7 @@ const [authState,setAuthState] = useState(true)
               name="fullname"
               type="text"
               placeholder="Full Name"
-              icon="fi-rr-user"
+              icon=""
               ref={fullnameRef}
             />
           ) : (
@@ -145,7 +165,7 @@ const [authState,setAuthState] = useState(true)
             name="email"
             type="email"
             placeholder="Email"
-            icon="fi-rr-envelope"
+            icon=""
             ref={emailRef}
           />
 
@@ -153,9 +173,115 @@ const [authState,setAuthState] = useState(true)
             name="password"
             type="password"
             placeholder="Password"
-            icon="fi-rr-key"
+            icon=""
             ref={passwordRef}
           />
+
+  
+ 
+
+{type != "sign-in" ? (
+              <InputBox
+              name="mobile number"
+              type="text"
+              placeholder="Mobile Number"
+              icon=""
+              ref={mobileNumberRef}
+            />
+          ) : (
+            ""
+          )}
+
+{type != "sign-in" ? (
+             <InputBox
+             name="nationality"
+             type="text"
+             placeholder="Nationality"
+             icon=""
+             ref={nationalityRef}
+           /> 
+          ) : (
+            ""
+          )}
+
+
+
+{type != "sign-in" ? (
+             <InputBox
+             name="gender"
+             type="text"
+             placeholder="Gender"
+             icon=""
+             ref={genderRef}
+           />
+          ) : (
+            ""
+          )}
+
+{type != "sign-in" ? (
+            <div className="my-4">
+            <Select
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    ref={occupationRef}
+                    className=""
+                  />
+            </div>
+          ) : (
+            ""
+          )}
+
+
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+           <InputBox
+           name="course"
+           type="text"
+           placeholder="Course"
+           icon=""
+           ref={courseRef}
+         /> 
+          ) : (
+            ""
+          )):""}
+
+
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+            <InputBox
+            name="year"
+            type="text"
+            placeholder="Year"
+            icon=""
+            ref={yearRef}
+          />
+          ) : (
+            ""
+          )):""}
+
+
+
+
+   {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+          <InputBox
+          name="college"
+          type="text"
+          placeholder="College"
+          icon=""
+          ref={collegeRef}
+        /> 
+          ) : (
+            ""
+          )):""}
+
+
+
+
+
+
+
+
+
+        
           
           {type== "sign-in" ?(<Link to="/reset"><button className="text-red underline" >Forgot Password ?</button></Link>):""}
           <button
@@ -199,7 +325,7 @@ const [authState,setAuthState] = useState(true)
         </form>
       </section>
     </AnimationWrapper>
-    <Footer />
+   
     </div>
   );
 };

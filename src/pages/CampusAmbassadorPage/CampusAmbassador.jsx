@@ -24,8 +24,6 @@ import "./CampusAmbassador.css"
 const CA = () => {
   return (
   <div>
-    <Navbar/>
-    {/* <div className='section_top'></div> */}
     <div className='h-screen bg-center relative bg-no-repeat bg-cover w-full flex items-center justify-center mb-20 section_top ' >
             
             <div>
@@ -34,10 +32,12 @@ const CA = () => {
                 <motion.div variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-20 text-center text-white'>Join us to become a campus ambassador and proudly represent our brand on your college campus</motion.div>
                 <motion.div variants={fadeIn('up', 0.5)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
                 <a href="./ca" >
+                    <div className='applybtn'>
                 <button className='p-[10px] font-extrabold' >
-                    <span className='font-black'> Apply Now</span>
+                    <span className='font-black'>Apply Now</span>
                    
                 </button>
+                </div>
                 </a>
                     
                 </motion.div>

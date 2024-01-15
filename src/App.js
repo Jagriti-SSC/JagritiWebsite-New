@@ -16,11 +16,13 @@ import Preloader from "./components/preloader/Preloader";
 import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx"
+import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
 
 function App() {
   return (
     <AuthProvider>
     <BrowserRouter>
+    <Navbar></Navbar>
     
     <Routes>
       <Route exact path="/" element={<HomePage />} />
@@ -32,9 +34,13 @@ function App() {
       <Route exact path="/CampusAmbassador" element={<CampusAmbassadorPage />} />
       <Route exact path="/signin" element={<UserAuthForm type="sign-in"/>} />
       <Route exact path="/signup" element={<UserAuthForm type="sign-up"/>} />
-      <Route exact path="/profile" element={<Profile />} />
+      {/* <Route exact path="/profile" element={localStorage.getItem("user")==null? <UserAuthForm type="sign-in"/> : <Profile />}/> */}
+      <Route element={<PrivateRoutes/>}>
+              <Route path='/profile' element={<Profile/>} />
+          </Route>
       <Route exact path="/reset" element={<ResetPassword />} />
     </Routes>
+    <Footer></Footer>
      
     <Toaster />
   </BrowserRouter>

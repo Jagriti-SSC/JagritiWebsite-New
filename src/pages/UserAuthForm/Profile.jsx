@@ -129,7 +129,7 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar />
+      
 
       <div>
         <div class="container ">
@@ -285,7 +285,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <Footer/>
+      
       </div>
     </>
   );
