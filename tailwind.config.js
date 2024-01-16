@@ -11,11 +11,13 @@ module.exports = withMT({
         red: "#DC4492",
         yellow: "#FDCC49",
         grey: "#969696",
+        "icolor" :'#F5F5FF',
         "light-black":"#212121",
         "event-grey" : "#D9D9D9",
         "event-text-grey" : "#0B1641",
         'gry': '#F3F3F3',
         'dark-gry': '#6B6B6B',
+       
         
 
       },

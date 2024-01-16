@@ -5,8 +5,8 @@ import { auth, useFirebase, db } from "../../context/Firebase";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import "../../App2.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../../App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import profile_default from "./profile.png";
 import EventsProfile from "../../components/Events/EventsProfile";
 

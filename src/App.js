@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx"
 import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
+import UserInfo from './pages/UserAuthForm/UserInfo.jsx'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               <Route path='/profile' element={<Profile/>} />
           </Route>
       <Route exact path="/reset" element={<ResetPassword />} />
+      <Route exact path="/userinfo" element={<UserInfo />} />
     </Routes>
     <Footer></Footer>
      
