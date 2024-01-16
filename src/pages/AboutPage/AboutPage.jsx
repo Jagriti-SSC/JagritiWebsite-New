@@ -11,13 +11,15 @@ const AboutPage = () => {
   
   return (
     <>
-   
+      <div className="background-element"></div>
       <div className="text-center my-10 mx-5">
-        <img
-          className="mx-auto my-3"
-          src="/assets/Jagriti_big_logo.webp"
-          alt=""
-        />
+        <div className="circular-container1">
+          <img
+            className="jaglogo-overlay"
+            src="/assets/Jagriti_big_logo.webp"
+            alt=""
+            />
+        </div>
         <h2 className="text-4xl my-3 text-blue font-Montserrat tracking-tight font-bold">
           JAGRITI
         </h2>
@@ -32,11 +34,12 @@ const AboutPage = () => {
       </div>
       <hr className=" h-[2px] bg-light-blue-700  mx-20" />
       <div className="text-center my-10 mx-5">
-        <img
-          className="w-[300px] mx-auto my-3"
-          src="/assets/SSC_logo.webp"
+        <div className="circular-container2">
+        <img className="ssclogo-overlay"
+          src="/assets/SSClogo.png"
           alt=""
         />
+        </div>
         <h2 className="text-blue font-Montserrat my-3 text-4xl tracking-tight font-bold">
           SOCIAL SERVICE COUNCIL
         </h2>
