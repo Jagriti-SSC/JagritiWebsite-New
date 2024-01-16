@@ -3,21 +3,18 @@ import { signOut, updateProfile } from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 import { auth, useFirebase, db } from "../../context/Firebase";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "../../App2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profile_default from "./profile.png";
 import EventsProfile from "../../components/Events/EventsProfile";
-=======
 import bg_image from "./bg.png";
 import profile_default from "./profile.png";
 import { Button } from "@mui/material";
 import EventCarousel from "./EventCarousel";
 import nothing from "./nothing.png";
 import "./Profile.css";
->>>>>>> f71dee4 (New User Profile)
 
 const Profile = () => {
   var storedUserString = localStorage.getItem("user");
@@ -38,11 +35,8 @@ const Profile = () => {
   const profile_img = userObject?.photoURL;
 
   const firebase = useFirebase();
-<<<<<<< HEAD
-=======
-  // firebase.eventData = null;
->>>>>>> f71dee4 (New User Profile)
 
+  // firebase.eventData = null;
   const fetchEventData = (name) => {
     const Data = firebase.getAllDocuments(name);
   };
@@ -142,13 +136,10 @@ const Profile = () => {
 
   return (
     <>
-<<<<<<< HEAD
       
 
       <div>
-=======
       {/* <div>
->>>>>>> f71dee4 (New User Profile)
         <div class="container ">
           <div class="row" id="user-profile">
             <div class="col-lg-3 col-md-4 col-sm-4">
@@ -185,7 +176,6 @@ const Profile = () => {
                     <button onClick={logout} class="btn btnlogout edit-profile">
                       Logout
                     </button>
-<<<<<<< HEAD
 
                     {/* {saving && (
                       <div className="spinner-border" role="status">
@@ -201,8 +191,7 @@ const Profile = () => {
                       <i class="fi fi-rr-pencil"></i>
                       {isEditing ? "   Save" : "   Edit"}
                     </button> */}
-=======
->>>>>>> f71dee4 (New User Profile)
+
                   </div>
                 </div>
 
@@ -211,7 +200,6 @@ const Profile = () => {
                     <div class="profile-user-details clearfix">
                       <div class="profile-user-details-label">Name:</div>
                       <div class="profile-user-details-value">
-<<<<<<< HEAD
                         {/* {isEditing ? (
                           <input
                             className="border-blue"
@@ -225,17 +213,12 @@ const Profile = () => {
                             }
                           />
                         ) : ( */}
-=======
->>>>>>> f71dee4 (New User Profile)
                         <span>
                           {userObject?.displayName
                             ? `${userObject?.displayName}`
                             : "null"}
                         </span>
-<<<<<<< HEAD
                         {/* )} */}
-=======
->>>>>>> f71dee4 (New User Profile)
                       </div>
                     </div>
 
@@ -311,9 +294,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-      
-=======
+
       </div> */}
       <div
         style={{
@@ -478,7 +459,6 @@ const Profile = () => {
             )}
           </section>
         </div>
->>>>>>> f71dee4 (New User Profile)
       </div>
     </>
   );
