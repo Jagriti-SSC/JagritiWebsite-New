@@ -7,7 +7,6 @@ import { useFirebase } from "../../context/Firebase";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
-
 function TeamPage() {
   const firebase = useFirebase();
 
@@ -48,14 +47,14 @@ function TeamPage() {
 
   useEffect(() => {
     fetchTeamData();
-    document.title = "Our Team | Jagriti - IIT (BHU)"
+    document.title = "Our Team | Jagriti - IIT (BHU)";
   }, []);
 
   useEffect(() => {
     // console.log(carousel.current)
 
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth)
+    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
   }, [fixedData]);
 
   useEffect(() => {
@@ -94,9 +93,7 @@ function TeamPage() {
   }
 
   return (
-    
     <div>
-      
       <div className="flex items-center justify-center m-10" ref={spinnerRef}>
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -177,7 +174,7 @@ function TeamPage() {
           </AnimatePresence>
         </motion.div>
       </div>
-      
+      <Footer />
     </div>
   );
 }

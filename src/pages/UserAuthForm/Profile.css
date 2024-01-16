@@ -1,0 +1,97 @@
+@media (max-width: 430px) {
+  .bg {
+    background-repeat: repeat;
+  }
+  .info-section-1 {
+    position: absolute;
+    left: 26px;
+  }
+
+  .info-section-2 {
+    position: absolute;
+    left: 26px;
+    top: 650px;
+  }
+  .info-div-1 {
+    position: absolute;
+    width: 370px;
+    height: 450px;
+  }
+
+  .info-div-2 {
+    position: absolute;
+    width: 370px;
+    height: 1350px;
+  }
+
+  .info-1 {
+    left: 60px;
+    top: 198px;
+  }
+
+  .info-2 {
+    left: 158px;
+    top: 198px;
+  }
+
+  .profile-image {
+    left: 140px;
+  }
+
+  .edit {
+    top: 320px;
+    left: 95px;
+  }
+
+  .logout {
+    top: 370px;
+    left: -89px;
+  }
+
+  .text-event {
+    left: 65px;
+  }
+
+  .payment {
+    left: 67px;
+  }
+
+  .caro {
+    left: 55px;
+    margin-top: 40px;
+  }
+
+  .prev {
+    font-size: 34px;
+    margin-left: 7px;
+  }
+
+  .next {
+    font-size: 34px;
+    margin-left: 7px;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .but {
+    gap: 269px;
+    margin-top: 560px;
+  }
+
+  .not-res {
+    margin-top: 520px;
+    font-size: 2rem;
+  }
+
+  .not-but {
+    top: 750px;
+    left: 80px;
+  }
+
+  .not-img {
+    margin-top: 200px;
+    height: 200px;
+  }
+}

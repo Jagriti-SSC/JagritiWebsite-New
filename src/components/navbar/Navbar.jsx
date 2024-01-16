@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
-        setNavbar_bg("bg-light-black");
+        setNavbar_bg("bg-main-navbar");
       } else {
         setNavbar_bg("bg-transparent");
       }
@@ -48,19 +48,18 @@ const Navbar = () => {
           className={`hidden smd:block ${navbar_bg} px-4 py-1.5 smd:px-4 font-Montserrat`}
         >
           <div className="flex flex-wrap items-center justify-between ml-20">
-          <Link to="/" className="items-center ">
-            <img
-              src="/assets/Jagriti_nav_logo.webp"
+            <Link to="/" className="items-center ">
+              <img
+                src="/assets/Jagriti_nav_logo.webp"
                 className="h-5 mr-10 smd:h-9"
                 alt="Jagriti_Logo"
-            />
-          </Link>
+              />
+            </Link>
             <div
               className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
               <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
-
                 <li className="place-self-center">
                   <Link
                     to="/about"
