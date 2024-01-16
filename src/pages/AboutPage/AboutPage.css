@@ -8,9 +8,9 @@
 
 .circular-container1 {
   position: relative;
-  width: 370px; 
-  height: 370px;  
-  margin: 20px 0 0 535px;
+  width: 300px; 
+  height: 300px;  
+  margin: auto;
   background: url('/public/assets/Circular1.png') center/cover no-repeat;
   background-position: 35% 35%;
   background-size: 180%;
@@ -19,9 +19,10 @@
 
 .circular-container2 {
   position: relative;
-  width: 370px; 
-  height: 370px;  
-  margin: 20px 0 0 525px;
+  width: 300px; 
+  height: 300px;  
+  margin: auto;
+
   background: url('/public/assets/Circular2.png') center/cover no-repeat;
   background-position: 65% 65%;
   background-size: 180%;
