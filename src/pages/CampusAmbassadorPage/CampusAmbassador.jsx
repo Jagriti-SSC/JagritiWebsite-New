@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
@@ -18,10 +18,14 @@ import Navbar from '../../components/navbar/Navbar';
 import {motion} from 'framer-motion';
 import {Link} from "react-router-dom";
 import "./CampusAmbassador.css"
+import Footer from '../../components/footer/Footer';
 
 // color: rgb(26 88 155/var(--tw-text-opacity));
 
 const CA = () => {
+    useEffect(() => {
+        document.title = "CA | Jagriti IIT (BHU)"
+      }, [])
   return (
   <div>
     <div className='h-screen bg-center relative bg-no-repeat bg-cover w-full flex items-center justify-center mb-20 section_top ' >
@@ -185,7 +189,7 @@ const CA = () => {
         <CAFaq/>
     </div>
     
-
+    <Footer />
   </div>
   )
 };

@@ -41,7 +41,9 @@ function TeamPage() {
     );
     setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
     setTimeout(() => {
-      spinnerRef.current.style.display = "none";
+      if (spinnerRef.current) {
+        spinnerRef.current.style.display = "none";
+      }
     }, 1200);
   };
 

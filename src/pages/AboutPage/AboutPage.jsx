@@ -100,7 +100,7 @@ const AboutPage = () => {
 
         
 
-      
+      <Footer />
     </>
   );
 };

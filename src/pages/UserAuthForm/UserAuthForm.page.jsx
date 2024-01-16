@@ -3,9 +3,9 @@ import googleIcon from "./google.png";
 import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
-import { useRef, useState,useContext,createContext } from "react";
+import { useRef, useState,useContext,createContext,useEffect } from "react";
 import { auth, provider } from "../../context/Firebase";
-
+import Footer from "../../components/footer/Footer";
 
 import Select from 'react-select';
 
@@ -17,6 +17,9 @@ export function useUser() {
 }
 
 const UserAuthForm = ({ type }) => {
+  useEffect(() => {
+    document.title = "Sign In | Jagriti IIT (BHU)"
+  }, [])
 
 const [authState,setAuthState] = useState(true)
 
@@ -325,7 +328,7 @@ const options = [
         </form>
       </section>
     </AnimationWrapper>
-   
+   <Footer />
     </div>
   );
 };
