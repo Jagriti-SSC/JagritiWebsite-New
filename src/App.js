@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx"
 import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
+import GalleryPage from "./pages/GalleryPage/GalleryPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route exact path="/about" element={<AboutPage />} />
       <Route exact path="/events" element={<EventsPage />} />
       <Route exact path="/team" element={<TeamPage />} />
+      <Route exact path="/gallery" element={<GalleryPage />} />
       <Route exact path="/faqs" element={<FaqPage />} />
       <Route exact path="/ca" element={<CAPage />} />
       <Route exact path="/CampusAmbassador" element={<CampusAmbassadorPage />} />
