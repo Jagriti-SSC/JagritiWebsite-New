@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import ClubCard from "../../components/CardAboutPage/ClubCard";
 const GalleryPage = () => {
   
   useEffect(() => {
@@ -10,6 +9,10 @@ const GalleryPage = () => {
   
   return (
     <>
+    <div>
+    <h1>Beautiful pictures coming soon!</h1>
+    <Footer />
+    </div>
     </>
   );
 };

@@ -11,6 +11,7 @@ import TeamPage from "./pages/TeamPage/TeamPage";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import FaqPage from "./pages/FaqPage/FaqPage";
+import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import UserAuthForm from "./pages/UserAuthForm/UserAuthForm.page";
 import Preloader from "./components/preloader/Preloader";
 import { AuthProvider } from "./context/AuthContext";
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/team" element={<TeamPage />} />
           <Route exact path="/faqs" element={<FaqPage />} />
           <Route exact path="/ca" element={<CAPage />} />
+          <Route exact path="/gallery" element={<GalleryPage />} />
           <Route
             exact
             path="/CampusAmbassador"

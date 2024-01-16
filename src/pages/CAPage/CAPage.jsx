@@ -24,7 +24,7 @@ const CAPage = () => {
       <CAForm ref={formRef} />
       <div className="skewed-bg" />
     </div>
-    
+    <Footer />
     </>
   );
 };
