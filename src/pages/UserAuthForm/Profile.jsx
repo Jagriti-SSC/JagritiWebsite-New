@@ -3,12 +3,6 @@ import { signOut, updateProfile } from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 import { auth, useFirebase, db } from "../../context/Firebase";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
-import "../../App2.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import profile_default from "./profile.png";
-import EventsProfile from "../../components/Events/EventsProfile";
 import bg_image from "./bg.png";
 import profile_default from "./profile.png";
 import { Button } from "@mui/material";
@@ -35,8 +29,8 @@ const Profile = () => {
   const profile_img = userObject?.photoURL;
 
   const firebase = useFirebase();
-
   // firebase.eventData = null;
+
   const fetchEventData = (name) => {
     const Data = firebase.getAllDocuments(name);
   };
@@ -136,9 +130,6 @@ const Profile = () => {
 
   return (
     <>
-      
-
-      <div>
       {/* <div>
         <div class="container ">
           <div class="row" id="user-profile">
@@ -176,22 +167,6 @@ const Profile = () => {
                     <button onClick={logout} class="btn btnlogout edit-profile">
                       Logout
                     </button>
-
-                    {/* {saving && (
-                      <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
-                      </div>
-                    )}
-                    {error && <div className="alert alert-danger">{error}</div>}
-
-                    <button
-                      onClick={isEditing ? handleSave : handleEditToggle}
-                      className="bg-blue text-white rounded py-0.5 px-2 ml-[376px] "
-                    >
-                      <i class="fi fi-rr-pencil"></i>
-                      {isEditing ? "   Save" : "   Edit"}
-                    </button> */}
-
                   </div>
                 </div>
 
@@ -200,25 +175,11 @@ const Profile = () => {
                     <div class="profile-user-details clearfix">
                       <div class="profile-user-details-label">Name:</div>
                       <div class="profile-user-details-value">
-                        {/* {isEditing ? (
-                          <input
-                            className="border-blue"
-                            type="text"
-                            value={userDetails.displayName}
-                            onChange={(e) =>
-                              setUserDetails({
-                                ...userDetails,
-                                displayName: e.target.value,
-                              })
-                            }
-                          />
-                        ) : ( */}
                         <span>
                           {userObject?.displayName
                             ? `${userObject?.displayName}`
                             : "null"}
                         </span>
-                        {/* )} */}
                       </div>
                     </div>
 
@@ -294,7 +255,6 @@ const Profile = () => {
             </div>
           </div>
         </div>
-
       </div> */}
       <div
         style={{
