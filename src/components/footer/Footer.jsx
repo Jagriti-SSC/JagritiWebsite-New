@@ -28,7 +28,7 @@ const Footer = () => {
   },]
 
   return (
-    <div className="bg-light-black   text-white pb-12">
+    <div className="bg-main-navbar   text-white pb-12">
       <div className="md:flex md:flex-row justify-evenly py-10 font-popins grid grid-cols-2 grid-rows-3">
        
       {
