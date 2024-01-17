@@ -25,12 +25,6 @@ const Button = ({
   let textColor = outline ? buttonColor : disabled ? "#696969" : "white";
   let borderColor = disabled ? "#E4E4E4" : buttonColor;
 
-  if (curr.pathname === "/ca") {
-      backgroundColor = "#1A589B";
-      textColor = "white";
-      borderColor = "#1A589B";
-  }
-
   const styles = {
     backgroundColor: backgroundColor,
     color: textColor,
