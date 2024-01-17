@@ -122,17 +122,17 @@ const CAForm = forwardRef((props, ref) => {
   }, [id]);
 
   return (
-    <div className={`flex-wrapper`} ref={ref}>
-      <div className={`grid-wrapper`} ref={gridRef}>
-        <div className={`heading`}>
-          <h1 className={`ca-heading`}>Become a Campus Ambassador</h1>
-          <h4 className={`ca-subheading`}>Fill the form and connect us</h4>
+    <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
+      <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
+        <div className={style.heading}>
+          <h1 className={style.ca_heading}>Become a Campus Ambassador</h1>
+          <h4 className={style.ca_subheading}>Fill the form and connect us</h4>
         </div>
-        <div className={`ca-img`}>
+        <div className={style.ca_img}>
           <img src={ca_img} alt="aesthetic-image"></img>
         </div>
-        <div className={`ca-form-div`}>
-          <form className={`ca-form`} onSubmit={handleSubmit} action="#">
+        <div className={style.ca_form_div}>
+          <form className={style.ca_form} onSubmit={handleSubmit} action="#">
             <input
               required
               type="text"
@@ -204,8 +204,8 @@ const CAForm = forwardRef((props, ref) => {
             <button type="submit">Submit</button>
           </form>
         </div>
-        <div className={`contact-details`} ref={contactRef}>
-          <div className={`ca-details`}>
+        <div className={style.contact_details} ref={contactRef}>
+          <div className={style.ca_details}>
             <img src={location_img} alt="#"></img>
             <a
               href="https://www.iitbhu.ac.in/"
@@ -215,11 +215,11 @@ const CAForm = forwardRef((props, ref) => {
               IIT (BHU) Varanasi
             </a>
           </div>
-          <div className={`ca-details`}>
+          <div className={style.ca_details}>
             <img src={telephone_img} alt="#"></img>
             <a href="tel:+91-7004405828">+91-7004405828</a>
           </div>
-          <div className={`ca-details`}>
+          <div className={style.ca_details}>
             <img src={email_img} alt="#"></img>
             <a href="mailto:jagriti.ssc@iitbhu.ac.in">
               jagriti.ssc@iitbhu.ac.in
@@ -227,7 +227,7 @@ const CAForm = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      <div className={`socials`} ref={socialRef}>
+      <div className={style.socials} ref={socialRef}>
         <a
           href="https://www.facebook.com/jagriti.iitbhu/"
           target="_blank"
