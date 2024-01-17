@@ -12,7 +12,6 @@ import Timeline from "../../components/Timeline/Timeline";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
-
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
   const [timerHours, setTimerHours] = useState();
@@ -54,12 +53,11 @@ const HomePage = () => {
 
   useEffect(() => {
     startTimer();
-    document.title = "Jagriti - IIT (BHU)"
+    document.title = "Jagriti - IIT (BHU)";
   }, []);
 
   return (
     <>
-    
       <div className="home-page">
         <div className="timing">
           <img className="jagriti-img" src={jagriti} alt="hero" />
@@ -74,7 +72,13 @@ const HomePage = () => {
           />
           <div className="explore-btn">
             <Button text="Explore Events" showArrow path="/events" />
-            <Button outline text="Guest talk" buttonColor="white" path="/events" showArrow />
+            <Button
+              outline
+              text="Guest talk"
+              buttonColor="white"
+              path="/events"
+              showArrow
+            />
           </div>
         </div>
       </div>
@@ -82,10 +86,10 @@ const HomePage = () => {
       <Testimonial></Testimonial>
       <Timeline></Timeline>
 
-     <Throwback></Throwback>
+      <Throwback></Throwback>
 
       <Sponsor></Sponsor>
-      
+      <Footer />
     </>
   );
 };

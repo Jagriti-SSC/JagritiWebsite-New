@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
-import Faq from "../../components/Faq/Faq";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-
-const FaqPage = () => {
+const GalleryPage = () => {
+  
   useEffect(() => {
-    document.title = "FAQs | Jagriti IIT (BHU)";
-  }, []);
-
+    document.title = "Gallery | Jagriti IIT (BHU)"
+  }, [])
+  
   return (
     <>
-      <Faq></Faq>
-      <Footer />
+    <div>
+    <h1>Beautiful pictures coming soon!</h1>
+    <Footer />
+    </div>
     </>
   );
 };
 
-export default FaqPage;
+export default GalleryPage;

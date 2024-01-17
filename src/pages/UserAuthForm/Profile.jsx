@@ -7,8 +7,12 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import "../../App.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import bg_image from "./bg.png";
 import profile_default from "./profile.png";
-import EventsProfile from "../../components/Events/EventsProfile";
+import { Button } from "@mui/material";
+import EventCarousel from "./EventCarousel";
+import nothing from "./nothing.png";
+import "./Profile.css";
 
 const Profile = () => {
   var storedUserString = localStorage.getItem("user");
@@ -29,6 +33,7 @@ const Profile = () => {
   const profile_img = userObject?.photoURL;
 
   const firebase = useFirebase();
+  // firebase.eventData = null;
 
   const fetchEventData = (name) => {
     const Data = firebase.getAllDocuments(name);
@@ -129,9 +134,7 @@ const Profile = () => {
 
   return (
     <>
-      
-
-      <div>
+      {/* <div>
         <div class="container ">
           <div class="row" id="user-profile">
             <div class="col-lg-3 col-md-4 col-sm-4">
@@ -168,21 +171,6 @@ const Profile = () => {
                     <button onClick={logout} class="btn btnlogout edit-profile">
                       Logout
                     </button>
-
-                    {/* {saving && (
-                      <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
-                      </div>
-                    )}
-                    {error && <div className="alert alert-danger">{error}</div>}
-
-                    <button
-                      onClick={isEditing ? handleSave : handleEditToggle}
-                      className="bg-blue text-white rounded py-0.5 px-2 ml-[376px] "
-                    >
-                      <i class="fi fi-rr-pencil"></i>
-                      {isEditing ? "   Save" : "   Edit"}
-                    </button> */}
                   </div>
                 </div>
 
@@ -191,25 +179,11 @@ const Profile = () => {
                     <div class="profile-user-details clearfix">
                       <div class="profile-user-details-label">Name:</div>
                       <div class="profile-user-details-value">
-                        {/* {isEditing ? (
-                          <input
-                            className="border-blue"
-                            type="text"
-                            value={userDetails.displayName}
-                            onChange={(e) =>
-                              setUserDetails({
-                                ...userDetails,
-                                displayName: e.target.value,
-                              })
-                            }
-                          />
-                        ) : ( */}
                         <span>
                           {userObject?.displayName
                             ? `${userObject?.displayName}`
                             : "null"}
                         </span>
-                        {/* )} */}
                       </div>
                     </div>
 
@@ -285,7 +259,170 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      
+      </div> */}
+      <div
+        style={{
+          backgroundImage: `url(${bg_image})`,
+          backgroundSize: "cover",
+          minHeight: "210vh",
+        }}
+        className="bg"
+      >
+        <div className="container mx-auto">
+          <section className="absolute top-[163px] left-[400px] w-[903px] h-[347px] text-left text-lg text-gray-200 font-poppins info-section-1">
+            <div className="relative border-black rounded-full">
+              <img
+                className="profile-image absolute top-[-34px] left-[392px] rounded-[50%] w-[100px] h-[100px] z-10 border-black"
+                alt=""
+                src={`${profile_img ? profile_img : profile_default}`}
+                style={{ border: "2px solid #1A589B" }}
+              />
+            </div>
+            <div className="relative ">
+              <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-[297px] rounded-3xl info-div-1">
+                <div
+                  className="absolute top-[91px] left-[60px] leading-[26.4px] whitespace-pre-wrap text-black "
+                  style={{ fontWeight: "900" }}
+                >
+                  <p className="m-0">Name :</p>
+                  <p className="m-0 ">Institute :</p>
+                  <p className="m-0 ">Email :</p>
+                  <p className="m-0 ">Contact :</p>
+                </div>
+                <div
+                  className="absolute top-[91px] left-[562px] leading-[26.4px] whitespace-pre-wrap text-black info-1"
+                  style={{ fontWeight: "900" }}
+                >
+                  <p className="m-0 ">Course :</p>
+                  <p className="m-0 ">Year :</p>
+                  <p className="m-0 ">Gender :</p>
+                  <p className="m-0 ">Nationality :</p>
+                </div>
+                <div className="absolute top-[91px] left-[157px] leading-[26.4px] text-black ">
+                  <p className="m-0 ">{userObject?.displayName}</p>
+                  <p className="m-0">
+                    {userObject?.providerData?.institute
+                      ? `${userObject?.providerData?.institute}`
+                      : "null"}
+                  </p>
+                  <p className="m-0">
+                    {userObject?.email ? `${userObject?.email}` : "null"}
+                  </p>
+                  <p className="m-0">
+                    {userObject?.providerData?.phoneNumber
+                      ? `${userObject?.providerData?.phoneNumber}`
+                      : "null"}
+                  </p>
+                </div>
+                <div className="absolute top-[91px] left-[686px] leading-[26.4px] text-black info-2">
+                  <p className="m-0">
+                    {userObject?.providerData?.course
+                      ? `${userObject?.providerData?.course}`
+                      : "null"}
+                  </p>
+                  <p className="m-0">
+                    {userObject?.providerData?.year
+                      ? `${userObject?.providerData?.year}`
+                      : "null"}
+                  </p>
+                  <p className="m-0">
+                    {userObject?.providerData?.gender
+                      ? `${userObject?.providerData?.gender}`
+                      : "null"}
+                  </p>
+                  <p className="m-0">
+                    {userObject?.providerData?.nationality
+                      ? `${userObject?.providerData?.nationality}`
+                      : "null"}
+                  </p>
+                </div>
+
+                <div className="relative flex justify-between">
+                  <Button
+                    className="absolute edit top-[224px] left-[183px]"
+                    sx={{
+                      width: 235,
+                      backgroundColor: "#1A589B",
+                      borderRadius: "10px",
+                    }}
+                    color="primary"
+                    variant="contained"
+                  >
+                    Edit Profile
+                  </Button>
+                  <Button
+                    className="absolute logout top-[224px] left-[-213px]"
+                    sx={{
+                      width: 235,
+                      backgroundColor: "#B52E1F",
+                      "&:hover": {
+                        backgroundColor: "#c93322", // Replace 'newColorOnHover' with your desired color
+                      },
+                      borderRadius: "10px",
+                    }}
+                    color="primary"
+                    variant="contained"
+                    onClick={logout}
+                  >
+                    Log out
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="absolute top-[500px] left-[400px] w-[903px] text-left text-lg text-gray-200 font-poppins info-section-2">
+            <div
+              className="relative border-black rounded-full"
+              style={{ fontWeight: "900" }}
+            >
+              <h1 className="absolute top-[30px] left-[320px] text-[#1A589B] z-10 font-bold text-[2rem] text-event">
+                Registered Events
+                <hr className="my-4 border-t border-[#1A589B] border-2 w-full" />
+              </h1>
+            </div>
+            {firebase.eventData == null ? (
+              <div className="relative">
+                <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-screen rounded-3xl info-div-2">
+                  <img
+                    className="absolute w-[900px] h-[450px] z-10 mt-40 ml-2 not-img"
+                    alt=""
+                    src={`${nothing}`}
+                  />
+                  <h1 className="absolute text-[#000000] text-5xl mt-[620px] ml-[80px] not-res">
+                    You haven't registered for any event
+                  </h1>
+                  <Button
+                    className="absolute top-[720px] left-[320px] not-but"
+                    sx={{
+                      width: 235,
+                      backgroundColor: "#1A589B",
+                      borderRadius: "10px",
+                    }}
+                    color="primary"
+                    variant="contained"
+                  >
+                    Register Now
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div className="relative">
+                <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-screen rounded-3xl info-div-2">
+                  <div
+                    className="absolute top-[99px] left-[250px] whitespace-pre-wrap flex gap-20 payment"
+                    style={{ fontWeight: "900" }}
+                  >
+                    <h1 className="text-[#32BA7C]">Payment Verified : </h1>
+                    <h1 className="text-[#B52E1F]">Payment Unverified : </h1>
+                  </div>
+                  <div className="absolute top-[150px] left-[10px] ">
+                    <EventCarousel eventData={firebase.eventData} />
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+        </div>
       </div>
     </>
   );

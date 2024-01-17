@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
-        setNavbar_bg("bg-light-black");
+        setNavbar_bg("bg-main-navbar");
       } else {
         setNavbar_bg("bg-transparent");
       }
@@ -47,20 +47,19 @@ const Navbar = () => {
         <nav
           className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat`}
         >
-          <div className="flex flex-wrap items-center justify-between ml-20">
-          <Link to="/" className="items-center ">
-            <img
-              src="/assets/Jagriti_nav_logo.webp"
+          <div className="flex flex-wrap items-center justify-between ml-20 py-5">
+            <Link to="/" className="items-center ">
+              <img
+                src="/assets/Jagriti_nav_logo.webp"
                 className="h-5 mr-10 smd:h-9"
                 alt="Jagriti_Logo"
-            />
-          </Link>
+              />
+            </Link>
             <div
               className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
               <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
-
                 <li className="place-self-center">
                   <Link
                     to="/about"
@@ -102,12 +101,16 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="place-self-center">
-                  <Button
-                    text="Join CA Program"
-                    outline={true}
-                    buttonColor={"white"}
-                    path={"/CampusAmbassador"}
-                  />
+                  <Link
+                    to="/CampusAmbassador"
+                    className="navitem block py-2 pl-3 pr-4 text-white rounded-[10px] smd:p-0"
+                    style={{
+                      outline: "1px solid white",
+                      padding: "5px",
+                    }}
+                  >
+                    Join CA Program
+                  </Link>
                 </li>
                 <li
                   className={
@@ -118,7 +121,10 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-3 text-lg capitalize hover:bg-opacity-80 font-medium "
+                    className={`navitem block py-2 pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signin"
+                        ? "bg-white"
+                        : "bg-transparent"
+                      }`}
                     to="/signin"
                     style={{
                       width:
@@ -127,7 +133,11 @@ const Navbar = () => {
                         localStorage.getItem("user") != null ? "contents" : "",
                       fontSize:
                         localStorage.getItem("user") != null ? "0px" : "",
+                      color:
+                        curr.pathname === "/signin" ? "black" : "white",
+                      padding: "5px",
                     }}
+
                   >
                     Sign In
                   </Link>
@@ -141,7 +151,10 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-3 text-lg capitalize hover:bg-opacity-80 font-medium "
+                    className={`navitem block py-2 pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signup"
+                        ? "bg-white"
+                        : "bg-transparent"
+                      }`}
                     to="/signup"
                     style={{
                       width:
@@ -150,6 +163,9 @@ const Navbar = () => {
                         localStorage.getItem("user") != null ? "contents" : "",
                       fontSize:
                         localStorage.getItem("user") != null ? "0px" : "",
+                      color:
+                        curr.pathname === "/signup" ? "black" : "white",
+                      padding: "5px",
                     }}
                   >
                     Sign Up
@@ -162,7 +178,7 @@ const Navbar = () => {
                   }
                 >
                   <button
-                    className="rounded-full w-12 h-12 mt-2 ml-20 mr-20"
+                    className="rounded-full w-10 h-10 ml-8 mr-20"
                     style={{
                       width:
                         localStorage.getItem("user") == null ? "0px" : null,

@@ -4,9 +4,9 @@ import illus from './illus.png'
 import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
-import { useRef, useState,useContext,createContext } from "react";
+import { useRef, useState,useContext,createContext,useEffect } from "react";
 import { auth, provider } from "../../context/Firebase";
-import { collection, addDoc } from "firebase/firestore";
+import Footer from "../../components/footer/Footer";import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../context/Firebase";
 import Select from 'react-select';
 import college from './icon/college.png';
@@ -28,6 +28,9 @@ export function useUser() {
 }
 
 const UserAuthForm = ({ type }) => {
+  useEffect(() => {
+    document.title = "Sign In | Jagriti IIT (BHU)"
+  }, [])
 
 const [authState,setAuthState] = useState(true)
 
@@ -294,7 +297,8 @@ const options = [
           )):""}
 
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+
             <InputBox
             name="year"
             type="text"
@@ -305,6 +309,26 @@ const options = [
           ) : (
             ""
           )):""}
+
+
+
+
+   {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+          <InputBox
+          name="college"
+          type="text"
+          placeholder="College"
+          icon=""
+          ref={collegeRef}
+        /> 
+          ) : (
+            ""
+          )):""}
+
+
+
+
+
 
 
 
@@ -370,7 +394,7 @@ const options = [
         </div>
       </section>
     </AnimationWrapper>
-   
+   <Footer />
     </div>
   );
 };
