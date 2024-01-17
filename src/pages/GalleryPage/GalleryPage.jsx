@@ -9,7 +9,7 @@ const GalleryPage = () => {
   
   return (
     <>
-    <div>
+    <div className="bg">
     <h1>Beautiful pictures coming soon!</h1>
     <Footer />
     </div>

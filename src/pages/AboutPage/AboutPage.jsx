@@ -12,9 +12,8 @@ const AboutPage = () => {
   }, [])
   
   return (
-    <>
-      <div className="background-element"></div>
-      <div className="flex-row items-center justify-center text-center my-10 mx-5">
+      <div className="bg">
+      <div className="flex-row items-center justify-center text-center mx-5">
       <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
           <div className="circular-container1">
             <img
@@ -37,7 +36,7 @@ const AboutPage = () => {
       </motion.div>
       </div>
       <hr className=" h-[2px] bg-light-blue-700  mx-20" />
-      <div className="text-center my-10 mx-5">
+      <div className="text-center mx-5">
         <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
         <div className="circular-container2">
         <img className="ssclogo-overlay"
@@ -101,7 +100,7 @@ const AboutPage = () => {
         
 
       <Footer />
-    </>
+      </div>
   );
 };
 
