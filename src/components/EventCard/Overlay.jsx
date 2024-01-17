@@ -9,7 +9,7 @@ const Overlay = ({children,close}) => {
   };
   return (
     <motion.div
-      className={`overlay`}
+      className={style.overlay}
       onClick={close}
       variants={variants}
       initial={"closed"}
