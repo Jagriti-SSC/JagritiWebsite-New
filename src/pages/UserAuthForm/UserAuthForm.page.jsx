@@ -169,7 +169,6 @@ const options = [
 
   return (
     <div className="">
-      
     <AnimationWrapper keyValue={type}>
       <section className="h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
         <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 

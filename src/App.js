@@ -25,7 +25,6 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Navbar></Navbar>
-
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/about" element={<AboutPage />} />
