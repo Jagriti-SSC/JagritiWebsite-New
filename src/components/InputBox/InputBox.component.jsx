@@ -17,7 +17,7 @@ const InputBox = React.forwardRef(({ name , type , id , value , placeholder,icon
               defaultValue={value}
               id={id}
               ref={ref}
-              className="w-[100%] rounded-md px-[50px] py-2 bg-gry  border border-gry  placeholder:text-black placeholder:justify-center"
+              className="w-[100%] rounded-md px-[50px] py-2 bg-gry  border border-gry  placeholder:text-grey placeholder:justify-center"
             >
             </input>
             

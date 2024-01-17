@@ -18,6 +18,7 @@ import msg from './icon/msg.png';
 import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
+import "../../App.css";
 
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -77,7 +78,11 @@ const options = [
         
         localStorage.setItem('user', JSON.stringify(user));
         setAuthState(prev => !prev)
-        navigate('/userinfo');
+        if(type==="sign-in"){
+          navigate('/userinfo');
+        } else {
+          navigate('/');
+        }
       
       })
       .catch((error) => {
@@ -111,7 +116,7 @@ const options = [
         email: emailRef.current.value,
         gender: genderRef.current.value,
         nationality:nationalityRef.current.value,
-        occupation:occupationRef.current.value,
+        occupation:selectedOption.value,
         course:courseRef.current.value,
         year:yearRef.current.value,
         mobile:mobileNumberRef.current.value,
@@ -313,7 +318,7 @@ const options = [
 
 
 
-   {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+   {/* {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
           <InputBox
           name="college"
           type="text"
@@ -323,7 +328,7 @@ const options = [
         /> 
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
 
@@ -363,7 +368,7 @@ const options = [
           <button
             onClick={handleAuthState}
             type="submit"
-            className="whitespace-nowrap bg-white border-blue  text-blue rounded-[5px] py-3  text-xl capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[100%]  mx-auto"
+            className="whitespace-nowrap bg-white border border-blue text-blue rounded-[5px] py-3  text-xl capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[100%]  mx-auto"
           >
             <img src={googleIcon} className="w-5" />
             continue with google

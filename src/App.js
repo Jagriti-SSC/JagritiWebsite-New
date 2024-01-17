@@ -63,7 +63,7 @@ function App() {
       <Route exact path="/reset" element={<ResetPassword />} />
       <Route exact path="/userinfo" element={<UserInfo />} />
     </Routes>
-    <Footer></Footer>
+    
      
     <Toaster />
   </BrowserRouter>
