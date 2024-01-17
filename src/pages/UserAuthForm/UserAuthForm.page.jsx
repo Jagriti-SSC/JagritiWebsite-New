@@ -19,7 +19,7 @@ import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
 import "../../App.css";
-
+import bg_image from "./userbg.png";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const userContext = createContext();
@@ -168,9 +168,16 @@ const options = [
 
 
   return (
-    <div className="">
+    <div style={{
+      backgroundImage: `url(${bg_image})`,
+      backgroundSize: "cover",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}>
     <AnimationWrapper keyValue={type}>
-      <section className="h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
+      <div className="my-[50px]">
+      <section className="h-[70%] bg-white flex flex-col justify-start items-center mx-auto w-[80%] border rounded-[10px]">
         <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 
             <Link to='/signin' className={"text-xl font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-xl font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
@@ -397,6 +404,7 @@ const options = [
         </div>
         </div>
       </section>
+      </div>
     </AnimationWrapper>
    <Footer />
     </div>
