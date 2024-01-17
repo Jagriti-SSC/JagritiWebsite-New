@@ -3,7 +3,7 @@ import style from "./ClubCard.module.css";
 
 function ClubCard(props) {
   return (
-    <div className={`club_card my-5 pb-10 px-8 mx-3 lg:h-[min(450px,75vh)] w-[min(480px,75vw)] bg-white rounded-lg`}>
+    <div className={`${style.club_card} my-5 pb-10 px-8 mx-3 lg:h-[min(450px,75vh)] w-[min(480px,75vw)] bg-white rounded-lg`}>
   <div className={`rounded-full w-[150px] h-[150px] mx-auto p-4`}>
     <img
       className={`club_img w-[130px] h-[130px]`}
