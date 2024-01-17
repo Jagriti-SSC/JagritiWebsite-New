@@ -45,7 +45,7 @@ const Navbar = () => {
       <header>
         {/* Desktop Navbar */}
         <nav
-          className={`hidden smd:block ${navbar_bg} px-4 py-1.5 smd:px-4 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat`}
         >
           <div className="flex flex-wrap items-center justify-between ml-20 py-5">
             <Link to="/" className="items-center ">

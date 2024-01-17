@@ -4,9 +4,9 @@ import illus from './illus.png'
 import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
-import { useRef, useState,useContext,createContext,useEffect } from "react";
+import { useRef, useState,useContext,createContext } from "react";
 import { auth, provider } from "../../context/Firebase";
-import Footer from "../../components/footer/Footer";import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../context/Firebase";
 import Select from 'react-select';
 import college from './icon/college.png';
@@ -18,22 +18,18 @@ import msg from './icon/msg.png';
 import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
-import "../../App.css";
 
 
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-const userContext = createContext();
+// import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+// const userContext = createContext();
 
-export function useUser() {
-  return useContext(userContext)
-}
+// export function useUser() {
+//   return useContext(userContext)
+// }
 
-const UserAuthForm = ({ type }) => {
-  useEffect(() => {
-    document.title = "Sign In | Jagriti IIT (BHU)"
-  }, [])
+const UserInfo = ({ type }) => {
 
-const [authState,setAuthState] = useState(true)
+// const [authState,setAuthState] = useState(true)
 
 const options = [
   { value: 'School Student', label: 'School Student' },
@@ -62,38 +58,34 @@ const options = [
   
 
 
-  const handleAuthState  = () => {
-    setAuthState(prev => !prev)
-  }
+//   const handleAuthState  = () => {
+//     setAuthState(prev => !prev)
+//   }
 
  
    
-  async function authByGoogle(e) {
-    e.preventDefault()
-   await signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
+//   async function authByGoogle(e) {
+//     e.preventDefault()
+//    await signInWithPopup(auth, provider)
+//       .then((result) => {
+//         const credential = GoogleAuthProvider.credentialFromResult(result);
+//         const token = credential.accessToken;
+//         const user = result.user;
         
-        localStorage.setItem('user', JSON.stringify(user));
-        setAuthState(prev => !prev)
-        if(type==="sign-in"){
-          navigate('/userinfo');
-        } else {
-          navigate('/');
-        }
+//         localStorage.setItem('user', JSON.stringify(user));
+//         setAuthState(prev => !prev)
+//         navigate('/userinfo');
       
-      })
-      .catch((error) => {
+//       })
+//       .catch((error) => {
         
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         const email = error.customData.email;
+//         const credential = GoogleAuthProvider.credentialFromError(error);
        
-      });
-  }
+//       });
+//   }
   
 
 
@@ -101,22 +93,22 @@ const options = [
 
  
 
-  const handleSignup = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      setError("");
-      setLoading(true);
-      console.log(emailRef.current.value);
-      const user = await signup(emailRef.current.value, passwordRef.current.value);
-       console.log(user)
+    //   setError("");
+    //   setLoading(true);
+    //   console.log(emailRef.current.value);
+    //   const user = await signup(emailRef.current.value, passwordRef.current.value);
+    //    console.log(user)
        await addDoc(collection(db, "users"), {
-        userId: user.user.uid,
+       
         fullName: fullnameRef.current.value,
         email: emailRef.current.value,
         gender: genderRef.current.value,
         nationality:nationalityRef.current.value,
-        occupation:selectedOption.value,
+        occupation:selectedOption,
         course:courseRef.current.value,
         year:yearRef.current.value,
         mobile:mobileNumberRef.current.value,
@@ -134,29 +126,29 @@ const options = [
     }
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
 
-    setError("");
-    setLoading(true);
-    console.log(emailRef.current.value);
-    console.log(localStorage.getItem("user"))
-    await login(emailRef.current.value, passwordRef.current.value)
-      .then(() => {
+//     setError("");
+//     setLoading(true);
+//     console.log(emailRef.current.value);
+//     console.log(localStorage.getItem("user"))
+//     await login(emailRef.current.value, passwordRef.current.value)
+//       .then(() => {
         
-        console.log("User logged in");
+//         console.log("User logged in");
         
         
-      })
-      .catch((error) => {
-        setError("Failed to log in");
-      })
-      .finally(() => {
-        setLoading(false);
-        navigate("/");
-      });
+//       })
+//       .catch((error) => {
+//         setError("Failed to log in");
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//         navigate("/");
+//       });
     
-  };
+//   };
   
 
   
@@ -172,18 +164,19 @@ const options = [
       
     <AnimationWrapper keyValue={type}>
       <section className="h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
-        <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 
+        {/* <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 
             <Link to='/signin' className={"text-xl font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-xl font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
-        </div>
-        <div className="flex flex-row justify-center items-center w-[40%] mb-[20px]">
-        <hr className={"w-1/2  border-t-2  " + (type=="sign-in"? " border-blue" : " border-grey") } />
-        <hr className={"w-1/2  border-t-2  " + (type=="sign-up"? " border-blue" : " border-grey") } />
+        </div> */}
+        <div className="flex flex-row justify-center items-center w-[40%] ">
+        {/* <hr className={"w-1/2  border-t-2  " + (type=="sign-in"? " border-blue" : " border-grey") } />
+        <hr className={"w-1/2  border-t-2  " + (type=="sign-up"? " border-blue" : " border-grey") } /> */}
+        <p className="my-[20px]">  Fill the form to proceed further.</p>
         </div>
         <div className="flex flex-row w-[100%]">
         <form
           className="w-[50%]  p-8 rounded-[20px] flex-col  "
-           onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
+           onSubmit={(e) => ( handleFormSubmit(e))}
           //  onSubmit={(e) => (type === "sign-in" ? handleLogin(e) : handleSignup(e))}
           
         >
@@ -191,9 +184,9 @@ const options = [
             {type == "sign-in" ? "Welcome back" : "Join us today"}
           </h1> */}
 
-          {error && <p>{error}</p>}
+          {/* {error && <p>{error}</p>} */}
 
-          {type != "sign-in" ? (
+          
             <InputBox
               name="fullname"
               type="text"
@@ -201,10 +194,7 @@ const options = [
               icon={person}
               ref={fullnameRef}
             />
-          ) : (
-            ""
-          )}
-
+         
           <InputBox
             name="email"
             type="email"
@@ -224,7 +214,7 @@ const options = [
   
  
 
-{type != "sign-in" ? (
+
               <InputBox
               name="mobile number"
               type="text"
@@ -232,11 +222,9 @@ const options = [
               icon={phone}
               ref={mobileNumberRef}
             />
-          ) : (
-            ""
-          )}
+         
 
-{type != "sign-in" ? (
+
              <InputBox
              name="nationality"
              type="text"
@@ -244,13 +232,11 @@ const options = [
              icon={nationality}
              ref={nationalityRef}
            /> 
-          ) : (
-            ""
-          )}
+        
 
 
 
-{type != "sign-in" ? (
+
              <InputBox
              name="gender"
              type="text"
@@ -258,11 +244,9 @@ const options = [
              icon={gender}
              ref={genderRef}
            />
-          ) : (
-            ""
-          )}
+          
 
-{type != "sign-in" ? (
+
             <div className="my-4">
             <Select
                     defaultValue={selectedOption}
@@ -272,11 +256,9 @@ const options = [
                     className=""
                   />
             </div>
-          ) : (
-            ""
-          )}
+          
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{selectedOption && selectedOption.value=="College Student"?  (
           <InputBox
           name="college"
           type="text"
@@ -284,12 +266,10 @@ const options = [
           icon={college}
           ref={collegeRef}
         /> 
-          ) : (
-            ""
-          )):""}
+          ):""}
 
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{selectedOption && selectedOption.value=="College Student"? (
            <InputBox
            name="course"
            type="text"
@@ -297,13 +277,10 @@ const options = [
            icon={hat}
            ref={courseRef}
          /> 
-          ) : (
-            ""
-          )):""}
+          ):""}
 
 
-{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
-
+{selectedOption && selectedOption.value=="College Student"?  (
             <InputBox
             name="year"
             type="text"
@@ -311,29 +288,7 @@ const options = [
             icon={year}
             ref={yearRef}
           />
-          ) : (
-            ""
-          )):""}
-
-
-
-
-   {/* {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
-          <InputBox
-          name="college"
-          type="text"
-          placeholder="College"
-          icon=""
-          ref={collegeRef}
-        /> 
-          ) : (
-            ""
-          )):""} */}
-
-
-
-
-
+          ):""}
 
 
 
@@ -350,16 +305,16 @@ const options = [
 
         
           
-          {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
+          {/* {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""} */}
           <button
             disabled={loading}
             className="whitespace-nowrap bg-blue text-white rounded-[5px] w-[100%] font-normal text-xl capitalize hover:bg-opacity-80 block mx-auto mt-14 py-2"
             type="submit"
           >
-            {type.replace("-", " ")}
+            Submit
           </button>
 
-          <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
+          {/* <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
             <hr className="w-1/2 border-black" />
             <p>or</p>
             <hr className="w-1/2 border-black" />
@@ -368,11 +323,11 @@ const options = [
           <button
             onClick={handleAuthState}
             type="submit"
-            className="whitespace-nowrap bg-white border border-blue text-blue rounded-[5px] py-3  text-xl capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[100%]  mx-auto"
+            className="whitespace-nowrap bg-black text-white rounded-full py-3 px-6 text-xl capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[90%]  mx-auto"
           >
             <img src={googleIcon} className="w-5" />
             continue with google
-          </button>
+          </button> */}
 
           {/* {type == "sign-in" ? (
             <p className="mt-6 text-dark-gry text-xl text-center">
@@ -399,9 +354,9 @@ const options = [
         </div>
       </section>
     </AnimationWrapper>
-   <Footer />
+   
     </div>
   );
 };
 
-export default UserAuthForm;
+export default UserInfo;

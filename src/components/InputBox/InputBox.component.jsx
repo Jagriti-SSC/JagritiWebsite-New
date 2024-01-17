@@ -17,11 +17,12 @@ const InputBox = React.forwardRef(({ name , type , id , value , placeholder,icon
               defaultValue={value}
               id={id}
               ref={ref}
-              className="w-[100%] rounded-md px-[20px] py-2 bg-gry  border border-gry focus:bg-transparent placeholder:text-black placeholder:justify-center"
+              className="w-[100%] rounded-md px-[50px] py-2 bg-gry  border border-gry  placeholder:text-grey placeholder:justify-center"
             >
             </input>
             
-            <i className={"fi " + icon + " absolute left-4 top-1/3 "}></i>
+            {/* <i className={"fi " + icon + " absolute left-4 top-1/3 "}></i> */}
+            <img src={icon}  className="absolute left-4 top-1/4 h-[20px]"></img>
 
             {
                 type == "password" ?

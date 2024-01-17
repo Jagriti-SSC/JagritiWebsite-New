@@ -28,6 +28,8 @@ const CA = () => {
       }, [])
   return (
   <div>
+   
+    {/* <div className='section_top'></div> */}
     <div className='h-screen bg-center relative bg-no-repeat bg-cover w-full flex items-center justify-center mb-20 section_top ' >
             
             <div>

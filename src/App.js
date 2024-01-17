@@ -18,6 +18,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx";
 import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
+import UserInfo from './pages/UserAuthForm/UserInfo.jsx'
 
 function App() {
   return (
@@ -59,12 +60,55 @@ function App() {
               }
             />
           </Route>
-          <Route exact path="/reset" element={<ResetPassword />} />
-        </Routes>
+      <Route exact path="/reset" element={<ResetPassword />} />
+      <Route exact path="/userinfo" element={<UserInfo />} />
+    </Routes>
+    
+     
+    <Toaster />
+  </BrowserRouter>
+  </AuthProvider>
 
-        <Toaster />
-      </BrowserRouter>
-    </AuthProvider>
+        // <Routes>
+        //   <Route exact path="/" element={<HomePage />} />
+        //   <Route exact path="/about" element={<AboutPage />} />
+        //   <Route exact path="/events" element={<EventsPage />} />
+        //   <Route exact path="/team" element={<TeamPage />} />
+        //   <Route exact path="/faqs" element={<FaqPage />} />
+        //   <Route exact path="/ca" element={<CAPage />} />
+        //   <Route exact path="/gallery" element={<GalleryPage />} />
+        //   <Route
+        //     exact
+        //     path="/CampusAmbassador"
+        //     element={<CampusAmbassadorPage />}
+        //   />
+        //   <Route
+        //     exact
+        //     path="/signin"
+        //     element={<UserAuthForm type="sign-in" />}
+        //   />
+        //   <Route
+        //     exact
+        //     path="/signup"
+        //     element={<UserAuthForm type="sign-up" />}
+        //   />
+        //   {/* <Route exact path="/profile" element={localStorage.getItem("user")==null? <UserAuthForm type="sign-in"/> : <Profile />}/> */}
+        //   <Route element={<PrivateRoutes />}>
+        //     <Route
+        //       path="/profile"
+        //       element={
+        //         <>
+        //           <Profile />
+        //         </>
+        //       }
+        //     />
+        //   </Route>
+        //   <Route exact path="/reset" element={<ResetPassword />} />
+        // </Routes>
+
+    //     <Toaster />
+    //   </BrowserRouter>
+    // </AuthProvider>
   );
 }
 
