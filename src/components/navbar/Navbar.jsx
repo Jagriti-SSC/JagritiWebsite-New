@@ -317,16 +317,15 @@ const Navbar = () => {
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
-                      <Button
-                        text="Join CA Program"
-                        outline={true}
-                        buttonColor={"#1A589B"}
-                        customStyle={{ width: 224, fontSize: 14 }}
-                        onPress={() => closeButton.current.click()}
-                        path={"/campusambassador"}
-                      />
+                    <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/CampusAmbassador"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Join CA Program</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
-
                     <li
                       className={
                         "place-self-center mt-[10px]" +
@@ -336,7 +335,7 @@ const Navbar = () => {
                       }
                     >
                       <Link
-                        className="whitespace-nowrap bg-blue text-white rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium "
+                        className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
                         to="/signin"
                         style={{
                           width:
@@ -351,6 +350,7 @@ const Navbar = () => {
                       >
                         <button className="w-[184px]">Sign In</button>
                       </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li
                       className={
@@ -361,7 +361,7 @@ const Navbar = () => {
                       }
                     >
                       <Link
-                        className="whitespace-nowrap bg-white text-blue rounded-[10px] py-2.5 px-5 text-xl capitalize hover:bg-opacity-80 font-medium "
+                        className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
                         to="/signup"
                         style={{
                           width:
@@ -376,6 +376,7 @@ const Navbar = () => {
                       >
                         <button className="w-[184px]">Sign Up</button>
                       </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li
                       className={
@@ -406,6 +407,7 @@ const Navbar = () => {
                           />
                         </Link>
                       </button>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                   </ul>
                 </div>
