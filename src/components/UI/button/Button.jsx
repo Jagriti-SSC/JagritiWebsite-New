@@ -18,7 +18,7 @@ const Button = ({
   const navigate = useNavigate();
   const curr = useLocation();
   let backgroundColor = outline
-    ? "transparent"
+    ? curr.pathname==="/" ? "transparent" : "white"
     : disabled
     ? "#E4E4E4"
     : "#1A589B";
