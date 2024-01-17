@@ -5,7 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 const Preloader = (props) => {
   const color = "#000000"
   return (
-    <div className = {`preloader`} >
+    <div className = {style.preloader} >
       <ClipLoader  
         color= {color}
         loading={props.loading}
