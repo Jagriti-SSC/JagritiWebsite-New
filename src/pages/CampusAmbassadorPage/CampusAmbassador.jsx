@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
@@ -19,13 +19,16 @@ import {motion} from 'framer-motion';
 import {Link} from "react-router-dom";
 import "./CampusAmbassador.css"
 import Footer from '../../components/footer/Footer';
-
+import Button from '../../components/UI/button/Button';
 // color: rgb(26 88 155/var(--tw-text-opacity));
 
 const CA = () => {
     useEffect(() => {
         document.title = "CA | Jagriti IIT (BHU)"
       }, [])
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        localStorage.getItem("user") !== null
+    );
   return (
   <div>
    
@@ -37,15 +40,10 @@ const CA = () => {
                 text-6xl flex items-center justify-center mb-2 text-[#1A589B] text-center'>Become A Campus Ambassador</motion.div>
                 <motion.div variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-20 text-center text-white'>Join us to become a campus ambassador and proudly represent our brand on your college campus</motion.div>
                 <motion.div variants={fadeIn('up', 0.5)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
-                <a href="./ca" >
-                    <div className='applybtn'>
-                <button className='p-[10px] font-extrabold' >
-                    <span className='font-black'>Apply Now</span>
-                   
-                </button>
-                </div>
-                </a>
-                    
+                <Button
+                text={isLoggedIn ? "Apply Now" : "Apply Now"}
+                path={isLoggedIn ? "/ca" : "/signin"}
+                />
                 </motion.div>
             </div>
 
