@@ -22,6 +22,7 @@ import "../../App.css";
 import illus2 from './illus2.png'
 import infocard from './infocard.png'
 
+import bg_image from "./userbg.png";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const userContext = createContext();
@@ -170,10 +171,18 @@ const options = [
 
 
   return (
-    <div className="">
-      
+    <>
+       <div style={{
+      backgroundImage: `url(${bg_image})`,
+      backgroundSize: "cover",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+    }}>
     <AnimationWrapper keyValue={type}>
-         {/*  desktop view */} <section className="hidden   sm:h-[70%] sm:flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
+         {/*  desktop view */} 
+      <div className="my-[50px]">
+      <section className="hidden   sm:h-[70%] sm:flex flex-col justify-start bg-white items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
         <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 
             <Link to='/signin' className={"text-xl font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-xl font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
@@ -403,7 +412,7 @@ const options = [
 
       {/* Mobile view */}
 
-      <section className="sm:hidden   sm:h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
+      <section className="sm:hidden   sm:h-[70%] flex flex-col justify-start items-center bg-white mx-auto my-[50px] w-[80%] border rounded-[10px]">
         <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[10px] mb-[20px]"> 
             <Link to='/signin' className={"text-sm font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-sm font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
@@ -636,9 +645,11 @@ const options = [
         </div>
         </div>
       </section>
+      </div>
     </AnimationWrapper>
-   <Footer />
+    <Footer />
     </div>
+    </>
   );
 };
 

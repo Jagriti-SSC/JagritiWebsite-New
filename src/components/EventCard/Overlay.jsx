@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from "framer-motion";
-import "./Overlay.css"
+import style from "./Overlay.module.css"
 
 const Overlay = ({children,close}) => {
   const variants = {
@@ -9,7 +9,7 @@ const Overlay = ({children,close}) => {
   };
   return (
     <motion.div
-      className="overlay"
+      className={style.overlay}
       onClick={close}
       variants={variants}
       initial={"closed"}

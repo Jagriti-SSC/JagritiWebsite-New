@@ -1,3 +1,9 @@
+.bg {
+  background: url('/public/assets/bg.png');
+  background-size: cover;
+  min-height: "210vh";
+}
+
 .clubBox {
   display: flex;
   justify-content: center;

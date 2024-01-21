@@ -41,20 +41,19 @@ const EventsPage = () => {
 
 
   return (
-   <><>
-
+   <div className="bg">
       {loading ? <Preloader loading={loading}></Preloader> : <>
 
         {isAboveLargeScreen ?
-          (<><motion.div className=" flex justify-around md:w-[70%] mx-auto mt-[44px] md:flex-row flex-col items-center md:gap-0 gap-3">
-            <div>
+          (<><motion.div className=" flex justify-around md:w-[70%] mx-auto md:flex-row flex-col items-center md:gap-0 gap-3">
+            <div className="mt-[44px]">
               <Button text="Pre-Events" outline={eventType !== "pre-event"} onPress={() => setEventType("pre-event")}></Button>
             </div>
-            <div>
+            <div className="mt-[44px]">
               <Button text="Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
             </div>
-            <div>
-              <Button text="Guest talks" outline={eventType !== "guest-talk"} onPress={() => setEventType("guest-talk")}></Button>
+            <div className="mt-[44px]">
+              <Button text="Guest Talks" outline={eventType !== "guest-talk"} onPress={() => setEventType("guest-talk")}></Button>
             </div>
 
 
@@ -145,9 +144,10 @@ const EventsPage = () => {
 
           </>)}
 
-
       </>}
-    </><Footer /></>
+    
+    <Footer />
+    </div>
   );
 };
 
