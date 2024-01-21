@@ -19,6 +19,9 @@ import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
 import "../../App.css";
+import illus2 from './illus2.png'
+import infocard from './infocard.png'
+
 import bg_image from "./userbg.png";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -114,8 +117,8 @@ const options = [
         userId: user.user.uid,
         fullName: fullnameRef.current.value,
         email: emailRef.current.value,
-        gender: genderRef.current.value,
-        nationality:nationalityRef.current.value,
+        // gender: genderRef.current.value,
+        // nationality:nationalityRef.current.value,
         occupation:selectedOption.value,
         course:courseRef.current.value,
         year:yearRef.current.value,
@@ -168,7 +171,8 @@ const options = [
 
 
   return (
-    <div style={{
+    <>
+       <div style={{
       backgroundImage: `url(${bg_image})`,
       backgroundSize: "cover",
       minHeight: "100vh",
@@ -176,8 +180,9 @@ const options = [
       flexDirection: "column",
     }}>
     <AnimationWrapper keyValue={type}>
+         {/*  desktop view */} 
       <div className="my-[50px]">
-      <section className="h-[70%] bg-white flex flex-col justify-start items-center mx-auto w-[80%] border rounded-[10px]">
+      <section className="hidden   sm:h-[70%] sm:flex flex-col justify-start bg-white items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
         <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[100px] mb-[20px]"> 
             <Link to='/signin' className={"text-xl font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-xl font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
@@ -242,7 +247,7 @@ const options = [
             ""
           )}
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
              <InputBox
              name="nationality"
              type="text"
@@ -252,11 +257,11 @@ const options = [
            /> 
           ) : (
             ""
-          )}
+          )} */}
 
 
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
              <InputBox
              name="gender"
              type="text"
@@ -266,7 +271,7 @@ const options = [
            />
           ) : (
             ""
-          )}
+          )} */}
 
 {type != "sign-in" ? (
             <div className="my-4">
@@ -377,7 +382,7 @@ const options = [
             className="whitespace-nowrap bg-white border border-blue text-blue rounded-[5px] py-3  text-xl capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[100%]  mx-auto"
           >
             <img src={googleIcon} className="w-5" />
-            continue with google
+               <span> continue with google </span>
           </button>
 
           {/* {type == "sign-in" ? (
@@ -404,10 +409,247 @@ const options = [
         </div>
         </div>
       </section>
+
+      {/* Mobile view */}
+
+      <section className="sm:hidden   sm:h-[70%] flex flex-col justify-start items-center bg-white mx-auto my-[50px] w-[80%] border rounded-[10px]">
+        <div className="w-[100%] flex justify-center items-center mt-[40px] gap-[10px] mb-[20px]"> 
+            <Link to='/signin' className={"text-sm font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
+            <Link to='/signup' className={"text-sm font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
+        </div>
+        <div className="flex flex-row justify-center items-center w-[40%] mb-[20px]">
+        <hr className={"w-1/2  border-t-2  " + (type=="sign-in"? " border-blue" : " border-grey") } />
+        <hr className={"w-1/2  border-t-2  " + (type=="sign-up"? " border-blue" : " border-grey") } />
+        </div>
+        <div className="flex flex-col w-[100%]">
+        <div className="flex flex-col justify-center items-center w-[100%] my-[30px]">
+              
+              <img src={illus2}  />
+              
+
+       </div>
+        <form
+          className="w-[100%]  p-8 rounded-[20px] flex-col  "
+           onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
+          //  onSubmit={(e) => (type === "sign-in" ? handleLogin(e) : handleSignup(e))}
+          
+        >
+          {/* <h1 className="text-4xl font-gelasio capitalize text-center mb-10">
+            {type == "sign-in" ? "Welcome back" : "Join us today"}
+          </h1> */}
+
+          {error && <p>{error}</p>}
+
+          {type != "sign-in" ? (
+            <InputBox
+              name="fullname"
+              type="text"
+              placeholder="Full Name"
+              icon={person}
+              ref={fullnameRef}
+            />
+          ) : (
+            ""
+          )}
+
+          <InputBox
+            name="email"
+            type="email"
+            placeholder="Email"
+            icon={msg}
+            ref={emailRef}
+          />
+
+          <InputBox
+            name="password"
+            type="password"
+            placeholder="Password"
+            icon={lock}
+            ref={passwordRef}
+          />
+
+  
+ 
+
+{type != "sign-in" ? (
+              <InputBox
+              name="mobile number"
+              type="text"
+              placeholder="Mobile Number"
+              icon={phone}
+              ref={mobileNumberRef}
+            />
+          ) : (
+            ""
+          )}
+
+{/* {type != "sign-in" ? (
+             <InputBox
+             name="nationality"
+             type="text"
+             placeholder="Nationality"
+             icon={nationality}
+             ref={nationalityRef}
+           /> 
+          ) : (
+            ""
+          )}
+
+
+
+{type != "sign-in" ? (
+             <InputBox
+             name="gender"
+             type="text"
+             placeholder="Gender"
+             icon={gender}
+             ref={genderRef}
+           />
+          ) : (
+            ""
+          )} */}
+
+{type != "sign-in" ? (
+            <div className="my-4">
+            <Select
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    ref={occupationRef}
+                    className=""
+                  />
+            </div>
+          ) : (
+            ""
+          )}
+
+{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+          <InputBox
+          name="college"
+          type="text"
+          placeholder="College"
+          icon={college}
+          ref={collegeRef}
+        /> 
+          ) : (
+            ""
+          )):""}
+
+
+{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+           <InputBox
+           name="course"
+           type="text"
+           placeholder="Course"
+           icon={hat}
+           ref={courseRef}
+         /> 
+          ) : (
+            ""
+          )):""}
+
+
+{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+
+            <InputBox
+            name="year"
+            type="text"
+            placeholder="Year"
+            icon={year}
+            ref={yearRef}
+          />
+          ) : (
+            ""
+          )):""}
+
+
+
+
+   {/* {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+          <InputBox
+          name="college"
+          type="text"
+          placeholder="College"
+          icon=""
+          ref={collegeRef}
+        /> 
+          ) : (
+            ""
+          )):""} */}
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+        
+          
+          {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
+          <button
+            disabled={loading}
+            className="whitespace-nowrap bg-blue text-white rounded-[5px] w-[100%] font-normal text-xl capitalize hover:bg-opacity-80 block mx-auto mt-14 py-2"
+            type="submit"
+          >
+            {type.replace("-", " ")}
+          </button>
+
+          <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
+            <hr className="w-1/2 border-black" />
+            <p>or</p>
+            <hr className="w-1/2 border-black" />
+          </div>
+
+          <button
+            onClick={handleAuthState}
+            type="submit"
+            className="whitespace-nowrap bg-white border border-blue text-blue rounded-[5px] py-3  text-[15px] capitalize hover:bg-opacity-80 flex items-center justify-center gap-4 w-[100%]  mx-auto"
+          >
+            <img src={googleIcon} className="w-5" />
+               <span> continue with google </span>
+          </button>
+
+          {/* {type == "sign-in" ? (
+            <p className="mt-6 text-dark-gry text-xl text-center">
+              Don't have an account?
+              <Link to="/signup" className="underline text-black text-xl ml-1">
+                Join us today
+              </Link>
+            </p>
+          ) : (
+            <p className="mt-6 text-dark-gry text-xl text-center">
+              Already a member?
+              <Link to="/signin" className="underline text-black text-xl ml-1">
+                Sign in here
+              </Link>
+            </p>
+          )} */}
+        </form>
+        <div className="flex flex-col justify-center items-center w-[100%] mb-[30px]">
+              
+               <img src={infocard}  />
+               
+
+        </div>
+        </div>
+      </section>
       </div>
     </AnimationWrapper>
-   <Footer />
+    <Footer />
     </div>
+    </>
   );
 };
 

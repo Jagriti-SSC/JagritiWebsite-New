@@ -38,7 +38,7 @@ const GalleryFirstLine = () => {
         <p className="cursor-pointer mx-10 ">Event abc</p>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="35" className=" w-full mx-auto relative" >
+      <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className=" w-full mx-auto relative" >
 
         <a className="cursor-pointer mx-10 " target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
@@ -61,7 +61,7 @@ const GalleryFirstLine = () => {
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img1} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="55" className=" mx-auto w-full relative" >
+      <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className=" mx-auto w-full relative" >
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img12} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>

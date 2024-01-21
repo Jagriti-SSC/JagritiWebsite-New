@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 
 import AboutPage from "./pages/AboutPage/AboutPage";
 import CAPage from "./pages/CAPage/CAPage";
+import EventPage from "./pages/EventPage/EventPage";
 import CampusAmbassadorPage from "./pages/CampusAmbassadorPage/CampusAmbassador";
 import EventsPage from "./pages/EventsPage/EventsPage";
 import HomePage from "./pages/Homepage/HomePage";
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/team" element={<TeamPage />} />
           <Route exact path="/faqs" element={<FaqPage />} />
           <Route exact path="/ca" element={<CAPage />} />
+          <Route exact path="/event" element={<EventPage />} />
           <Route exact path="/gallery" element={<GalleryPage />} />
           <Route
             exact
