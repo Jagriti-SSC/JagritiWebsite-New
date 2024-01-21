@@ -5,14 +5,17 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import style from "./EventForm.module.css";
+import style from "./EventFormTeam.module.css";
 import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
+import { useLocation } from 'react-router-dom';
 
-const EventForm = forwardRef((props, ref) => {
+const SecondPage = forwardRef((props, ref) => {
 
+  const location = useLocation();
+  const { leader, participants } = location.state;
   var storedUserString = localStorage.getItem("user");
   console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -47,10 +50,10 @@ const EventForm = forwardRef((props, ref) => {
     const userId = uuidv4();
     if (validateDetails()) {
       const promise = Promise.all([
-        firebase.addDocument("event-form", {
+        firebase.addDocument("eventteam-form", {
           userId: `${userId}.${id.name.split(".").pop()}`,
         }),
-        firebase.uploadFile(`EventForm/${userId}.${id.name.split(".").pop()}`, id),
+        firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
       ]);
 
       toast.promise(
@@ -122,7 +125,12 @@ const EventForm = forwardRef((props, ref) => {
                 > 
                 </input>
               </div>
-              <div
+              <div className="absolute top-[225px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
+                <h2>Team Members</h2>
+                <p>Leader: {leader}</p>
+                <p>Participants: {participants.join(' , ')}</p>
+              </div>
+              {/* <div
                 className="absolute top-[225px] left-[60px] leading-[26.4px] whitespace-pre-wrap text-black "
                 style={{ fontWeight: "900" }}
               >
@@ -177,8 +185,9 @@ const EventForm = forwardRef((props, ref) => {
                     ? `${userObject?.providerData?.nationality}`
                     : "null"}
                 </p>
-              </div>
-            </div>
+                
+              </div>*/}
+            </div> 
             <button type="submit">Submit</button>
           </form>
         </div>
@@ -188,4 +197,4 @@ const EventForm = forwardRef((props, ref) => {
   );
 });
 
-export default EventForm;
+export default SecondPage;

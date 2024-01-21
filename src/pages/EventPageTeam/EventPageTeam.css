@@ -1,0 +1,7 @@
+.skewed-bg {
+  background: linear-gradient(260.35deg, #1a589b 13.84%, #1b78dc 89.85%);
+  padding: 30vh 0;
+  transform: skew(0deg, -10deg) translateY(-125px);
+  position: relative;
+  z-index: -1;
+}

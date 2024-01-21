@@ -5,13 +5,15 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import style from "./EventForm.module.css";
+import { Link } from 'react-router-dom';
+import style from "./EventFormTeam.module.css";
 import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
+import Button from "../UI/button/Button";
 
-const EventForm = forwardRef((props, ref) => {
+const EventFormTeam = forwardRef((props, ref) => {
 
   var storedUserString = localStorage.getItem("user");
   console.log(storedUserString);
@@ -26,74 +28,93 @@ const EventForm = forwardRef((props, ref) => {
     Promise.all([fetchEventData("events")]);
   }, []);
 
+  // const [leader, setLeader] = useState({userObject?.email,''});
+  const leader = userObject?.email ? `${userObject?.email}` : "null";
+  const [participants, setParticipants] = useState(['']);
+
+  // const handleLeaderChange = (event) => {
+  //   setLeader(event.target.value);
+  // };
+
+  const handleParticipantChange = (event, index) => {
+    const newParticipants = [...participants];
+    newParticipants[index] = event.target.value;
+    setParticipants(newParticipants);
+  };
+
+  const handleAddParticipant = () => {
+    if (participants.length < 4) {
+      setParticipants([...participants, '']);
+    }
+  };
 
   const firebase = useFirebase();
-  const [id, setId] = useState(undefined);
-  let done = false;
+  // const [id, setId] = useState(undefined);
+  // let done = false;
 
-  const contactRef = useRef();
-  const socialRef = useRef();
+  // const contactRef = useRef();
+  // const socialRef = useRef();
   const gridRef = useRef();
 
-  const validateDetails = () => {
-    const idValid = id !== undefined;
-    return (
-      idValid
-    );
-  };
+  // const validateDetails = () => {
+  //   const idValid = id !== undefined;
+  //   return (
+  //     idValid
+  //   );
+  // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const userId = uuidv4();
-    if (validateDetails()) {
-      const promise = Promise.all([
-        firebase.addDocument("event-form", {
-          userId: `${userId}.${id.name.split(".").pop()}`,
-        }),
-        firebase.uploadFile(`EventForm/${userId}.${id.name.split(".").pop()}`, id),
-      ]);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const userId = uuidv4();
+  //   if (validateDetails()) {
+  //     const promise = Promise.all([
+  //       firebase.addDocument("eventteam-form", {
+  //         userId: `${userId}.${id.name.split(".").pop()}`,
+  //       }),
+  //       firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
+  //     ]);
 
-      toast.promise(
-        promise,
-        {
-          loading: "Uploading the Form",
-          success: (data) => {
-            setId(undefined);
-            return "Form Submitted Successfully!";
-          },
-          error: "Error while submitting Form!",
-        },
-        {
-          success: {
-            duration: 10000,
-          },
-        }
-      );
-    } else {
-      toast.error("Either of the Details is Invalid");
-      return;
-    }
-  };
+  //     toast.promise(
+  //       promise,
+  //       {
+  //         loading: "Uploading the Form",
+  //         success: (data) => {
+  //           setId(undefined);
+  //           return "Form Submitted Successfully!";
+  //         },
+  //         error: "Error while submitting Form!",
+  //       },
+  //       {
+  //         success: {
+  //           duration: 10000,
+  //         },
+  //       }
+  //     );
+  //   } else {
+  //     toast.error("Either of the Details is Invalid");
+  //     return;
+  //   }
+  // };
 
-  useLayoutEffect(() => {
-    if (document.documentElement.clientWidth <= 750) {
-      if (done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
-          }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 30
-        }px`;
-      socialRef.current.style.position = "relative";
-      socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
-        }px`;
-      done = true;
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (document.documentElement.clientWidth <= 750) {
+  //     if (done == false)
+  //       ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
+  //         }px`;
+  //     socialRef.current.style.height = `${contactRef.current.clientHeight + 30
+  //       }px`;
+  //     socialRef.current.style.position = "relative";
+  //     socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
+  //     socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
+  //       }px`;
+  //     done = true;
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    console.log(id);
-    console.log(id?.name.split(".").pop());
-  }, [id]);
+  // useEffect(() => {
+  //   console.log(id);
+  //   console.log(id?.name.split(".").pop());
+  // }, [id]);
 
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
@@ -106,7 +127,7 @@ const EventForm = forwardRef((props, ref) => {
           <img src={event_img} alt="aesthetic-image"></img>
         </div>
         <div className={style.event_form_div}>
-          <form className={style.event_form} onSubmit={handleSubmit} action="#">
+          {/* <form className={style.event_form} onSubmit={handleSubmit} action="#">
             <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-[250px] rounded-3xl info-div-1">
 
               <label htmlFor="icard" className="absolute top-[150px] left-[75px] ">Payment Slip</label>
@@ -180,7 +201,42 @@ const EventForm = forwardRef((props, ref) => {
               </div>
             </div>
             <button type="submit">Submit</button>
-          </form>
+          </form> */}
+          <div>
+        <center><h1>Team Registration</h1></center>
+        <form>
+          <label>
+            Leader Mail ID:
+            {/* <input type="text" value={leader} onChange={handleLeaderChange} /> */}
+            {userObject?.email ? `  ${userObject?.email}` : "null"}
+          </label>
+          <br />
+          <br />
+          <label>
+            Participants:
+            {participants.map((participant, index) => (
+              <div key={index}>
+                <input
+                  type="text"
+                  value={participant}
+                  onChange={(event) => handleParticipantChange(event, index)}
+                />
+              </div>
+            ))}
+          </label>
+          <br />
+          <Button text="Add Participant" onClick={handleAddParticipant}>
+            
+          </Button>
+          <br />
+          <Button text="Submit"><Link to="/secondpage" state={{ leader, participants }}>
+          </Link></Button>
+          
+          {/* <Button text="submit" path="/secondpage"></Button> */}
+        </form>
+
+        {/* <Route path="/second-page" element={<SecondPage />} /> */}
+      </div>
         </div>
       </div>
     </div>
@@ -188,4 +244,11 @@ const EventForm = forwardRef((props, ref) => {
   );
 });
 
-export default EventForm;
+export default EventFormTeam;
+
+
+
+
+
+
+
