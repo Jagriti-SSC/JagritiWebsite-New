@@ -45,7 +45,7 @@ const Navbar = () => {
       <header>
         {/* Desktop Navbar */}
         <nav
-          className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
         >
           <div className="flex flex-wrap items-center justify-between ml-20 py-5">
             <Link to="/" className="items-center ">
@@ -299,7 +299,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         onClick={() => closeButton.current.click()}
-                        to="/events"
+                        to="/gallery"
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
                         <span className="whitespace-nowrap">Gallery</span>
