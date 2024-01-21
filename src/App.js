@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import CAPage from "./pages/CAPage/CAPage";
 import EventPage from "./pages/EventPage/EventPage";
+import EventPageTeam from "./pages/EventPageTeam/EventPageTeam";
 import CampusAmbassadorPage from "./pages/CampusAmbassadorPage/CampusAmbassador";
 import EventsPage from "./pages/EventsPage/EventsPage";
 import HomePage from "./pages/Homepage/HomePage";
@@ -20,6 +21,7 @@ import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx";
 import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
 import UserInfo from './pages/UserAuthForm/UserInfo.jsx'
+import SecondPage from "./components/EventFormTeam/SecondPage.jsx";
 
 function App() {
   return (
@@ -79,6 +81,26 @@ function App() {
               }
             />
           </Route>   
+          <Route element={<PrivateRoutes />}>
+            <Route
+              path="/eventteam"
+              element={
+                <>
+                  <EventPageTeam />
+                </>
+              }
+            />
+          </Route>  
+          <Route element={<PrivateRoutes />}>
+            <Route
+              path="/secondpage"
+              element={
+                <>
+                  <SecondPage />
+                </>
+              }
+            />
+          </Route> 
       <Route exact path="/reset" element={<ResetPassword />} />
       <Route exact path="/userinfo" element={<UserInfo />} />
     </Routes>

@@ -1,15 +1,17 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import "./EventPage.css";
-import EventForm from "../../components/EventForm/EventForm";
+import "./EventPageTeam.css";
+import EventFormTeam from "../../components/EventFormTeam/EventFormTeam";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
-const EventPage = () => {
+const EventPageTeam = () => {
   const formRef = useRef();
   const divRef = useRef();
 
   useLayoutEffect(() => {
-    divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
+    // divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
+
+    divRef.current.style.height = "500px";
   }, [formRef, divRef]);
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const EventPage = () => {
     <>
       
       <div ref={divRef} style={{ position: "relative" }}>
-      <EventForm ref={formRef} />
+      <EventFormTeam ref={formRef} />
       <div className="skewed-bg" />
     </div>
     <Footer />
@@ -29,4 +31,4 @@ const EventPage = () => {
   );
 };
 
-export default EventPage;
+export default EventPageTeam;
