@@ -45,8 +45,8 @@ const options = [
   const fullnameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const genderRef = useRef();
-  const nationalityRef = useRef();
+  // const genderRef = useRef();
+  // const nationalityRef = useRef();
   const occupationRef = useRef();
   const courseRef = useRef();
   const yearRef = useRef();
@@ -106,8 +106,8 @@ const options = [
        
         fullName: fullnameRef.current.value,
         email: emailRef.current.value,
-        gender: genderRef.current.value,
-        nationality:nationalityRef.current.value,
+        // gender: genderRef.current.value,
+        // nationality:nationalityRef.current.value,
         occupation:selectedOption,
         course:courseRef.current.value,
         year:yearRef.current.value,
@@ -174,7 +174,7 @@ const options = [
         </div>
         <div className="flex flex-row w-[100%]">
         <form
-          className="w-[50%]  p-8 rounded-[20px] flex-col  "
+          className="w-[100%]  sm:w-[50%]  p-8 rounded-[20px] flex-col  "
            onSubmit={(e) => ( handleFormSubmit(e))}
           //  onSubmit={(e) => (type === "sign-in" ? handleLogin(e) : handleSignup(e))}
           
@@ -224,25 +224,25 @@ const options = [
          
 
 
-             <InputBox
+             {/* <InputBox
              name="nationality"
              type="text"
              placeholder="Nationality"
              icon={nationality}
              ref={nationalityRef}
-           /> 
+           />  */}
         
 
 
 
 
-             <InputBox
+             {/* <InputBox
              name="gender"
              type="text"
              placeholder="Gender"
              icon={gender}
              ref={genderRef}
-           />
+           /> */}
           
 
 
@@ -344,7 +344,7 @@ const options = [
             </p>
           )} */}
         </form>
-        <div className="flex flex-col justify-center items-center w-[50%]">
+        <div className="hidden sm:flex flex-col justify-center items-center w-[50%]">
               
               {type== "sign-in" ?( <img src={illus} className= "h-[250px]" ></img>):( <img src={illus} className= "h-[350px]" ></img>)}
               
