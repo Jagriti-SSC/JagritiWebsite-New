@@ -11,7 +11,8 @@ import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const EventFormTeam = forwardRef((props, ref) => {
 
   var storedUserString = localStorage.getItem("user");
@@ -127,12 +128,8 @@ const EventFormTeam = forwardRef((props, ref) => {
         </div>
         <div className={style.event_form_div}>
           <div>
-        <center><h2>Team Registration</h2></center>
-        <form>
-          {/* <label>
-            Leader:
-            <input type="text" value={leader} onChange={handleLeaderChange} />
-          </label> */}
+        <center><h2 className={style.event_heading}>Team Registration</h2></center>
+        <form className={style.form}>
           <h5>
             Leader Mail ID: {userObject?.email ? `  ${userObject?.email}` : "null"}</h5>
 
@@ -144,6 +141,7 @@ const EventFormTeam = forwardRef((props, ref) => {
                 <input
                   type="text"
                   value={participant}
+                  placeholder="Enter participant's mail id"
                   onChange={(event) => handleParticipantChange(event, index)}
                 />
               </div>
@@ -151,11 +149,12 @@ const EventFormTeam = forwardRef((props, ref) => {
           </label>
           <br />
           <button type="button" onClick={handleAddParticipant}>
-            Add more participants
-          </button>
+            Add participants <FontAwesomeIcon icon={faPlus} />
+          </button> 
+
           <br />
           <Link to="/secondpage" state={{ leader, participants }}>
-            Submit
+          <button type = "button"> Submit </button>
           </Link>
           {/* <Button text="submit" path="/secondpage"></Button> */}
         </form>
