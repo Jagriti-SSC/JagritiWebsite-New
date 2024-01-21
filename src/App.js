@@ -32,6 +32,8 @@ function App() {
           <Route exact path="/events" element={<EventsPage />} />
           <Route exact path="/team" element={<TeamPage />} />
           <Route exact path="/faqs" element={<FaqPage />} />
+          <Route exact path="/ca" element={<CAPage />} />
+          <Route exact path="/event" element={<EventPage />} />
           <Route exact path="/gallery" element={<GalleryPage />} />
           <Route
             exact
@@ -59,26 +61,6 @@ function App() {
               }
             />
           </Route>
-          <Route element={<PrivateRoutes />}>
-            <Route
-              path="/ca"
-              element={
-                <>
-                  <Profile />
-                </>
-              }
-            />
-          </Route>
-          <Route element={<PrivateRoutes />}>
-            <Route
-              path="/event"
-              element={
-                <>
-                  <Profile />
-                </>
-              }
-            />
-          </Route>   
       <Route exact path="/reset" element={<ResetPassword />} />
       <Route exact path="/userinfo" element={<UserInfo />} />
     </Routes>
