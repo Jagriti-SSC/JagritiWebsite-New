@@ -117,8 +117,29 @@ const options = [
       setError("");
       setLoading(true);
       console.log(emailRef.current.value);
+      const name=fullnameRef.current.value.length>0?fullnameRef.current.value:fullnameRef2.current.value
       const email=emailRef.current.value.length>0?emailRef.current.value:emailRef2.current.value
       const pass=passwordRef.current.value.length>0?passwordRef.current.value:passwordRef2.current.value
+      const mobile=mobileNumberRef.current.value.length>0?mobileNumberRef.current.value:mobileNumberRef2.current.value
+      const college=collegeRef.current.value.length>0?collegeRef.current.value:collegeRef2.current.value
+      const course=courseRef.current.value.length>0?courseRef.current.value:courseRef2.current.value
+      const year=yearRef.current.value.length>0?yearRef.current.value:yearRef2.current.value
+      const formData={
+        name: name,
+        mobile:mobile,
+        email: email,
+        college:college,
+        course:course,
+        year:year,
+      }
+      const url=process.env.REACT_APP_BASE_URL
+      
+      const response = await fetch(`${url}/auth/createuser`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if(response.ok){
       const user = await signup(email, pass);
        console.log(user)
       //  await addDoc(collection(db, "users"), {
@@ -135,8 +156,9 @@ const options = [
 
 
       // });
+
       navigate("/");
-      console.log("User created");
+      console.log("User created");}
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
