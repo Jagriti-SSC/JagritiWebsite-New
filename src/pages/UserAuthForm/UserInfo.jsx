@@ -56,6 +56,41 @@ const options = [
   const [loading, setLoading] = useState("");
   const navigate = useNavigate();
   
+
+
+//   const handleAuthState  = () => {
+//     setAuthState(prev => !prev)
+//   }
+
+ 
+   
+//   async function authByGoogle(e) {
+//     e.preventDefault()
+//    await signInWithPopup(auth, provider)
+//       .then((result) => {
+//         const credential = GoogleAuthProvider.credentialFromResult(result);
+//         const token = credential.accessToken;
+//         const user = result.user;
+        
+//         localStorage.setItem('user', JSON.stringify(user));
+//         setAuthState(prev => !prev)
+//         navigate('/userinfo');
+      
+//       })
+//       .catch((error) => {
+        
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         const email = error.customData.email;
+//         const credential = GoogleAuthProvider.credentialFromError(error);
+       
+//       });
+//   }
+  
+
+
+
+
  
 
   const handleFormSubmit = async (e) => {
@@ -186,6 +221,29 @@ const options = [
               icon={phone}
               ref={mobileNumberRef}
             />
+         
+
+
+             {/* <InputBox
+             name="nationality"
+             type="text"
+             placeholder="Nationality"
+             icon={nationality}
+             ref={nationalityRef}
+           />  */}
+        
+
+
+
+
+             {/* <InputBox
+             name="gender"
+             type="text"
+             placeholder="Gender"
+             icon={gender}
+             ref={genderRef}
+           /> */}
+          
 
 
             <div className="my-4">
@@ -231,6 +289,20 @@ const options = [
           />
           ):""}
 
+
+
+
+  
+
+
+
+
+
+
+
+
+
+        
           
           {/* {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""} */}
           <button
