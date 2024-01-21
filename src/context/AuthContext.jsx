@@ -76,15 +76,14 @@ async function logout(){
 }
 
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUserCredential(user)
-            
-            setLoading(false)
-        })
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUserCredential(user);
+      setLoading(false);
+  });
 
-        return unsubscribe()
-    },[])
+  return () => unsubscribe; 
+}, []);
      
      
      
