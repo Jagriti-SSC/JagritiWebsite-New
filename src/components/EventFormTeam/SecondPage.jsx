@@ -5,7 +5,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import style from "./EventFormTeam.module.css";
+import style from "./SecondPage.module.css";
 import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
@@ -99,6 +99,7 @@ const SecondPage = forwardRef((props, ref) => {
   }, [id]);
 
   return (
+    <div>
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
@@ -109,7 +110,7 @@ const SecondPage = forwardRef((props, ref) => {
           <img src={event_img} alt="aesthetic-image"></img>
         </div>
         <div className={style.event_form_div}>
-          <form className={style.event_form} onSubmit={handleSubmit} action="#">
+          <form className={style.event_form}>
             <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-[250px] rounded-3xl info-div-1">
 
               <label htmlFor="icard" className="absolute top-[150px] left-[75px] ">Payment Slip</label>
@@ -188,10 +189,12 @@ const SecondPage = forwardRef((props, ref) => {
                 
               </div>*/}
             </div> 
-            <button type="submit">Submit</button>
+            <button type="button">Submit</button>
           </form>
         </div>
       </div>
+      </div>
+      <div className="skewed-bg" />
     </div>
 
   );
