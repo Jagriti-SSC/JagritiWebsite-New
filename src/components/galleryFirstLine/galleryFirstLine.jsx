@@ -28,11 +28,18 @@ import { Diversity } from "styled-icons/fluentui-system-filled";
 
 const GalleryFirstLine = () => {
   return (
-    <div style={{overflow:"hidden"}} className="flex flex-col mt-40 relative -rotate-[30deg]  w-[130vw]">
+    <div style={{overflow:"hidden"}} className="flex flex-col md:mt-44 relative md:-rotate-[30deg]  w-[130vw]">
       <div className="flex justify-center">
         
       </div >
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className=" w-full mx-auto relative" >
+        
+        <p className="cursor-pointer mx-10 ">Event abc</p>
+        <p className="cursor-pointer mx-10 ">Event abc</p>
+
+      </Marquee>
       <Marquee style={{overflow:"hidden"}} gradient={false} speed="35" className=" w-full mx-auto relative" >
+
         <a className="cursor-pointer mx-10 " target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>

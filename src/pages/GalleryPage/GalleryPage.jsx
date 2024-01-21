@@ -13,24 +13,24 @@ const GalleryPage = () => {
   return (
     <>
     <div className="bg">
-    <div className="relative">
-      <div className=" absolute inline top-[10%] left-[10%]">
-        <div className="flex  items-start ">
-          <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
-          <p className="w-[360px] text-justify mt-5">Here's the glimpse of previous editions of Jagriti. Exciting events ranging from guest talks to competitions were successfully held, inundated with participants from all over India</p>
-          <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
+      <div className="">
+        <div className=" md:absolute md:top-[30%] md:left-[10%]">
+          <div className="flex ">
+              <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
+              <p className="w-[360px] text-justify mt-5">Here's the glimpse of previous editions of Jagriti. Exciting events ranging from guest talks to competitions were successfully held, inundated with participants from all over India</p>
+              <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
+           </div>
         </div>
-        
+        <div style={{overflow:"hidden"}}  >
+          <GalleryFirstLine/>
+        </div>
       </div>
-      <div style={{overflow:"hidden"}}  className=" relatve -z-10 ">
-      <GalleryFirstLine/>
+
+      
+      <div className="relative z-10">
+      <Footer />
       </div>
-    </div>
-    
-   <div className="relative z-10">
-   <Footer />
-   </div>
-    
+      
 
     
     </div>
