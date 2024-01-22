@@ -1,15 +1,16 @@
-import React, {
-  useState,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-} from "react";
+import React, { useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
 import { auth } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
+import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
+import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
+import email_img from "../../assets/ca_page/email.webp";
+import telephone_img from "../../assets/ca_page/telephone.webp";
+import location_img from "../../assets/ca_page/location.webp";
 const EventFormTeam = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -111,6 +112,7 @@ const EventFormTeam = forwardRef((props, ref) => {
             <form className={style.form}>
               <h5>Leader Mail ID: {leader}</h5>
               <br />
+
               <label>
                 Participants Mail IDs :
                 {participants.map((participant, index) => (
@@ -135,6 +137,51 @@ const EventFormTeam = forwardRef((props, ref) => {
             </form>
           </div>
         </div>
+        <div className={style.contact_details} ref={contactRef}>
+          <div className={style.event_details}>
+            <img src={location_img} alt="#"></img>
+            <a
+              href="https://www.iitbhu.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IIT (BHU) Varanasi
+            </a>
+          </div>
+          <div className={style.event_details}>
+            <img src={telephone_img} alt="#"></img>
+            <a href="tel:+91-7004405828">+91-7004405828</a>
+          </div>
+          <div className={style.event_details}>
+            <img src={email_img} alt="#"></img>
+            <a href="mailto:jagriti.ssc@iitbhu.ac.in">
+              jagriti.ssc@iitbhu.ac.in
+            </a>{" "}
+          </div>
+        </div>
+      </div>
+      <div className={style.socials} ref={socialRef}>
+        <a
+          href="https://www.facebook.com/jagriti.iitbhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Facebook style={{ color: "white", width: 30 }} />
+        </a>
+        <a
+          href="https://twitter.com/JagritiBhu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Twitter style={{ color: "white", width: 25 }} />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/jagriti-iitbhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedinSquare style={{ color: "white", width: 25 }} />
+        </a>
       </div>
     </div>
   );
