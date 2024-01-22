@@ -67,7 +67,7 @@
   height: 100%;
 }
 
-.form input {
+.event_form input {
   background: #f5f5ff;
   border: none;
   /* margin-bottom: 30px; */
@@ -75,7 +75,18 @@
   height: 50px;
   padding-left: 10px;
 }
-.form button {
+
+.event_form input::placeholder {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  color: #9f9f9f;
+}
+
+.event_form button {
   background: #1a589b;
   width: 430px;
   height: 50px;
@@ -115,6 +126,20 @@
 
 .event_details a:hover {
   color: #1a589b;
+}
+
+.socials {
+  align-self: flex-end;
+  margin-bottom: 40px;
+  background-color: #1a589b;
+  border-radius: 0px 0px 50px 0px;
+  max-width: 55px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7px 40px 7px;
 }
 
 @media screen and (max-width: 770px) {

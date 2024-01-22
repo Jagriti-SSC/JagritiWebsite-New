@@ -111,8 +111,6 @@ const EventFormTeam = forwardRef((props, ref) => {
             {error && <p className="text-red">{error}</p>}
             <form className={style.form}>
               <h5>Leader Mail ID: {leader}</h5>
-              <br />
-
               <label>
                 Participants Mail IDs :
                 {participants.map((participant, index) => (
@@ -128,13 +126,12 @@ const EventFormTeam = forwardRef((props, ref) => {
                   </div>
                 ))}
               </label>
-              <br />
               <button type="button" onClick={handleAddParticipant}>
                 Add participants <FontAwesomeIcon icon={faPlus} />
               </button>
-              <br />
               <button onClick={(e) => checkUsers(e)}> Submit </button>
             </form>
+
           </div>
         </div>
         <div className={style.contact_details} ref={contactRef}>
@@ -157,6 +154,7 @@ const EventFormTeam = forwardRef((props, ref) => {
             <a href="mailto:jagriti.ssc@iitbhu.ac.in">
               jagriti.ssc@iitbhu.ac.in
             </a>{" "}
+
           </div>
         </div>
       </div>
