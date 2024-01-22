@@ -125,9 +125,9 @@ const SecondPage = forwardRef((props, ref) => {
               </div>
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
-                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[550px] h-[200px] rounded-3xl info-div-1">
-                    <label htmlFor="icard" className="absolute top-[150px] left-[75px] ">Upload image</label>
-                    <div className="absolute top-[150px] left-[200px] ">
+                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[200px] rounded-3xl info-div-1">
+                    <label htmlFor="icard" className="absolute top-[145px] left-[75px] ">Upload image</label>
+                    <div className="absolute top-[175px] left-[75px]">
                       <input
                         required
                         id="icard"
@@ -139,7 +139,7 @@ const SecondPage = forwardRef((props, ref) => {
                       >
                       </input>
                     </div>
-                    <div className="absolute top-[200px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
+                    <div className="absolute top-[210px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
                       <h2 >Team Members</h2>
                       <p>Leader: {leader}</p>
                       <p>Participants: {participants.join(' , ')}</p>
