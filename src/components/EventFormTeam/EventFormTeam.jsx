@@ -51,7 +51,7 @@ const EventFormTeam = forwardRef((props, ref) => {
       let nArr = await Promise.all(
         participants.map(async (i, p) => {
           const url = process.env.REACT_APP_BASE_URL;
-          let response = await fetch(`${url}/auth/checkuser`, {
+          let response = await fetch(`${url}/auth/checkUser`, {
             method: "post",
             body: JSON.stringify({ email: i }),
             headers: { "Content-Type": "application/json" },
@@ -63,6 +63,7 @@ const EventFormTeam = forwardRef((props, ref) => {
       setArr(nArr);
       const numberOfTrue = nArr.filter((value) => value === true).length;
       if (numberOfTrue != participants.length) {
+        console.log(participants.length, numberOfTrue);
         setError("not all emails are registered");
       } else {
         setError("");
