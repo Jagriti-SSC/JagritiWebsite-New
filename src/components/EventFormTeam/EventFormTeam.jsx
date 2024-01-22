@@ -11,7 +11,12 @@ import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
+import { Link,useLocation } from 'react-router-dom';
+
+
 const EventFormTeam = forwardRef((props, ref) => {
+  const location = useLocation();
+  const eventName = location.state;
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -130,7 +135,9 @@ const EventFormTeam = forwardRef((props, ref) => {
               <button type="button" onClick={handleAddParticipant}>
                 Add participants <FontAwesomeIcon icon={faPlus} />
               </button>
-              <button onClick={(e) => checkUsers(e)}> Submit </button>
+              <button onClick={(e) => checkUsers(e)}><Link to="/secondpage" state={{ leader, participants,eventName }}>
+            Submit
+          </Link></button>
             </form>
 
           </div>
