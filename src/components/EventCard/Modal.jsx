@@ -114,8 +114,8 @@ const Modal = ({ data, close }) => {
             </motion.div>
 
             <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
-            <Button text={isLoggedIn ? "Register" : "Log In"}><Link to={isLoggedIn ? "/eventteam" : "/signin"} state={eventname}>
-        </Link></Button>
+            <Link to={isLoggedIn ? "/eventteam" : "/signin"} state={eventname}><Button text={isLoggedIn ? "Register" : "Log In"}>
+        </Button></Link>
             </motion.div>
           </motion.div>
         </>
@@ -151,8 +151,8 @@ const Modal = ({ data, close }) => {
         </>
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
-        <Button text={isLoggedIn ? "Register" : "Log In"}><Link to={isLoggedIn ? "/eventteam" : "/signin"} state={eventname}>
-        </Link></Button>
+      <Link to={isLoggedIn ? "/eventteam" : "/signin"} state={eventname}><Button text={isLoggedIn ? "Register" : "Log In"}>
+        </Button></Link>
       </motion.div>
     </motion.div>
   );
