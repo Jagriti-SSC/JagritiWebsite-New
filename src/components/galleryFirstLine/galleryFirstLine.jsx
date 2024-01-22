@@ -32,54 +32,57 @@ const GalleryFirstLine = () => {
       <div className="flex justify-center">
         
       </div >
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className=" w-full mx-auto relative" >
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className="py-5 w-full mx-auto relative" >
         
         <p className="cursor-pointer mx-10 ">Event abc</p>
         <p className="cursor-pointer mx-10 ">Event abc</p>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className=" w-full mx-auto relative" >
-
-        <a className="mx-10 " target="_blank" rel="noreferrer"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img4} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-
-      </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="45" className=" mx-auto w-full relative" >
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img8} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img11} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img1} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+      <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className="py-5 w-full mx-auto relative" >
+        <img src={img1} className=" mx-[10px] box-shadow h-40 " alt="Jagriti Image"></img>
+        <img src={img2} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img3} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img4} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img14} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img5} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img6} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img16} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className=" mx-auto w-full relative" >
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img12} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img15} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="45" className="py-5 mx-auto w-full relative" >
+        <img src={img7} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img8} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img13} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img19} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img20} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img11} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img1} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img2} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img1} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="65" className=" mx-auto w-full relative" >
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img9} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img18} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
-        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+      <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className="py-5 mx-auto w-full relative" >
+        <img src={img12} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img13} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img14} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img15} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img16} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img6} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img6} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img7} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+      </Marquee>
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="65" className="py-5 mx-auto w-full relative" >
+        <img src={img3} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img5} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img14} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img9} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img19} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img20} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img2} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img18} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
       </Marquee>
     </div>
   );
