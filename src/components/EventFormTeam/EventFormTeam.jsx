@@ -1,18 +1,10 @@
-import React, {
-  useState,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-  useEffect,
-} from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
-import toast from "react-hot-toast";
-import { useFirebase } from "../../context/Firebase";
+import { auth } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
-import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
 import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
@@ -20,27 +12,11 @@ import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
 const EventFormTeam = forwardRef((props, ref) => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  var storedUserString = localStorage.getItem("user");
-  console.log(storedUserString);
-  const userObject = JSON.parse(storedUserString);
-  console.log("User" + userObject);
-
-  const fetchEventData = (name) => {
-    const Data = firebase.getAllDocuments(name);
-  };
-
-  useEffect(() => {
-    Promise.all([fetchEventData("events")]);
-  }, []);
-
-  const leader = userObject?.email ? `${userObject?.email}` : "null";
-  // const [leader, setLeader] = useState({storedUserString});
-  const [participants, setParticipants] = useState(['']);
-
-  // const handleLeaderChange = (event) => {
-  //   setLeader(event.target.value);
-  // };
+  const leader = auth.currentUser.email;
+  const [participants, setParticipants] = useState([""]);
 
   const handleParticipantChange = (event, index) => {
     const newParticipants = [...participants];
@@ -50,77 +26,72 @@ const EventFormTeam = forwardRef((props, ref) => {
 
   const handleAddParticipant = () => {
     if (participants.length < 4) {
-      setParticipants([...participants, '']);
+      setParticipants([...participants, ""]);
     }
   };
 
-  const firebase = useFirebase();
-  const [id, setId] = useState(undefined);
   let done = false;
 
   const contactRef = useRef();
   const socialRef = useRef();
   const gridRef = useRef();
 
-  const validateDetails = () => {
-    const idValid = id !== undefined;
-    return (
-      idValid
-    );
-  };
+  const [array, setArr] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const userId = uuidv4();
-    if (validateDetails()) {
-      const promise = Promise.all([
-        firebase.addDocument("eventteam-form", {
-          userId: `${userId}.${id.name.split(".").pop()}`,
-        }),
-        firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
-      ]);
+  let checkUsers = async (e) => {
+    e.preventDefault();
+    try {
+      const allEmails = [auth.currentUser.email, ...participants];
+      const areEmailsUnique = new Set(allEmails).size === allEmails.length;
 
-      toast.promise(
-        promise,
-        {
-          loading: "Uploading the Form",
-          success: (data) => {
-            setId(undefined);
-            return "Form Submitted Successfully!";
-          },
-          error: "Error while submitting Form!",
-        },
-        {
-          success: {
-            duration: 10000,
-          },
-        }
+      if (!areEmailsUnique) {
+        setError("Please make sure all emails are unique");
+        return;
+      }
+      let nArr = await Promise.all(
+        participants.map(async (i, p) => {
+          const url = process.env.REACT_APP_BASE_URL;
+          let response = await fetch(`${url}/auth/checkuser`, {
+            method: "post",
+            body: JSON.stringify({ email: i }),
+            headers: { "Content-Type": "application/json" },
+          });
+          if (response.ok) return response.ok;
+        })
       );
-    } else {
-      toast.error("Either of the Details is Invalid");
-      return;
+
+      setArr(nArr);
+      const numberOfTrue = nArr.filter((value) => value === true).length;
+      if (numberOfTrue != participants.length) {
+        setError("not all emails are registered");
+      } else {
+        setError("");
+        navigate("/secondpage", {
+          state: { leader: leader, participants: participants },
+        });
+      }
+    } catch (error) {
+      console.error("Error in checkUsers:", error);
     }
   };
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
       if (done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
-          }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 30
+        ref.current.style.height = `${
+          ref.current.offsetHeight - socialRef.current.clientHeight
         }px`;
+      socialRef.current.style.height = `${
+        contactRef.current.clientHeight + 30
+      }px`;
       socialRef.current.style.position = "relative";
       socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
-        }px`;
+      socialRef.current.style.left = `${
+        gridRef.current.clientWidth - socialRef.current.clientWidth
+      }px`;
       done = true;
     }
   }, []);
-
-  useEffect(() => {
-    console.log(id);
-    console.log(id?.name.split(".").pop());
-  }, [id]);
 
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
@@ -134,10 +105,12 @@ const EventFormTeam = forwardRef((props, ref) => {
         </div>
         <div className={style.event_form_div}>
           <div>
-            <center><h2 className={style.event_heading}>Team Registration</h2></center>
-            <form className={style.event_form}>
-              <h5>
-                Leader Mail ID: {userObject?.email ? `  ${userObject?.email}` : "null"}</h5>
+            <center>
+              <h2 className={style.event_heading}>Team Registration</h2>
+            </center>
+            {error && <p className="text-red">{error}</p>}
+            <form className={style.form}>
+              <h5>Leader Mail ID: {leader}</h5>
               <label>
                 Participants Mail IDs :
                 {participants.map((participant, index) => (
@@ -146,7 +119,9 @@ const EventFormTeam = forwardRef((props, ref) => {
                       type="text"
                       value={participant}
                       placeholder="Enter participant's mail id"
-                      onChange={(event) => handleParticipantChange(event, index)}
+                      onChange={(event) =>
+                        handleParticipantChange(event, index)
+                      }
                     />
                   </div>
                 ))}
@@ -154,13 +129,9 @@ const EventFormTeam = forwardRef((props, ref) => {
               <button type="button" onClick={handleAddParticipant}>
                 Add participants <FontAwesomeIcon icon={faPlus} />
               </button>
-              <Link to="/secondpage" state={{ leader, participants }}>
-                <button type="button"> Submit </button>
-              </Link>
-              {/* <Button text="submit" path="/secondpage"></Button> */}
+              <button onClick={(e) => checkUsers(e)}> Submit </button>
             </form>
 
-            {/* <Route path="/second-page" element={<SecondPage />} /> */}
           </div>
         </div>
         <div className={style.contact_details} ref={contactRef}>
@@ -182,7 +153,8 @@ const EventFormTeam = forwardRef((props, ref) => {
             <img src={email_img} alt="#"></img>
             <a href="mailto:jagriti.ssc@iitbhu.ac.in">
               jagriti.ssc@iitbhu.ac.in
-            </a>
+            </a>{" "}
+
           </div>
         </div>
       </div>
