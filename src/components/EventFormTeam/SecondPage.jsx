@@ -21,7 +21,7 @@ import location_img from "../../assets/ca_page/location.webp";
 const SecondPage = forwardRef((props, ref) => {
 
   const location = useLocation();
-  const { leader, participants } = location.state;
+  const { leader, participants, eventName } = location.state;
   var storedUserString = localStorage.getItem("user");
   console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -61,7 +61,7 @@ const SecondPage = forwardRef((props, ref) => {
         firebase.addDocument("eventteam-form", {
           userId: `${userId}.${id.name.split(".").pop()}`,
         }),
-        firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
+        firebase.uploadFile(`EventFormTeam/${eventName}${userId}.${id.name.split(".").pop()}`, id),
       ]);
 
       toast.promise(
@@ -117,7 +117,7 @@ const SecondPage = forwardRef((props, ref) => {
           <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
             <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
               <div className={style.heading}>
-                <h1 className={style.event_heading}>Event Registration Form</h1>
+                <h1 className={style.event_heading}>Event Registration Form for {eventName}</h1>
                 <h4 className={style.event_subheading}>Fill the form to register</h4>
               </div>
               <div className={style.event_img}>
@@ -144,63 +144,6 @@ const SecondPage = forwardRef((props, ref) => {
                       <p>Leader: {leader}</p>
                       <p>Participants: {participants.join(' , ')}</p>
                     </div>
-                    {/* <div
-                className="absolute top-[225px] left-[60px] leading-[26.4px] whitespace-pre-wrap text-black "
-                style={{ fontWeight: "900" }}
-              >
-                <p className="m-0">Name :</p>
-                <p className="m-0 ">Institute :</p>
-                <p className="m-0 ">Email :</p>
-                <p className="m-0 ">Contact :</p>
-              </div>
-              <div
-                className="absolute top-[225px] left-[562px] leading-[26.4px] whitespace-pre-wrap text-black info-1"
-                style={{ fontWeight: "900" }}
-              >
-                <p className="m-0 ">Course :</p>
-                <p className="m-0 ">Year :</p>
-                <p className="m-0 ">Gender :</p>
-                <p className="m-0 ">Nationality :</p>
-              </div>
-              <div className="absolute top-[225px] left-[157px] leading-[26.4px] text-black ">
-                <p className="m-0 ">{userObject?.displayName}</p>
-                <p className="m-0">
-                  {userObject?.providerData?.institute
-                    ? `${userObject?.providerData?.institute}`
-                    : "null"}
-                </p>
-                <p className="m-0">
-                  {userObject?.email ? `${userObject?.email}` : "null"}
-                </p>
-                <p className="m-0">
-                  {userObject?.providerData?.phoneNumber
-                    ? `${userObject?.providerData?.phoneNumber}`
-                    : "null"}
-                </p>
-              </div>
-              <div className="absolute top-[225px] left-[686px] leading-[26.4px] text-black info-2">
-                <p className="m-0">
-                  {userObject?.providerData?.course
-                    ? `${userObject?.providerData?.course}`
-                    : "null"}
-                </p>
-                <p className="m-0">
-                  {userObject?.providerData?.year
-                    ? `${userObject?.providerData?.year}`
-                    : "null"}
-                </p>
-                <p className="m-0">
-                  {userObject?.providerData?.gender
-                    ? `${userObject?.providerData?.gender}`
-                    : "null"}
-                </p>
-                <p className="m-0">
-                  {userObject?.providerData?.nationality
-                    ? `${userObject?.providerData?.nationality}`
-                    : "null"}
-                </p>
-                
-              </div>*/}
                   </div>
                   <button type="button">Submit</button>
                 </form>
