@@ -92,7 +92,7 @@ const EventsPage = () => {
 
             </div></>) :
           (<>
-            <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
+            <motion.div className=" flex justify-center items-center mb-[32px] mx-8 ">
 
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
 
