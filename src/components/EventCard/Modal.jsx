@@ -153,7 +153,7 @@ const Modal = ({ data, close }) => {
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
         <Button
           text={isLoggedIn ? "Register" : "Log In"}
-          path={isLoggedIn ? "/profile" : "/signin"}
+          path={isLoggedIn ? "/eventteam" : "/signin"}
         />
       </motion.div>
     </motion.div>
