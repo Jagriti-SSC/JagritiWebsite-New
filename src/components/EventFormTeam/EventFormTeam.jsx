@@ -109,7 +109,7 @@ const EventFormTeam = forwardRef((props, ref) => {
               <h2 className={style.event_heading}>Team Registration</h2>
             </center>
             {error && <p className="text-red">{error}</p>}
-            <form className={style.form}>
+            <form className={style.event_form}>
               <h5>Leader Mail ID: {leader}</h5>
               <label>
                 Participants Mail IDs :
