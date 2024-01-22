@@ -1,7 +1,7 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 // import Corousel from "../corousel/Corousel";
-import "./gallerFirstLine.css";
+import "./galleryFirstLine.css";
 
 
 import img1 from '../../assets/images/jagriti_img1.png';
@@ -40,46 +40,46 @@ const GalleryFirstLine = () => {
       </Marquee>
       <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className=" w-full mx-auto relative" >
 
-        <a className="cursor-pointer mx-10 " target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img4} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+        <a className="mx-10 " target="_blank" rel="noreferrer"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img4} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
 
       </Marquee>
       <Marquee style={{overflow:"hidden"}} gradient={false} speed="45" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img8} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img11} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img1} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img8} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img11} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img1} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
 
       </Marquee>
       <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img12} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img15} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img12} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img15} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
       </Marquee>
       <Marquee style={{overflow:"hidden"}} gradient={false} speed="65" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img9} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img18} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img9} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img18} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
+        <a className="mx-10" target="_blank" rel="noreferrer"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="Jagriti Image"></img></a>
       </Marquee>
     </div>
   );
