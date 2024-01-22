@@ -32,54 +32,58 @@ const GalleryFirstLine = () => {
       <div className="flex justify-center">
         
       </div >
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className=" w-full mx-auto relative" >
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className="py-5 w-full mx-auto relative" >
         
         <p className="cursor-pointer mx-10 ">Event abc</p>
         <p className="cursor-pointer mx-10 ">Event abc</p>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className=" w-full mx-auto relative" >
+      <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className="py-5 w-full mx-auto relative" >
 
-        <a className="cursor-pointer mx-10 " target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img1} className=" mx-[10px] box-shadow h-40 w-60" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img4} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-
-      </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="45" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img8} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img11} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img2} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img1} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+        <img src={img1} className=" mx-[10px] box-shadow h-40 " alt="LWT Logo"></img>
+        <img src={img2} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img3} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img4} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img14} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img5} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img6} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img16} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
 
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img12} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img13} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img15} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img16} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img6} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img7} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="45" className="py-5 mx-auto w-full relative" >
+        <img src={img7} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img8} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img13} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img19} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img20} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img11} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img1} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img2} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img1} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+
       </Marquee>
-      <Marquee style={{overflow:"hidden"}} gradient={false} speed="65" className=" mx-auto w-full relative" >
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//umeedfoundation.co.in/"><img src={img3} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pfcindia.com/Home"><img src={img5} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src={img14} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src={img9} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img19} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img20} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img18} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
-        <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src={img17} className="h-40 w-60 mx-[10px] box-shadow" alt="LWT Logo"></img></a>
+      <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className="py-5 mx-auto w-full relative" >
+        <img src={img12} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img13} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img14} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img15} className="h-40  mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img16} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img6} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img6} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img7} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+      </Marquee>
+      <Marquee style={{overflow:"hidden"}} gradient={false} speed="65" className="py-5 mx-auto w-full relative" >
+        <img src={img3} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img5} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img14} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img9} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img19} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img20} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img2} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img18} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
+        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="LWT Logo"></img>
       </Marquee>
     </div>
   );
