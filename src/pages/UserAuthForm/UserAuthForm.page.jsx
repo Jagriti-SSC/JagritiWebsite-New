@@ -50,10 +50,16 @@ const options = [
   const { login } = useAuth();
   const { googleAuth } = useAuth();
   const fullnameRef = useRef();
+  const fullnameRef2 = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const genderRef = useRef();
-  const nationalityRef = useRef();
+  const emailRef2 = useRef();
+  const passwordRef2 = useRef();
+  const occupationRef2 = useRef();
+  const courseRef2 = useRef();
+  const yearRef2 = useRef();
+  const collegeRef2 = useRef();
+  const mobileNumberRef2 = useRef();
   const occupationRef = useRef();
   const courseRef = useRef();
   const yearRef = useRef();
@@ -81,7 +87,7 @@ const options = [
         
         localStorage.setItem('user', JSON.stringify(user));
         setAuthState(prev => !prev)
-        if(type==="sign-in"){
+        if(type==="sign-up"){
           navigate('/userinfo');
         } else {
           navigate('/');
@@ -111,24 +117,48 @@ const options = [
       setError("");
       setLoading(true);
       console.log(emailRef.current.value);
-      const user = await signup(emailRef.current.value, passwordRef.current.value);
-       console.log(user)
-       await addDoc(collection(db, "users"), {
-        userId: user.user.uid,
-        fullName: fullnameRef.current.value,
-        email: emailRef.current.value,
-        // gender: genderRef.current.value,
-        // nationality:nationalityRef.current.value,
-        occupation:selectedOption.value,
-        course:courseRef.current.value,
-        year:yearRef.current.value,
-        mobile:mobileNumberRef.current.value,
-        college:collegeRef.current.value,
-
-
+      const name=fullnameRef.current.value.length>0?fullnameRef.current.value:fullnameRef2.current.value
+      const email=emailRef.current.value.length>0?emailRef.current.value:emailRef2.current.value
+      const pass=passwordRef.current.value.length>0?passwordRef.current.value:passwordRef2.current.value
+      const mobile=mobileNumberRef.current.value.length>0?mobileNumberRef.current.value:mobileNumberRef2.current.value
+      const college=collegeRef.current.value.length>0?collegeRef.current.value:collegeRef2.current.value
+      const course=courseRef.current.value.length>0?courseRef.current.value:courseRef2.current.value
+      const year=yearRef.current.value.length>0?yearRef.current.value:yearRef2.current.value
+      const formData={
+        name: name,
+        mobile:mobile,
+        email: email,
+        college:college,
+        course:course,
+        year:year,
+      }
+      const url=process.env.REACT_APP_BASE_URL
+      
+      const response = await fetch(`${url}/auth/createuser`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+      if(response.ok){
+      const user = await signup(email, pass);
+       console.log(user)
+      //  await addDoc(collection(db, "users"), {
+      //   userId: user.user.uid,
+      //   fullName: fullnameRef.current.value,
+      //   email: emailRef.current.value,
+      //   // gender: genderRef.current.value,
+      //   // nationality:nationalityRef.current.value,
+      //   occupation:selectedOption.value,
+      //   course:courseRef.current.value,
+      //   year:yearRef.current.value,
+      //   mobile:mobileNumberRef.current.value,
+      //   college:collegeRef.current.value,
+
+
+      // });
+
       navigate("/");
-      console.log("User created");
+      console.log("User created");}
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
@@ -144,7 +174,10 @@ const options = [
     setLoading(true);
     console.log(emailRef.current.value);
     console.log(localStorage.getItem("user"))
-    await login(emailRef.current.value, passwordRef.current.value)
+    console.log(emailRef.current.value.length);
+      const email=emailRef.current.value.length>0?emailRef.current.value:emailRef2.current.value
+      const pass=passwordRef.current.value.length>0?passwordRef.current.value:passwordRef2.current.value
+    await login(email, pass)
       .then(() => {
         
         console.log("User logged in");
@@ -446,7 +479,7 @@ const options = [
               type="text"
               placeholder="Full Name"
               icon={person}
-              ref={fullnameRef}
+              ref={fullnameRef2}
             />
           ) : (
             ""
@@ -457,7 +490,7 @@ const options = [
             type="email"
             placeholder="Email"
             icon={msg}
-            ref={emailRef}
+            ref={emailRef2}
           />
 
           <InputBox
@@ -465,7 +498,7 @@ const options = [
             type="password"
             placeholder="Password"
             icon={lock}
-            ref={passwordRef}
+            ref={passwordRef2}
           />
 
   
@@ -477,7 +510,7 @@ const options = [
               type="text"
               placeholder="Mobile Number"
               icon={phone}
-              ref={mobileNumberRef}
+              ref={mobileNumberRef2}
             />
           ) : (
             ""
@@ -515,7 +548,7 @@ const options = [
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
-                    ref={occupationRef}
+                    ref={occupationRef2}
                     className=""
                   />
             </div>
@@ -529,7 +562,7 @@ const options = [
           type="text"
           placeholder="College"
           icon={college}
-          ref={collegeRef}
+          ref={collegeRef2}
         /> 
           ) : (
             ""
@@ -542,7 +575,7 @@ const options = [
            type="text"
            placeholder="Course"
            icon={hat}
-           ref={courseRef}
+           ref={courseRef2}
          /> 
           ) : (
             ""
@@ -556,7 +589,7 @@ const options = [
             type="text"
             placeholder="Year"
             icon={year}
-            ref={yearRef}
+            ref={yearRef2}
           />
           ) : (
             ""

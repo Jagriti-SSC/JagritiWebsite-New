@@ -5,14 +5,17 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import style from "./EventForm.module.css";
+import style from "./SecondPage.module.css";
 import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
+import { useLocation } from 'react-router-dom';
 
-const EventForm = forwardRef((props, ref) => {
+const SecondPage = forwardRef((props, ref) => {
 
+  const location = useLocation();
+  const { leader, participants } = location.state;
   var storedUserString = localStorage.getItem("user");
   console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -47,10 +50,10 @@ const EventForm = forwardRef((props, ref) => {
     const userId = uuidv4();
     if (validateDetails()) {
       const promise = Promise.all([
-        firebase.addDocument("event-form", {
+        firebase.addDocument("eventteam-form", {
           userId: `${userId}.${id.name.split(".").pop()}`,
         }),
-        firebase.uploadFile(`EventForm/${userId}.${id.name.split(".").pop()}`, id),
+        firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
       ]);
 
       toast.promise(
@@ -96,6 +99,7 @@ const EventForm = forwardRef((props, ref) => {
   }, [id]);
 
   return (
+    <div>
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
@@ -106,7 +110,7 @@ const EventForm = forwardRef((props, ref) => {
           <img src={event_img} alt="aesthetic-image"></img>
         </div>
         <div className={style.event_form_div}>
-          <form className={style.event_form} onSubmit={handleSubmit} action="#">
+          <form className={style.event_form}>
             <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-[250px] rounded-3xl info-div-1">
 
               <label htmlFor="icard" className="absolute top-[150px] left-[75px] ">Payment Slip</label>
@@ -122,7 +126,12 @@ const EventForm = forwardRef((props, ref) => {
                 > 
                 </input>
               </div>
-              <div
+              <div className="absolute top-[225px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
+                <h2>Team Members</h2>
+                <p>Leader: {leader}</p>
+                <p>Participants: {participants.join(' , ')}</p>
+              </div>
+              {/* <div
                 className="absolute top-[225px] left-[60px] leading-[26.4px] whitespace-pre-wrap text-black "
                 style={{ fontWeight: "900" }}
               >
@@ -177,15 +186,18 @@ const EventForm = forwardRef((props, ref) => {
                     ? `${userObject?.providerData?.nationality}`
                     : "null"}
                 </p>
-              </div>
-            </div>
-            <button type="submit">Submit</button>
+                
+              </div>*/}
+            </div> 
+            <button type="button">Submit</button>
           </form>
         </div>
       </div>
+      </div>
+      <div className="skewed-bg" />
     </div>
 
   );
 });
 
-export default EventForm;
+export default SecondPage;

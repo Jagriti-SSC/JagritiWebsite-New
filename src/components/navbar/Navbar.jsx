@@ -299,7 +299,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         onClick={() => closeButton.current.click()}
-                        to="/events"
+                        to="/gallery"
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
                         <span className="whitespace-nowrap">Gallery</span>

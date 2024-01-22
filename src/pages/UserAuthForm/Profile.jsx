@@ -15,8 +15,9 @@ import nothing from "./nothing.png";
 import "./Profile.css";
 
 const Profile = () => {
+  const [events,setEvents]=useState({})
   var storedUserString = localStorage.getItem("user");
-  console.log(storedUserString);
+  // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
 
   const navigate = useNavigate();
@@ -44,8 +45,38 @@ const Profile = () => {
   }, []);
 
   // For Editing user info after login
+  const [userDetails, setUserDetails] = useState({});
+  const fetchUserData = async () => {
+    try {
+      const url=process.env.REACT_APP_BASE_URL
+      const response = await fetch(`${url}/auth/user`,{
+        method:"POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({email:auth.currentUser.email}),
+      });
+      const data = await response.json();
+      setUserDetails(data)
+      const { event, preEvents, guestTalks } = data;
 
-  // const [userDetails, setUserDetails] = useState({});
+// Create a new object with only the desired properties
+const newObject = {
+  event,
+  preEvents,
+  guestTalks
+};setEvents(newObject)
+console.log(events)
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+  useEffect(() => {
+    if (auth.currentUser) {
+      fetchUserData();
+    }
+  }, [auth.currentUser]);
+  useEffect(() => {
+    console.log(events);
+  }, [events]);
   // const [isEditing, setIsEditing] = useState(false);
   // const [saving, setSaving] = useState(false);
   // const [error, setError] = useState(null);
@@ -287,7 +318,7 @@ const Profile = () => {
                   <p className="m-0">Name :</p>
                   <p className="m-0 ">Institute :</p>
                   <p className="m-0 ">Email :</p>
-                  <p className="m-0 ">Contact :</p>
+                  
                 </div>
                 <div
                   className="absolute top-[91px] left-[562px] leading-[26.4px] whitespace-pre-wrap text-black info-1"
@@ -295,37 +326,31 @@ const Profile = () => {
                 >
                   <p className="m-0 ">Course :</p>
                   <p className="m-0 ">Year :</p>
-                  <p className="m-0 ">Gender :</p>
-                  <p className="m-0 ">Nationality :</p>
+                  <p className="m-0 ">Contact :</p>
+                  {/* <p className="m-0 ">Gender :</p>
+                  <p className="m-0 ">Nationality :</p> */}
                 </div>
                 <div className="absolute top-[91px] left-[157px] leading-[26.4px] text-black ">
-                  <p className="m-0 ">{userObject?.displayName}</p>
-                  <p className="m-0">
-                    {userObject?.providerData?.institute
-                      ? `${userObject?.providerData?.institute}`
-                      : "null"}
+                <p className="m-0 uppercase">{userDetails.name}</p>
+                  <p className="m-0 uppercase">
+                    {userDetails.college}
                   </p>
-                  <p className="m-0">
-                    {userObject?.email ? `${userObject?.email}` : "null"}
+                  <p className="m-0 ">
+                    {auth.currentUser.email}
                   </p>
-                  <p className="m-0">
-                    {userObject?.providerData?.phoneNumber
-                      ? `${userObject?.providerData?.phoneNumber}`
-                      : "null"}
-                  </p>
+                  
                 </div>
                 <div className="absolute top-[91px] left-[686px] leading-[26.4px] text-black info-2">
-                  <p className="m-0">
-                    {userObject?.providerData?.course
-                      ? `${userObject?.providerData?.course}`
-                      : "null"}
+                <p className="m-0 uppercase">
+                    {userDetails.course}
                   </p>
-                  <p className="m-0">
-                    {userObject?.providerData?.year
-                      ? `${userObject?.providerData?.year}`
-                      : "null"}
+                  <p className="m-0 uppercase">
+                    {userDetails.year}
                   </p>
-                  <p className="m-0">
+                  <p className="m-0 uppercase">
+                    {userDetails.mobile}
+                  </p>
+                  {/* <p className="m-0">
                     {userObject?.providerData?.gender
                       ? `${userObject?.providerData?.gender}`
                       : "null"}
@@ -334,7 +359,7 @@ const Profile = () => {
                     {userObject?.providerData?.nationality
                       ? `${userObject?.providerData?.nationality}`
                       : "null"}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="relative flex justify-between">
@@ -416,7 +441,7 @@ const Profile = () => {
                     <h1 className="text-[#B52E1F]">Payment Unverified : </h1>
                   </div>
                   <div className="absolute top-[150px] left-[10px] ">
-                    <EventCarousel eventData={firebase.eventData} />
+                    <EventCarousel eventData={firebase.eventData} />  {/*change to events function after changing event carousel */}
                   </div>
                 </div>
               </div>
