@@ -11,15 +11,18 @@ import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
-import { Link,useLocation } from 'react-router-dom';
-
+import {useLocation } from "react-router-dom";
 
 const EventFormTeam = forwardRef((props, ref) => {
   const location = useLocation();
-  const eventName = location.state;
+  const { state } = location;
+  const eventName = state ? state : null;
   const navigate = useNavigate();
   const [error, setError] = useState("");
-
+  const [teamName, setTeamName] = useState("");
+  const handleTeamNameChange = (event) => {
+    setTeamName(event.target.value);
+  };
   const leader = auth.currentUser.email;
   const [participants, setParticipants] = useState([""]);
 
@@ -48,38 +51,46 @@ const EventFormTeam = forwardRef((props, ref) => {
     try {
       const allEmails = [auth.currentUser.email, ...participants];
       const areEmailsUnique = new Set(allEmails).size === allEmails.length;
-
+  
       if (!areEmailsUnique) {
         setError("Please make sure all emails are unique");
         return;
       }
+  
+      let userIds = [];
+  
       let nArr = await Promise.all(
-        participants.map(async (i, p) => {
+        participants.map(async (email) => {
           const url = process.env.REACT_APP_BASE_URL;
           let response = await fetch(`${url}/auth/checkUser`, {
             method: "post",
-            body: JSON.stringify({ email: i }),
+            body: JSON.stringify({ email }),
             headers: { "Content-Type": "application/json" },
           });
-          if (response.ok) return response.ok;
+          if (response.ok) {
+            const userData = await response.json();
+            userIds.push(userData._id); // Assuming your API response contains a userId field
+            return true;
+          } else {
+            return false;
+          }
         })
       );
-
       setArr(nArr);
       const numberOfTrue = nArr.filter((value) => value === true).length;
-      if (numberOfTrue != participants.length) {
-        console.log(participants.length, numberOfTrue);
-        setError("not all emails are registered");
+  
+      if (numberOfTrue !== participants.length) {
+        setError("Not all emails are registered");
       } else {
         setError("");
         navigate("/secondpage", {
-          state: { leader: leader, participants: participants },
+          state: { teamName, leader, participants, userIds },
         });
       }
     } catch (error) {
       console.error("Error in checkUsers:", error);
     }
-  };
+  };  
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
@@ -103,7 +114,9 @@ const EventFormTeam = forwardRef((props, ref) => {
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
-          <h1 className={style.event_heading}>Event Registration Form</h1>
+          <h1 className={style.event_heading}>
+            Event Registration Form {eventName}{" "}
+          </h1>
           <h4 className={style.event_subheading}>Fill the form to register</h4>
         </div>
         <div className={style.event_img}>
@@ -117,6 +130,15 @@ const EventFormTeam = forwardRef((props, ref) => {
             {error && <p className="text-red">{error}</p>}
             <form className={style.event_form}>
               <h5>Leader Mail ID: {leader}</h5>
+              <label>
+                Team Name:
+                <input
+                  type="text"
+                  value={teamName}
+                  placeholder="Enter team name"
+                  onChange={handleTeamNameChange}
+                />
+              </label>
               <label>
                 Participants Mail IDs :
                 {participants.map((participant, index) => (
@@ -135,11 +157,8 @@ const EventFormTeam = forwardRef((props, ref) => {
               <button type="button" onClick={handleAddParticipant}>
                 Add participants <FontAwesomeIcon icon={faPlus} />
               </button>
-              <button onClick={(e) => checkUsers(e)}><Link to="/secondpage" state={{ leader, participants,eventName }}>
-            Submit
-          </Link></button>
+              <button onClick={(e) => checkUsers(e)}>Submit</button>
             </form>
-
           </div>
         </div>
         <div className={style.contact_details} ref={contactRef}>
@@ -162,7 +181,6 @@ const EventFormTeam = forwardRef((props, ref) => {
             <a href="mailto:jagriti.ssc@iitbhu.ac.in">
               jagriti.ssc@iitbhu.ac.in
             </a>{" "}
-
           </div>
         </div>
       </div>

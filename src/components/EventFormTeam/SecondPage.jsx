@@ -21,7 +21,8 @@ import location_img from "../../assets/ca_page/location.webp";
 const SecondPage = forwardRef((props, ref) => {
 
   const location = useLocation();
-  const { leader, participants, eventName } = location.state;
+  const { teamName,leader, participants, eventName ,userIds} = location.state;
+  console.log(teamName)
   var storedUserString = localStorage.getItem("user");
   console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
