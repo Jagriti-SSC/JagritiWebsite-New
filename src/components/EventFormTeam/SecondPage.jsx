@@ -21,12 +21,12 @@ import location_img from "../../assets/ca_page/location.webp";
 const SecondPage = forwardRef((props, ref) => {
 
   const location = useLocation();
-  const { teamName,leader, participants, eventName ,userIds} = location.state;
-  console.log(teamName)
+  const { leaderID,eventType,teamName,leader, participants, eventName ,userIds} = location.state;
+  // console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
   var storedUserString = localStorage.getItem("user");
-  console.log(storedUserString);
+  // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
-  console.log("User" + userObject);
+  // console.log("User" + userObject);
 
   const fetchEventData = (name) => {
     const Data = firebase.getAllDocuments(name);
@@ -47,43 +47,67 @@ const SecondPage = forwardRef((props, ref) => {
   const socialRef = useRef();
   const gridRef = useRef();
 
-  const validateDetails = () => {
-    const idValid = id !== undefined;
-    return (
-      idValid
-    );
-  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const userId = uuidv4();
-    if (validateDetails()) {
-      const promise = Promise.all([
-        firebase.addDocument("eventteam-form", {
-          userId: `${userId}.${id.name.split(".").pop()}`,
-        }),
-        firebase.uploadFile(`EventFormTeam/${eventName}${userId}.${id.name.split(".").pop()}`, id),
-      ]);
-
-      toast.promise(
-        promise,
-        {
-          loading: "Uploading the Form",
-          success: (data) => {
-            setId(undefined);
-            return "Form Submitted Successfully!";
-          },
-          error: "Error while submitting Form!",
-        },
-        {
-          success: {
-            duration: 10000,
-          },
+const [eventid,setEventid]=useState("")
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try{
+      const url = process.env.REACT_APP_BASE_URL;
+      const formData={
+        teamName:teamName,
+        teamLeader:leaderID,
+        members:userIds
+      }
+      let teamCreation = await fetch(`${url}/team/createTeam`, {
+        method: "post",
+        body: JSON.stringify( formData ),
+        headers: { "Content-Type": "application/json" },
+      });
+      if(teamCreation.ok){
+        const data=await teamCreation.json()
+        // console.log(data)
+        const id=data._id
+        try{
+          const form={
+            eventName:eventName,
+            updatedBody:{
+              participants:{
+                teams:[id]
+              }
+            }
+          }
+          const response= await fetch(`${url}/admin/updateEvent/${eventType}s`,{
+            method:"put",
+            body:JSON.stringify(form),
+            headers: { "Content-Type": "application/json" },
+          })
+          let arr=await Promise.all(
+            participants.map(async(email)=>{
+              const event={
+                email:email,
+                eventType:eventType,
+                eventName:eventid,//id deni hai
+                status:"pending"
+              }
+              let res=await fetch(`${url}/auth/addEvent`,{
+                method:'post',
+                body:JSON.stringify(event ),
+                headers: { "Content-Type": "application/json" },
+              })
+              if(res.ok)return true
+              else arr.pop()
+            })
+          )
+          // console.log(arr)
+          if(response.ok&&arr.length==participants.length)alert("registered")
+          else alert("error")
+        }catch(error){
+          console.log("error in team reg",error)
         }
-      );
-    } else {
-      toast.error("Either of the Details is Invalid");
-      return;
+      }
+
+    }catch(error){
+      console.log("error in team creation",error)
     }
   };
 
@@ -105,11 +129,31 @@ const SecondPage = forwardRef((props, ref) => {
       done = true;
     }
   }, []);
-
+  const fetchData = async () => {
+    try {
+      const url = process.env.REACT_APP_BASE_URL;
+      let event = await fetch(`${url}/admin/${eventType}`);
+      const datas = await event.json();
+      
+      // console.log(datas.result);
+  
+      const foundEvent = datas.result.find((data) => data.eventName === eventName);
+  
+      if (foundEvent) {
+        setEventid(foundEvent._id);
+        // console.log(eventid);
+      } else {
+        console.log(`Event with name '${eventName}' not found.`);
+      }
+    } catch (error) {
+      console.error("Error fetching event data:", error);
+    }
+  };
+  
   useEffect(() => {
-    console.log(id);
-    console.log(id?.name.split(".").pop());
-  }, [id]);
+    fetchData(); 
+  }, []); 
+  
 
   return (
     <>
@@ -146,7 +190,7 @@ const SecondPage = forwardRef((props, ref) => {
                       <p>Participants: {participants.join(' , ')}</p>
                     </div>
                   </div>
-                  <button type="button">Submit</button>
+                  <button type="button" onClick={(e)=>handleSubmit(e)}>Submit</button>
                 </form>
               </div>
               <div className={style.contact_details} ref={contactRef}>
