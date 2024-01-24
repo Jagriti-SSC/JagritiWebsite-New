@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useLayoutEffect, useRef } from "react";
+import React, { useEffect,useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
 import { auth } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
@@ -14,6 +14,7 @@ import location_img from "../../assets/ca_page/location.webp";
 import {useLocation } from "react-router-dom";
 
 const EventFormTeam = forwardRef((props, ref) => {
+  const eventType="event"//kam chalau
   const location = useLocation();
   const { state } = location;
   const eventName = state ? state : null;
@@ -24,6 +25,7 @@ const EventFormTeam = forwardRef((props, ref) => {
     setTeamName(event.target.value);
   };
   const leader = auth.currentUser.email;
+  const [leaderID,setLeaderID]=useState('')
   const [participants, setParticipants] = useState([""]);
 
   const handleParticipantChange = (event, index) => {
@@ -69,7 +71,7 @@ const EventFormTeam = forwardRef((props, ref) => {
           });
           if (response.ok) {
             const userData = await response.json();
-            userIds.push(userData._id); // Assuming your API response contains a userId field
+            userIds.push({"member":userData._id}); // Assuming your API response contains a userId field
             return true;
           } else {
             return false;
@@ -84,7 +86,7 @@ const EventFormTeam = forwardRef((props, ref) => {
       } else {
         setError("");
         navigate("/secondpage", {
-          state: { teamName, leader, participants, userIds },
+          state: { leaderID,eventType,teamName,leader, participants, eventName ,userIds},
         });
       }
     } catch (error) {
@@ -109,13 +111,35 @@ const EventFormTeam = forwardRef((props, ref) => {
       done = true;
     }
   }, []);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = process.env.REACT_APP_BASE_URL;
+      try {
+        let response = await fetch(`${url}/auth/checkUser`, {
+          method: "post",
+          body: JSON.stringify({ email:leader }),
+          headers: { "Content-Type": "application/json" },
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          setLeaderID(data._id);
+          // alert(leaderID)
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData(); // Invoke the asynchronous function
+  }, [leader]); // Add any dependencies here if necessary
+  
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
           <h1 className={style.event_heading}>
-            Event Registration Form {eventName}{" "}
+            Event Registration Form for {eventName}{" "}
           </h1>
           <h4 className={style.event_subheading}>Fill the form to register</h4>
         </div>
