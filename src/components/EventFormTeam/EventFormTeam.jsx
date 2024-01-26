@@ -1,3 +1,4 @@
+
 import React, { useEffect,useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
 import { auth } from "../../context/Firebase";
@@ -14,10 +15,10 @@ import location_img from "../../assets/ca_page/location.webp";
 import {useLocation } from "react-router-dom";
 
 const EventFormTeam = forwardRef((props, ref) => {
-  const eventType="event"//kam chalau
   const location = useLocation();
-  const { state } = location;
-  const eventName = state ? state : null;
+  const { eventname, eventType } = location.state
+ console.log(eventname, eventType);
+  const eventName = eventname;
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [teamName, setTeamName] = useState("");

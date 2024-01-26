@@ -4,9 +4,8 @@ import Card from '../EventCard/Card';
 import Modal from '../EventCard/Modal';
 import Overlay from '../EventCard/Overlay';
 
-const Events = ({data,index}) => {
+const Events = ({eventType,data,index}) => {
   const [open, setOpen] = useState(false);
-
   const openModal = () => {
     setOpen(true);
     window.scrollTo(0, 0);
@@ -22,7 +21,7 @@ const Events = ({data,index}) => {
     <AnimatePresence>
       {
         open && (<Overlay close={closeModal}>
-          <Modal data={data} close={closeModal}></Modal>
+          <Modal data={data}eventType={eventType} close={closeModal}></Modal>
         </Overlay>)
       }
     </AnimatePresence>
