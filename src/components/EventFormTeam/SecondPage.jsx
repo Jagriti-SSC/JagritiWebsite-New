@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import Footer from "../../components/footer/Footer";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
@@ -19,10 +19,11 @@ import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
 const SecondPage = forwardRef((props, ref) => {
-
+  const navigate = useNavigate();
   const location = useLocation();
+  const [error, setError] = useState("");
   const { leaderID,eventType,teamName,leader, participants, eventName ,userIds} = location.state;
-  // console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
+  console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
   var storedUserString = localStorage.getItem("user");
   // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -76,16 +77,16 @@ const [eventid,setEventid]=useState("")
               }
             }
           }
-          const response= await fetch(`${url}/admin/updateEvent/${eventType}s`,{
+          const response= await fetch(`${url}/admin/updateEvent/${eventType}`,{
             method:"put",
             body:JSON.stringify(form),
             headers: { "Content-Type": "application/json" },
           })
           let arr=await Promise.all(
-            participants.map(async(email)=>{
+            [...participants,leader].map(async(email)=>{
               const event={
                 email:email,
-                eventType:eventType,
+                eventType:eventType.slice(0, -1),
                 eventName:eventid,//id deni hai
                 status:"pending"
               }
@@ -95,12 +96,12 @@ const [eventid,setEventid]=useState("")
                 headers: { "Content-Type": "application/json" },
               })
               if(res.ok)return true
-              else arr.pop()
+              else {const err=await res.json();setError(err.message);arr.pop();}
             })
           )
           // console.log(arr)
-          if(response.ok&&arr.length==participants.length)alert("registered")
-          else alert("error")
+          if(response.ok&&arr.length==participants.length+1){alert("registered");navigate('/events')}
+          // else {console.log();setError()}
         }catch(error){
           console.log("error in team reg",error)
         }
@@ -137,9 +138,10 @@ const [eventid,setEventid]=useState("")
       
       // console.log(datas.result);
   
-      const foundEvent = datas.result.find((data) => data.eventName === eventName);
+      const foundEvent = await datas.result.find((data) => data.eventName === eventName);
   
       if (foundEvent) {
+        console.log(foundEvent);
         setEventid(foundEvent._id);
         // console.log(eventid);
       } else {
@@ -186,6 +188,7 @@ const [eventid,setEventid]=useState("")
                     </div>
                     <div className="absolute top-[210px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
                       <h2 >Team Members</h2>
+                      {error && <p className="text-red">{error}</p>}
                       <p>Leader: {leader}</p>
                       <p>Participants: {participants.join(' , ')}</p>
                     </div>
