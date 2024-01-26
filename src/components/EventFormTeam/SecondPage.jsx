@@ -23,7 +23,7 @@ const SecondPage = forwardRef((props, ref) => {
   const location = useLocation();
   const [error, setError] = useState("");
   const { leaderID,eventType,teamName,leader, participants, eventName ,userIds} = location.state;
-  console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
+  //console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
   var storedUserString = localStorage.getItem("user");
   // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -155,6 +155,8 @@ const [eventid,setEventid]=useState("")
   useEffect(() => {
     fetchData(); 
   }, []); 
+  
+ 
   
 
   return (
