@@ -23,6 +23,7 @@ import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
 import UserInfo from './pages/UserAuthForm/UserInfo.jsx';
 import SecondPage from "./components/EventFormTeam/SecondPage.jsx";
 import { FormProvider } from "./pages/UserAuthForm/FormContext.jsx";
+import { EditProfile } from "./pages/UserAuthForm/editProfile.jsx";
 
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
           </Route> 
       <Route exact path="/reset" element={<ResetPassword />} />
       <Route exact path="/userinfo" element={<UserInfo />} />
+      <Route exact path="/edit-profile/:id" element={<EditProfile/>}/>
     </Routes>
     
      

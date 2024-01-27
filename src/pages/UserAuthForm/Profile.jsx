@@ -372,6 +372,7 @@ console.log(events)
                     }}
                     color="primary"
                     variant="contained"
+                    onClick={()=>navigate(`/edit-profile/${auth.currentUser.email}`)}
                   >
                     Edit Profile
                   </Button>
