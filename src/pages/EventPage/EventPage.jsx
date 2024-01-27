@@ -15,16 +15,16 @@ const EventPage = () => {
   useEffect(() => {
     document.title = "Event Registration | Jagriti IIT (BHU)"
   }, [])
-  
+
 
   return (
     <>
-      
+
       <div ref={divRef} style={{ position: "relative" }}>
-      <EventForm ref={formRef} />
-      <div className="skewed-bg" />
-    </div>
-    <Footer />
+        <EventForm ref={formRef} />
+        <div className="skewed-bg" />
+      </div>
+      <Footer />
     </>
   );
 };

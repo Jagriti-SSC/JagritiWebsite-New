@@ -1,40 +1,33 @@
-import React, {
-  useState,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-  useEffect,
-} from "react";
-import { Link } from 'react-router-dom';
+
+import React, { useEffect,useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
-import toast from "react-hot-toast";
-import { useFirebase } from "../../context/Firebase";
+import { auth } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
-import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
+import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
+import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
+import email_img from "../../assets/ca_page/email.webp";
+import telephone_img from "../../assets/ca_page/telephone.webp";
+import location_img from "../../assets/ca_page/location.webp";
+import {useLocation } from "react-router-dom";
+
 const EventFormTeam = forwardRef((props, ref) => {
-
-  var storedUserString = localStorage.getItem("user");
-  console.log(storedUserString);
-  const userObject = JSON.parse(storedUserString);
-  console.log("User" + userObject);
-
-  const fetchEventData = (name) => {
-    const Data = firebase.getAllDocuments(name);
+  const location = useLocation();
+  const { eventname, eventType } = location.state
+ console.log(eventname, eventType);
+  const eventName = eventname;
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const handleTeamNameChange = (event) => {
+    setTeamName(event.target.value);
   };
-
-  useEffect(() => {
-    Promise.all([fetchEventData("events")]);
-  }, []);
-
-  const leader = userObject?.email ? `${userObject?.email}` : "null";
-  // const [leader, setLeader] = useState({storedUserString});
-  const [participants, setParticipants] = useState(['']);
-
-  // const handleLeaderChange = (event) => {
-  //   setLeader(event.target.value);
-  // };
+  const leader = auth.currentUser.email;
+  const [leaderID,setLeaderID]=useState('')
+  const [participants, setParticipants] = useState([""]);
 
   const handleParticipantChange = (event, index) => {
     const newParticipants = [...participants];
@@ -44,83 +37,111 @@ const EventFormTeam = forwardRef((props, ref) => {
 
   const handleAddParticipant = () => {
     if (participants.length < 4) {
-      setParticipants([...participants, '']);
+      setParticipants([...participants, ""]);
     }
   };
 
-  const firebase = useFirebase();
-  const [id, setId] = useState(undefined);
   let done = false;
 
   const contactRef = useRef();
   const socialRef = useRef();
   const gridRef = useRef();
 
-  const validateDetails = () => {
-    const idValid = id !== undefined;
-    return (
-      idValid
-    );
-  };
+  const [array, setArr] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const userId = uuidv4();
-    if (validateDetails()) {
-      const promise = Promise.all([
-        firebase.addDocument("eventteam-form", {
-          userId: `${userId}.${id.name.split(".").pop()}`,
-        }),
-        firebase.uploadFile(`EventFormTeam/${userId}.${id.name.split(".").pop()}`, id),
-      ]);
-
-      toast.promise(
-        promise,
-        {
-          loading: "Uploading the Form",
-          success: (data) => {
-            setId(undefined);
-            return "Form Submitted Successfully!";
-          },
-          error: "Error while submitting Form!",
-        },
-        {
-          success: {
-            duration: 10000,
-          },
-        }
+  let checkUsers = async (e) => {
+    e.preventDefault();
+    try {
+      const allEmails = [auth.currentUser.email, ...participants];
+      const areEmailsUnique = new Set(allEmails).size === allEmails.length;
+  
+      if (!areEmailsUnique) {
+        setError("Please make sure all emails are unique");
+        return;
+      }
+  
+      let userIds = [];
+  
+      let nArr = await Promise.all(
+        participants.map(async (email) => {
+          const url = process.env.REACT_APP_BASE_URL;
+          let response = await fetch(`${url}/auth/checkUser`, {
+            method: "post",
+            body: JSON.stringify({ email }),
+            headers: { "Content-Type": "application/json" },
+          });
+          if (response.ok) {
+            const userData = await response.json();
+            userIds.push({"member":userData._id}); // Assuming your API response contains a userId field
+            return true;
+          } else {
+            return false;
+          }
+        })
       );
-    } else {
-      toast.error("Either of the Details is Invalid");
-      return;
+      setArr(nArr);
+      const numberOfTrue = nArr.filter((value) => value === true).length;
+  
+      if (numberOfTrue !== participants.length) {
+        setError("Not all emails are registered");
+      } else {
+        setError("");
+        navigate("/secondpage", {
+          state: { leaderID,eventType,teamName,leader, participants, eventName ,userIds},
+        });
+      }
+    } catch (error) {
+      console.error("Error in checkUsers:", error);
     }
-  };
+  };  
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
       if (done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
-          }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 30
+        ref.current.style.height = `${
+          ref.current.offsetHeight - socialRef.current.clientHeight
         }px`;
+      socialRef.current.style.height = `${
+        contactRef.current.clientHeight + 30
+      }px`;
       socialRef.current.style.position = "relative";
       socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
-        }px`;
+      socialRef.current.style.left = `${
+        gridRef.current.clientWidth - socialRef.current.clientWidth
+      }px`;
       done = true;
     }
   }, []);
-
   useEffect(() => {
-    console.log(id);
-    console.log(id?.name.split(".").pop());
-  }, [id]);
-
+    const fetchData = async () => {
+      const url = process.env.REACT_APP_BASE_URL;
+      try {
+        let response = await fetch(`${url}/auth/checkUser`, {
+          method: "post",
+          body: JSON.stringify({ email:leader }),
+          headers: { "Content-Type": "application/json" },
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          setLeaderID(data._id);
+          // alert(leaderID)
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData(); // Invoke the asynchronous function
+  }, [leader]); // Add any dependencies here if necessary
+  
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
-          <h1 className={style.event_heading}>Event Registration Form</h1>
+          <h1 className={style.event_heading}>
+            Event Registration Form for {eventName}{" "}
+          </h1>
           <h4 className={style.event_subheading}>Fill the form to register</h4>
         </div>
         <div className={style.event_img}>
@@ -128,43 +149,90 @@ const EventFormTeam = forwardRef((props, ref) => {
         </div>
         <div className={style.event_form_div}>
           <div>
-        <center><h2 className={style.event_heading}>Team Registration</h2></center>
-        <form className={style.form}>
-          <h5>
-            Leader Mail ID: {userObject?.email ? `  ${userObject?.email}` : "null"}</h5>
-
-          <br />
-          <label>
-            Participants Mail IDs :
-            {participants.map((participant, index) => (
-              <div key={index}>
+            <center>
+              <h2 className={style.event_heading}>Team Registration</h2>
+            </center>
+            {error && <p className="text-red">{error}</p>}
+            <form className={style.event_form}>
+              <h5>Leader Mail ID: {leader}</h5>
+              <label>
+                Team Name:
                 <input
                   type="text"
-                  value={participant}
-                  placeholder="Enter participant's mail id"
-                  onChange={(event) => handleParticipantChange(event, index)}
+                  value={teamName}
+                  placeholder="Enter team name"
+                  onChange={handleTeamNameChange}
                 />
-              </div>
-            ))}
-          </label>
-          <br />
-          <button type="button" onClick={handleAddParticipant}>
-            Add participants <FontAwesomeIcon icon={faPlus} />
-          </button> 
-
-          <br />
-          <Link to="/secondpage" state={{ leader, participants }}>
-          <button type = "button"> Submit </button>
-          </Link>
-          {/* <Button text="submit" path="/secondpage"></Button> */}
-        </form>
-
-        {/* <Route path="/second-page" element={<SecondPage />} /> */}
-      </div>
+              </label>
+              <label>
+                Participants Mail IDs :
+                {participants.map((participant, index) => (
+                  <div key={index}>
+                    <input
+                      type="text"
+                      value={participant}
+                      placeholder="Enter participant's mail id"
+                      onChange={(event) =>
+                        handleParticipantChange(event, index)
+                      }
+                    />
+                  </div>
+                ))}
+              </label>
+              <button type="button" onClick={handleAddParticipant}>
+                Add participants <FontAwesomeIcon icon={faPlus} />
+              </button>
+              <button onClick={(e) => checkUsers(e)}>Submit</button>
+            </form>
+          </div>
+        </div>
+        <div className={style.contact_details} ref={contactRef}>
+          <div className={style.event_details}>
+            <img src={location_img} alt="#"></img>
+            <a
+              href="https://www.iitbhu.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              IIT (BHU) Varanasi
+            </a>
+          </div>
+          <div className={style.event_details}>
+            <img src={telephone_img} alt="#"></img>
+            <a href="tel:+91-7004405828">+91-7004405828</a>
+          </div>
+          <div className={style.event_details}>
+            <img src={email_img} alt="#"></img>
+            <a href="mailto:jagriti.ssc@iitbhu.ac.in">
+              jagriti.ssc@iitbhu.ac.in
+            </a>{" "}
+          </div>
         </div>
       </div>
+      <div className={style.socials} ref={socialRef}>
+        <a
+          href="https://www.facebook.com/jagriti.iitbhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Facebook style={{ color: "white", width: 30 }} />
+        </a>
+        <a
+          href="https://twitter.com/JagritiBhu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Twitter style={{ color: "white", width: 25 }} />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/jagriti-iitbhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedinSquare style={{ color: "white", width: 25 }} />
+        </a>
+      </div>
     </div>
-
   );
 });
 

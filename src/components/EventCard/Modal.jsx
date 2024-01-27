@@ -3,15 +3,20 @@ import { motion } from "framer-motion";
 import Button from "../UI/button/Button";
 import { CloseOutline } from "styled-icons/evaicons-outline";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { Link } from "react-router-dom";
 
 import { useFormContext } from "../../pages/UserAuthForm/FormContext";
 
-const Modal = ({ data, close }) => {
+
   
+
+const Modal = ({ data, close ,eventType}) => {
+  console.log(eventType);
   const [content, setContent] = useState("Overview");
   const { isFormFilled } = useFormContext();
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
   const registration = data.status;
+  const eventname = data.eventName;
   const modalVariants = {
     open: {
       opacity: 1,
@@ -115,10 +120,11 @@ const Modal = ({ data, close }) => {
             </motion.div>
 
             <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
-              <Button
-                text={isLoggedIn ? "Register" : "Log In"}
-                path={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"}
-              />
+             
+            <Link to={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"} state={{ eventname, eventType }}>
+  <Button text={isLoggedIn ? "Register" : "Log In"} />
+</Link>
+        
             </motion.div>
           </motion.div>
         </>
@@ -153,12 +159,10 @@ const Modal = ({ data, close }) => {
           </motion.div>
         </>
       )}
-
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
-        <Button
-          text={isLoggedIn ? "Register" : "Log In"}
-          path={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"}
-        />
+       
+      <Link to={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"} state={eventname}><Button text={isLoggedIn ? "Register" : "Log In"}>
+        </Button></Link>
       </motion.div>
     </motion.div>
   );
