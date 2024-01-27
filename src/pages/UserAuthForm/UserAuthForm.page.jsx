@@ -23,6 +23,7 @@ import illus2 from './illus2.png'
 import infocard from './infocard.png'
 
 import bg_image from "./userbg.png";
+import {  fetchSignInMethodsForEmail } from 'firebase/auth';
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const userContext = createContext();
@@ -79,16 +80,35 @@ const options = [
    
   async function authByGoogle(e) {
     e.preventDefault()
+
+    // fetchSignInMethodsForEmail(auth, email).then((result) => {
+    //   console.log(result);
+    //   if(result.length>0) {
+    //     check = false
+    //     navigate('/signin')}
+    // });
+
+   
    await signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(result)
         const token = credential.accessToken;
         const user = result.user;
+        var check = false;
+        fetchSignInMethodsForEmail(auth,user.email).then((methods) => {
+               if(methods.length === 2) {
+                  check = true;
+                  user.delete()
+                  
+               }
+        })
         
         localStorage.setItem('user', JSON.stringify(user));
         setAuthState(prev => !prev)
         if(type==="sign-up"){
-          navigate('/userinfo');
+          console.log(check)
+         {check===true?  navigate('/signin'):navigate('/userinfo')};
         } else {
           navigate('/');
         }
@@ -108,7 +128,7 @@ const options = [
 
 
 
- 
+  let check = true
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -121,9 +141,13 @@ const options = [
       const email=emailRef.current.value.length>0?emailRef.current.value:emailRef2.current.value
       const pass=passwordRef.current.value.length>0?passwordRef.current.value:passwordRef2.current.value
       const mobile=mobileNumberRef.current.value.length>0?mobileNumberRef.current.value:mobileNumberRef2.current.value
-      const college=collegeRef.current.value.length>0?collegeRef.current.value:collegeRef2.current.value
-      const course=courseRef.current.value.length>0?courseRef.current.value:courseRef2.current.value
-      const year=yearRef.current.value.length>0?yearRef.current.value:yearRef2.current.value
+      // const college=collegeRef.current.value.length>0?collegeRef.current.value:collegeRef2.current.value 
+      // const course=courseRef.current.value.length>0?courseRef.current.value:courseRef2.current.value
+      // const year=yearRef.current.value.length>0?yearRef.current.value:yearRef2.current.value 
+      const college = collegeRef.current?.value || collegeRef2.current?.value || null;
+      const course = courseRef.current?.value || courseRef2.current?.value || null;
+      const year = yearRef.current?.value || yearRef2.current?.value || null;
+
       const formData={
         name: name,
         mobile:mobile,
@@ -139,28 +163,36 @@ const options = [
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      if(response.ok){
-      const user = await signup(email, pass);
-       console.log(user)
-      //  await addDoc(collection(db, "users"), {
-      //   userId: user.user.uid,
-      //   fullName: fullnameRef.current.value,
-      //   email: emailRef.current.value,
-      //   // gender: genderRef.current.value,
-      //   // nationality:nationalityRef.current.value,
-      //   occupation:selectedOption.value,
-      //   course:courseRef.current.value,
-      //   year:yearRef.current.value,
-      //   mobile:mobileNumberRef.current.value,
-      //   college:collegeRef.current.value,
-
-
-      // });
-
+      // if(response.ok){
+      // const user = await signup(email, pass);
+      //  console.log(user)
+      // //  await addDoc(collection(db, "users"), {
+      // //   userId: user.user.uid,
+      // //   fullName: fullnameRef.current.value,
+      // //   email: emailRef.current.value,
+      // //   // gender: genderRef.current.value,
+      // //   // nationality:nationalityRef.current.value,
+      // //   occupation:selectedOption.value,
+      // //   course:courseRef.current.value,
+      // //   year:yearRef.current.value,
+      // //   mobile:mobileNumberRef.current.value,
+      // //   college:collegeRef.current.value,
+      
+      
+      fetchSignInMethodsForEmail(auth, email).then((result) => {
+        console.log(result);
+        if(result.length>0) {
+          check = false
+          navigate('/signin')}
+      });
+      // // });
+        const user = await signup(email, pass);
       navigate("/");
-      console.log("User created");}
-    } catch (error) {
-      setError("Failed to create an account");
+      // console.log("User created");}
+    } catch (error ) {
+      // setError("Failed to create an account");
+      // if(!check) setError("");
+      check === false ? setError("Account already exists, Sign in to continue"): setError("Failed to create an account")
       console.log(error);
     } finally {
       setLoading(false);
@@ -220,16 +252,16 @@ const options = [
             <Link to='/signin' className={"text-xl font-bold " + (type=="sign-in"? " text-blue" :" text-gray-500")}>Sign In</Link>
             <Link to='/signup' className={"text-xl font-bold " + (type=="sign-up"? " text-blue" :" text-gray-500")}>Sign Up</Link>
         </div>
-        <div className="flex flex-row justify-center items-center w-[40%] mb-[20px]">
+        <div className="flex flex-row justify-center items-center w-[40%] mb-[20px] h-[100%]">
         <hr className={"w-1/2  border-t-2  " + (type=="sign-in"? " border-blue" : " border-grey") } />
         <hr className={"w-1/2  border-t-2  " + (type=="sign-up"? " border-blue" : " border-grey") } />
         </div>
         <div className="flex flex-row w-[100%]">
         <form
-          className="w-[50%]  p-8 rounded-[20px] flex-col  "
-           onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
+          className="w-[50%] flex justify-center items-center p-8 rounded-[20px] flex-col  "
+          //  onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
           //  onSubmit={(e) => (type === "sign-in" ? handleLogin(e) : handleSignup(e))}
-          
+          onSubmit={(e) =>  authByGoogle(e)}
         >
           {/* <h1 className="text-4xl font-gelasio capitalize text-center mb-10">
             {type == "sign-in" ? "Welcome back" : "Join us today"}
@@ -237,7 +269,7 @@ const options = [
 
           {error && <p>{error}</p>}
 
-          {type != "sign-in" ? (
+          {/* {type != "sign-in" ? (
             <InputBox
               name="fullname"
               type="text"
@@ -247,9 +279,9 @@ const options = [
             />
           ) : (
             ""
-          )}
+          )} */}
 
-          <InputBox
+          {/* <InputBox
             name="email"
             type="email"
             placeholder="Email"
@@ -263,12 +295,12 @@ const options = [
             placeholder="Password"
             icon={lock}
             ref={passwordRef}
-          />
+          /> */}
 
   
  
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
               <InputBox
               name="mobile number"
               type="text"
@@ -278,7 +310,7 @@ const options = [
             />
           ) : (
             ""
-          )}
+          )} */}
 
 {/* {type != "sign-in" ? (
              <InputBox
@@ -306,7 +338,7 @@ const options = [
             ""
           )} */}
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
             <div className="my-4">
             <Select
                     defaultValue={selectedOption}
@@ -318,9 +350,9 @@ const options = [
             </div>
           ) : (
             ""
-          )}
+          )} */}
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
           <InputBox
           name="college"
           type="text"
@@ -330,10 +362,10 @@ const options = [
         /> 
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
            <InputBox
            name="course"
            type="text"
@@ -343,10 +375,10 @@ const options = [
          /> 
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
-{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
 
             <InputBox
             name="year"
@@ -357,7 +389,7 @@ const options = [
           />
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
 
@@ -394,20 +426,20 @@ const options = [
 
         
           
-          {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
+          {/* {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
           <button
             disabled={loading}
             className="whitespace-nowrap bg-blue text-white rounded-[5px] w-[100%] font-normal text-xl capitalize hover:bg-opacity-80 block mx-auto mt-14 py-2"
             type="submit"
           >
             {type.replace("-", " ")}
-          </button>
+          </button> */}
 
-          <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
+          {/* <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
             <hr className="w-1/2 border-black" />
             <p>or</p>
             <hr className="w-1/2 border-black" />
-          </div>
+          </div> */}
 
           <button
             onClick={handleAuthState}
@@ -436,7 +468,7 @@ const options = [
         </form>
         <div className="flex flex-col justify-center items-center w-[50%]">
               
-              {type== "sign-in" ?( <img src={illus} className= "h-[250px]" ></img>):( <img src={illus} className= "h-[350px]" ></img>)}
+               <img src={illus} className= "h-[250px] m-[50px]" />
               
 
         </div>
@@ -463,8 +495,9 @@ const options = [
        </div>
         <form
           className="w-[100%]  p-8 rounded-[20px] flex-col  "
-           onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
+          //  onSubmit={(e) => ( authState ? ((type === "sign-in" ? handleLogin(e) : handleSignup(e))) : authByGoogle(e))}
           //  onSubmit={(e) => (type === "sign-in" ? handleLogin(e) : handleSignup(e))}
+          onSubmit={(e) =>  authByGoogle(e)}
           
         >
           {/* <h1 className="text-4xl font-gelasio capitalize text-center mb-10">
@@ -473,7 +506,7 @@ const options = [
 
           {error && <p>{error}</p>}
 
-          {type != "sign-in" ? (
+          {/* {type != "sign-in" ? (
             <InputBox
               name="fullname"
               type="text"
@@ -491,20 +524,20 @@ const options = [
             placeholder="Email"
             icon={msg}
             ref={emailRef2}
-          />
+          /> */}
 
-          <InputBox
+          {/* <InputBox
             name="password"
             type="password"
             placeholder="Password"
             icon={lock}
             ref={passwordRef2}
-          />
+          /> */}
 
   
  
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
               <InputBox
               name="mobile number"
               type="text"
@@ -514,7 +547,7 @@ const options = [
             />
           ) : (
             ""
-          )}
+          )} */}
 
 {/* {type != "sign-in" ? (
              <InputBox
@@ -542,7 +575,7 @@ const options = [
             ""
           )} */}
 
-{type != "sign-in" ? (
+{/* {type != "sign-in" ? (
             <div className="my-4">
             <Select
                     defaultValue={selectedOption}
@@ -554,9 +587,9 @@ const options = [
             </div>
           ) : (
             ""
-          )}
+          )} */}
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
           <InputBox
           name="college"
           type="text"
@@ -566,10 +599,10 @@ const options = [
         /> 
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
-{selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value=="College Student"? (type != "sign-in" ? (
            <InputBox
            name="course"
            type="text"
@@ -579,10 +612,10 @@ const options = [
          /> 
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
-{selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
+{/* {selectedOption && selectedOption.value === "College Student"? (type != "sign-in" ? (
 
             <InputBox
             name="year"
@@ -593,7 +626,7 @@ const options = [
           />
           ) : (
             ""
-          )):""}
+          )):""} */}
 
 
 
@@ -630,7 +663,7 @@ const options = [
 
         
           
-          {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
+          {/* {type== "sign-in" ?(<Link to="/reset"><button className="text-grey font-thin text-sm  underline border-0" >Forgot Password ?</button></Link>):""}
           <button
             disabled={loading}
             className="whitespace-nowrap bg-blue text-white rounded-[5px] w-[100%] font-normal text-xl capitalize hover:bg-opacity-80 block mx-auto mt-14 py-2"
@@ -643,7 +676,7 @@ const options = [
             <hr className="w-1/2 border-black" />
             <p>or</p>
             <hr className="w-1/2 border-black" />
-          </div>
+          </div> */}
 
           <button
             onClick={handleAuthState}

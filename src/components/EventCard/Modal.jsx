@@ -4,8 +4,12 @@ import Button from "../UI/button/Button";
 import { CloseOutline } from "styled-icons/evaicons-outline";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
+import { useFormContext } from "../../pages/UserAuthForm/FormContext";
+
 const Modal = ({ data, close }) => {
+  
   const [content, setContent] = useState("Overview");
+  const { isFormFilled } = useFormContext();
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
   const registration = data.status;
   const modalVariants = {
@@ -113,7 +117,7 @@ const Modal = ({ data, close }) => {
             <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
               <Button
                 text={isLoggedIn ? "Register" : "Log In"}
-                path={isLoggedIn ? "/eventteam" : "/signin"}
+                path={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"}
               />
             </motion.div>
           </motion.div>
@@ -153,7 +157,7 @@ const Modal = ({ data, close }) => {
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
         <Button
           text={isLoggedIn ? "Register" : "Log In"}
-          path={isLoggedIn ? "/eventteam" : "/signin"}
+          path={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"}
         />
       </motion.div>
     </motion.div>
