@@ -121,7 +121,7 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className={`navitem block py-2 pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signin"
+                    className={`navitem block  pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signin"
                         ? "bg-white"
                         : "bg-transparent"
                       }`}
@@ -151,7 +151,7 @@ const Navbar = () => {
                   }
                 >
                   <Link
-                    className={`navitem block py-2 pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signup"
+                    className={`navitem block pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signup"
                         ? "bg-white"
                         : "bg-transparent"
                       }`}

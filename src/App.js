@@ -20,12 +20,16 @@ import { AuthProvider } from "./context/AuthContext";
 import Profile from "./pages/UserAuthForm/Profile.jsx";
 import ResetPassword from "./pages/UserAuthForm/ResetPassword.jsx";
 import PrivateRoutes from "./pages/UserAuthForm/PrivateRoutes.jsx";
-import UserInfo from './pages/UserAuthForm/UserInfo.jsx'
+import UserInfo from './pages/UserAuthForm/UserInfo.jsx';
 import SecondPage from "./components/EventFormTeam/SecondPage.jsx";
+import { FormProvider } from "./pages/UserAuthForm/FormContext.jsx";
+
 
 function App() {
   return (
+    <FormProvider>
     <AuthProvider>
+      
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
@@ -109,6 +113,7 @@ function App() {
     <Toaster />
   </BrowserRouter>
   </AuthProvider>
+  </FormProvider>
 
         // <Routes>
         //   <Route exact path="/" element={<HomePage />} />
