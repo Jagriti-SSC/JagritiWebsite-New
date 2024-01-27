@@ -35,10 +35,10 @@ const CA = () => {
     {/* <div className='section_top'></div> */}
     <div className='h-screen bg-center relative bg-no-repeat bg-cover w-full flex items-center justify-center mb-20 section_top ' >
             
-            <div>
+            <div className='content'>
                 <motion.div  variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='
-                text-6xl flex items-center justify-center mb-2 text-[#1A589B] text-center'>Become A Campus Ambassador</motion.div>
-                <motion.div variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-20 text-center text-white'>Join us to become a campus ambassador and proudly represent our brand on your college campus</motion.div>
+                text-6xl font-bold flex items-center justify-center mb-5 text-[#1A589B] text-center'>Become A Campus Ambassador</motion.div>
+                <motion.div variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-10 text-center text-white'>Join us and proudly represent Jagriti'24 on your college campus</motion.div>
                 <motion.div variants={fadeIn('up', 0.5)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
                 <Button
                 text={isLoggedIn ? "Apply Now" : "Apply Now"}

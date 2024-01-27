@@ -15,7 +15,7 @@ import nothing from "./nothing.png";
 import "./Profile.css";
 
 const Profile = () => {
-  const [events,setEvents]=useState({})
+  const [events, setEvents] = useState({})
   var storedUserString = localStorage.getItem("user");
   // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -28,7 +28,7 @@ const Profile = () => {
 
         navigate("/");
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }
 
   const profile_img = userObject?.photoURL;
@@ -48,23 +48,23 @@ const Profile = () => {
   const [userDetails, setUserDetails] = useState({});
   const fetchUserData = async () => {
     try {
-      const url=process.env.REACT_APP_BASE_URL
-      const response = await fetch(`${url}/auth/user`,{
-        method:"POST",
+      const url = process.env.REACT_APP_BASE_URL
+      const response = await fetch(`${url}/auth/user`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({email:auth.currentUser.email}),
+        body: JSON.stringify({ email: auth.currentUser.email }),
       });
       const data = await response.json();
       setUserDetails(data)
       const { event, preEvents, guestTalks } = data;
 
-// Create a new object with only the desired properties
-const newObject = {
-  event,
-  preEvents,
-  guestTalks
-};setEvents(newObject)
-console.log(events)
+      // Create a new object with only the desired properties
+      const newObject = {
+        event,
+        preEvents,
+        guestTalks
+      }; setEvents(newObject)
+      console.log(events)
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
@@ -318,7 +318,7 @@ console.log(events)
                   <p className="m-0">Name :</p>
                   <p className="m-0 ">Institute :</p>
                   <p className="m-0 ">Email :</p>
-                  
+
                 </div>
                 <div
                   className="absolute top-[91px] left-[562px] leading-[26.4px] whitespace-pre-wrap text-black info-1"
@@ -331,17 +331,17 @@ console.log(events)
                   <p className="m-0 ">Nationality :</p> */}
                 </div>
                 <div className="absolute top-[91px] left-[157px] leading-[26.4px] text-black ">
-                <p className="m-0 uppercase">{userDetails.name}</p>
+                  <p className="m-0 uppercase">{userDetails.name}</p>
                   <p className="m-0 uppercase">
                     {userDetails.college}
                   </p>
                   <p className="m-0 ">
                     {auth.currentUser.email}
                   </p>
-                  
+
                 </div>
                 <div className="absolute top-[91px] left-[686px] leading-[26.4px] text-black info-2">
-                <p className="m-0 uppercase">
+                  <p className="m-0 uppercase">
                     {userDetails.course}
                   </p>
                   <p className="m-0 uppercase">

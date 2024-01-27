@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useFirebase } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
 import { v4 as uuidv4 } from "uuid";
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from "../../components/footer/Footer";
 import { Twitter } from "@styled-icons/boxicons-logos/Twitter";
 import { Facebook } from "@styled-icons/boxicons-logos/Facebook";
@@ -22,13 +22,11 @@ const SecondPage = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [error, setError] = useState("");
-  const { leaderID,eventType,teamName,leader, participants, eventName ,userIds} = location.state;
-  //console.log(leaderID,eventType,teamName,leader, participants, eventName ,userIds);
+  const { leaderID, eventType, teamName, leader, participants, eventName, userIds } = location.state;
   var storedUserString = localStorage.getItem("user");
   // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
   // console.log("User" + userObject);
-
   const fetchEventData = (name) => {
     const Data = firebase.getAllDocuments(name);
   };
@@ -49,66 +47,75 @@ const SecondPage = forwardRef((props, ref) => {
   const gridRef = useRef();
 
 
-const [eventid,setEventid]=useState("")
-  const handleSubmit = async(e) => {
+  const [eventid, setEventid] = useState("")
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
+    try {
       const url = process.env.REACT_APP_BASE_URL;
-      const formData={
-        teamName:teamName,
-        teamLeader:leaderID,
-        members:userIds
-      }
+      const formData = {
+        teamName: teamName,
+        teamLeader: leaderID,
+        members: userIds,
+      };
       let teamCreation = await fetch(`${url}/team/createTeam`, {
         method: "post",
-        body: JSON.stringify( formData ),
+        body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },
       });
-      if(teamCreation.ok){
-        const data=await teamCreation.json()
-        // console.log(data)
-        const id=data._id
-        try{
-          const form={
-            eventName:eventName,
-            updatedBody:{
-              participants:{
-                teams:[id]
-              }
-            }
-          }
-          const response= await fetch(`${url}/admin/updateEvent/${eventType}`,{
-            method:"put",
-            body:JSON.stringify(form),
+      if (teamCreation.ok) {
+        const data = await teamCreation.json();
+        const teamId = data._id;
+
+        try {
+          const form = {
+            eventName: eventName,
+            updatedBody: {
+              participants: {
+                teams: [teamId],
+              },
+            },
+          };
+
+          const response = await fetch(`${url}/admin/updateEvent/${eventType}`, {
+            method: "put",
+            body: JSON.stringify(form),
             headers: { "Content-Type": "application/json" },
-          })
-          let arr=await Promise.all(
-            [...participants,leader].map(async(email)=>{
-              const event={
-                email:email,
-                eventType:eventType.slice(0, -1),
-                eventName:eventid,//id deni hai
-                status:"pending"
-              }
-              let res=await fetch(`${url}/auth/addEvent`,{
-                method:'post',
-                body:JSON.stringify(event ),
+          });
+
+          let arr = await Promise.all(
+            [...participants, leader].map(async (email) => {
+              const event = {
+                email: email,
+                eventType: eventType.slice(0, -1),
+                eventName: eventid, // Use eventid here
+                status: "pending",
+              };
+              let res = await fetch(`${url}/auth/addEvent`, {
+                method: "post",
+                body: JSON.stringify(event),
                 headers: { "Content-Type": "application/json" },
-              })
-              if(res.ok)return true
-              else {const err=await res.json();setError(err.message);arr.pop();}
+              });
+              if (res.ok) return true;
+              else {
+                const err = await res.json();
+                setError(err.message);
+                return false;
+              }
             })
-          )
-          // console.log(arr)
-          if(response.ok&&arr.length==participants.length+1){alert("registered");navigate('/events')}
-          // else {console.log();setError()}
-        }catch(error){
-          console.log("error in team reg",error)
+          );
+
+          if (response.ok && arr.every((result) => result)) {
+            alert("registered");
+            navigate('/events');
+          } else {
+            setError("Error in registering team members.");
+          }
+        } catch (error) {
+          console.log("error in team reg", error);
         }
       }
-
-    }catch(error){
-      console.log("error in team creation",error)
+    } catch (error) {
+      console.log("error in team creation", error);
     }
   };
 
@@ -135,11 +142,11 @@ const [eventid,setEventid]=useState("")
       const url = process.env.REACT_APP_BASE_URL;
       let event = await fetch(`${url}/admin/${eventType}`);
       const datas = await event.json();
-      
+
       // console.log(datas.result);
-  
+
       const foundEvent = await datas.result.find((data) => data.eventName === eventName);
-  
+
       if (foundEvent) {
         console.log(foundEvent);
         setEventid(foundEvent._id);
@@ -151,13 +158,13 @@ const [eventid,setEventid]=useState("")
       console.error("Error fetching event data:", error);
     }
   };
-  
+
   useEffect(() => {
-    fetchData(); 
-  }, []); 
-  
- 
-  
+    fetchData();
+  }, []);
+
+
+
 
   return (
     <>
@@ -195,7 +202,7 @@ const [eventid,setEventid]=useState("")
                       <p>Participants: {participants.join(' , ')}</p>
                     </div>
                   </div>
-                  <button type="button" onClick={(e)=>handleSubmit(e)}>Submit</button>
+                  <button type="button" onClick={(e) => handleSubmit(e)}>Submit</button>
                 </form>
               </div>
               <div className={style.contact_details} ref={contactRef}>
