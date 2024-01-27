@@ -25,6 +25,7 @@ const EventsPage = () => {
   },[]);
 
   console.log(isAboveLargeScreen);
+  console.log("Current eventType:", eventType); // Add this line to log eventType
 
   const fetchEventData = (name) => {
     const Data =  firebase.getAllDocuments(name);
@@ -104,7 +105,7 @@ const EventsPage = () => {
             </motion.div>
             {firebase.PreEventData.map((data) => (
               <div className=" mb-[53px]">
-                <Events data={data} key={data.id}></Events>
+                <Events eventType={"preEvents"} data={data} key={data.id}></Events>
               </div>
 
             ))}
@@ -120,7 +121,7 @@ const EventsPage = () => {
             </motion.div>
             {firebase.eventData.map((data) => (
               <div className=" mb-[53px]">
-                <Events data={data} key={data.id}></Events>
+                <Events eventType={"events"} data={data} key={data.id}></Events>
               </div>
 
             ))}
@@ -137,7 +138,7 @@ const EventsPage = () => {
             </motion.div>
             {firebase.GuestTalkData.map((data) => (
               <div className=" mb-[53px]">
-                <Events data={data} key={data.id}></Events>
+                <Events eventType={"guestTalks"} data={data} key={data.id}></Events>
               </div>
 
             ))}

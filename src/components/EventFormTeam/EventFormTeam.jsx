@@ -17,7 +17,6 @@ import {useLocation } from "react-router-dom";
 const EventFormTeam = forwardRef((props, ref) => {
   const location = useLocation();
   const { eventname, eventType } = location.state
- console.log(eventname, eventType);
   const eventName = eventname;
   const navigate = useNavigate();
   const [error, setError] = useState("");

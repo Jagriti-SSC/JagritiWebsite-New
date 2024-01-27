@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 
 import { useFormContext } from "../../pages/UserAuthForm/FormContext";
 
-
-  
-
 const Modal = ({ data, close ,eventType}) => {
   console.log(eventType);
   const [content, setContent] = useState("Overview");
@@ -161,7 +158,7 @@ const Modal = ({ data, close ,eventType}) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
        
-      <Link to={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"} state={eventname}><Button text={isLoggedIn ? "Register" : "Log In"}>
+      <Link to={isLoggedIn ? (isFormFilled?"/eventteam":"/userinfo") : "/signin"} state={{ eventname, eventType }}><Button text={isLoggedIn ? "Register" : "Log In"}>
         </Button></Link>
       </motion.div>
     </motion.div>

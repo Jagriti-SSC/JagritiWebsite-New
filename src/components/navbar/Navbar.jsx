@@ -51,7 +51,7 @@ const Navbar = () => {
             <Link to="/" className="items-center ">
               <img
                 src="/assets/Jagriti_nav_logo.webp"
-                className="h-5 mr-10 smd:h-9"
+                className="h-5 smd:h-9"
                 alt="Jagriti_Logo"
               />
             </Link>
@@ -109,7 +109,7 @@ const Navbar = () => {
                       padding: "5px",
                     }}
                   >
-                    Join CA Program
+                    CA Program
                   </Link>
                 </li>
                 <li
@@ -322,7 +322,7 @@ const Navbar = () => {
                         to="/CampusAmbassador"
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
-                        <span className="whitespace-nowrap">Join CA Program</span>
+                        <span className="whitespace-nowrap">CA Program</span>
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
