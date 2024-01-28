@@ -1,5 +1,5 @@
 
-import React, { useEffect,useState, forwardRef, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useState, forwardRef, useLayoutEffect, useRef } from "react";
 import style from "./EventFormTeam.module.css";
 import { auth } from "../../context/Firebase";
 import event_img from "../../assets/event_page/img.png";
@@ -12,7 +12,7 @@ import { LinkedinSquare } from "@styled-icons/boxicons-logos/LinkedinSquare";
 import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
-import {useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const EventFormTeam = forwardRef((props, ref) => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const EventFormTeam = forwardRef((props, ref) => {
     setTeamName(event.target.value);
   };
   const leader = auth.currentUser.email;
-  const [leaderID,setLeaderID]=useState('')
+  const [leaderID, setLeaderID] = useState('')
   const [participants, setParticipants] = useState([""]);
 
   const handleParticipantChange = (event, index) => {
@@ -37,6 +37,14 @@ const EventFormTeam = forwardRef((props, ref) => {
   const handleAddParticipant = () => {
     if (participants.length < 4) {
       setParticipants([...participants, ""]);
+    }
+  };
+
+  const handleRemoveParticipant = (index) => {
+    if (participants.length > 0) {
+      const newParticipants = [...participants];
+      newParticipants.splice(index, 1);
+      setParticipants(newParticipants);
     }
   };
 
@@ -53,14 +61,14 @@ const EventFormTeam = forwardRef((props, ref) => {
     try {
       const allEmails = [auth.currentUser.email, ...participants];
       const areEmailsUnique = new Set(allEmails).size === allEmails.length;
-  
+
       if (!areEmailsUnique) {
         setError("Please make sure all emails are unique");
         return;
       }
-  
+
       let userIds = [];
-  
+
       let nArr = await Promise.all(
         participants.map(async (email) => {
           const url = process.env.REACT_APP_BASE_URL;
@@ -71,7 +79,7 @@ const EventFormTeam = forwardRef((props, ref) => {
           });
           if (response.ok) {
             const userData = await response.json();
-            userIds.push({"member":userData._id}); // Assuming your API response contains a userId field
+            userIds.push({ "member": userData._id }); // Assuming your API response contains a userId field
             return true;
           } else {
             return false;
@@ -80,34 +88,31 @@ const EventFormTeam = forwardRef((props, ref) => {
       );
       setArr(nArr);
       const numberOfTrue = nArr.filter((value) => value === true).length;
-  
+
       if (numberOfTrue !== participants.length) {
         setError("Not all emails are registered");
       } else {
         setError("");
         navigate("/secondpage", {
-          state: { leaderID,eventType,teamName,leader, participants, eventName ,userIds},
+          state: { leaderID, eventType, teamName, leader, participants, eventName, userIds },
         });
       }
     } catch (error) {
       console.error("Error in checkUsers:", error);
     }
-  };  
+  };
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
       if (done == false)
-        ref.current.style.height = `${
-          ref.current.offsetHeight - socialRef.current.clientHeight
+        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
+          }px`;
+      socialRef.current.style.height = `${contactRef.current.clientHeight + 30
         }px`;
-      socialRef.current.style.height = `${
-        contactRef.current.clientHeight + 30
-      }px`;
       socialRef.current.style.position = "relative";
       socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${
-        gridRef.current.clientWidth - socialRef.current.clientWidth
-      }px`;
+      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
+        }px`;
       done = true;
     }
   }, []);
@@ -117,10 +122,10 @@ const EventFormTeam = forwardRef((props, ref) => {
       try {
         let response = await fetch(`${url}/auth/checkUser`, {
           method: "post",
-          body: JSON.stringify({ email:leader }),
+          body: JSON.stringify({ email: leader }),
           headers: { "Content-Type": "application/json" },
         });
-  
+
         if (response.ok) {
           const data = await response.json();
           setLeaderID(data._id);
@@ -130,10 +135,10 @@ const EventFormTeam = forwardRef((props, ref) => {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData(); // Invoke the asynchronous function
   }, [leader]); // Add any dependencies here if necessary
-  
+
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
@@ -148,9 +153,6 @@ const EventFormTeam = forwardRef((props, ref) => {
         </div>
         <div className={style.event_form_div}>
           <div>
-            <center>
-              <h2 className={style.event_heading}>Team Registration</h2>
-            </center>
             {error && <p className="text-red">{error}</p>}
             <form className={style.event_form}>
               <h5>Leader Mail ID: {leader}</h5>
@@ -164,17 +166,18 @@ const EventFormTeam = forwardRef((props, ref) => {
                 />
               </label>
               <label>
-                Participants Mail IDs :
+                Members Mail IDs :
                 {participants.map((participant, index) => (
                   <div key={index}>
                     <input
                       type="text"
                       value={participant}
                       placeholder="Enter participant's mail id"
-                      onChange={(event) =>
-                        handleParticipantChange(event, index)
-                      }
+                      onChange={(event) => handleParticipantChange(event, index)}
                     />
+                    <button type="button" onClick={() => handleRemoveParticipant(index)}>
+                      Remove
+                    </button>
                   </div>
                 ))}
               </label>

@@ -45,7 +45,9 @@ const SecondPage = forwardRef((props, ref) => {
   const contactRef = useRef();
   const socialRef = useRef();
   const gridRef = useRef();
-
+  useLayoutEffect(() => {
+    divRef.current.style.height = "650px";
+  }, [formRef, divRef]);
 
   const [eventid, setEventid] = useState("")
   const handleSubmit = async (e) => {
@@ -121,10 +123,6 @@ const SecondPage = forwardRef((props, ref) => {
   };
 
   useLayoutEffect(() => {
-    divRef.current.style.height = `${formRef.current.clientHeight + 490}px`;
-  }, [formRef, divRef]);
-
-  useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
       if (done == false)
         ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
@@ -182,7 +180,7 @@ const SecondPage = forwardRef((props, ref) => {
               </div>
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
-                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[200px] rounded-3xl info-div-1">
+                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[350px] rounded-3xl info-div-1">
                     <div className="absolute top-[145px] left-[75px]">Drive link of your passport size image(s):</div>
                     <div className="absolute top-[175px] left-[75px]">
                       <input
@@ -194,11 +192,11 @@ const SecondPage = forwardRef((props, ref) => {
                         onChange={(e) => setdriveUrl(e.target.value)}
                       ></input>
                     </div>
-                    <div className="absolute top-[210px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
+                    <div className="absolute top-[220px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
                       <h2 >Team Members</h2>
                       {error && <p className="text-red">{error}</p>}
                       <p>Leader: {leader}</p>
-                      <p>Participants: {participants.join(' , ')}</p>
+                      <p>Participants:<br/>{participants.join(',\n')}</p>
                     </div>
                   </div>
                   <button type="button" onClick={(e) => handleSubmit(e)}>Submit</button>
