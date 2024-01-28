@@ -52,6 +52,8 @@
   width: 350px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Horizontally center the content */
+  margin: auto; /* Additional margin property for centering */
 }
 
 .event_form_div {
