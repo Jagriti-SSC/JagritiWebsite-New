@@ -57,7 +57,7 @@ export default function Example() {
                 Will there be opportunities to interact with guest speakers or notable personalities associated with Jagriti’24?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                YES
+                Yes
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 5}>

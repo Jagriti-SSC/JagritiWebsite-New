@@ -38,10 +38,10 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 2}>
                 <AccordionHeader onClick={() => handleOpen(2)} className="font-popins">
-                What are the dates for Jagriti ’23?
+                What are the dates for Jagriti ’24?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                JAGRITI usually takes place in March or April. This year JAGRITI will be held from the 7th to the 9th of April.
+                JAGRITI usually takes place in March or April. This year JAGRITI will be held from the 1st to the 3rd of March.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 3}>
@@ -78,10 +78,10 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 7}>
                 <AccordionHeader onClick={() => handleOpen(7)} className="font-popins">
-                What is the theme of Jagriti ’23?
+                What is the theme of Jagriti ’24?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                The theme of JAGRITI ’23 is <span className="font-extrabold">Breaking Stereotypes</span>. The theme of <span className="font-extrabold">Breaking Stereotypes</span> encourages people to examine their own biases and assumptions and to strive to see individuals for who they truly are, rather than simply relying on preconceived notions.
+                The theme of JAGRITI ’24 is yet to be announced. Last year theme was <span className="font-extrabold">Breaking Stereotypes</span>. The theme of <span className="font-extrabold">Breaking Stereotypes</span> encourages people to examine their own biases and assumptions and to strive to see individuals for who they truly are, rather than simply relying on preconceived notions.
                 </AccordionBody>
               </Accordion>
               
