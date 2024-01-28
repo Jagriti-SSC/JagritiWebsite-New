@@ -78,7 +78,7 @@ function App() {
           </Route>
           <Route element={<PrivateRoutes />}>
             <Route
-              path="/event"
+              path="/individual-form/:eventType/:eventID"
               element={
                 <>
                   <EventPage />
