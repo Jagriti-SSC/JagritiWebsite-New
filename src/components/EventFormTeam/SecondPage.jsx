@@ -23,6 +23,7 @@ const SecondPage = forwardRef((props, ref) => {
   const location = useLocation();
   const [error, setError] = useState("");
   const { leaderID, eventType, teamName, leader, participants, eventName, userIds } = location.state;
+  const [driveUrl, setdriveUrl] = useState("");
   var storedUserString = localStorage.getItem("user");
   // console.log(storedUserString);
   const userObject = JSON.parse(storedUserString);
@@ -37,7 +38,6 @@ const SecondPage = forwardRef((props, ref) => {
 
 
   const firebase = useFirebase();
-  const [id, setId] = useState(undefined);
   let done = false;
 
   const formRef = useRef();
@@ -56,6 +56,7 @@ const SecondPage = forwardRef((props, ref) => {
         teamName: teamName,
         teamLeader: leaderID,
         members: userIds,
+        driveUrl: driveUrl,
       };
       let teamCreation = await fetch(`${url}/team/createTeam`, {
         method: "post",
@@ -72,6 +73,7 @@ const SecondPage = forwardRef((props, ref) => {
             updatedBody: {
               participants: {
                 teams: [teamId],
+                driveUrl: driveUrl,
               },
             },
           };
@@ -88,7 +90,6 @@ const SecondPage = forwardRef((props, ref) => {
                 email: email,
                 eventType: eventType.slice(0, -1),
                 eventName: eventid, // Use eventid here
-                status: "pending",
               };
               let res = await fetch(`${url}/auth/addEvent`, {
                 method: "post",
@@ -182,18 +183,16 @@ const SecondPage = forwardRef((props, ref) => {
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
                   <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[200px] rounded-3xl info-div-1">
-                    <label htmlFor="icard" className="absolute top-[145px] left-[75px] ">Upload image</label>
+                    <div className="absolute top-[145px] left-[75px]">Drive link of your passport size image(s):</div>
                     <div className="absolute top-[175px] left-[75px]">
                       <input
                         required
-                        id="icard"
-                        type="file"
-                        name="icard"
-                        onChange={(e) => {
-                          setId(e.target.files[0]);
-                        }}
-                      >
-                      </input>
+                        type="text"
+                        name="driveUrl"
+                        placeholder="Enter url here"
+                        value={driveUrl}
+                        onChange={(e) => setdriveUrl(e.target.value)}
+                      ></input>
                     </div>
                     <div className="absolute top-[210px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
                       <h2 >Team Members</h2>
