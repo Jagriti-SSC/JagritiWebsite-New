@@ -66,77 +66,36 @@ const options = [
   const navigate = useNavigate();
   
   const {  setFormFilled } = useFormContext();
-
-//   const handleAuthState  = () => {
-//     setAuthState(prev => !prev)
-//   }
-
- 
-   
-//   async function authByGoogle(e) {
-//     e.preventDefault()
-//    await signInWithPopup(auth, provider)
-//       .then((result) => {
-//         const credential = GoogleAuthProvider.credentialFromResult(result);
-//         const token = credential.accessToken;
-//         const user = result.user;
-        
-//         localStorage.setItem('user', JSON.stringify(user));
-//         setAuthState(prev => !prev)
-//         navigate('/userinfo');
-      
-//       })
-//       .catch((error) => {
-        
-//         const errorCode = error.code;
-//         const errorMessage = error.message;
-//         const email = error.customData.email;
-//         const credential = GoogleAuthProvider.credentialFromError(error);
-       
-//       });
-//   }
-  
-
-
-
-
- 
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-    //   setError("");
-    //   setLoading(true);
-    //   console.log(emailRef.current.value);
-    //   const user = await signup(emailRef.current.value, passwordRef.current.value);
-    //    console.log(user)
-       await addDoc(collection(db, "users"), {
-       
-        fullName: fullnameRef.current?.value || fullnameRef2.current?.value || null ,
-        // email: emailRef.current.value,
-        // gender: genderRef.current.value,
-        // nationality:nationalityRef.current.value,
-        occupation:selectedOption,
-        course:courseRef.current?.value || courseRef2.current?.value || null,
-        year:yearRef.current?.value || yearRef2.current?.value || null,
-        mobile:mobileNumberRef.current?.value || mobileNumberRef2.current?.value || null ,
-        college:collegeRef.current?.value || collegeRef2.current?.value || null,
-
-  
-        
-        
-
-
+    const name=fullnameRef.current.value.length>0?fullnameRef.current.value:fullnameRef2.current.value
+      const email=auth.currentUser.email
+      const mobile=mobileNumberRef.current.value.length>0?mobileNumberRef.current.value:mobileNumberRef2.current.value
+      const college = collegeRef.current?.value || collegeRef2.current?.value || null;
+      const course = courseRef.current?.value || courseRef2.current?.value || null;
+      const year = yearRef.current?.value || yearRef2.current?.value || null;
+      const formData={
+        name: name,
+        mobile:mobile,
+        email: email,
+        college:college,
+        course:course,
+        year:year,
+      }
+      const url=process.env.REACT_APP_BASE_URL
+      
+      const response = await fetch(`${url}/auth/createuser`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      if(fullnameRef.current.value!=null &&  mobileNumberRef.current.value!=null ){
+      if(response.ok){
         setFormFilled();
         navigate("/");
+        console.log("User created");
       }
-
-
-      
-      console.log("User created");
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
