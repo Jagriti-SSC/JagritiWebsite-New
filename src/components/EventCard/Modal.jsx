@@ -12,6 +12,7 @@ const Modal = ({ data, close ,eventType}) => {
   console.log(eventType);
   const [content, setContent] = useState("Overview");
   const { isFormFilled } = useFormContext();
+  const [check,setCheck]=useState(false)
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
   const registration = data.status;
   const eventname = data.eventName;
@@ -63,9 +64,28 @@ const Modal = ({ data, close ,eventType}) => {
       console.error("Error fetching event data:", error);
     }
   };
-  
+  const checkUser=async()=>{
+    try{
+      const url = process.env.REACT_APP_BASE_URL;
+      let user=await fetch(`${url}/auth/checkUser`,{
+        method:"post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({email:auth.currentUser.email}),
+      })
+      if(user.ok){
+        setCheck(true)
+      }else{setCheck(false)}
+    }catch (error) {
+      console.error("Error fetching user:", error);
+    }
+  }
   useEffect(() => {
-    fetchData(); 
+    const fetch=async()=>{
+      await fetchData()
+      await checkUser()
+      console.log(check,isLoggedIn);
+    }
+    fetch()
   }, []); 
   return (
     // xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]
@@ -143,7 +163,7 @@ const Modal = ({ data, close ,eventType}) => {
             </motion.div>
 
             <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
-<Link to={isLoggedIn ? (teamEvent?"/eventteam":`/eventind`) : "/signin"} state={{ eventname, eventType, eventID }}>
+<Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType, eventID }}>
   <Button text={isLoggedIn ? "Register" : "Log In"} />
 </Link>
         
@@ -183,7 +203,7 @@ const Modal = ({ data, close ,eventType}) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
        
-      <Link to={isLoggedIn ? (teamEvent?"/eventteam":`/eventind`) : "/signin"} state={{ eventname, eventType,eventID }}><Button text={isLoggedIn ? "Register" : "Log In"}>
+      <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType,eventID }}><Button text={isLoggedIn ? "Register" : "Log In"}>
         </Button></Link>
       </motion.div>
     </motion.div>
