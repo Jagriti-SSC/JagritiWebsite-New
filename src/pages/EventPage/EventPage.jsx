@@ -44,7 +44,7 @@ const EventPage = forwardRef((props, ref) => {
         email: auth.currentUser.email,
         eventType: eventType.slice(0, -1),
         eventName: eventID, //id deni hai
-        status: "pending",
+        status: "Pending"
       };
       let res = await fetch(`${url}/auth/addEvent`, {
         method: "post",

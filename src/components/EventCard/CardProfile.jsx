@@ -24,7 +24,7 @@ const CardProfile = ({ data, open, index,status }) => {
       >
         Know More
       </motion.button>
-      {status==="pending"?(<button className="bg-[#FCD336] text-black py-2 px-3 rounded pointer-events-none">
+      {status==="Pending"?(<button className="bg-[#FCD336] text-black py-2 px-3 rounded pointer-events-none">
         <i class="fi fi-rr-loading"></i> Pending
       </button>):(<button className="bg-[#42bb2a] text-white py-2 px-4 rounded pointer-events-none">
         <i class="fi fi-ss-check-circle"></i> Verified
