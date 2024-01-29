@@ -99,9 +99,9 @@ const ModalCard = ({ data, close }) => {
               ) : content === "Contact" ? (
                 //Contact
                 <motion.div className=" text-blue md:text-lg sm:text-sm text-xs">
-                  {data.contact.map((item) => (
+                  {data.contacts.map((item) => (
                     <p>
-                      {item.contactName} : {item.number}
+                      {item.name} : {item.mobile}
                     </p>
                   ))}
                 </motion.div>
@@ -133,11 +133,11 @@ const ModalCard = ({ data, close }) => {
               Contact
             </motion.h2>
             <motion.div className=" text-blue xs:text-lg ss:text-xl text-sm mb-6">
-              {data.contact.map((item) => (
+              {/* {data.contact.map((item) => (
                 <p>
                   {item.contactName} : {item.number}
                 </p>
-              ))}
+              ))} */}
             </motion.div>
           </motion.div>
         </>
