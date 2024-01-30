@@ -54,6 +54,7 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: auth.currentUser.email }),
       });
+      if(response!=null){ 
       const data = await response.json();
       setUserDetails(data)
       const { events, preEvents, guestTalks } = data;
@@ -63,7 +64,7 @@ const Profile = () => {
         events,
         preEvents,
         guestTalks
-      }; setEvents(newObject)
+      }; setEvents(newObject)}
       // console.log(events)
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -335,9 +336,9 @@ const Profile = () => {
                   <p className="m-0 ">Nationality :</p> */}
                 </div>
                 <div className="absolute top-[91px] left-[157px] leading-[26.4px] text-black ">
-                  <p className="m-0 uppercase">{userDetails.name}</p>
+                  <p className="m-0 uppercase">{userDetails.name?userDetails.name:"null"}</p>
                   <p className="m-0 uppercase">
-                    {userDetails.college}
+                    {userDetails.college?userDetails.college:"null"}
                   </p>
                   <p className="m-0 ">
                     {auth.currentUser.email}
@@ -346,13 +347,13 @@ const Profile = () => {
                 </div>
                 <div className="absolute top-[91px] left-[686px] leading-[26.4px] text-black info-2">
                   <p className="m-0 uppercase">
-                    {userDetails.course}
+                    {userDetails.course?userDetails.course:"null"}
                   </p>
                   <p className="m-0 uppercase">
-                    {userDetails.year}
+                    {userDetails.year?userDetails.year:"null"}
                   </p>
                   <p className="m-0 uppercase">
-                    {userDetails.mobile}
+                    {userDetails.mobile?userDetails.mobile:"null"}
                   </p>
                   {/* <p className="m-0">
                     {userObject?.providerData?.gender

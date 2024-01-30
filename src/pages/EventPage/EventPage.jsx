@@ -54,17 +54,14 @@ const EventPage = forwardRef((props, ref) => {
       if (res.ok) {
         const form = {
           eventName: eventname,
-          updatedBody: {
-            participants: {
-              individuals: [userId],
-              driveUrl: driveUrl,
-            },
-          },
+          eventType:  eventType.slice(0,-1),
+          driveUrl: driveUrl,
+          teamid: userId
         };
         const response = await fetch(
-          `${url}/admin/updateEvent/${eventType}`,
+          `${url}/admin/registration`,
           {
-            method: "put",
+            method: "post",
             body: JSON.stringify(form),
             headers: { "Content-Type": "application/json" },
           }
