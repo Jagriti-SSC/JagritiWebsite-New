@@ -52,6 +52,7 @@ const SecondPage = forwardRef((props, ref) => {
   const [eventid, setEventid] = useState("")
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(driveUrl.length==0){setError("Drive url is missing"); return;}
     try {
       const url = process.env.REACT_APP_BASE_URL;
       const formData = {
@@ -70,19 +71,6 @@ const SecondPage = forwardRef((props, ref) => {
         const teamId = data._id;
 
         try {
-          const form = {
-            eventName: eventName,
-            eventType:  eventType.slice(0,-1),
-            driveUrl: driveUrl,
-            teamid: teamId
-          };
-
-          const response = await fetch(`${url}/admin/registration`, {
-            method: "post",
-            body: JSON.stringify(form),
-            headers: { "Content-Type": "application/json" },
-          });
-
           let arr = await Promise.all(
             [...participants, leader].map(async (email) => {
               const event = {
@@ -104,12 +92,29 @@ const SecondPage = forwardRef((props, ref) => {
             })
           );
 
-          if (response.ok && arr.every((result) => result)) {
-            alert("registered");
-            navigate('/events');
-          } else {
-            setError("Error in registering team members.");
-          }
+          if (arr.every((result) => result)) {
+            try{
+              const form = {
+                eventName: eventName,
+                eventType:  eventType.slice(0,-1),
+                driveUrl: driveUrl,
+                teamid: teamId
+              };
+    
+              const response = await fetch(`${url}/admin/registration`, {
+                method: "post",
+                body: JSON.stringify(form),
+                headers: { "Content-Type": "application/json" },
+              });
+              if(response.ok){
+                alert("registered");
+                navigate('/events');
+              }
+            }catch (error) {
+              setError("error in registration")
+              console.log("error in team reg", error);
+            }
+          } 
         } catch (error) {
           console.log("error in team reg", error);
         }

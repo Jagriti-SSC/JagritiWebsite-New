@@ -38,6 +38,7 @@ const EventPage = forwardRef((props, ref) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(driveUrl.length==0){setError("Drive url is missing"); return;}
     try {
       const url = process.env.REACT_APP_BASE_URL;
       const event = {
@@ -69,7 +70,7 @@ const EventPage = forwardRef((props, ref) => {
         if(response.ok){alert("registered");navigate('/events')}
       } else {
         const err = await res.json();
-        setError(err.message);
+        setError(err.message,"add event me");
       }
     } catch (error) {
       console.log("error in registration", error);

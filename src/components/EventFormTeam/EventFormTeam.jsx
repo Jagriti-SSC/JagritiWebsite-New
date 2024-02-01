@@ -93,6 +93,8 @@ const EventFormTeam = forwardRef((props, ref) => {
         setError("Not all emails are registered");
       } else {
         setError("");
+        if(teamName.length==0)setError("Team Name is missing")
+        else
         navigate("/secondpage", {
           state: { leaderID, eventType, teamName, leader, participants, eventName, userIds },
         });
@@ -156,10 +158,11 @@ const EventFormTeam = forwardRef((props, ref) => {
             {error && <p className="text-red">{error}</p>}
             <form className={style.event_form}>
               <h5>Leader Mail ID: {leader}</h5>
-              <label>
-                Team Name:
+              <label >
+               <div className="flex">Team Name: <p  className="text-red"> * </p></div>
                 <input
                   type="text"
+                  required
                   value={teamName}
                   placeholder="Enter team name"
                   onChange={handleTeamNameChange}
