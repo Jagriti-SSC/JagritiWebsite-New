@@ -97,8 +97,12 @@ const SecondPage = forwardRef((props, ref) => {
               const form = {
                 eventName: eventName,
                 eventType:  eventType.slice(0,-1),
-                driveUrl: driveUrl,
-                teamid: teamId
+                participant:{
+                  teams:teamId,
+                  individuals:null,
+                  driveUrl:driveUrl,
+                  status:"Pending"
+                }
               };
     
               const response = await fetch(`${url}/admin/registration`, {
