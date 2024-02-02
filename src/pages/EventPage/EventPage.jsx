@@ -17,14 +17,13 @@ import email_img from "../../assets/ca_page/email.webp";
 import telephone_img from "../../assets/ca_page/telephone.webp";
 import location_img from "../../assets/ca_page/location.webp";
 const EventPage = forwardRef((props, ref) => {
-
   const navigate = useNavigate();
   const location = useLocation();
   const [error, setError] = useState("");
   const [userId, setUserID] = useState("");
   const [driveUrl, setdriveUrl] = useState("");
 
-  const {eventname,eventType, eventID} = location.state;
+  const { eventname, eventType, eventID } = location.state;
 
   const firebase = useFirebase();
   const [id, setId] = useState(undefined);
@@ -38,14 +37,17 @@ const EventPage = forwardRef((props, ref) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(driveUrl.length==0){setError("Drive url is missing"); return;}
+    if (driveUrl.length == 0) {
+      setError("Drive url is missing");
+      return;
+    }
     try {
       const url = process.env.REACT_APP_BASE_URL;
       const event = {
         email: auth.currentUser.email,
         eventType: eventType.slice(0, -1),
         eventName: eventID, //id deni hai
-        status: "Pending"
+        status: "Pending",
       };
       let res = await fetch(`${url}/auth/addEvent`, {
         method: "post",
@@ -55,22 +57,26 @@ const EventPage = forwardRef((props, ref) => {
       if (res.ok) {
         const form = {
           eventName: eventname,
-          eventType:  eventType.slice(0,-1),
-          driveUrl: driveUrl,
-          teamid: userId
+          eventType: eventType.slice(0, -1),
+          participant: {
+            individuals: userId,
+            teams: null,
+            driveUrl: driveUrl,
+            status: "Pending",
+          },
         };
-        const response = await fetch(
-          `${url}/admin/registration`,
-          {
-            method: "post",
-            body: JSON.stringify(form),
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        if(response.ok){alert("registered");navigate('/events')}
+        const response = await fetch(`${url}/admin/registration`, {
+          method: "post",
+          body: JSON.stringify(form),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          alert("registered");
+          navigate("/events");
+        }
       } else {
         const err = await res.json();
-        setError(err.message,"add event me");
+        setError(err.message, "add event me");
       }
     } catch (error) {
       console.log("error in registration", error);
@@ -138,7 +144,9 @@ const EventPage = forwardRef((props, ref) => {
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
                   <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[180px] rounded-3xl info-div-1">
-                  <div className="absolute top-[145px] left-[75px]">Drive link of your passport size image(s):</div>
+                    <div className="absolute top-[145px] left-[75px]">
+                      Drive link of your passport size image(s):
+                    </div>
                     <div className="absolute top-[175px] left-[75px]">
                       <input
                         required
