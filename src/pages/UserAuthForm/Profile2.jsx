@@ -116,7 +116,7 @@ const Profile = () => {
                 </div>
                 <div style={{ fontWeight: "100" }}>
                   <p className="m-0">{userDetails.name ? userDetails.name : "null"}</p>
-                  <p className="m-0 ">{userDetails.college ? userDetails.college : "null"}</p>
+                  <p className="m-0 ">{userDetails.mobile?userDetails.mobile:"null"}</p>
                   <p className="m-0 ">{auth.currentUser.email}</p>
                 </div>
 
