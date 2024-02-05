@@ -166,7 +166,7 @@ const Profile = () => {
                 }}
                 color="primary"
                 variant="contained"
-
+                onClick={logout}
               >
                 Log out
               </Button>
