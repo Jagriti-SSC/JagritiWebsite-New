@@ -158,7 +158,7 @@ const options = [
       }
       const url=process.env.REACT_APP_BASE_URL
       
-      const response = await fetch(`${url}/auth/createuser`, {
+      const response = await fetch(`${url}/auth/createUser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
