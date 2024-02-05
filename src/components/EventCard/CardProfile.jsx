@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const CardProfile = ({ data, open, index }) => {
+const CardProfile = ({ data, open, index,status }) => {
   const style =
     index % 2 === 0
       ? "md:rounded-[25px] md:rounded-bl-none"
@@ -24,15 +24,20 @@ const CardProfile = ({ data, open, index }) => {
       >
         Know More
       </motion.button>
-      <button className="bg-[#42bb2a] text-white py-2 px-4 rounded pointer-events-none">
-        <i class="fi fi-ss-check-circle"></i> Payment Confirmed
+      {status==="Pending"?(<button className="bg-[#FCD336] text-black py-2 px-3 rounded pointer-events-none">
+        <i class="fi fi-rr-loading"></i> Pending
+      </button>):(<button className="bg-[#42bb2a] text-white py-2 px-4 rounded pointer-events-none">
+        <i class="fi fi-ss-check-circle"></i> Verified
+      </button>)}
+      {/* <button className="bg-[#42bb2a] text-white py-2 px-4 rounded pointer-events-none">
+        <i class="fi fi-ss-check-circle"></i> Verified
       </button>
       <button className="bg-[#FCD336] text-black py-2 px-3 rounded pointer-events-none">
-        <i class="fi fi-rr-loading"></i> Payment Confirmation Pending
-      </button>
-      <button className="bg-[#fc3636] text-white py-2 px-3 rounded pointer-events-none">
+        <i class="fi fi-rr-loading"></i> Pending
+      </button> */}
+      {/* <button className="bg-[#fc3636] text-white py-2 px-3 rounded pointer-events-none">
         <i class="fi fi-sr-cross-circle"></i> Payment Rejected
-      </button>
+      </button> */}
     </motion.div>
   );
 };

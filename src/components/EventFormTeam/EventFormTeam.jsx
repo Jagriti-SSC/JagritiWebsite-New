@@ -27,6 +27,7 @@ const EventFormTeam = forwardRef((props, ref) => {
   const leader = auth.currentUser.email;
   const [leaderID, setLeaderID] = useState('')
   const [participants, setParticipants] = useState([""]);
+  const [eventid, setEventid] = useState("")
 
   const handleParticipantChange = (event, index) => {
     const newParticipants = [...participants];
@@ -71,10 +72,15 @@ const EventFormTeam = forwardRef((props, ref) => {
 
       let nArr = await Promise.all(
         participants.map(async (email) => {
+          const data={
+            eventName: eventid,
+            email:email,
+            eventType:eventType.slice(0,-1)
+          }
           const url = process.env.REACT_APP_BASE_URL;
-          let response = await fetch(`${url}/auth/checkUser`, {
+          let response = await fetch(`${url}/auth/checkRegister`, {
             method: "post",
-            body: JSON.stringify({ email }),
+            body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" },
           });
           if (response.ok) {
@@ -82,6 +88,8 @@ const EventFormTeam = forwardRef((props, ref) => {
             userIds.push({ "member": userData._id }); // Assuming your API response contains a userId field
             return true;
           } else {
+            const userData = await response.json();
+            setError("some members are "+userData.message)
             return false;
           }
         })
@@ -89,10 +97,12 @@ const EventFormTeam = forwardRef((props, ref) => {
       setArr(nArr);
       const numberOfTrue = nArr.filter((value) => value === true).length;
 
-      if (numberOfTrue !== participants.length) {
-        setError("Not all emails are registered");
-      } else {
+      if (numberOfTrue == participants.length) {
+      //   setError("Not all emails are registered");
+      // } else {
         setError("");
+        if(teamName.length==0)setError("Team Name is missing")
+        else
         navigate("/secondpage", {
           state: { leaderID, eventType, teamName, leader, participants, eventName, userIds },
         });
@@ -120,24 +130,49 @@ const EventFormTeam = forwardRef((props, ref) => {
     const fetchData = async () => {
       const url = process.env.REACT_APP_BASE_URL;
       try {
-        let response = await fetch(`${url}/auth/checkUser`, {
+        const check={
+          eventName: eventid,
+          email:leader,
+          eventType:eventType.slice(0,-1)
+        }
+        let response = await fetch(`${url}/auth/checkRegister`, {
           method: "post",
-          body: JSON.stringify({ email: leader }),
+          body: JSON.stringify(check),
           headers: { "Content-Type": "application/json" },
         });
-
+        const data = await response.json();
         if (response.ok) {
-          const data = await response.json();
           setLeaderID(data._id);
           // alert(leaderID)
-        }
+        }else setError("Leader "+data.message)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
+    const fetchEvent = async () => {
+      try {
+        const url = process.env.REACT_APP_BASE_URL;
+        let event = await fetch(`${url}/admin/${eventType}`);
+        const datas = await event.json();
+  
+        // console.log(datas.result);
+  
+        const foundEvent = await datas.result.find((data) => data.eventName === eventName);
+  
+        if (foundEvent) {
+          console.log(foundEvent);
+          setEventid(foundEvent._id);
+          // console.log(eventid);
+        } else {
+          console.log(`Event with name '${eventName}' not found.`);
+        }
+      } catch (error) {
+        console.error("Error fetching event data:", error);
+      }
+    };
 
-    fetchData(); // Invoke the asynchronous function
-  }, [leader]); // Add any dependencies here if necessary
+    fetchEvent().then(()=>fetchData())
+  }, [leader,eventid]); // Add any dependencies here if necessary
 
   return (
     <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
@@ -156,10 +191,11 @@ const EventFormTeam = forwardRef((props, ref) => {
             {error && <p className="text-red">{error}</p>}
             <form className={style.event_form}>
               <h5>Leader Mail ID: {leader}</h5>
-              <label>
-                Team Name:
+              <label >
+               <div className="flex">Team Name: <p  className="text-red"> * </p></div>
                 <input
                   type="text"
+                  required
                   value={teamName}
                   placeholder="Enter team name"
                   onChange={handleTeamNameChange}

@@ -54,28 +54,33 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: auth.currentUser.email }),
       });
+      if(response!=null){ 
       const data = await response.json();
       setUserDetails(data)
-      const { event, preEvents, guestTalks } = data;
+      const { events, preEvents, guestTalks } = data;
 
       // Create a new object with only the desired properties
       const newObject = {
-        event,
+        events,
         preEvents,
         guestTalks
-      }; setEvents(newObject)
-      console.log(events)
+      }; setEvents(newObject)}
+      // console.log(events)
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   }
   useEffect(() => {
-    if (auth.currentUser) {
-      fetchUserData();
-    }
-  }, [auth.currentUser]);
+    const fetchData = async () => {
+        if (auth.currentUser) {
+            await fetchUserData();
+        }
+    };
+
+    fetchData();
+}, [auth.currentUser]);
   useEffect(() => {
-    console.log(events);
+    // console.log(events);
   }, [events]);
   // const [isEditing, setIsEditing] = useState(false);
   // const [saving, setSaving] = useState(false);
@@ -331,9 +336,9 @@ const Profile = () => {
                   <p className="m-0 ">Nationality :</p> */}
                 </div>
                 <div className="absolute top-[91px] left-[157px] leading-[26.4px] text-black ">
-                  <p className="m-0 uppercase">{userDetails.name}</p>
+                  <p className="m-0 uppercase">{userDetails.name?userDetails.name:"null"}</p>
                   <p className="m-0 uppercase">
-                    {userDetails.college}
+                    {userDetails.college?userDetails.college:"null"}
                   </p>
                   <p className="m-0 ">
                     {auth.currentUser.email}
@@ -342,13 +347,13 @@ const Profile = () => {
                 </div>
                 <div className="absolute top-[91px] left-[686px] leading-[26.4px] text-black info-2">
                   <p className="m-0 uppercase">
-                    {userDetails.course}
+                    {userDetails.course?userDetails.course:"null"}
                   </p>
                   <p className="m-0 uppercase">
-                    {userDetails.year}
+                    {userDetails.year?userDetails.year:"null"}
                   </p>
                   <p className="m-0 uppercase">
-                    {userDetails.mobile}
+                    {userDetails.mobile?userDetails.mobile:"null"}
                   </p>
                   {/* <p className="m-0">
                     {userObject?.providerData?.gender
@@ -434,15 +439,15 @@ const Profile = () => {
             ) : (
               <div className="relative">
                 <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[903px] h-screen rounded-3xl info-div-2">
-                  <div
+                  {/* <div
                     className="absolute top-[99px] left-[250px] whitespace-pre-wrap flex gap-20 payment"
                     style={{ fontWeight: "900" }}
                   >
                     <h1 className="text-[#32BA7C]">Payment Verified : </h1>
                     <h1 className="text-[#B52E1F]">Payment Unverified : </h1>
-                  </div>
+                  </div> */}
                   <div className="absolute top-[150px] left-[10px] ">
-                    <EventCarousel eventData={firebase.eventData} />  {/*change to events function after changing event carousel */}
+                    <EventCarousel eventsData={firebase.eventData} events={events}/>  {/*change to events function after changing event carousel */}
                   </div>
                 </div>
               </div>
