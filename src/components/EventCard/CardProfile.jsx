@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const CardProfile = ({ data, open, index,status }) => {
+const CardProfile = ({ data, open, index, status }) => {
   const style =
-    index % 2 === 0
+    index % 1 === 0
       ? "md:rounded-[25px] md:rounded-bl-none"
       : "md:rounded-[25px] md:rounded-br-none";
 
