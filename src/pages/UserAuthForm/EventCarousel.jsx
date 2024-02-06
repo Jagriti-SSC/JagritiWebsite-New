@@ -83,31 +83,27 @@ const EventCarousel = ({  events }) => {
 
   return (
     <div className="relative">
-      <div className="absolute flex justify-center mb-4 gap-[730px] mt-60 but">
+      <div className="flex justify-between md:justify-evenly items-center mb-4 ">
         <button
           onClick={prevSlide}
-          className="text-[#1A589B] text-5xl ml-7 prev"
+          className="text-[#1A589B] text-5xl md:mr-5"
         >
           <i class="fi fi-sr-angle-circle-left"></i>
         </button>
-        <button onClick={nextSlide} className="text-[#1A589B] text-5xl next">
+        {eventData
+          .slice(currentSlide, currentSlide + 1)
+          .map((data, index) => (
+            <div className=" mb-4" key={data.id}>
+              <EventsProfile
+                data={data}
+                status={status[index]}
+                index={currentSlide + index}
+              ></EventsProfile>
+            </div>
+          ))}
+        <button onClick={nextSlide} className="text-[#1A589B] text-5xl md:ml-5">
           <i class="fi fi-sr-angle-circle-right"></i>
         </button>
-      </div>
-      <div className="absolute left-36 caro">
-        <div className="flex flex-warp gap-3 justify-center cards">
-          {eventData
-            .slice(currentSlide, currentSlide + 2)
-            .map((data, index) => (
-              <div className="w-full md:w-1/2 lg:w-1/2 mb-4" key={data.id}>
-                <EventsProfile
-                  data={data}
-                  status={status[index]}
-                  index={currentSlide + index}
-                ></EventsProfile>
-              </div>
-            ))}
-        </div>
       </div>
     </div>
   );
