@@ -4,7 +4,7 @@ import illus from './illus.png'
 import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
-import { useRef, useState,useContext,createContext } from "react";
+import { useRef, useState,useContext,createContext, useEffect } from "react";
 import { auth, provider } from "../../context/Firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../context/Firebase";
@@ -136,7 +136,22 @@ const options = [
 
   
 
-
+useEffect(()=>{
+  const checkuser=async()=>{
+    const url=process.env.REACT_APP_BASE_URL
+      
+    const response = await fetch(`${url}/auth/checkUser`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({email:auth.currentUser.email}),
+    });
+    if(response.ok){
+      setFormFilled();
+      navigate("/");
+    }
+  }
+  checkuser()
+},[auth.currentUser.email])
   return (
     <div className=""> 
     <AnimationWrapper keyValue={type}>
