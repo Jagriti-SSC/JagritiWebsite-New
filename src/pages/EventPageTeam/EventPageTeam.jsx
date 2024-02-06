@@ -18,7 +18,7 @@ const EventPageTeam = () => {
   }, [formRef, divRef]);
 
   useEffect(() => {
-    document.title = `${eventName} Event Registration | Jagriti IIT (BHU)`
+    document.title = "Event Registration | Jagriti IIT (BHU)"
   }, [])
   
 

@@ -114,7 +114,7 @@ const EventsPage = () => {
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
 
               </motion.div>
-              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Events</motion.h1>
+              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Main Events</motion.h1>
               <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
 
               </motion.div>
