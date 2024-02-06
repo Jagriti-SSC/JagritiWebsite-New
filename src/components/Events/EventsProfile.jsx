@@ -4,7 +4,7 @@ import CardProfile from "../EventCard/CardProfile";
 import ModalCard from "../EventCard/ModalCard";
 import Overlay from "../EventCard/Overlay";
 
-const EventsProfile = ({ data, index,status }) => {
+const EventsProfile = ({ data, index, status }) => {
 // console.log(status);
   const [open, setOpen] = useState(false);
 // console.log(data);
