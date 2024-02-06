@@ -42,6 +42,7 @@ const Modal = ({ data, close, eventType }) => {
   // };
   const [teamEvent, setTeamEvent] = useState()
   const [eventID, setEventID] = useState()
+  const [isLoading, setIsLoading] = useState(true)
   const fetchData = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
@@ -82,7 +83,7 @@ const Modal = ({ data, close, eventType }) => {
   useEffect(() => {
     const fetch = async () => {
       await fetchData()
-      await checkUser()
+      await checkUser().then(()=>setIsLoading(false))
       console.log(isLoggedIn);
     }
     fetch()
@@ -164,7 +165,7 @@ const Modal = ({ data, close, eventType }) => {
 
             <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
               <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType, eventID }}>
-                <Button text={isLoggedIn ? "Register" : "Log In"} />
+                <Button text={isLoggedIn ? "Register" : "Log In"} disabled={isLoading} />
               </Link>
 
             </motion.div>
@@ -203,7 +204,8 @@ const Modal = ({ data, close, eventType }) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
 
-        <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType,eventID }}><Button text={isLoggedIn ? "Register" : "Log In"}>
+        <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType,eventID }}>
+          <Button text={isLoggedIn ? "Register" : "Log In"} disabled={isLoading}>
           </Button></Link>
       </motion.div>
     </motion.div>
