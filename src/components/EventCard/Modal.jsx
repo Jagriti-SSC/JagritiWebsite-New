@@ -83,7 +83,7 @@ const Modal = ({ data, close, eventType }) => {
   useEffect(() => {
     const fetch = async () => {
       await fetchData()
-      await checkUser().then(()=>setIsLoading(false))
+      await checkUser().then(() => setIsLoading(false))
       console.log(isLoggedIn);
     }
     fetch()
@@ -163,11 +163,13 @@ const Modal = ({ data, close, eventType }) => {
               )}
             </motion.div>
 
-            <motion.div className="md:mb-[37px] mb-[20px] mt-auto mx-auto">
-              <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType, eventID }}>
-                <Button text={isLoggedIn ? "Register" : "Log In"} disabled={isLoading} />
+            <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
+              <Link to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
+                <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
               </Link>
-
+              {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
+                <Button text={"Unstop Link"} />
+              </Link>}
             </motion.div>
           </motion.div>
         </>
@@ -204,9 +206,12 @@ const Modal = ({ data, close, eventType }) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
 
-        <Link to={isLoggedIn ? (check?(teamEvent?"/eventteam":`/eventind`):"/userinfo") : "/signin"} state={{ eventname, eventType,eventID }}>
-          <Button text={isLoggedIn ? "Register" : "Log In"} disabled={isLoading}>
-          </Button></Link>
+        <Link to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
+          <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
+        </Link>
+        {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
+          <Button text={"Unstop Link"} />
+        </Link>}
       </motion.div>
     </motion.div>
   );

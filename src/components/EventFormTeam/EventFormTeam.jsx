@@ -89,7 +89,7 @@ const EventFormTeam = forwardRef((props, ref) => {
             return true;
           } else {
             const userData = await response.json();
-            setError("some members are "+userData.message)
+            setError(userData.message)
             return false;
           }
         })
