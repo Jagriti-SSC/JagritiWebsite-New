@@ -8,11 +8,11 @@ const EventCarousel = ({  events }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   // console.log(events);
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? eventData.length - 2 : prev - 2));
+    setCurrentSlide((prev) => (prev === 0 ? eventData.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === eventData.length - 2 ? 0 : prev + 2));
+    setCurrentSlide((prev) => (prev === eventData.length - 1 ? 0 : prev + 1));
   };
   const fetchUserData = async () => {
     try {

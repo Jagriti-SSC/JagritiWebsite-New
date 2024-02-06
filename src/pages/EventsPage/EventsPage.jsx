@@ -54,7 +54,7 @@ const EventsPage = () => {
               <Button text="Workshops and Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
             </div>
             <div className="mt-[44px]">
-              <Button text="Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
+              <Button text="Main Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
             </div>
 
 
