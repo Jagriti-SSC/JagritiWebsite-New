@@ -219,7 +219,7 @@
     max-width: 40px;
   }
   .fwrap{
-    display: flex;
+    display: block;
   }
 }
 
