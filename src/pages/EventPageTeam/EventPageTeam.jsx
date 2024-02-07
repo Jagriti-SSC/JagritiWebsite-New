@@ -12,9 +12,9 @@ const EventPageTeam = () => {
   const divRef = useRef();
 
   useLayoutEffect(() => {
-    // divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
+    divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
 
-    divRef.current.style.height = "700px";
+    // divRef.current.style.height = "700px";
   }, [formRef, divRef]);
 
   useEffect(() => {
