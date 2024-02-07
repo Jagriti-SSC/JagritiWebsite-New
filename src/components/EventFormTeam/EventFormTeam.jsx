@@ -117,7 +117,7 @@ const EventFormTeam = forwardRef((props, ref) => {
       if (done == false)
         ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
           }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 40
+      socialRef.current.style.height = `${contactRef.current.clientHeight + 80
         }px`;
       socialRef.current.style.position = "relative";
       socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
