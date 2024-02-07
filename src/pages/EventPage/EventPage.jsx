@@ -143,8 +143,11 @@ const EventPage = forwardRef((props, ref) => {
               </div>
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
-                  <div className="relative">
-                    <div className="relative">
+                <div className={`info-div-1 ${style.whiteBox}`}>
+                    <div className={style.text_drive}>
+                      Drive link of your passport size image(s):
+                    </div>
+                    <div className={style.text_url}>
                       <input
                         required
                         type="text"
@@ -154,10 +157,7 @@ const EventPage = forwardRef((props, ref) => {
                         onChange={(e) => setdriveUrl(e.target.value)}
                       ></input>
                     </div>
-                    <div
-                      className="whitespace-pre-wrap text-black"
-                      style={{ fontWeight: "600" }}
-                    >
+                    <div className={style.listofnames}>
                       {error && <p className="text-red">{error}</p>}
                       <p>Participant: {auth.currentUser.email}</p>
                     </div>

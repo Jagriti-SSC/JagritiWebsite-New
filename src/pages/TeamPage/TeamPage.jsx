@@ -6,6 +6,8 @@ import TeamCard from "../../components/TeamCard/TeamCard";
 import { useFirebase } from "../../context/Firebase";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 function TeamPage() {
   const firebase = useFirebase();
@@ -24,7 +26,29 @@ function TeamPage() {
   const cardRef = useRef(null);
   const teamPageRef = useRef(null);
   const spinnerRef = useRef(null);
+  //option to remove drag of teams categories
+  useEffect(() => {
+    const handleResize = () => {
+      const isOverflowing = carousel.current.scrollWidth > carousel.current.offsetWidth;
+      setWidth(isOverflowing ? carousel.current.scrollWidth - carousel.current.offsetWidth : 0);
+    };
 
+    handleResize(); // Call the function initially
+
+    window.addEventListener('resize', handleResize); // Listen for resize events
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Clean up the event listener
+    };
+  }, []);
+
+  // Function to scroll the carousel to the right
+  const scrollToRight = () => {
+    carousel.current.scrollLeft += 150; // Adjust the scroll amount as needed
+  };
+  const scrollToLeft = () => {
+    carousel.current.scrollLeft -= 150; // Adjust the scroll amount as needed
+  };
   // Team Fetching
   const fetchTeamData = async () => {
     const Data = await firebase.getAllDocuments("team");
@@ -55,7 +79,7 @@ function TeamPage() {
   useEffect(() => {
     // console.log(carousel.current)
 
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    // setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
     console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
   }, [fixedData]);
 
@@ -112,40 +136,51 @@ function TeamPage() {
             <h1>{active}</h1>
           </div>
 
-          <motion.div
-            ref={carousel}
-            className="carousel"
-            whileTap={{ cursor: "grabbing" }}
-          >
+          <div className="container_carousel">
+            {width > 0 && (<div className="scroll-icon" onClick={scrollToLeft}>
+              <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingRight: 5 }} />
+            </div>)}
             <motion.div
-              className="inner-carousel"
-              ref={innerCarousel}
-              drag="x"
-              dragConstraints={{
-                right: 0,
-                left: -width,
-              }}
+              ref={carousel}
+              className="carousel"
+              whileTap={{ cursor: "grabbing" }}
+              style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
             >
-              <button
-                onClick={setColor}
-              // className={activebtn === "Our Team" ? "selected" : " "}
-              >
-                All
-              </button>
+              <motion.div
 
-              {collection.map((item, index) => (
+                className="inner-carousel"
+                ref={innerCarousel}
+                drag="x"
+                dragConstraints={{
+                  right: 0,
+                  left: -width,
+                }}
+              >
                 <button
-                  key={index}
-                  onClick={() => {
-                    gallery_filter(item);
-                  }}
-                  className={active === item ? "selected" : " "}
+                  onClick={setColor}
+                // className={activebtn === "Our Team" ? "selected" : " "}
                 >
-                  {item}
+                  All
                 </button>
-              ))}
+
+                {collection.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      gallery_filter(item);
+                    }}
+                    className={active === item ? "selected" : " "}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </motion.div>
             </motion.div>
-          </motion.div>
+            {width > 0 && (
+              <div className="scroll-icon" onClick={scrollToRight}>
+                <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingLeft: 5 }} />
+              </div>
+            )}</div>
         </div>
         <motion.div layout className="galleryContainer" ref={galleryRef}>
           <AnimatePresence>
