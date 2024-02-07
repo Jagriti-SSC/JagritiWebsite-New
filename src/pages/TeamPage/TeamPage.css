@@ -7,6 +7,17 @@
 .card:hover p {
   opacity: 1;
 }
+.container_carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Optional: adjust alignment as needed */
+}
+.scroll-icon {
+  cursor: pointer;
+  size: 50;
+  padding-bottom: 2;
+  /* Add additional styling as needed */
+}
 .galleryWrapper {
     padding: 1.0% 7%;
  }
