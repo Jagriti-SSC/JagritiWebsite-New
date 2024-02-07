@@ -174,7 +174,7 @@ const Profile = () => {
 
 
           </section>
-          <section className="flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] text-left text-lg text-gray-200 font-poppins mt-36 w-[60%] h-[600px] rounded-3xl mx-auto">
+          <section className="flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)]  text-left text-lg text-gray-200 font-poppins mt-36 w-[60%] h-[600px] rounded-3xl mx-auto">
             <div
               className="md:flex-row justify-evenly items-start md:items-center relative border-black rounded-full"
               style={{ fontWeight: "900" }}
