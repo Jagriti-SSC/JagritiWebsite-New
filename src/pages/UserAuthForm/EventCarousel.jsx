@@ -6,13 +6,14 @@ const EventCarousel = ({  events }) => {
   const [eventData, setEventData] = useState([]);
   const [status,setStatus]=useState([])
   const [currentSlide, setCurrentSlide] = useState(0);
-  // console.log(events);
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? eventData.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === eventData.length - 1 ? 0 : prev + 1));
+  const scrollNavbar = (direction) => {
+    const navbar = document.getElementById('scroll');
+    const step = 200; // Adjust the scroll step as needed
+    if (direction === 'left') {
+      navbar.scrollLeft -= step;
+    } else {
+      navbar.scrollLeft += step;
+    }
   };
   const fetchUserData = async () => {
     try {
@@ -82,17 +83,16 @@ const EventCarousel = ({  events }) => {
   }, [events]);
 
   return (
-    <div className="relative">
-      {/* <div className="flex justify-between md:justify-evenly items-center mb-4 "> */}
-      <div class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10">
-        {/* <button
-          onClick={prevSlide}
-          className="text-[#1A589B] text-5xl md:mr-5"
+    <div className="relative ">
+      <div className="smd:flex-row justify-evenly items-start smd:items-center mx-auto" style={{display:"flex"}}>
+      <button
+          onClick={() => scrollNavbar("left")}
+          className="text-[#1A589B] text-5xl hidden smd:inline-block"
         >
           <i class="fi fi-sr-angle-circle-left"></i>
-        </button> */}
+        </button> 
+      <div id="scroll" class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10">
         {eventData
-          // .slice(currentSlide, currentSlide + 1)
           .map((data, index) => (
             <div className=" mb-4" key={data.id}>
               <EventsProfile
@@ -102,9 +102,11 @@ const EventCarousel = ({  events }) => {
               ></EventsProfile>
             </div>
           ))}
-        {/* <button onClick={nextSlide} className="text-[#1A589B] text-5xl md:ml-5">
-          <i class="fi fi-sr-angle-circle-right"></i>
-        </button> */}
+      </div>
+      <button onClick={() => scrollNavbar("right")} className="text-[#1A589B] text-5xl hidden smd:inline-block">
+  <i class="fi fi-sr-angle-circle-right"></i>
+</button>
+
       </div>
     </div>
   );
