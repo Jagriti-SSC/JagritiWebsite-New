@@ -135,7 +135,7 @@ const EventPage = forwardRef((props, ref) => {
                   Event Registration Form for {eventname}
                 </h1>
                 <h4 className={style.event_subheading}>
-                  Fill the form to register
+                Drive link of your passport size image(s):
                 </h4>
               </div>
               <div className={style.event_img}>
@@ -143,11 +143,8 @@ const EventPage = forwardRef((props, ref) => {
               </div>
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
-                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[180px] rounded-3xl info-div-1">
-                    <div className="absolute top-[145px] left-[75px]">
-                      Drive link of your passport size image(s):
-                    </div>
-                    <div className="absolute top-[175px] left-[75px]">
+                  <div className="relative">
+                    <div className="relative">
                       <input
                         required
                         type="text"
@@ -158,8 +155,8 @@ const EventPage = forwardRef((props, ref) => {
                       ></input>
                     </div>
                     <div
-                      className="absolute top-[230px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black"
-                      style={{ fontWeight: "900" }}
+                      className="whitespace-pre-wrap text-black"
+                      style={{ fontWeight: "600" }}
                     >
                       {error && <p className="text-red">{error}</p>}
                       <p>Participant: {auth.currentUser.email}</p>

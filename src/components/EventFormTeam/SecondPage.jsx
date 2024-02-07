@@ -46,13 +46,13 @@ const SecondPage = forwardRef((props, ref) => {
   const socialRef = useRef();
   const gridRef = useRef();
   useLayoutEffect(() => {
-    divRef.current.style.height = "650px";
+    divRef.current.style.height = "770px";
   }, [formRef, divRef]);
 
   const [eventid, setEventid] = useState("")
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(driveUrl.length==0){setError("Drive url is missing"); return;}
+    if (driveUrl.length == 0) { setError("Drive url is missing"); return; }
     try {
       const url = process.env.REACT_APP_BASE_URL;
       const formData = {
@@ -93,32 +93,32 @@ const SecondPage = forwardRef((props, ref) => {
           );
 
           if (arr.every((result) => result)) {
-            try{
+            try {
               const form = {
                 eventName: eventName,
-                eventType:  eventType.slice(0,-1),
-                participant:{
-                  teams:teamId,
-                  individuals:null,
-                  driveUrl:driveUrl,
-                  status:"Pending"
+                eventType: eventType.slice(0, -1),
+                participant: {
+                  teams: teamId,
+                  individuals: null,
+                  driveUrl: driveUrl,
+                  status: "Pending"
                 }
               };
-    
+
               const response = await fetch(`${url}/admin/registration`, {
                 method: "post",
                 body: JSON.stringify(form),
                 headers: { "Content-Type": "application/json" },
               });
-              if(response.ok){
+              if (response.ok) {
                 alert("registered");
                 navigate('/events');
               }
-            }catch (error) {
+            } catch (error) {
               setError("error in registration")
               console.log("error in team reg", error);
             }
-          } 
+          }
         } catch (error) {
           console.log("error in team reg", error);
         }
@@ -130,10 +130,10 @@ const SecondPage = forwardRef((props, ref) => {
 
   useLayoutEffect(() => {
     if (document.documentElement.clientWidth <= 750) {
-      if (done == false)
+      if (done === false)
         ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
           }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 30
+      socialRef.current.style.height = `${contactRef.current.clientHeight + 90
         }px`;
       socialRef.current.style.position = "relative";
       socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
@@ -179,31 +179,29 @@ const SecondPage = forwardRef((props, ref) => {
             <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
               <div className={style.heading}>
                 <h1 className={style.event_heading}>Event Registration Form for {eventName}</h1>
-                <h4 className={style.event_subheading}>Fill the form to register</h4>
+                <h4 className={style.event_subheading}>Drive link of your passport size image(s):</h4>
               </div>
+              <br/>
               <div className={style.event_img}>
                 <img src={event_img} alt="aesthetic-image"></img>
               </div>
               <div className={style.event_form_div}>
                 <form className={style.event_form}>
-                  <div className="bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[450px] h-[350px] rounded-3xl info-div-1">
-                    <div className="absolute top-[145px] left-[75px]">Drive link of your passport size image(s):</div>
-                    <div className="absolute top-[175px] left-[75px]">
-                      <input
-                        required
-                        type="text"
-                        name="driveUrl"
-                        placeholder="Enter url here"
-                        value={driveUrl}
-                        onChange={(e) => setdriveUrl(e.target.value)}
-                      ></input>
-                    </div>
-                    <div className="absolute top-[220px] left-[80px] leading-[26.4px] whitespace-pre-wrap text-black" style={{ fontWeight: "900" }}>
-                      <h2 >Team Members</h2>
-                      {error && <p className="text-red">{error}</p>}
-                      <p>Leader: {leader}</p>
-                      <p>Participants:<br/>{participants.join(',\n')}</p>
-                    </div>
+                  <div className="relative">
+                    <input
+                      required
+                      type="text"
+                      name="driveUrl"
+                      placeholder="Enter url here"
+                      value={driveUrl}
+                      onChange={(e) => setdriveUrl(e.target.value)}
+                    ></input>
+                  </div>
+                  <div className="whitespace-pre-wrap text-black" style={{ fontWeight: "700" }}>
+                    <h2 >Team Members</h2>
+                    {error && <p className="text-red">{error}</p>}
+                    <p>Leader: {leader}</p>
+                    <p>Participants:<br />{participants.join(',\n')}</p>
                   </div>
                   <button type="button" onClick={(e) => handleSubmit(e)}>Submit</button>
                 </form>
