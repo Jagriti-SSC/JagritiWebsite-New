@@ -194,7 +194,7 @@
     grid-row: 2/3;
     grid-column: 1/2;
     width: 240px;
-    height: 170px;
+    height: 150px;
   }
   .ca_form_div {
     grid-row: 3/4;
@@ -253,7 +253,7 @@
     max-width: 40px;
   }
   .fwrap{
-    display: block;
+    display: flex;
   }
 }
 

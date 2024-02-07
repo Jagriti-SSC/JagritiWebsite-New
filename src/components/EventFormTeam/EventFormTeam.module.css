@@ -159,8 +159,8 @@
   .event_img {
     grid-row: 2/3;
     grid-column: 1/2;
-    width: 400px;
-    height: 500px;
+    width: 150px;
+    height: 80px;
   }
   .event_form_div {
     grid-row: 3/4;
@@ -219,7 +219,7 @@
     max-width: 40px;
   }
   .fwrap{
-    display: block;
+    display: flex;
   }
 }
 
@@ -247,6 +247,7 @@
   }
   .event_img{
     width: 250px;
+    height: 500px;
   }
   .socials{
     padding-left: 3px;
