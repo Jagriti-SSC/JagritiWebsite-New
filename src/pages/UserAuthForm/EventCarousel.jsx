@@ -83,15 +83,16 @@ const EventCarousel = ({  events }) => {
 
   return (
     <div className="relative">
-      <div className="flex justify-between md:justify-evenly items-center mb-4 ">
-        <button
+      {/* <div className="flex justify-between md:justify-evenly items-center mb-4 "> */}
+      <div class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10">
+        {/* <button
           onClick={prevSlide}
           className="text-[#1A589B] text-5xl md:mr-5"
         >
           <i class="fi fi-sr-angle-circle-left"></i>
-        </button>
+        </button> */}
         {eventData
-          .slice(currentSlide, currentSlide + 1)
+          // .slice(currentSlide, currentSlide + 1)
           .map((data, index) => (
             <div className=" mb-4" key={data.id}>
               <EventsProfile
@@ -101,9 +102,9 @@ const EventCarousel = ({  events }) => {
               ></EventsProfile>
             </div>
           ))}
-        <button onClick={nextSlide} className="text-[#1A589B] text-5xl md:ml-5">
+        {/* <button onClick={nextSlide} className="text-[#1A589B] text-5xl md:ml-5">
           <i class="fi fi-sr-angle-circle-right"></i>
-        </button>
+        </button> */}
       </div>
     </div>
   );

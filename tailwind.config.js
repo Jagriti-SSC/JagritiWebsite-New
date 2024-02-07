@@ -46,5 +46,19 @@ module.exports = withMT({
       xl: "1700px",
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.hide-scrollbar::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '.hide-scrollbar': {
+          scrollbarWidth: 'none', /* Firefox 64 */
+          msOverflowStyle: 'none', /* IE and Edge */
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 });
