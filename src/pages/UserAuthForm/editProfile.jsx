@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
 import { useRef, useState, useContext, createContext } from "react";
-import { auth, provider } from "../../context/Firebase";
+import { auth, provider ,storage} from "../../context/Firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../context/Firebase";
 import Select from "react-select";
@@ -22,6 +22,8 @@ import person from "./icon/person.png";
 import { useFormContext } from "./FormContext";
 import infocard from "./infocard.png";
 import illus2 from "./illus2.png";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+
 
 export const EditProfile = () => {
   const options = [
@@ -44,9 +46,14 @@ export const EditProfile = () => {
     e.preventDefault();
 
     try {
+      let imageUrl=userDetails.imgUrl||null
+      if(profileImage){
+        imageUrl = await uploadImage();
+      }
       const formdata = {
         email: auth.currentUser.email,
         newData: {
+          imgUrl:imageUrl,
           name: fullnameRef.current?.value || userDetails.name,
           course: courseRef.current?.value || userDetails.course,
           year: yearRef.current?.value || userDetails.year,
@@ -70,6 +77,27 @@ export const EditProfile = () => {
       setLoading(false);
     }
   };
+  const [profileImage, setProfileImage] = useState(null);
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  setProfileImage(file);
+};
+const uploadImage = async () => {
+  // Ensure that eventImage is not null before attempting to upload
+  if (!profileImage) {
+      throw new Error("No image selected");
+  }
+
+  // Upload the image to Firebase Storage
+  const storageRef = ref(storage, `User/${profileImage.name}`);
+  await uploadBytes(storageRef, profileImage);
+
+  // Get the download URL of the uploaded image
+  const imageUrl = await getDownloadURL(storageRef);
+
+  return imageUrl;
+};
+
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [userDetails, setUserDetails] = useState({});
@@ -118,6 +146,11 @@ export const EditProfile = () => {
                 icon={phone}
                 ref={mobileNumberRef}
               />
+              <div className="mb-3">
+                    <label className="form-label">profile Image:</label>
+                    <input type="file" className="form-control" onChange={handleImageUpload} />
+                </div>
+            <div className="my-4"></div>
               <div className="my-4">
                 <Select
                   defaultValue={selectedOption}

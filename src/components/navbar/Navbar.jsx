@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../../context/AuthContext";
 import profile_default from "./profile.png";
+import { auth } from "../../context/Firebase";
 
 const Navbar = () => {
   let curr = useLocation();
@@ -39,7 +40,32 @@ const Navbar = () => {
   useEffect(() => {
     console.log(accessToken);
   }, [loading]);
+  const [userDetails, setUserDetails] = useState({});
+  const fetchUserData = async () => {
+    try {
+      const url = process.env.REACT_APP_BASE_URL
+      const response = await fetch(`${url}/auth/user`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: auth.currentUser.email }),
+      });
+      if (response != null) {
+        const data = await response.json();
+        setUserDetails(data)
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (auth.currentUser) {
+        await fetchUserData();
+      }
+    };
 
+    fetchData();
+  }, []);
   return (
     <>
       <header>
@@ -191,7 +217,7 @@ const Navbar = () => {
                     <Link to="/profile">
                       <img
                         alt="profile_img"
-                        src={`${profile_img ? profile_img : profile_default}`}
+                        src={`${userDetails.imgUrl ? userDetails.imgUrl:profile_img }`}
                         className="w-full h-full object-cover rounded-full"
                       />
                     </Link>
@@ -402,7 +428,7 @@ const Navbar = () => {
                         <Link to="/profile">
                           <img
                             alt="profile_img"
-                            src={`${profile_img}`}
+                            src={`${userDetails.imgUrl ? userDetails.imgUrl:profile_img }`}
                             className="w-full h-full object-cover rounded-full"
                           />
                         </Link>

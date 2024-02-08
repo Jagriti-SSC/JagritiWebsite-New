@@ -125,4 +125,4 @@ export const FirebaseProvider = (props) => {
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider();
 
-export { auth, provider, db };
+export { auth, provider, db ,storage};

@@ -100,7 +100,7 @@ const Profile = () => {
               <img
                 className=" rounded-[50%] border-black w-[60px] h-[60px]  md:w-[100px] md:h-[100px]"
                 alt=""
-                src={`${profile_img ? profile_img : img8}`}
+                src={`${userDetails.imgUrl ? userDetails.imgUrl:profile_img }`}
                 style={{ border: "2px solid #1A589B" }}
               />
             </div>
