@@ -93,8 +93,7 @@ const ModalCard = ({ data, close }) => {
 
             <motion.div className=" w-[100%] mb-[40px] min-h-[50%]">
               {content === "Overview" ? (
-                <p className=" md:text-lg sm:text-sm text-xs font-light from-event-text-grey ">
-                  {data.overview}
+                <p className=" md:text-lg sm:text-sm text-xs font-light from-event-text-grey " dangerouslySetInnerHTML={{ __html: data.overview }}>
                 </p>
               ) : content === "Contact" ? (
                 //Contact
@@ -117,9 +116,9 @@ const ModalCard = ({ data, close }) => {
             <motion.h2 className="text-xl sm:text-3xl ss:text-2xl">
               Overview
             </motion.h2>
-            <motion.p className="xs:text-lg  text-[12px]  text-blue mb-6">
-              {data.overview}
-            </motion.p>
+            <motion.p className="xs:text-lg  text-[12px]  text-blue mb-6"
+              dangerouslySetInnerHTML = {{ __html: data.overview }}
+            ></motion.p>
 
             <motion.h2 className=" text-xl sm:text-3xl ss:text-2xl">
               Timeline
