@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AnimationWrapper from "./page-animation";
 import { useAuth } from "../../context/AuthContext";
 import { useRef, useState,useContext,createContext, useEffect } from "react";
-import { auth, provider } from "../../context/Firebase";
+import { auth, provider, storage } from "../../context/Firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../context/Firebase";
 import Select from 'react-select';
@@ -21,6 +21,7 @@ import person from './icon/person.png';
 import { useFormContext } from './FormContext';
 import infocard from './infocard.png'
 import illus2 from './illus2.png'
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 
 // import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -70,6 +71,7 @@ const options = [
     e.preventDefault();
 
     try {
+      const imageUrl = await uploadImage();
     const name=fullnameRef.current.value.length>0?fullnameRef.current.value:fullnameRef2.current.value
       const email=auth.currentUser.email
       const mobile=mobileNumberRef.current.value.length>0?mobileNumberRef.current.value:mobileNumberRef2.current.value
@@ -83,6 +85,7 @@ const options = [
         college:college,
         course:course,
         year:year,
+        imgUrl:imageUrl,
       }
       const url=process.env.REACT_APP_BASE_URL
       
@@ -128,8 +131,26 @@ const options = [
     
 //   };
   
+const [profileImage, setProfileImage] = useState(null);
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  setProfileImage(file);
+};
+const uploadImage = async () => {
+  // Ensure that profileImage is not null before attempting to upload
+  if (!profileImage) {
+      throw new Error("No image selected");
+  }
 
-  
+  // Upload the image to Firebase Storage
+  const storageRef = ref(storage, `User/${profileImage.name}`);
+  await uploadBytes(storageRef, profileImage);
+
+  // Get the download URL of the uploaded image
+  const imageUrl = await getDownloadURL(storageRef);
+
+  return imageUrl;
+};
 
   const [selectedOption, setSelectedOption] = useState(null);
   console.log(selectedOption)
@@ -238,7 +259,10 @@ useEffect(()=>{
            /> */}
           
 
-
+          <div className="mb-3">
+                    <label className="form-label">profile Image:</label>
+                    <input type="file" className="form-control" onChange={handleImageUpload} />
+                </div>
             <div className="my-4">
             <Select
                     defaultValue={selectedOption}
