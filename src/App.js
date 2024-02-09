@@ -76,7 +76,7 @@ function App() {
               }
             />
           </Route>
-          <Route element={<PrivateRoutes />}>
+          {/* <Route element={<PrivateRoutes />}>
             <Route
               path="/eventind"
               element={
@@ -85,7 +85,7 @@ function App() {
                 </>
               }
             />
-          </Route>   
+          </Route>    */}
           <Route element={<PrivateRoutes />}>
             <Route
               path="/eventteam"

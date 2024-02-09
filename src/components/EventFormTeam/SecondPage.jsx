@@ -128,20 +128,20 @@ const SecondPage = forwardRef((props, ref) => {
     }
   };
 
-  useLayoutEffect(() => {
-    if (document.documentElement.clientWidth <= 750) {
-      if (done === false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
-          }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 90
-        }px`;
-      socialRef.current.style.position = "relative";
-      socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
-        }px`;
-      done = true;
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (document.documentElement.clientWidth <= 750) {
+  //     if (done === false)
+  //       ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
+  //         }px`;
+  //     socialRef.current.style.height = `${contactRef.current.clientHeight + 90
+  //       }px`;
+  //     socialRef.current.style.position = "relative";
+  //     socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
+  //     socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
+  //       }px`;
+  //     done = true;
+  //   }
+  // }, []);
   const fetchData = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;

@@ -4,12 +4,14 @@ import Button from "../UI/button/Button";
 import { CloseOutline } from "styled-icons/evaicons-outline";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { useFormContext } from "../../pages/UserAuthForm/FormContext";
 import { auth } from "../../context/Firebase";
 
 const Modal = ({ data, close, eventType }) => {
   console.log(eventType);
+  const navigate=useNavigate();
+  
   const [content, setContent] = useState("Overview");
   const { isFormFilled } = useFormContext();
   const [check, setCheck] = useState(false)
@@ -43,6 +45,7 @@ const Modal = ({ data, close, eventType }) => {
   const [teamEvent, setTeamEvent] = useState()
   const [eventID, setEventID] = useState()
   const [isLoading, setIsLoading] = useState(true)
+  let [userId,setId]=useState("");
   const fetchData = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
@@ -75,6 +78,9 @@ const Modal = ({ data, close, eventType }) => {
       })
       if (user.ok) {
         setCheck(true)
+        user=await user.json();
+        
+        setId(user._id);
       } else { setCheck(false) }
     } catch (error) {
       console.error("Error fetching user:", error);
@@ -88,6 +94,50 @@ const Modal = ({ data, close, eventType }) => {
     }
     fetch()
   }, []);
+  const handelINdividualRegister = async (e) => {
+  
+   
+    try {
+      const url = process.env.REACT_APP_BASE_URL;
+      const event = {
+        email: auth.currentUser.email,
+        eventType: eventType.slice(0, -1),
+        eventName: eventID, //id deni hai
+        status: "Pending",
+      };
+      let res = await fetch(`${url}/auth/addEvent`, {
+        method: "post",
+        body: JSON.stringify(event),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (res.ok) {
+        const form = {
+          eventName: eventname,
+          eventType: eventType.slice(0, -1),
+          participant: {
+            individuals: userId,
+            teams: null,
+            driveUrl: auth.currentUser.email,
+            status: "Pending",
+          },
+        };
+        const response = await fetch(`${url}/admin/registration`, {
+          method: "post",
+          body: JSON.stringify(form),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          alert("registered");
+          navigate("/events");
+        }
+      } else {
+        const err = await res.json();
+        alert(err.message);
+      }
+    } catch (error) {
+      console.log("error in registration", error);
+    }
+  };
   return (
     // xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]
     <motion.div
@@ -163,7 +213,7 @@ const Modal = ({ data, close, eventType }) => {
             </motion.div>
 
             <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
-              <Link to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
+              <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn)handelINdividualRegister()}} to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
                 <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
               </Link>
               {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
@@ -205,7 +255,7 @@ const Modal = ({ data, close, eventType }) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
 
-        <Link to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
+        <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn)handelINdividualRegister()}} to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `#`) : "/userinfo") : "/signin") : (isLoggedIn ? "#" : "/signin")} state={{ eventname, eventType, eventID }}>
           <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
         </Link>
         {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
