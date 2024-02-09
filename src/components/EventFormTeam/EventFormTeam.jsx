@@ -40,7 +40,7 @@ const EventFormTeam = forwardRef((props, ref) => {
       setParticipants([...participants, ""]);
     }
   };
-
+  let userIds = [];
   const handleRemoveParticipant = (index) => {
     if (participants.length > 0) {
       const newParticipants = [...participants];
@@ -56,7 +56,81 @@ const EventFormTeam = forwardRef((props, ref) => {
   const gridRef = useRef();
 
   const [array, setArr] = useState([]);
+  const handleSubmit = async (e) => {
+    try {
+      const url = process.env.REACT_APP_BASE_URL;
+      const formData = {
+        teamName: teamName,
+        teamLeader: leaderID,
+        members: userIds,
+        driveUrl: auth.currentUser.email,
+      };
+      let teamCreation = await fetch(`${url}/team/createTeam`, {
+        method: "post",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (teamCreation.ok) {
+        const data = await teamCreation.json();
+        const teamId = data._id;
 
+        try {
+          let arr = await Promise.all(
+            [...participants, leader].map(async (email) => {
+              const event = {
+                email: email,
+                eventType: eventType.slice(0, -1),
+                eventName: eventid, // Use eventid here
+              };
+              let res = await fetch(`${url}/auth/addEvent`, {
+                method: "post",
+                body: JSON.stringify(event),
+                headers: { "Content-Type": "application/json" },
+              });
+              if (res.ok) return true;
+              else {
+                const err = await res.json();
+                setError(err.message);
+                return false;
+              }
+            })
+          );
+
+          if (arr.every((result) => result)) {
+            try {
+              const form = {
+                eventName: eventName,
+                eventType: eventType.slice(0, -1),
+                participant: {
+                  teams: teamId,
+                  individuals: null,
+                  driveUrl: auth.currentUser.email,
+                  status: "Pending"
+                }
+              };
+
+              const response = await fetch(`${url}/admin/registration`, {
+                method: "post",
+                body: JSON.stringify(form),
+                headers: { "Content-Type": "application/json" },
+              });
+              if (response.ok) {
+                alert("registered");
+                navigate('/events');
+              }
+            } catch (error) {
+              setError("error in registration")
+              console.log("error in team reg", error);
+            }
+          }
+        } catch (error) {
+          console.log("error in team reg", error);
+        }
+      }
+    } catch (error) {
+      console.log("error in team creation", error);
+    }
+  };
   let checkUsers = async (e) => {
     e.preventDefault();
     try {
@@ -68,7 +142,7 @@ const EventFormTeam = forwardRef((props, ref) => {
         return;
       }
 
-      let userIds = [];
+      
 
       let nArr = await Promise.all(
         participants.map(async (email) => {
@@ -102,30 +176,31 @@ const EventFormTeam = forwardRef((props, ref) => {
       // } else {
         setError("");
         if(teamName.length==0)setError("Team Name is missing")
-        else
-        navigate("/secondpage", {
-          state: { leaderID, eventType, teamName, leader, participants, eventName, userIds },
-        });
+        else handleSubmit()
+        // navigate("/secondpage", {
+        //   state: { leaderID, eventType, teamName, leader, participants, eventName, userIds },
+        // });
+
       }
     } catch (error) {
       console.error("Error in checkUsers:", error);
     }
   };
 
-  useLayoutEffect(() => {
-    if (document.documentElement.clientWidth <= 750) {
-      if (done == false)
-        ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
-          }px`;
-      socialRef.current.style.height = `${contactRef.current.clientHeight + 80
-        }px`;
-      socialRef.current.style.position = "relative";
-      socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
-      socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
-        }px`;
-      done = true;
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (document.documentElement.clientWidth <= 750) {
+  //     if (done == false)
+  //       ref.current.style.height = `${ref.current.offsetHeight - socialRef.current.clientHeight
+  //         }px`;
+  //     socialRef.current.style.height = `${contactRef.current.clientHeight + 80
+  //       }px`;
+  //     socialRef.current.style.position = "relative";
+  //     socialRef.current.style.top = `-${socialRef.current.clientHeight}px`;
+  //     socialRef.current.style.left = `${gridRef.current.clientWidth - socialRef.current.clientWidth
+  //       }px`;
+  //     done = true;
+  //   }
+  // }, []);
   useEffect(() => {
     const fetchData = async () => {
       const url = process.env.REACT_APP_BASE_URL;
@@ -175,7 +250,7 @@ const EventFormTeam = forwardRef((props, ref) => {
   }, [leader,eventid]); // Add any dependencies here if necessary
 
   return (
-    <div className={`${style.fwrap} flex-wrapper`} ref={ref}>
+    <div className={`${style.fwrap} flex-wrapper`}>
       <div className={`${style.gwrap} grid-wrapper`} ref={gridRef}>
         <div className={style.heading}>
           <h1 className={style.event_heading}>
@@ -204,7 +279,7 @@ const EventFormTeam = forwardRef((props, ref) => {
               <label>
                 Members Mail IDs :
                 {participants.map((participant, index) => (
-                  <div key={index}>
+                  <div style={{display:"flex",flexDirection:"column"}} key={index}>
                     <input
                       type="text"
                       value={participant}

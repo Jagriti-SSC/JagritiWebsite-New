@@ -2,6 +2,13 @@
   background: linear-gradient(260.35deg, #1a589b 13.84%, #1b78dc 89.85%);
   padding: 30vh 0;
   transform: skew(0deg, -10deg) translateY(-125px);
-  position: relative;
+  position: absolute;
+  top: 0%;
+  left: 0%;
   z-index: -1;
+}
+.backContainer{
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }

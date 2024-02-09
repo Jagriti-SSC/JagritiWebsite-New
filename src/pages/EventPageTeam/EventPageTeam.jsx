@@ -12,7 +12,7 @@ const EventPageTeam = () => {
   const divRef = useRef();
 
   useLayoutEffect(() => {
-    divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
+    // divRef.current.style.height = `${formRef.current.clientHeight + 100}px`;
 
     // divRef.current.style.height = "700px";
   }, [formRef, divRef]);
@@ -25,7 +25,7 @@ const EventPageTeam = () => {
   return (
     <>
       
-      <div ref={divRef} style={{ position: "relative" }}>
+      <div className="backContainer" style={{ position: "relative",minHeight:"90vh" }}>
       <EventFormTeam ref={formRef} state= {eventName} />
       <div className="skewed-bg" />
     </div>

@@ -5,7 +5,9 @@
   position: relative;
   z-index: -1;
 }
-
+.MainEventCOntainer{
+  background-color: lightblue;
+}
 .fwrap {
   display: flex;
   flex-direction: row;
