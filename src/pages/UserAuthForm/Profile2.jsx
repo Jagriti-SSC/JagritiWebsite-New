@@ -95,7 +95,7 @@ const Profile = () => {
         className="bg"
       >
         <div className="flex-col justify-center items-center pt-36">
-          <section className="relative flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[60%] mx-auto h-[297px] rounded-3xl">
+          <section className="relative flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)] w-[90%] mx-auto h-[297px] rounded-3xl">
             <div className=" absolute  left-[40%] top-[-10%] md:left-[45%] md:top-[-20%] flex items-center justify-center  mx-auto border-black rounded-full z-10 ">
               <img
                 className=" rounded-[50%] border-black w-[60px] h-[60px]  md:w-[100px] md:h-[100px]"
@@ -107,37 +107,21 @@ const Profile = () => {
             <div className="p-10 flex flex-col md:flex-row justify-evenly items-start md:items-center h-[74%] pt-[50px] pb-10">
               <div
                 className="flex whitespace-pre-wrap text-black"
-                style={{ fontWeight: "900" }}
               >
                 <div>
-                  <p className="m-0">Name :</p>
-                  <p className="m-0 ">Contact :</p>
-                  <p className="m-0 ">Email :</p>
+                  <p className="m-0 "> <font style={{fontWeight: "900"}}>Name: </font>{userDetails.name ? userDetails.name : "null"}</p>
+                  <p className="m-0 "> <font style={{fontWeight: "900"}}>Contact: </font>{userDetails.mobile?userDetails.mobile:"null"}</p>
+                  <p className="m-0 "> <font style={{fontWeight: "900"}}>Email: </font>{auth.currentUser.email}</p>
                 </div>
-                <div style={{ fontWeight: "100" }}>
-                  <p className="m-0">{userDetails.name ? userDetails.name : "null"}</p>
-                  <p className="m-0 ">{userDetails.mobile?userDetails.mobile:"null"}</p>
-                  <p className="m-0 ">{auth.currentUser.email}</p>
-                </div>
-
-
               </div>
               <div
                 className="flex whitespace-pre-wrap text-black"
-                style={{ fontWeight: "900" }}
               >
                 <div>
-                  <p className="m-0 ">Course :</p>
-                  <p className="m-0 ">Year :</p>
-                  <p className="m-0 ">Institute :</p>
+                  <p className="m-0 "><font style={{fontWeight: "900"}}>Course: </font>{userDetails.course ? userDetails.course : "null"}</p>
+                  <p className="m-0 "><font style={{fontWeight: "900"}}>Year: </font>{userDetails.year ? userDetails.year : "null"}</p>
+                  <p className="m-0 "><font style={{fontWeight: "900"}}>Institute: </font>{userDetails.college ? userDetails.college : "null"}</p>
                 </div>
-                <div style={{ fontWeight: "100" }}>
-                  <p className="m-0 ">{userDetails.course ? userDetails.course : "null"}</p>
-                  <p className="m-0 ">{userDetails.year ? userDetails.year : "null"}</p>
-                  <p className="m-0 ">{userDetails.college ? userDetails.college : "null"}</p>
-                </div>
-
-
               </div>
             </div>
             <div className="flex justify-evenly">
@@ -174,7 +158,7 @@ const Profile = () => {
 
 
           </section>
-          <section className="flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)]  text-left text-lg text-gray-200 font-poppins mt-36 w-[60%] h-[600px] rounded-3xl mx-auto">
+          <section className="flex-col justify-center items-center bg-white shadow-[0px_10px_30px_rgba(102,_106,_245,_0.13)]  text-left text-lg text-gray-200 font-poppins mt-36 w-[90%] h-[600px] rounded-3xl mx-auto">
             <div
               className="md:flex-row justify-evenly items-start md:items-center relative border-black rounded-full"
               style={{ fontWeight: "900" }}
