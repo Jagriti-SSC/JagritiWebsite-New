@@ -4,7 +4,7 @@ import CardProfile from "../EventCard/CardProfile";
 import ModalCard from "../EventCard/ModalCard";
 import Overlay from "../EventCard/Overlay";
 
-const EventsProfile = ({ data, index, status }) => {
+const EventsProfile = ({ data, index }) => {
 // console.log(status);
   const [open, setOpen] = useState(false);
 // console.log(data);
@@ -18,7 +18,7 @@ const EventsProfile = ({ data, index, status }) => {
   };
   return (
     <>
-      <CardProfile status={status} data={data} open={openModal} index={index}></CardProfile>
+      <CardProfile data={data} open={openModal} index={index}></CardProfile>
 
       <AnimatePresence>
         {open && (
