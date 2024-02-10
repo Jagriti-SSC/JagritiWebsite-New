@@ -9,6 +9,7 @@ const CardProfile = ({ data, open, index}) => {
 
   return (
     <motion.div
+      onClick={open}
       className={` md:min-h-[380px] md:w-[350px] ss:min-h-[350px] ss:w-[300px] sm:min-h-[400px] sm:w-[400px]  h-min-h-[260px] w-[250px] max-h-max  cursor-pointer mx-auto rounded-tl-[25px] rounded-br-[25px] flex flex-col justify-evenly items-center border-black border gap-3 ${style} py-4`}
     >
       <motion.h2 className=" font-popins font-medium md:text-3xl text-center sm:text-xl ss:text-lg text-sm text-blue mt-2">

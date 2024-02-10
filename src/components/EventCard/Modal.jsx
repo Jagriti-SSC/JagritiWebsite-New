@@ -33,15 +33,6 @@ const Modal = ({ data, close, eventType }) => {
 
   const isLoggedIn = auth.currentUser ? true : false;
 
-  // const modalInfoVariants = {
-  //   open: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  //   closed: { opacity: 0 },
-  // };
-
-  // const modalRowVariants = {
-  //   open: { opacity: 1, x: 0 },
-  //   closed: { opacity: 0, x: "10%" },
-  // };
   const [teamEvent, setTeamEvent] = useState()
   const [eventID, setEventID] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -213,8 +204,8 @@ const Modal = ({ data, close, eventType }) => {
             </motion.div>
 
             <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
-              <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn)handelINdividualRegister()}} to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
-                <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
+              <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&& registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
+                <Button text={registration ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
               </Link>
               {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
                 <Button text={"Unstop Link"} />
@@ -255,8 +246,8 @@ const Modal = ({ data, close, eventType }) => {
       )}
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
 
-        <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn)handelINdividualRegister()}} to={data.status ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `#`) : "/userinfo") : "/signin") : (isLoggedIn ? "#" : "/signin")} state={{ eventname, eventType, eventID }}>
-          <Button text={data.status ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
+        <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&&registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `#`) : "/userinfo") : "/signin") : (isLoggedIn ? "#" : "/signin")} state={{ eventname, eventType, eventID }}>
+          <Button text={registration ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
         </Link>
         {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
           <Button text={"Unstop Link"} />

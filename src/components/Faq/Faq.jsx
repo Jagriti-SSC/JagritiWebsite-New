@@ -81,7 +81,7 @@ export default function Example() {
                 What is the theme of Jagriti ’24?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                The theme of JAGRITI ’24 is yet to be announced. Last year theme was <span className="font-extrabold">Breaking Stereotypes</span>. The theme of <span className="font-extrabold">Breaking Stereotypes</span> encourages people to examine their own biases and assumptions and to strive to see individuals for who they truly are, rather than simply relying on preconceived notions.
+                The theme of JAGRITI ’24 is <span className="font-extrabold">Cognitive Alchemy</span>.
                 </AccordionBody>
               </Accordion>
               
