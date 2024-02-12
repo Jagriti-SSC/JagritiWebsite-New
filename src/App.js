@@ -76,16 +76,7 @@ function App() {
               }
             />
           </Route>
-          {/* <Route element={<PrivateRoutes />}>
-            <Route
-              path="/eventind"
-              element={
-                <>
-                  <EventPage />
-                </>
-              }
-            />
-          </Route>    */}
+
           <Route element={<PrivateRoutes />}>
             <Route
               path="/eventteam"
@@ -106,57 +97,31 @@ function App() {
               }
             />
           </Route> 
-      <Route exact path="/reset" element={<ResetPassword />} />
-      <Route exact path="/userinfo" element={<UserInfo />} />
-      <Route exact path="/edit-profile/:id" element={<EditProfile/>}/>
+          <Route element={<PrivateRoutes />}>
+            <Route
+              path="/edit-profile/:id"
+              element={
+                <>
+                  <EditProfile />
+                </>
+              }
+            />
+          </Route> 
+          <Route element={<PrivateRoutes />}>
+            <Route
+              path="/userinfo"
+              element={
+                <>
+                  <UserInfo />
+                </>
+              }
+            />
+          </Route> 
     </Routes>
-    
-     
     <Toaster />
   </BrowserRouter>
   </AuthProvider>
   </FormProvider>
-
-        // <Routes>
-        //   <Route exact path="/" element={<HomePage />} />
-        //   <Route exact path="/about" element={<AboutPage />} />
-        //   <Route exact path="/events" element={<EventsPage />} />
-        //   <Route exact path="/team" element={<TeamPage />} />
-        //   <Route exact path="/faqs" element={<FaqPage />} />
-        //   <Route exact path="/ca" element={<CAPage />} />
-        //   <Route exact path="/gallery" element={<GalleryPage />} />
-        //   <Route
-        //     exact
-        //     path="/CampusAmbassador"
-        //     element={<CampusAmbassadorPage />}
-        //   />
-        //   <Route
-        //     exact
-        //     path="/signin"
-        //     element={<UserAuthForm type="sign-in" />}
-        //   />
-        //   <Route
-        //     exact
-        //     path="/signup"
-        //     element={<UserAuthForm type="sign-up" />}
-        //   />
-        //   {/* <Route exact path="/profile" element={localStorage.getItem("user")==null? <UserAuthForm type="sign-in"/> : <Profile />}/> */}
-        //   <Route element={<PrivateRoutes />}>
-        //     <Route
-        //       path="/profile"
-        //       element={
-        //         <>
-        //           <Profile />
-        //         </>
-        //       }
-        //     />
-        //   </Route>
-        //   <Route exact path="/reset" element={<ResetPassword />} />
-        // </Routes>
-
-    //     <Toaster />
-    //   </BrowserRouter>
-    // </AuthProvider>
   );
 }
 
