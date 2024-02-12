@@ -71,7 +71,6 @@ const GalleryFirstLine = () => {
         <img src={img11} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img1} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img2} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
-        <img src={img1} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
 
       </Marquee>
       <Marquee style={{overflow:"hidden"}} gradient={false} direction="right" speed="55" className="py-5 mx-auto w-full relative" >
@@ -80,7 +79,6 @@ const GalleryFirstLine = () => {
         <img src={img14} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img15} className="h-40  mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img16} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
-        <img src={img6} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img17} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img6} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img7} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
@@ -94,7 +92,6 @@ const GalleryFirstLine = () => {
         <img src={img20} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img2} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
         <img src={img18} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
-        <img src={img17} className="h-40 mx-[10px] box-shadow" alt="Jagriti Image"></img>
       </Marquee>
     </div>
   );
