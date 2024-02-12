@@ -45,27 +45,27 @@
 @keyframes change{
     0%
     {
-        background-image: url(../../assets/images/jagriti_img5.png);
+        background-image: url(../../assets/images/jagriti_img5.webp);
         
     }
     25%
     {
-        background-image: url(../../assets/images/jagriti_img3.png);
+        background-image: url(../../assets/images/jagriti_img3.webp);
         
     }
     50%
     {
-        background-image: url(../../assets/images/jagriti_img2.png);
+        background-image: url(../../assets/images/jagriti_img2.webp);
         
     }
     75%
     {
-        background-image: url(../../assets/images/jagriti_img4.png);
+        background-image: url(../../assets/images/jagriti_img4.webp);
         
     }
     100%
     {
-        background-image: url(../../assets/images/jagriti_img5.png);
+        background-image: url(../../assets/images/jagriti_img5.webp);
         
     }
    
