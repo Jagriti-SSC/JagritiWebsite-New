@@ -148,8 +148,8 @@ const Navbar = () => {
                 >
                   <Link
                     className={`navitem block  pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signin"
-                        ? "bg-white"
-                        : "bg-transparent"
+                      ? "bg-white"
+                      : "bg-transparent"
                       }`}
                     to="/signin"
                     style={{
@@ -178,8 +178,8 @@ const Navbar = () => {
                 >
                   <Link
                     className={`navitem block pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signup"
-                        ? "bg-white"
-                        : "bg-transparent"
+                      ? "bg-white"
+                      : "bg-transparent"
                       }`}
                     to="/signup"
                     style={{
@@ -217,7 +217,7 @@ const Navbar = () => {
                     <Link to="/profile">
                       <img
                         alt="profile_img"
-                        src={`${userDetails.imgUrl ? userDetails.imgUrl:profile_img }`}
+                        src={`${userDetails.imgUrl ? userDetails.imgUrl : profile_img}`}
                         className="w-full h-full object-cover rounded-full"
                       />
                     </Link>
@@ -343,7 +343,7 @@ const Navbar = () => {
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
-                    <Link
+                      <Link
                         onClick={() => closeButton.current.click()}
                         to="/CampusAmbassador"
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
@@ -352,89 +352,86 @@ const Navbar = () => {
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
-                    <li
-                      className={
-                        "place-self-center mt-[10px]" +
-                        (localStorage.getItem("user") == null
-                          ? " "
-                          : " w-[0px] h-[0px] m-0")
-                      }
-                    >
-                      <Link
-                        className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
-                        to= {localStorage.getItem("user") == null ? "/signin": "/profile"}
-                        style={{
-                          width:
-                            localStorage.getItem("user") != null ? "0px" : null,
-                          display:
-                            localStorage.getItem("user") != null
+                    {(localStorage.getItem("user") == null) ? (
+                      <><li
+                        className={"place-self-center mt-[10px]" +
+                          (localStorage.getItem("user") == null
+                            ? " "
+                            : " w-[0px] h-[0px] m-0")}
+                      >
+                        <Link
+                          className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
+                          to={localStorage.getItem("user") == null ? "/signin" : ""}
+                          style={{
+                            width: localStorage.getItem("user") != null ? "0px" : null,
+                            display: localStorage.getItem("user") != null
                               ? "contents"
                               : "",
-                          fontSize:
-                            localStorage.getItem("user") != null ? "0px" : "",
-                        }}
-                      >
-                        <button className="w-[184px]">Sign In</button>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li
-                      className={
-                        "place-self-center mt-[10px]" +
-                        (localStorage.getItem("user") == null
-                          ? " "
-                          : " w-[0px] h-[0px] m-0")
-                      }
-                    >
-                      <Link
-                        className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
-                        to= {localStorage.getItem("user") == null ? "/signup": "/profile"}
-                        style={{
-                          width:
-                            localStorage.getItem("user") != null ? "0px" : null,
-                          display:
-                            localStorage.getItem("user") != null
-                              ? "contents"
-                              : "",
-                          fontSize:
-                            localStorage.getItem("user") != null ? "0px" : "",
-                        }}
-                      >
-                        <button className="w-[184px]">Sign Up</button>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li
-                      className={
-                        "place-self-center mt-[10px]" +
-                        (localStorage.getItem("user") == null
-                          ? " w-[0px] h-[0px] m-0"
-                          : "")
-                      }
-                    >
-                      <button
-                        className="rounded-full w-12 h-12 mt-2 "
-                        style={{
-                          width:
-                            localStorage.getItem("user") == null ? "0px" : null,
-                          display:
-                            localStorage.getItem("user") == null
-                              ? "contents"
-                              : "",
-                          fontSize:
-                            localStorage.getItem("user") == null ? "0px" : "",
-                        }}
-                      >
-                        <Link to="/profile">
-                          <img
-                            alt="profile_img"
-                            src={`${userDetails.imgUrl ? userDetails.imgUrl:profile_img }`}
-                            className="w-full h-full object-cover rounded-full"
-                          />
+                            fontSize: localStorage.getItem("user") != null ? "0px" : "",
+                          }}
+                        >
+                          <button className="w-[184px]">Sign In</button>
                         </Link>
-                      </button>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
+                        <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                      </li><li
+                        className={"place-self-center mt-[10px]" +
+                          (localStorage.getItem("user") == null
+                            ? " "
+                            : " w-[0px] h-[0px] m-0")}
+                      >
+                          <Link
+                            className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
+                            to={localStorage.getItem("user") == null ? "/signup" : ""}
+                            style={{
+                              width: localStorage.getItem("user") != null ? "0px" : null,
+                              display: localStorage.getItem("user") != null
+                                ? "contents"
+                                : "",
+                              fontSize: localStorage.getItem("user") != null ? "0px" : "",
+                            }}
+                          >
+                            <button className="w-[184px]">Sign Up</button>
+                          </Link>
+                          <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                        </li></>
+                    )
+                      :
+                      (
+                        <>                    <li
+                          className={
+                            "place-self-center mt-[10px]" +
+                            (localStorage.getItem("user") == null
+                              ? " w-[0px] h-[0px] m-0"
+                              : "")
+                          }
+                        >
+                          <button
+                            className="rounded-full w-12 h-12 mt-2 "
+                            style={{
+                              width:
+                                localStorage.getItem("user") == null ? "0px" : null,
+                              display:
+                                localStorage.getItem("user") == null
+                                  ? "contents"
+                                  : "",
+                              fontSize:
+                                localStorage.getItem("user") == null ? "0px" : "",
+                            }}
+                          >
+                            <Link to="/profile">
+                              <img
+                                alt="profile_img"
+                                src={`${userDetails.imgUrl ? userDetails.imgUrl : profile_img}`}
+                                className="w-full h-full object-cover rounded-full"
+                              />
+                            </Link>
+                          </button>
+                          <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                        </li>
+                        </>
+                      )
+                    }
+
                   </ul>
                 </div>
               </div>
