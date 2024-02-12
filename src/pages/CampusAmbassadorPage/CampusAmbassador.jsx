@@ -36,10 +36,10 @@ const CA = () => {
     <div className='h-screen bg-center relative bg-no-repeat bg-cover w-full flex items-center justify-center mb-20 section_top ' >
             
             <div className='content'>
-                <motion.div  variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='
+                <motion.div  variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='
                 text-6xl font-bold flex items-center justify-center mb-5 text-[#1A589B] text-center'>Become A Campus Ambassador</motion.div>
-                <motion.div variants={fadeIn('up', 0.4)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-10 text-center text-white'>Join us and proudly represent Jagriti'24 on your college campus</motion.div>
-                <motion.div variants={fadeIn('up', 0.5)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
+                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-10 text-center text-white'>Join us and proudly represent Jagriti'24 on your college campus</motion.div>
+                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
                 <Button
                 text={isLoggedIn ? "Apply Now" : "Apply Now"}
                 path={isLoggedIn ? "/ca" : "/signin"}
@@ -52,12 +52,12 @@ const CA = () => {
         
         <div className=' flex  items-center justify-center mb-[10px] md:mb-[80px] '>
             <div className='flex items-center overflow:hidden justify-between  gap-x-20  '>
-                <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
+                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-4 text-[#1A589B]'>What is Campus Ambassador?</div>
                     <div className='max-w-md'>A Campus Ambassador for Jagriti is a student who acts as a liaison between the organizing committee of Jagriti, which is an annual social awareness fest held at IIT BHU (Indian Institute of Technology, Banaras Hindu University), and the student population that is present on the campus. A Campus Ambassador's primary responsibility is publicizing Jagriti-related events inside their institution.
                     </div>
                 </motion.div>
-                <motion.div className=" Invisible2" variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                <motion.div className=" Invisible2" variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                     <img src={img6} alt="" />
                 </motion.div>
             </div>
@@ -65,10 +65,10 @@ const CA = () => {
         <hr className=" h-[2px] bg-light-blue-700 mx-5px md:mx-20 mb-[10px] md:mb-[80px]" />
         <div className=' flex items-center justify-center mb-[10px] md:mb-[20px] '>
             <div className='flex md:flex-row items-center justify-between gap-x-20 '>
-                <motion.div className="Invisible2" variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                <motion.div className="Invisible2" variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                     <img src={img8} alt="" />
                 </motion.div>
-                <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
+                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-4 text-[#1A589B]'>Why Campus Ambassador?</div>
                     <div className='max-w-md'>
                         <ul className='list-disc space-y-2'>
@@ -106,7 +106,7 @@ const CA = () => {
         <div className=' flex  items-center justify-center mb-[10px] md:mb-[20px] '>
             <div className='flex md:flex-row items-center justify-between gap-x-20 '>
                 
-                <motion.div className="min-w-3/5"variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
+                <motion.div className="min-w-3/5"variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                     <div className='text-5xl mb-4 text-[#1A589B]'>Incentives</div>
                     <div className='max-w-md'>
                         <ul className='list-disc space-y-2'>
@@ -131,7 +131,7 @@ const CA = () => {
                         </ul>
                     </div>
                 </motion.div>
-                <motion.div className="Invisible2" variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                <motion.div className="Invisible2" variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                         <img src={img7} alt="" />
                 </motion.div>
                 
@@ -143,11 +143,11 @@ const CA = () => {
         <div className='flex-row items-center justify-center'>
             <div className='flex items-center justify-center mb-5'>
                 <div className='flex items-center justify-between gap-x-20 '>
-                    <motion.div className="Invisible2" variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+                    <motion.div className="Invisible2" variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
                         <img src={img5} alt="" />
                     </motion.div>
                     
-                    <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
+                    <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}}>
                         <div className='text-5xl mb-4 text-[#1A589B]'>Responsibilities</div>
                         <div className='max-w-md'>
                             <ul className='list-disc space-y-2'>
