@@ -258,7 +258,7 @@ useEffect(()=>{
           
 
           <div className="mb-3">
-                    <label className="form-label">profile Image:</label>
+                    <label className="form-label">Upload Your Image:</label>
                     <input type="file" className="form-control" onChange={handleImageUpload} />
                 </div>
             <div className="my-4">
@@ -378,11 +378,9 @@ useEffect(()=>{
         <p className="my-[20px] text-[8px] sm:text-[15px]">  Fill the form to proceed further.</p>
         </div>
         <div className="flex flex-col w-[100%]">
-        <div className="sm:hidden flex flex-row justify-center items-center w-[100%]">
+        <div className="flex flex-col justify-center items-center w-[100%] my-[30px]">
               
-              <img src={illus} className= "h-[100px] flex items-center justify-center my-[10px]" ></img>
-             
-
+              <img src={illus}  />
        </div>
         <form
           className="w-[100%]  sm:w-[50%]  p-8 rounded-[20px] flex-col  "
@@ -444,7 +442,10 @@ useEffect(()=>{
            />  */}
         
 
-
+        <div className="mb-3">
+                    <label className="form-label">Upload Your Image:</label>
+                    <input type="file" className="form-control" onChange={handleImageUpload} />
+                </div>
 
 
              {/* <InputBox
