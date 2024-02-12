@@ -134,7 +134,7 @@ function TeamPage() {
         <div className="filterItem">
           <div className="our-team">
             <h1>{active}</h1>
-          </div>
+          </div> 
 
           <div className="container_carousel">
             {width > 0 && (<div className="scroll-icon" onClick={scrollToLeft}>
@@ -142,19 +142,20 @@ function TeamPage() {
             </div>)}
             <motion.div
               ref={carousel}
-              className="carousel"
-              whileTap={{ cursor: "grabbing" }}
-              style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
+              // className="carousel"
+              // whileTap={{ cursor: "grabbing" }}
+              // style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
+              class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10 "
             >
-              <motion.div
+              <div
 
                 className="inner-carousel"
                 ref={innerCarousel}
-                drag="x"
-                dragConstraints={{
-                  right: 0,
-                  left: -width,
-                }}
+                // drag="x"
+                // dragConstraints={{
+                //   right: 0,
+                //   left: -width,
+                // }}
               >
                 <button
                   onClick={setColor}
@@ -174,7 +175,7 @@ function TeamPage() {
                     {item}
                   </button>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
             {width > 0 && (
               <div className="scroll-icon" onClick={scrollToRight}>
