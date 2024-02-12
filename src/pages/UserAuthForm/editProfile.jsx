@@ -24,6 +24,25 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 
 export const EditProfile = () => {
+
+  const [isDesktopView, setIsDesktopView] = useState(window.innerWidth >= 768);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+
+  // Add an event listener to update the boolean variables on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktopView(window.innerWidth >= 768);
+      setIsMobileView(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const options = [
     { value: "School Student", label: "School Student" },
     { value: "College Student", label: "College Student" },
@@ -60,7 +79,7 @@ export const EditProfile = () => {
         },
       };
       const url = process.env.REACT_APP_BASE_URL;
-      const response = await fetch(`${url}/auth/updateuser`, {
+      const response = await fetch(`${url}/auth/updateUser`, {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formdata),
@@ -121,26 +140,26 @@ export const EditProfile = () => {
   return (
     <div className="">
       <AnimationWrapper >
-        <section className="hidden h-[70%] sm:flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
+        {isDesktopView && (<section className="hidden h-[70%] sm:flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
           <div className="flex flex-row justify-center items-center w-[40%] ">
             <p className="my-[20px]"> Edit Profile</p>
           </div>
           <div className="flex flex-row w-[100%]">
             <form
               className="w-[100%]  sm:w-[50%]  p-8 rounded-[20px] flex-col  "
-              onSubmit={(e) => handleFormSubmit(e)}
+              onSubmit={(e) => (handleFormSubmit(e))}
             >
               <InputBox
                 name="fullname"
                 type="text"
-                placeholder={`Full Name: ${userDetails.name}`}
+                value={userDetails.name}
                 icon={person}
                 ref={fullnameRef}
               />
               <InputBox
                 name="mobile number"
                 type="text"
-                placeholder={`mobile no: ${userDetails.mobile}`}
+                value={userDetails.mobile}
                 icon={phone}
                 ref={mobileNumberRef}
               />
@@ -163,7 +182,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="college"
                   type="text"
-                  placeholder={`college: ${userDetails.college}`}
+                  value={userDetails.college}
                   icon={college}
                   ref={collegeRef}
                 />
@@ -175,7 +194,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="course"
                   type="text"
-                  placeholder={`course: ${userDetails.course}`}
+                  value={userDetails.course}
                   icon={hat}
                   ref={courseRef}
                 />
@@ -187,7 +206,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="year"
                   type="text"
-                  placeholder={`year: ${userDetails.year}`}
+                  value={userDetails.year}
                   icon={year}
                   ref={yearRef}
                 />
@@ -206,8 +225,8 @@ export const EditProfile = () => {
               <img src={illus} className="h-[250px]"></img>
             </div>
           </div>
-        </section>
-        <section className="sm:hidden h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
+        </section>)}
+        {isMobileView && (<section className="sm:hidden h-[70%] flex flex-col justify-start items-center mx-auto my-[50px] w-[80%] border rounded-[10px]">
           <div className="flex flex-row justify-center items-center w-[40%] ">
 
             <p className="my-[20px] text-[8px] sm:text-[15px]">  Fill the form to proceed further.</p>
@@ -224,7 +243,7 @@ export const EditProfile = () => {
               <InputBox
                 name="fullname"
                 type="text"
-                placeholder={`Full Name: ${userDetails.name}`}
+                value={userDetails.name}
                 icon={person}
                 ref={fullnameRef}
               />
@@ -232,7 +251,7 @@ export const EditProfile = () => {
               <InputBox
                 name="mobile number"
                 type="text"
-                placeholder={`mobile no: ${userDetails.mobile}`}
+                value={userDetails.mobile}
                 icon={phone}
                 ref={mobileNumberRef}
               />
@@ -256,7 +275,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="college"
                   type="text"
-                  placeholder={`college: ${userDetails.college}`}
+                  value={userDetails.college}
                   icon={college}
                   ref={collegeRef}
                 />
@@ -268,7 +287,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="course"
                   type="text"
-                  placeholder={`course: ${userDetails.course}`}
+                  value={userDetails.course}
                   icon={hat}
                   ref={courseRef}
                 />
@@ -280,7 +299,7 @@ export const EditProfile = () => {
                 <InputBox
                   name="year"
                   type="text"
-                  placeholder={`year: ${userDetails.year}`}
+                  value={userDetails.year}
                   icon={year}
                   ref={yearRef}
                 />
@@ -299,7 +318,7 @@ export const EditProfile = () => {
             <div className="sm:hidden flex flex-row justify-center items-center w-[100%]">
             </div>
           </div>
-        </section>
+        </section>)}
       </AnimationWrapper>
     </div>
   );
