@@ -14,7 +14,7 @@ const AboutPage = () => {
   return (
       <div className="bg">
       <div className="flex-row items-center justify-center text-center mx-5">
-      <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+      <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
           <div className="circular-container1">
             <img
               className="jaglogo-overlay"
@@ -33,11 +33,11 @@ const AboutPage = () => {
             self-contentment wherein we help the underprivileged, borrowing time
             and drawing attention from our surplus lives.
           </p>
+          <hr className=" h-[2px] bg-light-blue-700  mx-20" />
       </motion.div>
       </div>
-      <hr className=" h-[2px] bg-light-blue-700  mx-20" />
       <div className="text-center mx-5">
-        <motion.div variants={fadeIn('up', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+        <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
         <div className="circular-container2">
         <img className="ssclogo-overlay"
           src="/assets/SSClogo.png"
@@ -58,9 +58,9 @@ const AboutPage = () => {
             and further developed, thereby blooming out with the full potential to
             benefit the society as a whole.
           </p>
+          <hr className=" h-[2px] bg-light-blue-700 mx-20 mb-10" />
         </motion.div>
       </div>
-      <hr className=" h-[2px] bg-light-blue-700 mx-20 mb-10" />
 
       {/* <div className="grid gap-4 lg:grid-cols-2 lg:grid-rows-2 justify-center"> */}
       <div className="clubBox">
@@ -71,7 +71,7 @@ const AboutPage = () => {
             clubDescription='Sahyog Club, with a mission of "improving quality education in government schools," collaborates with school teachers to improve the basic literacy and numeracy skills of children, leading to uplift their family conditions and background.'
           />
         </motion.div>
-        <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+        <motion.div variants={fadeIn('right', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
           <ClubCard
             clubLogo="KUC_logo.webp"
             clubName="Kashi Utkarsh Club"
@@ -88,7 +88,7 @@ const AboutPage = () => {
               clubDescription="The Health & Hygiene club promotes and advocates a safe and healthy environment for the society. Our various initiatives involve organising blood donation camps, medicine collection drive and spreading awareness on sensitive issues such as menstruation, diseases, healthy habits, sustainability, etc."
             />
         </motion.div>
-        <motion.div variants={fadeIn('right', 0.3)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
+        <motion.div variants={fadeIn('right', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} >
           <ClubCard
             clubLogo="SPC_logo.webp"
             clubName="Social Projects' Club"
@@ -96,8 +96,6 @@ const AboutPage = () => {
           />
           </motion.div>
       </div>
-
-        
 
       <Footer />
       </div>
