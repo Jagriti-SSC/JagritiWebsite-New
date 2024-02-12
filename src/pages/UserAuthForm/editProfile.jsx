@@ -20,8 +20,6 @@ import nationality from "./icon/nationality.png";
 import year from "./icon/year.png";
 import person from "./icon/person.png";
 import { useFormContext } from "./FormContext";
-import infocard from "./infocard.png";
-import illus2 from "./illus2.png";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 
