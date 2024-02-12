@@ -19,8 +19,6 @@ import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
 import "../../App.css";
-import illus2 from './illus2.png'
-import infocard from './infocard.png'
 
 import bg_image from "./userbg.png";
 import {  fetchSignInMethodsForEmail } from 'firebase/auth';
@@ -489,7 +487,7 @@ const options = [
         <div className="flex flex-col w-[100%]">
         <div className="flex flex-col justify-center items-center w-[100%] my-[30px]">
               
-              <img src={illus2}  />
+              <img src={illus}  />
               
 
        </div>
@@ -703,10 +701,7 @@ const options = [
             </p>
           )} */}
         </form>
-        <div className="flex flex-col justify-center items-center w-[100%] mb-[30px]">
-              
-               <img src={infocard}  />
-               
+        <div className="flex flex-col justify-center items-center w-[100%] mb-[30px]">               
 
         </div>
         </div>
