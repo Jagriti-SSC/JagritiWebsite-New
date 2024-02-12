@@ -3,13 +3,13 @@ import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
 
-import img4 from '../../assets/images/jagriti_img4.png';
-import img5 from '../../assets/images/jagriti_img5.png';
-import img6 from '../../assets/images/jagriti_img6.png';
-import img7 from '../../assets/images/jagriti_img7.png';
-import img8 from '../../assets/images/jagriti_img8.png';
-// import img9 from '../../assets/images/jagriti_img9.png';
-import img10 from '../../assets/images/jagriti_img10.png';
+import img4 from '../../assets/images/jagriti_img4.webp';
+import img5 from '../../assets/images/jagriti_img5.webp';
+import img6 from '../../assets/images/jagriti_img6.webp';
+import img7 from '../../assets/images/jagriti_img7.webp';
+import img8 from '../../assets/images/jagriti_img8.webp';
+// import img9 from '../../assets/images/jagriti_img9.webp';
+import img10 from '../../assets/images/jagriti_img10.webp';
 
 import {FaGithub,FaYoutube,FaDribbble} from 'react-icons/fa';
 import {fadeIn} from '../../variants';
