@@ -19,8 +19,6 @@ import nationality from './icon/nationality.png';
 import year from './icon/year.png';
 import person from './icon/person.png';
 import { useFormContext } from './FormContext';
-import infocard from './infocard.png'
-import illus2 from './illus2.png'
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 
@@ -382,7 +380,7 @@ useEffect(()=>{
         <div className="flex flex-col w-[100%]">
         <div className="sm:hidden flex flex-row justify-center items-center w-[100%]">
               
-              <img src={illus2} className= "h-[100px] flex items-center justify-center my-[10px]" ></img>
+              <img src={illus} className= "h-[100px] flex items-center justify-center my-[10px]" ></img>
              
 
        </div>
@@ -559,7 +557,6 @@ useEffect(()=>{
         </form>
         <div className="sm:hidden flex flex-row justify-center items-center w-[100%]">
               
-               <img src={infocard} className= "h-[80px] flex items-center justify-center my-[20px]" ></img>
               
 
         </div>
