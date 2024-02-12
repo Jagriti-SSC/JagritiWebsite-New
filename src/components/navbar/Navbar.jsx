@@ -362,7 +362,7 @@ const Navbar = () => {
                     >
                       <Link
                         className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
-                        to="/signin"
+                        to= {localStorage.getItem("user") == null ? "/signin": "/profile"}
                         style={{
                           width:
                             localStorage.getItem("user") != null ? "0px" : null,
@@ -388,7 +388,7 @@ const Navbar = () => {
                     >
                       <Link
                         className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
-                        to="/signup"
+                        to= {localStorage.getItem("user") == null ? "/signup": "/profile"}
                         style={{
                           width:
                             localStorage.getItem("user") != null ? "0px" : null,
