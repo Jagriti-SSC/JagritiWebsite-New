@@ -9,13 +9,30 @@ import { auth } from "../../context/Firebase";
 const Navbar = () => {
   let curr = useLocation();
   // console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
-
+  const [isDesktopView, setIsDesktopView] = useState(window.innerWidth >= 900);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 900);
   const closeButton = useRef(null);
   const openButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
   const [toggle, setToggle] = useState(false);
 
   const { loading } = useAuth();
+
+  // Add an event listener to update the boolean variables on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktopView(window.innerWidth >= 900);
+      setIsMobileView(window.innerWidth < 900);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
@@ -70,6 +87,7 @@ const Navbar = () => {
     <>
       <header>
         {/* Desktop Navbar */}
+        {isDesktopView && (
         <nav
           className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
         >
@@ -227,7 +245,9 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
+        )}
         {/* Mobile Navbar */}
+        {isMobileView && (
         <nav
           className={`smd:hidden ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
         >
@@ -438,6 +458,7 @@ const Navbar = () => {
             ) : null}
           </div>
         </nav>
+        )}
       </header>
       <Outlet />
     </>
