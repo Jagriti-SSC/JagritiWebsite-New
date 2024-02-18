@@ -205,7 +205,7 @@ const Modal = ({ data, close, eventType }) => {
 
             <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
               <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&& registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
-                <Button text={registration ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
+                <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
               </Link>
               {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
                 <Button text={"Unstop Link"} />
@@ -247,7 +247,7 @@ const Modal = ({ data, close, eventType }) => {
       <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
 
         <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&&registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `#`) : "/userinfo") : "/signin") : (isLoggedIn ? "#" : "/signin")} state={{ eventname, eventType, eventID }}>
-          <Button text={registration ? (isLoggedIn ? "Register" : "Log In") : (isLoggedIn ? "Registration Closed" : "Log In")} disabled={isLoading} />
+          <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
         </Link>
         {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
           <Button text={"Unstop Link"} />
