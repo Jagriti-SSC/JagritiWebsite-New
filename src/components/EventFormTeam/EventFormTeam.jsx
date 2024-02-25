@@ -163,7 +163,7 @@ const EventFormTeam = forwardRef((props, ref) => {
             return true;
           } else {
             const userData = await response.json();
-            setError(userData.message)
+            setError(email+' '+userData.message)
             return false;
           }
         })
