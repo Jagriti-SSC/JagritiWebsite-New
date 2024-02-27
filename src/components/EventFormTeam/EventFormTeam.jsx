@@ -26,7 +26,7 @@ const EventFormTeam = forwardRef((props, ref) => {
   };
   const leader = auth.currentUser.email;
   const [leaderID, setLeaderID] = useState('')
-  const [participants, setParticipants] = useState([""]);
+  const [participants, setParticipants] = useState([]);
   const [eventid, setEventid] = useState("")
 
   const handleParticipantChange = (event, index) => {
