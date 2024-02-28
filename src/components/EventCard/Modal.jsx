@@ -208,7 +208,7 @@ const Modal = ({ data, close, eventType }) => {
                 <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
               </Link>
               {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
-                <Button text={"Unstop Link"} />
+                <Button text={"Link"} />
               </Link>}
             </motion.div>
           </motion.div>
@@ -250,7 +250,7 @@ const Modal = ({ data, close, eventType }) => {
           <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
         </Link>
         {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
-          <Button text={"Unstop Link"} />
+          <Button text={"Link"} />
         </Link>}
       </motion.div>
     </motion.div>
