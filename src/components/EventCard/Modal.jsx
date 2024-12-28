@@ -10,14 +10,14 @@ import { auth } from "../../context/Firebase";
 
 const Modal = ({ data, close, eventType }) => {
   console.log(eventType);
-  const navigate=useNavigate();
-  
+  const navigate = useNavigate();
+
   const [content, setContent] = useState("Overview");
   const { isFormFilled } = useFormContext();
-  const [check, setCheck] = useState(false)
+  const [check, setCheck] = useState(false);
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)");
-  const registration = data.status;
-  const eventname = data.eventName;
+  const registration = data?.status;
+  const eventname = data?.eventName || "Event Name";
   const modalVariants = {
     open: {
       opacity: 1,
@@ -33,32 +33,33 @@ const Modal = ({ data, close, eventType }) => {
 
   const isLoggedIn = auth.currentUser ? true : false;
 
-  const [teamEvent, setTeamEvent] = useState()
-  const [eventID, setEventID] = useState()
-  const [isLoading, setIsLoading] = useState(true)
-  let [userId,setId]=useState("");
+  const [teamEvent, setTeamEvent] = useState();
+  const [eventID, setEventID] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  let [userId, setId] = useState("");
+  
   const fetchData = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
       let event = await fetch(`${url}/admin/${eventType}`);
       const datas = await event.json();
 
-      // console.log(datas.result);
-
-      const foundEvent = await datas.result.find((event) => event.eventName === data.eventName);
+      const foundEvent = datas.result.find(
+        (event) => event.eventName === data?.eventName
+      );
 
       if (foundEvent) {
         console.log(foundEvent);
         setTeamEvent(foundEvent.teamEvent);
-        setEventID(foundEvent._id)
-        // console.log(eventid);
+        setEventID(foundEvent._id);
       } else {
-        console.log(`Event with name '${data.eventName}' not found.`);
+        console.log(`Event with name '${data?.eventName}' not found.`);
       }
     } catch (error) {
       console.error("Error fetching event data:", error);
     }
   };
+
   const checkUser = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
@@ -66,34 +67,35 @@ const Modal = ({ data, close, eventType }) => {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: auth.currentUser.email }),
-      })
+      });
       if (user.ok) {
-        setCheck(true)
-        user=await user.json();
-        
+        setCheck(true);
+        user = await user.json();
         setId(user._id);
-      } else { setCheck(false) }
+      } else {
+        setCheck(false);
+      }
     } catch (error) {
       console.error("Error fetching user:", error);
     }
-  }
+  };
+
   useEffect(() => {
     const fetch = async () => {
-      await fetchData()
-      await checkUser().then(() => setIsLoading(false))
+      await fetchData();
+      await checkUser().then(() => setIsLoading(false));
       console.log(isLoggedIn);
-    }
-    fetch()
+    };
+    fetch();
   }, []);
-  const handelINdividualRegister = async (e) => {
-  
-   
+
+  const handelINdividualRegister = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
       const event = {
         email: auth.currentUser.email,
         eventType: eventType.slice(0, -1),
-        eventName: eventID, //id deni hai
+        eventName: eventID,
         status: "Pending",
       };
       let res = await fetch(`${url}/auth/addEvent`, {
@@ -129,130 +131,153 @@ const Modal = ({ data, close, eventType }) => {
       console.log("error in registration", error);
     }
   };
+
   return (
-    // xs:h-[80%] xxs:h-[500px%] h-[600px] smd:h-[500px] sm:h-[600px]
     <motion.div
-      className=" md:bg-event-grey  flex gap-3  md:flex-row  flex-col    md:w-[890px] md:h-[402px]  w-[70%]  h-max  font-popins m-0 p-0  rounded-tl-[25px] rounded-br-[25px] bg-event-grey  my-auto "
+      className="md:bg-event-grey flex gap-3 md:flex-row flex-col md:w-[890px] md:h-[402px] w-[70%] h-max font-popins m-0 p-0 rounded-tl-[25px] rounded-br-[25px] bg-event-grey my-auto"
       variants={modalVariants}
       onClick={(e) => e.stopPropagation()}
     >
-      <motion.div className=" rounded-2xl md:bg-white z-40 flex flex-col items-center justify-evenly md:min-w-[300px] md:max-w-[300px]  md:max-h-full p-1 rounded-tl-[25px] ">
-        <motion.div className=" relative left-[45%] mr-1 md:hidden">
-          <CloseOutline
-            onClick={close}
-            className=" "
-            size="50px"
-          ></CloseOutline>
+      <motion.div className="rounded-2xl md:bg-white z-40 flex flex-col items-center justify-evenly md:min-w-[300px] md:max-w-[300px] md:max-h-full p-1 rounded-tl-[25px]">
+        <motion.div className="relative left-[45%] mr-1 md:hidden">
+          <CloseOutline onClick={close} className=" " size="50px"></CloseOutline>
         </motion.div>
 
-        <motion.h1 className=" md:text-3xl xxs:text-2xl text-center text-lg text-blue font-bold md:mt-0 ">
-          {data.eventName}
+        <motion.h1 className="md:text-3xl xxs:text-2xl text-center text-lg text-blue font-bold md:mt-0">
+          {eventname}
         </motion.h1>
         <motion.img
-          src={data.imageURL}
-          className="rounded-2xl md:w-[75%]  md:h-[70%] md:mt-0 mt-4 w-[40%] sm:w-[30%]   md:mb-0 mb-5 "
+          src={data?.imageURL || ""}
+          className="rounded-2xl md:w-[75%] md:h-[70%] md:mt-0 mt-4 w-[40%] sm:w-[30%] md:mb-0 mb-5"
           variants={imageVariants}
         ></motion.img>
       </motion.div>
 
       {isAboveLargeScreen ? (
-        <>
-          <motion.div
-            className="flex flex-col md:items-start items-center md:mx-[41px] smd:mx-[34px] sm:mx-[25px] xs:mx-[26px] mx-[10px] p-0  md:min-w-[480px] md:h-full sm:min-h-[60%] ss:min-h-[30%] min-h-[50%]"
-            variants={imageVariants}
-          >
-            <motion.div className="flex  md:text-2xl sm:text-xl ss:text-lg text-sm py-[15px] items-center justify-between w-[100%]">
-              <a
-                className="hover:underline"
-                onClick={() => setContent("Overview")}
-                href="#jgf"
-              >
-                Overview
-              </a>
-              <a
-                className="hover:underline"
-                onClick={() => setContent("Timeline")}
-                href="#ouygvp"
-              >
-                Timeline
-              </a>
-              <a
-                className="hover:underline"
-                onClick={() => setContent("Contact")}
-                href="#ukgv"
-              >
-                Contact
-              </a>
-            </motion.div>
+        <motion.div
+          className="flex flex-col md:items-start items-center md:mx-[41px] p-0 md:min-w-[480px] md:h-full"
+          variants={imageVariants}
+        >
+          <motion.div className="flex md:text-2xl py-[15px] items-center justify-between w-[100%]">
+            <a
+              className="hover:underline"
+              onClick={(e) => {
+                e.preventDefault(); // Prevents scrolling to the top
+                setContent("Overview");
+              }}
+            >
+              Overview
+            </a>
+            <a
+              className="hover:underline"
+              onClick={(e) => {
+                e.preventDefault(); // Prevents scrolling to the top
+                setContent("Timeline");
+              }}
+            >
+              Timeline
+            </a>
+            <a
+              className="hover:underline"
+              onClick={(e) => {
+                e.preventDefault(); // Prevents scrolling to the top
+                setContent("Contact");
+              }}
+            >
+              Contact
+            </a>
+          </motion.div>
 
-            <motion.div className=" w-[100%] mb-[40px] min-h-[50%]">
-              {content === "Overview" ? (
-                <p className=" md:text-lg sm:text-sm text-xs font-light from-event-text-grey " dangerouslySetInnerHTML={{ __html: data.overview }}>
-                </p>
-              ) : content === "Contact" ? (
-                //Contact
-                <motion.div className=" text-blue md:text-lg sm:text-sm text-xs">
-                  {data.contact.map((item) => (
-                    <p>
+          <motion.div className="w-[100%] mb-[40px] min-h-[50%]">
+            {content === "Overview" ? (
+              <p
+                className="md:text-lg sm:text-sm text-xs font-light from-event-text-grey"
+                dangerouslySetInnerHTML={{
+                  __html: data?.overview || "Overview content not available",
+                }}
+              ></p>
+            ) : content === "Contact" ? (
+              <motion.div className="text-blue md:text-lg">
+                {data?.contact?.length > 0 ? (
+                  data.contact.map((item, index) => (
+                    <p key={index}>
                       {item.contactName} : {item.number}
                     </p>
-                  ))}
-                </motion.div>
-              ) : (
-                <p dangerouslySetInnerHTML={{ __html: data.timeline }}></p>
-              )}
-            </motion.div>
-
-            <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
-              <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&& registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `/eventind`) : "/userinfo") : "/signin") : (isLoggedIn ? "" : "/signin")} state={{ eventname, eventType, eventID }}>
-                <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
-              </Link>
-              {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
-                <Button text={"Link"} />
-              </Link>}
-            </motion.div>
+                  ))
+                ) : (
+                  <p>Contact information not available</p>
+                )}
+              </motion.div>
+            ) : (
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: data?.timeline || "Timeline content not available",
+                }}
+              ></p>
+            )}
           </motion.div>
-        </>
+          <motion.div className="flex space-between md:mb-[37px] mb-[20px] mt-auto mx-auto gap-2">
+            {data?.link ? (
+              <a href={data.link} target="_blank" rel="noopener noreferrer">
+                <Button text={"Unstop Link"} />
+              </a>
+            ) : (
+              registration && (
+                <Link
+                  onClick={() => {
+                    if (!teamEvent && check && isLoggedIn && registration) {
+                      handelINdividualRegister();
+                    }
+                  }}
+                  to={
+                    isLoggedIn
+                      ? check
+                        ? teamEvent
+                          ? "/eventteam"
+                          : "/eventind"
+                        : "/userinfo"
+                      : "/signin"
+                  }                  
+                  state={{ eventname, eventType, eventID }}
+                >
+                  <Button text={isLoggedIn ? "Register" : "Register"} disabled={isLoading} />
+                </Link>
+              )
+            )}
+          </motion.div>
+        </motion.div>
       ) : (
-        <>
-          <motion.div className=" mx-6" variants={imageVariants}>
-            <motion.h2 className="text-xl sm:text-3xl ss:text-2xl">
-              Overview
-            </motion.h2>
-            <motion.p className="xs:text-lg  text-[12px]  text-blue mb-6"
-              dangerouslySetInnerHTML={{ __html: data.overview }}
-            ></motion.p>
+        <motion.div className="mx-6" variants={imageVariants}>
+          <motion.h2 className="text-xl sm:text-3xl ss:text-2xl">Overview</motion.h2>
+          <motion.p
+            className="xs:text-lg text-[12px] text-blue mb-6"
+            dangerouslySetInnerHTML={{
+              __html: data?.overview || "Overview content not available",
+            }}
+          ></motion.p>
 
-            <motion.h2 className=" text-xl sm:text-3xl ss:text-2xl">
-              Timeline
-            </motion.h2>
-            <motion.p
-              className="text-blue xs:text-lg  text-[12px]  mb-6"
-              dangerouslySetInnerHTML={{ __html: data.timeline }}
-            ></motion.p>
+          <motion.h2 className="text-xl sm:text-3xl ss:text-2xl">Timeline</motion.h2>
+          <motion.p
+            className="text-blue xs:text-lg text-[12px] mb-6"
+            dangerouslySetInnerHTML={{
+              __html: data?.timeline || "Timeline content not available",
+            }}
+          ></motion.p>
 
-            <motion.h2 className=" text-xl sm:text-3xl ss:text-2xl">
-              Contact
-            </motion.h2>
-            <motion.div className=" text-blue xs:text-lg ss:text-xl text-sm mb-6">
-              {data.contact.map((item) => (
-                <p>
+          <motion.h2 className="text-xl sm:text-3xl ss:text-2xl">Contact</motion.h2>
+          <motion.div className="text-blue xs:text-lg text-sm mb-6">
+            {data?.contact?.length > 0 ? (
+              data.contact.map((item, index) => (
+                <p key={index}>
                   {item.contactName} : {item.number}
                 </p>
-              ))}
-            </motion.div>
+              ))
+            ) : (
+              <p>Contact information not available</p>
+            )}
           </motion.div>
-        </>
+        </motion.div>
       )}
-      <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
-
-        <Link onClick={()=>{if(!teamEvent&&check&&isLoggedIn&&registration)handelINdividualRegister()}} to={registration ? (isLoggedIn ? (check ? (teamEvent ? "/eventteam" : `#`) : "/userinfo") : "/signin") : (isLoggedIn ? "#" : "/signin")} state={{ eventname, eventType, eventID }}>
-          <Button text={registration ? (isLoggedIn ? "Register" : "Register") : (isLoggedIn ? "Registration Closed" : "Registration Closed")} disabled={isLoading} />
-        </Link>
-        {(data.link !== "") && <Link to={`${data.link}`} state={{ eventname, eventType, eventID }}>
-          <Button text={"Link"} />
-        </Link>}
-      </motion.div>
     </motion.div>
   );
 };
