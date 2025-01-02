@@ -72,9 +72,9 @@ const EventsPage = () => {
 
         {isAboveLargeScreen ?
           (<><motion.div className=" flex justify-around md:w-[70%] mx-auto md:flex-row flex-col items-center md:gap-0 gap-3">
-            <div className="mt-[44px]">
+{/*             <div className="mt-[44px]">
               <Button text="Pre-Events" outline={eventType !== "preEvents"} onPress={() => setEventType("preEvents")}></Button>
-            </div>
+            </div> */}
             <div className="mt-[44px]">
               <Button text="Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
             </div>
@@ -90,21 +90,21 @@ const EventsPage = () => {
 
             <div className="md:grid md:grid-cols-2 z-50 md:mx-[195px] md:gap-y-[60px] mt-9 md:grid-flow-row flex flex-col gap-12 mb-9 ">
 
-              {(eventType === "preEvents") ?
-
+              {
+                //(eventType === "preEvents") ?
                 // (firebase.PreEventData.map((data, index) => (
                 //   <div>
                 //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                 //   </div>
 
                 // ))) 
-                (preEventData.map((data, index) => (
-                  <div>
-                    <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
-                  </div>
+                // (preEventData.map((data, index) => (
+                  // <div>
+                    // <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                  // </div>
 
-                )))
-                : 
+                // )))
+                // : 
                 ((eventType === "events") ? 
                 // (firebase.eventData.map((data, index) => (
                 //   <div>
