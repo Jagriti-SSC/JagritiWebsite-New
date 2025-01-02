@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EventsPage.css"
-import { useFirebase } from "../../context/Firebase";
+// import { useFirebase } from "../../context/Firebase";
 import Events from "../../components/Events/Events";
 import {motion} from "framer-motion";
 import Button from "../../components/UI/button/Button";
@@ -8,13 +8,18 @@ import useMediaQuery from "../../hooks/useMediaQuery"
 import Preloader from "../../components/preloader/Preloader";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import axios from 'axios';
 
 const EventsPage = () => {
-  const firebase = useFirebase();
+  // const firebase = useFirebase();
   // const [eventData, seteventData] = useState([]);
   const [eventType,setEventType] = useState("events")
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)")
   const [loading, setLoading]=useState(false);
+
+  const [eventData,seteventData]=useState([]);
+  const [preEventData,setpreEventData]=useState([]);
+  const [GuestTalkData,setGuestTalkData]=useState([]);
 
   useEffect(()=>{
     setLoading(true)
@@ -28,12 +33,31 @@ const EventsPage = () => {
   console.log("Current eventType:", eventType); // Add this line to log eventType
 
   const fetchEventData = (name) => {
-    const Data =  firebase.getAllDocuments(name);
+    // const Data =  firebase.getAllDocuments(name);
+    axios.get(process.env.REACT_APP_API_URL+"/admin/events").then((res)=>{
+      seteventData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+    axios.get(process.env.REACT_APP_API_URL+"/admin/preEvents").then((res)=>{
+      setpreEventData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+    axios.get(process.env.REACT_APP_API_URL+"/admin/GuestTalks").then((res)=>{
+      setGuestTalkData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
     
   };
 
   useEffect(() => {
-    Promise.all([fetchEventData("events"),fetchEventData("pre-event"),fetchEventData("guest-talk")]);
+    // Promise.all([fetchEventData("events"),fetchEventData("pre-event"),fetchEventData("guest-talk")]);
+    fetchEventData();
     
     
   }, []);
@@ -67,22 +91,45 @@ const EventsPage = () => {
 
               {(eventType === "preEvents") ?
 
-                (firebase.PreEventData.map((data, index) => (
+                // (firebase.PreEventData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
+
+                // ))) 
+                (preEventData.map((data, index) => (
                   <div>
                     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                   </div>
 
-                ))) : ((eventType === "events") ? (firebase.eventData.map((data, index) => (
+                )))
+                : 
+                ((eventType === "events") ? 
+                // (firebase.eventData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
+
+                // )))
+                (eventData.map((data, index) => (
                   <div>
                     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                   </div>
 
-                ))) : (firebase.GuestTalkData.map((data, index) => (
+                ))) :
+                //  (firebase.GuestTalkData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
+
+                // )))
+                (GuestTalkData.map((data, index) => (
                   <div>
                     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                   </div>
 
-                ))))}
+                )))
+                )}
 
 
 
@@ -103,12 +150,20 @@ const EventsPage = () => {
 
               </motion.div>
             </motion.div>
-            {firebase.PreEventData.map((data) => (
+            {/* {firebase.PreEventData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"preEvents"} data={data} key={data.id}></Events>
               </div>
 
-            ))}
+            ))} */}
+            {
+              preEventData.map((data) => (
+                <div className=" mb-[53px]">
+                  <Events eventType={"preEvents"} data={data} key={data.id}></Events>
+                </div>
+  
+              ))
+            }
             <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
 
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
@@ -119,7 +174,13 @@ const EventsPage = () => {
 
               </motion.div>
             </motion.div>
-            {firebase.eventData.map((data) => (
+            {/* {firebase.eventData.map((data) => (
+              <div className=" mb-[53px]">
+                <Events eventType={"events"} data={data} key={data.id}></Events>
+              </div>
+
+            ))} */}
+            {eventData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"events"} data={data} key={data.id}></Events>
               </div>
@@ -136,7 +197,13 @@ const EventsPage = () => {
 
               </motion.div>
             </motion.div>
-            {firebase.GuestTalkData.map((data) => (
+            {/* {firebase.GuestTalkData.map((data) => (
+              <div className=" mb-[53px]">
+                <Events eventType={"guestTalks"} data={data} key={data.id}></Events>
+              </div>
+
+            ))} */}
+            {GuestTalkData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"guestTalks"} data={data} key={data.id}></Events>
               </div>
@@ -153,4 +220,3 @@ const EventsPage = () => {
 };
 
 export default EventsPage;
- 
