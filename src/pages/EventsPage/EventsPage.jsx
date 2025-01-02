@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EventsPage.css"
-import { useFirebase } from "../../context/Firebase";
+// import { useFirebase } from "../../context/Firebase";
 import Events from "../../components/Events/Events";
 import {motion} from "framer-motion";
 import Button from "../../components/UI/button/Button";
@@ -8,13 +8,19 @@ import useMediaQuery from "../../hooks/useMediaQuery"
 import Preloader from "../../components/preloader/Preloader";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import axios from 'axios';
 
 const EventsPage = () => {
-  const firebase = useFirebase();
+  // const firebase = useFirebase();
   // const [eventData, seteventData] = useState([]);
   const [eventType,setEventType] = useState("events")
   const isAboveLargeScreen = useMediaQuery("(min-width:1060px)")
   const [loading, setLoading]=useState(false);
+
+  const [eventData,seteventData]=useState([]);
+  const [preEventData,setpreEventData]=useState([]);
+  const [GuestTalkData,setGuestTalkData]=useState([]);
+  const url = process.env.REACT_APP_BASE_URL;
 
   useEffect(()=>{
     setLoading(true)
@@ -28,12 +34,31 @@ const EventsPage = () => {
   console.log("Current eventType:", eventType); // Add this line to log eventType
 
   const fetchEventData = (name) => {
-    const Data =  firebase.getAllDocuments(name);
+    // const Data =  firebase.getAllDocuments(name);
+    axios.get(`${url}/admin/events`).then((res)=>{
+      seteventData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+    axios.get(`${url}/admin/preEvents`).then((res)=>{
+      setpreEventData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+    axios.get(`${url}/admin/GuestTalks`).then((res)=>{
+      setGuestTalkData(res.data.result);
+      console.log(res.data.result);
+    }).catch((err)=>{
+      console.log(err);
+    })
     
   };
 
   useEffect(() => {
-    Promise.all([fetchEventData("events"),fetchEventData("pre-event"),fetchEventData("guest-talk")]);
+    // Promise.all([fetchEventData("events"),fetchEventData("pre-event"),fetchEventData("guest-talk")]);
+    fetchEventData();
     
     
   }, []);
@@ -51,7 +76,7 @@ const EventsPage = () => {
               <Button text="Pre-Events" outline={eventType !== "preEvents"} onPress={() => setEventType("preEvents")}></Button>
             </div> */}
             <div className="mt-[44px]">
-              <Button text="Workshops and Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
+              <Button text="Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
             </div>
             <div className="mt-[44px]">
               <Button text="Main Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
@@ -65,24 +90,47 @@ const EventsPage = () => {
 
             <div className="md:grid md:grid-cols-2 z-50 md:mx-[195px] md:gap-y-[60px] mt-9 md:grid-flow-row flex flex-col gap-12 mb-9 ">
 
-              {(eventType === "preEvents") ?
+              {
+                //(eventType === "preEvents") ?
+                // (firebase.PreEventData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
 
-                (firebase.PreEventData.map((data, index) => (
+                // ))) 
+                // (preEventData.map((data, index) => (
+                  // <div>
+                    // <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                  // </div>
+
+                // )))
+                // : 
+                ((eventType === "events") ? 
+                // (firebase.eventData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
+
+                // )))
+                (eventData.map((data, index) => (
                   <div>
                     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                   </div>
 
-                ))) : ((eventType === "events") ? (firebase.eventData.map((data, index) => (
+                ))) :
+                //  (firebase.GuestTalkData.map((data, index) => (
+                //   <div>
+                //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                //   </div>
+
+                // )))
+                (GuestTalkData.map((data, index) => (
                   <div>
                     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                   </div>
 
-                ))) : (firebase.GuestTalkData.map((data, index) => (
-                  <div>
-                    <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
-                  </div>
-
-                ))))}
+                )))
+                )}
 
 
 
@@ -103,12 +151,20 @@ const EventsPage = () => {
 
               </motion.div>
             </motion.div>
-            {firebase.PreEventData.map((data) => (
+            {/* {firebase.PreEventData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"preEvents"} data={data} key={data.id}></Events>
               </div>
 
-            ))}
+            ))} */}
+            {
+              preEventData.map((data) => (
+                <div className=" mb-[53px]">
+                  <Events eventType={"preEvents"} data={data} key={data.id}></Events>
+                </div>
+  
+              ))
+            }
             <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
 
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
@@ -119,7 +175,13 @@ const EventsPage = () => {
 
               </motion.div>
             </motion.div>
-            {firebase.eventData.map((data) => (
+            {/* {firebase.eventData.map((data) => (
+              <div className=" mb-[53px]">
+                <Events eventType={"events"} data={data} key={data.id}></Events>
+              </div>
+
+            ))} */}
+            {eventData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"events"} data={data} key={data.id}></Events>
               </div>
@@ -131,12 +193,18 @@ const EventsPage = () => {
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
 
               </motion.div>
-              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Workshops and Guest Talks</motion.h1>
+              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Guest Talks</motion.h1>
               <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
 
               </motion.div>
             </motion.div>
-            {firebase.GuestTalkData.map((data) => (
+            {/* {firebase.GuestTalkData.map((data) => (
+              <div className=" mb-[53px]">
+                <Events eventType={"guestTalks"} data={data} key={data.id}></Events>
+              </div>
+
+            ))} */}
+            {GuestTalkData.map((data) => (
               <div className=" mb-[53px]">
                 <Events eventType={"guestTalks"} data={data} key={data.id}></Events>
               </div>
@@ -153,4 +221,3 @@ const EventsPage = () => {
 };
 
 export default EventsPage;
- 

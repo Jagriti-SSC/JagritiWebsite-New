@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import GalleryFirstLine from "../../components/galleryFirstLine/galleryFirstLine";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
+import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 const GalleryPage = () => {
   
   useEffect(() => {
@@ -14,9 +14,9 @@ const GalleryPage = () => {
     <>
     <div className="bg">
       <div className="">
-        <div className=" md:absolute md:top-[30%] md:left-[10%]">
+        <div className=" md:absolute md:top-[23%] md:left-[10%]">
           <div className="flex ">
-              <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
+              <FontAwesomeIcon icon={faQuoteLeft} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
               <p className="w-[360px] text-justify mt-5">Here's the glimpse of previous editions of Jagriti. Exciting events ranging from guest talks to competitions were successfully held, inundated with participants from all over India.</p>
               <FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: '48px', color: 'rgb(65, 98, 168)' }} />
            </div>

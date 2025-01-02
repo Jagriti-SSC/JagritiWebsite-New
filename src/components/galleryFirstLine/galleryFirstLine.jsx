@@ -28,7 +28,7 @@ import { Diversity } from "styled-icons/fluentui-system-filled";
 
 const GalleryFirstLine = () => {
   return (
-    <div style={{overflow:"hidden"}} className="flex flex-col md:mt-44 relative md:-rotate-[30deg]  w-[130vw]">
+    <div style={{overflow:"hidden"}} className="flex flex-col md:mt-44 relative md: w-[130vw]">
       <div className="flex justify-center">
         
       </div >
