@@ -38,7 +38,7 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 2}>
                 <AccordionHeader onClick={() => handleOpen(2)} className="font-popins">
-                What kind of support or assistance can Campus Ambassadors expect from the Jagriti’24 team?
+                What kind of support or assistance can Campus Ambassadors expect from the Jagriti'25 team?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
                 They can have a mentor for having a point of contact within the organization team for advice and support.
@@ -49,12 +49,12 @@ export default function Example() {
                 How can Campus Ambassadors collaborate or connect with other Ambassadors or the organizing team?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                We will be making a whatsapp group for effective communication between all CA‘s and organizing team.
+                We will be making a whatsapp group for effective communication between all CAs and organizing team.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 4}>
                 <AccordionHeader onClick={() => handleOpen(4)} className="font-popins">
-                Will there be opportunities to interact with guest speakers or notable personalities associated with Jagriti’24?
+                Will there be opportunities to interact with guest speakers or notable personalities associated with Jagriti'25?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
                 Yes
@@ -65,7 +65,7 @@ export default function Example() {
                 How Much Time Will I Need to Dedicate as a Campus Ambassador?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                Around 3-4 hours per week start date will be informed to all CA’s.
+                Around 3-4 hours per week start date will be informed to all CAs.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 6}>
@@ -97,7 +97,7 @@ export default function Example() {
                 Will training or onboarding be given to the campus ambassador? Of what nature shall it be?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                All CA’s will be given extensive onboarding training about our Jagriti culture and importance of it.All CA’ s are expected to pass on knowledge to their own campuses and become a part of our great culture.
+                All CAs will be given extensive onboarding training about our Jagriti culture and importance of it. All CAs are expected to pass on knowledge to their own campuses and become a part of our great culture.
                 </AccordionBody>
               </Accordion>
               

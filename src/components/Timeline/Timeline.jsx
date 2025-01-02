@@ -30,11 +30,10 @@ function Timeline() {
           }}
           icon={<FlagFill style={{ padding: 0 }} />}
         >
-          <h3 className="title">Jagriti'24 begins</h3>
+          <h3 className="title">Jagriti'25 begins</h3>
           <p className="timeline-content">
-            <b>10th Feb 2024:</b>
-            <li>6:00 AM - 7:00 AM: Marathon</li>
-            <li>7:00 AM: Theme launch</li>
+            <b>10th Jan 2025:</b>
+            <li>Theme launch</li>
           </p>
         </VerticalTimelineElement>
 
@@ -55,9 +54,8 @@ function Timeline() {
         >
           <h3 className="title"><b>Day 1</b></h3>
           <p className="timeline-content">
-            <b>4:00 PM - 6:00 PM:</b>
-            <li>DVS Guest Talk</li>
-            <b>6:30 PM - 7:30 PM:</b>
+            {/* timing */}
+            <b></b>
             <li>Opening Ceremony</li>
           </p>
         </VerticalTimelineElement>
@@ -80,15 +78,8 @@ function Timeline() {
         >
           <h3 className="title"><b>Day 2</b></h3>
           <p className="timeline-content">
-            <b>10:00 AM - 1:00 PM:</b>
-            <li>Treasure Hunt</li>
-            <li>Eye Checkup</li>
-            <b>12:00 PM - 2:00 PM:</b>
-            <li>Beautiful Impact</li>
-            <b>2:00 PM - 5:00 PM:</b>
-            <li>Policy Challenge</li>
-            <li>Social Entrepreneurship</li>
-            <li>Guest Talk</li>
+            <b></b>
+            <li>Events</li>
           </p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
@@ -109,16 +100,8 @@ function Timeline() {
         >
           <h3 className="title"><b>Day 3</b></h3>
           <p className="timeline-content">
-            <b>10:00 AM - 1:00 PM:</b>
-              <li>AI Hackathon</li>
-              <li>Debate</li>
-              <li>Guest Talk</li>
-            <b>3:00 PM - 5:00 PM:</b>
-              <li>Page Painting</li>
-              <li>Guest Talk</li>
-            <b>4:00 PM - 6:00 PM:</b>
-              <li>Self Defence Workshop</li>
-            <b>6:00 PM - 8:00 PM:</b>
+            {/* timing */}
+            <b></b>
               <li>Closing Ceremony</li>
           </p>
         </VerticalTimelineElement>
