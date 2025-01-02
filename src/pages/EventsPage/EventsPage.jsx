@@ -72,18 +72,15 @@ const EventsPage = () => {
 
         {isAboveLargeScreen ?
           (<><motion.div className=" flex justify-around md:w-[70%] mx-auto md:flex-row flex-col items-center md:gap-0 gap-3">
-{/*             <div className="mt-[44px]">
+            {/* <div className="mt-[44px]">
               <Button text="Pre-Events" outline={eventType !== "preEvents"} onPress={() => setEventType("preEvents")}></Button>
             </div> */}
             <div className="mt-[44px]">
-              <Button text="Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
-            </div>
-            <div className="mt-[44px]">
               <Button text="Main Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
             </div>
-
-
-
+            <div className="mt-[44px]">
+              <Button text="Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
+            </div>
 
           </motion.div>
 
@@ -91,20 +88,21 @@ const EventsPage = () => {
             <div className="md:grid md:grid-cols-2 z-50 md:mx-[195px] md:gap-y-[60px] mt-9 md:grid-flow-row flex flex-col gap-12 mb-9 ">
 
               {
-                //(eventType === "preEvents") ?
+                (eventType === "preEvents") ?
+
                 // (firebase.PreEventData.map((data, index) => (
                 //   <div>
                 //     <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
                 //   </div>
 
                 // ))) 
-                // (preEventData.map((data, index) => (
-                  // <div>
-                    // <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
-                  // </div>
+                (preEventData.map((data, index) => (
+                  <div>
+                    <Events eventType={eventType} data={data} key={data.id} index={index}></Events>
+                  </div>
 
-                // )))
-                // : 
+                )))
+                : 
                 ((eventType === "events") ? 
                 // (firebase.eventData.map((data, index) => (
                 //   <div>
@@ -146,30 +144,6 @@ const EventsPage = () => {
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
 
               </motion.div>
-              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Pre-Events</motion.h1>
-              <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
-
-              </motion.div>
-            </motion.div>
-            {/* {firebase.PreEventData.map((data) => (
-              <div className=" mb-[53px]">
-                <Events eventType={"preEvents"} data={data} key={data.id}></Events>
-              </div>
-
-            ))} */}
-            {
-              preEventData.map((data) => (
-                <div className=" mb-[53px]">
-                  <Events eventType={"preEvents"} data={data} key={data.id}></Events>
-                </div>
-  
-              ))
-            }
-            <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
-
-              <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
-
-              </motion.div>
               <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Main Events</motion.h1>
               <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
 
@@ -187,6 +161,31 @@ const EventsPage = () => {
               </div>
 
             ))}
+
+            {/* <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
+
+              <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
+
+              </motion.div>
+              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Pre-Events</motion.h1>
+              <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
+
+              </motion.div>
+            </motion.div>  */}
+            {/* {firebase.PreEventData.map((data) => (
+              <div className=" mb-[53px]">
+                <Events eventType={"preEvents"} data={data} key={data.id}></Events>
+              </div>
+
+            ))} */}
+            {/* {
+              preEventData.map((data) => (
+                <div className=" mb-[53px]">
+                  <Events eventType={"preEvents"} data={data} key={data.id}></Events>
+                </div>
+  
+              ))
+            } */}
 
             <motion.div className=" flex justify-center items-center mb-[32px] mt-8 mx-8 ">
 
