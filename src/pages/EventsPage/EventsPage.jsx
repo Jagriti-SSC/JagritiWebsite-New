@@ -20,6 +20,7 @@ const EventsPage = () => {
   const [eventData,seteventData]=useState([]);
   const [preEventData,setpreEventData]=useState([]);
   const [GuestTalkData,setGuestTalkData]=useState([]);
+  const url = process.env.REACT_APP_BASE_URL;
 
   useEffect(()=>{
     setLoading(true)
@@ -34,19 +35,19 @@ const EventsPage = () => {
 
   const fetchEventData = (name) => {
     // const Data =  firebase.getAllDocuments(name);
-    axios.get(process.env.REACT_APP_API_URL+"/admin/events").then((res)=>{
+    axios.get(`${url}/admin/events`).then((res)=>{
       seteventData(res.data.result);
       console.log(res.data.result);
     }).catch((err)=>{
       console.log(err);
     })
-    axios.get(process.env.REACT_APP_API_URL+"/admin/preEvents").then((res)=>{
+    axios.get(`${url}/admin/preEvents`).then((res)=>{
       setpreEventData(res.data.result);
       console.log(res.data.result);
     }).catch((err)=>{
       console.log(err);
     })
-    axios.get(process.env.REACT_APP_API_URL+"/admin/GuestTalks").then((res)=>{
+    axios.get(`${url}/admin/GuestTalks`).then((res)=>{
       setGuestTalkData(res.data.result);
       console.log(res.data.result);
     }).catch((err)=>{
@@ -75,7 +76,7 @@ const EventsPage = () => {
               <Button text="Pre-Events" outline={eventType !== "preEvents"} onPress={() => setEventType("preEvents")}></Button>
             </div>
             <div className="mt-[44px]">
-              <Button text="Workshops and Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
+              <Button text="Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
             </div>
             <div className="mt-[44px]">
               <Button text="Main Events" outline={eventType !== "events"} onPress={() => setEventType("events")}></Button>
@@ -192,7 +193,7 @@ const EventsPage = () => {
               <motion.div className="z-0 bg-blue h-[1.5px] basis-5/12">
 
               </motion.div>
-              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Workshops and Guest Talks</motion.h1>
+              <motion.h1 className=" relative top-[50%] z-100  font-semibold text-blue sm:text-3xl ss:text-2xl text-xl min-w-max p-6 ">Guest Talks</motion.h1>
               <motion.div className="z-0 bg-blue h-[1.5px]  basis-5/12">
 
               </motion.div>
