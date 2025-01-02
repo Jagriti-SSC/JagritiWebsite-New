@@ -132,11 +132,11 @@ const ModalCard = ({ data, close }) => {
               Contact
             </motion.h2>
             <motion.div className=" text-blue xs:text-lg ss:text-xl text-sm mb-6">
-              {/* {data.contact.map((item) => (
+              {data.contacts.map((item) => (
                 <p>
-                  {item.contactName} : {item.number}
+                  {item.name} : {item.mobile}
                 </p>
-              ))} */}
+              ))}
             </motion.div>
           </motion.div>
         </>
