@@ -71,21 +71,21 @@ const ModalCard = ({ data, close }) => {
               <a
                 className="hover:underline"
                 onClick={() => setContent("Overview")}
-                href="#jgf"
+                href="#overview"
               >
                 Overview
               </a>
               <a
                 className="hover:underline"
                 onClick={() => setContent("Timeline")}
-                href="#ouygvp"
+                href="#timeline"
               >
                 Timeline
               </a>
               <a
                 className="hover:underline"
                 onClick={() => setContent("Contact")}
-                href="#ukgv"
+                href="#contact"
               >
                 Contact
               </a>
