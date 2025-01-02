@@ -8,6 +8,7 @@ import useMediaQuery from "../../hooks/useMediaQuery"
 import Preloader from "../../components/preloader/Preloader";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import EventCarousel from "../UserAuthForm/EventCarousel";
 import axios from 'axios';
 
 const EventsPage = () => {

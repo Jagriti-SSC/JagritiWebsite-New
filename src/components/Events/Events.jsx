@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {AnimatePresence} from "framer-motion";
 import Card from '../EventCard/Card';
-import Modal from '../EventCard/Modal';
+import ModalCard from '../EventCard/ModalCard';
 import Overlay from '../EventCard/Overlay';
 
 const Events = ({eventType,data,index}) => {
@@ -21,7 +21,7 @@ const Events = ({eventType,data,index}) => {
     <AnimatePresence>
       {
         open && (<Overlay close={closeModal}>
-          <Modal data={data}eventType={eventType} close={closeModal}></Modal>
+          <ModalCard data={data}eventType={eventType} close={closeModal}></ModalCard>
         </Overlay>)
       }
     </AnimatePresence>
