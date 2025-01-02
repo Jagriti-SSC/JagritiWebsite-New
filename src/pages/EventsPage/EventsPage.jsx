@@ -47,9 +47,9 @@ const EventsPage = () => {
 
         {isAboveLargeScreen ?
           (<><motion.div className=" flex justify-around md:w-[70%] mx-auto md:flex-row flex-col items-center md:gap-0 gap-3">
-            <div className="mt-[44px]">
+{/*             <div className="mt-[44px]">
               <Button text="Pre-Events" outline={eventType !== "preEvents"} onPress={() => setEventType("preEvents")}></Button>
-            </div>
+            </div> */}
             <div className="mt-[44px]">
               <Button text="Workshops and Guest Talks" outline={eventType !== "guestTalks"} onPress={() => setEventType("guestTalks")}></Button>
             </div>
