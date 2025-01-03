@@ -37,7 +37,7 @@ const Modal = ({ data, close, eventType }) => {
   const [eventID, setEventID] = useState();
   const [isLoading, setIsLoading] = useState(true);
   let [userId, setId] = useState("");
-  
+
   const fetchData = async () => {
     try {
       const url = process.env.REACT_APP_BASE_URL;
@@ -201,7 +201,7 @@ const Modal = ({ data, close, eventType }) => {
                 {data?.contacts?.length > 0 ? (
                   data.contacts.map((item, index) => (
                     <p key={index}>
-                        {item.name} : {item.mobile}
+                      {item.name} : {item.mobile}
                     </p>
                   ))
                 ) : (
@@ -237,7 +237,7 @@ const Modal = ({ data, close, eventType }) => {
                           : "/eventind"
                         : "/userinfo"
                       : "/signin"
-                  }                  
+                  }
                   state={{ eventname, eventType, eventID }}
                 >
                   <Button text={isLoggedIn ? "Register" : "Register"} disabled={isLoading} />
@@ -278,6 +278,35 @@ const Modal = ({ data, close, eventType }) => {
           </motion.div>
         </motion.div>
       )}
+      <motion.div className="md:mb-[37px] mb-[20px] mt-auto  mx-auto md:hidden">
+        {data?.link ? (
+          <a href={data.link} target="_blank" rel="noopener noreferrer">
+            <Button text={"Unstop Link"} />
+          </a>
+        ) : (
+          registration && (
+            <Link
+              onClick={() => {
+                if (!teamEvent && check && isLoggedIn && registration) {
+                  handelINdividualRegister();
+                }
+              }}
+              to={
+                isLoggedIn
+                  ? check
+                    ? teamEvent
+                      ? "/eventteam"
+                      : "/eventind"
+                    : "/userinfo"
+                  : "/signin"
+              }
+              state={{ eventname, eventType, eventID }}
+            >
+              <Button text={isLoggedIn ? "Register" : "Register"} disabled={isLoading} />
+            </Link>
+          )
+        )}
+      </motion.div>
     </motion.div>
   );
 };
