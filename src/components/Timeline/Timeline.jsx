@@ -32,7 +32,7 @@ function Timeline() {
         >
           <h3 className="title text-center">Jagriti'25 begins</h3>
           <p className="timeline-content">
-            <b className="block mb-3">10th Jan 2025:</b>
+            <b className="block mb-3">10-01-2025:</b>
             <li>Theme launch</li>
           </p>
         </VerticalTimelineElement>
@@ -52,7 +52,7 @@ function Timeline() {
           }}
           icon={<FlagFill style={{ padding: 0 }} />}
         >
-          <h3 className="title"><b>Day 1: 17/01/2025</b></h3>
+          <h3 className="title"><b>Day 1: 17-01-2025</b></h3>
           <p className="timeline-content">
             <b></b>
             <li>09:00 - 17:00: Workshops</li>
@@ -77,12 +77,12 @@ function Timeline() {
           }}
           icon={<FlagFill style={{ padding: 0 }} />}
         >
-          <h3 className="title"><b>Day 2: 18/01/2025</b></h3>
+          <h3 className="title"><b>Day 2: 18-01-2025</b></h3>
           <p className="timeline-content">
             <b></b>
             <li>07:00 - 09:00: Marathon</li>
             <li>11:00 - 12:00: Guest Talk: Dr Tanu Jain</li>
-            <li>12:30 - 17:30: Strat-Impact - Manthan Minds - AI Hackathon</li>
+            <li>12:30 - 17:30: Strat-Impact/Manthan Minds/AI Hackathon</li>
             <li>17:00 - 18:00: Guest Talk: Dr Tanu Jain</li>
             <li>18:30 - 19:00: Nukkad Natak</li>
           </p>
@@ -103,13 +103,13 @@ function Timeline() {
           }}
           icon={<FlagFill style={{ padding: 0 }} />}
         >
-          <h3 className="title"><b>Day 3: 19/01/2025</b></h3>
+          <h3 className="title"><b>Day 3: 19-01-2025</b></h3>
           <p className="timeline-content">
             {/* timing */}
             <b></b>
               <li>10:00 - 12:00: Treasure Hunt</li>
               <li>13:00 - 14:00: Teach For India</li>
-              <li>10:00 - 16:30: Impactify - Impact-Metrics - Art Event - Frames of Change</li>
+              <li>10:00 - 16:30: Impactify/Impact-Metrics/Art Event/Frames of Change</li>
               <li>17:00 - 18:00: Guest Talk: Neha Agrawal</li>
               <li>18:30 - 19:00: Jamming</li>
               <li>19:00 - 20:30: Closing Ceremony</li>
