@@ -23,7 +23,11 @@ const Sponsor = () => {
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//pregrad.in"><img src="./assets/sponsors/pregrad.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//theproductfolks.com"><img src="./assets/sponsors/projectfolks.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
         <a className="cursor-pointer mx-10" target="_blank" rel="noreferrer" href="//learningwhiletravelling.com/"><img src="./assets/sponsors/lwt.webp" className="h-auto w-60" alt="LWT Logo"></img></a>
-
+        <a className="cursor-pointer mx-10 p-2 sponsor-padding" target="_blank" rel="noreferrer" href="//unstop.com/"><img src="./assets/sponsors/Unstop-Logo-Blue-Small.png" className="h-auto w-60" alt="unstop Logo"></img></a>
+        <a className="cursor-pointer mx-10 p-2 sponsor-padding" target="_blank" rel="noreferrer" href="//liveai.eu/"><img src="./assets/sponsors/liveai.webp" className="h-auto w-60" alt="iveai Logo"></img></a>
+        <a className="cursor-pointer mx-10 p-2 sponsor-padding" target="_blank" rel="noreferrer" href="//teachforindia.org/"><img src="./assets/sponsors/tfi.png" className="h-auto w-60" alt="tfi Logo"></img></a>
+        
+        
       </Marquee>
     </div>
   );
