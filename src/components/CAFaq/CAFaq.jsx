@@ -38,7 +38,7 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 2}>
                 <AccordionHeader onClick={() => handleOpen(2)} className="font-popins">
-                What kind of support or assistance can Campus Ambassadors expect from the Jagriti'25 team?
+                What kind of support or assistance can Campus Ambassadors expect from the Jagriti'26 team?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
                 They can have a mentor for having a point of contact within the organization team for advice and support.
@@ -54,7 +54,7 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 4}>
                 <AccordionHeader onClick={() => handleOpen(4)} className="font-popins">
-                Will there be opportunities to interact with guest speakers or notable personalities associated with Jagriti'25?
+                Will there be opportunities to interact with guest speakers or notable personalities associated with Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
                 Yes
