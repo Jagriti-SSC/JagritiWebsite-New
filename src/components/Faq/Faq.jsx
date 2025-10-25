@@ -38,10 +38,10 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 2}>
                 <AccordionHeader onClick={() => handleOpen(2)} className="font-popins">
-                What are the dates for Jagriti'25?
+                What are the dates for Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                This year Jagriti will be held from the 17th to the 19th of March.
+                This year Jagriti will be held from the 2nd to the 4th of January.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 3}>
@@ -78,10 +78,10 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 7}>
                 <AccordionHeader onClick={() => handleOpen(7)} className="font-popins">
-                What is the theme of Jagriti'25?
+                What is the theme of Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                The theme of Jagriti'25 <span className="font-extrabold">will be revealed soon! Stay tuned..</span>.
+                The theme of Jagriti'26 <span className="font-extrabold">will be revealed soon! Stay tuned..</span>.
                 </AccordionBody>
               </Accordion>
               
