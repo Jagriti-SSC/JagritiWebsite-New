@@ -84,7 +84,7 @@ const HomePage = () => {
       </div>
 
       <Testimonial></Testimonial>
-      <Timeline></Timeline>
+      {/* <Timeline></Timeline> */}
 
       <Throwback></Throwback>
 
