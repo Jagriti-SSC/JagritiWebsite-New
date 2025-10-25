@@ -38,7 +38,7 @@ const CA = () => {
             <div className='content'>
                 <motion.div  variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='
                 text-6xl font-bold flex items-center justify-center mb-5 text-[#1A589B] text-center'>Become A Campus Ambassador</motion.div>
-                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-10 text-center text-white'>Join us and proudly represent Jagriti'25 on your college campus</motion.div>
+                <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='text-2xl flex items-center justify-center mb-10 text-center text-white'>Join us and proudly represent Jagriti'26 on your college campus</motion.div>
                 <motion.div variants={fadeIn('up', 0.05)} initial="hidden" whileInView={'show'} viewport={{once:false,amount:0.7}} className='flex justify-center items-center'> 
                 <Button
                 text={isLoggedIn ? "Apply Now" : "Apply Now"}
@@ -155,10 +155,10 @@ const CA = () => {
                                 Drive quality registrations by sharing event details through various channels.
                                 </li>
                                 <li>
-                                Promote Jagriti'25 online competitions for quality participant engagement.
+                                Promote Jagriti'26 online competitions for quality participant engagement.
                                 </li>
                                 <li>
-                                Encourage students to stay updated by following Jagriti'25's social media accounts.
+                                Encourage students to stay updated by following Jagriti'26's social media accounts.
                                 </li>
                                 <li>
                                 Actively contribute to team discussions for effective mega-event promotion.
@@ -167,7 +167,7 @@ const CA = () => {
                                 Distribute posters, flyers, and promotional materials across your college campus.
                                 </li>
                                 <li>
-                                Send targeted emails highlighting Jagriti'25's uniqueness to student mailing lists.
+                                Send targeted emails highlighting Jagriti'26's uniqueness to student mailing lists.
                                 </li>
                                 <li>
                                 Foster cross-participation by connecting with Campus Ambassadors from other colleges.
@@ -180,7 +180,7 @@ const CA = () => {
                 </div>
             </div>
             <div className='text-center w-4/5 flex items-center justify-center m-auto font-bold'>   
-            By diversifying your approach and engaging with different facets of college life, you can maximize the impact of the Campus Ambassador role in promoting Jagriti'25 across colleges.
+            By diversifying your approach and engaging with different facets of college life, you can maximize the impact of the Campus Ambassador role in promoting Jagriti'26 across colleges.
             </div>
         </div>
 
