@@ -21,7 +21,7 @@ const HomePage = () => {
   let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("January 17,2025").getTime();
+    const countDownDate = new Date("January 2,2026").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
