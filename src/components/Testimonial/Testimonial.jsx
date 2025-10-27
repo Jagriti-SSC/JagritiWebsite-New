@@ -1,6 +1,6 @@
 import "./Testimonial.css";
 import React, { useState, useLayoutEffect, useCallback } from "react";
-import SwiperCore, { Virtual, Navigation, Pagination } from "swiper";
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import "swiper/css";
@@ -15,7 +15,7 @@ import Mr_Amrut_Bang from "../../assets/testimonials/Mr._Amrut_Bang.webp";
 import Mr_Bezwada_Wilson from "../../assets/testimonials/Mr._Bezwada_Wilson.webp";
 // import Chhavi_Khandelwal from "../../assets/testimonials/dp3.webp";
 
-SwiperCore.use([Virtual, Navigation, Pagination]);
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 function Testimonial() {
   //swiper
@@ -70,7 +70,12 @@ function Testimonial() {
           onSwiper={setSwiperRef}
           slidesPerView={width < 740 ? 1 : width < 1500 ? 2 : 3}
           spaceBetween={30}
-          virtual
+          loop={true}
+          modules={[Autoplay, Navigation, Pagination]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
         >
           <SwiperSlide>
             <div className="swiper-content-img">
