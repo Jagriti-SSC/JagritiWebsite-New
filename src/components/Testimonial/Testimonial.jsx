@@ -75,6 +75,7 @@ function Testimonial() {
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
         >
           <SwiperSlide>
