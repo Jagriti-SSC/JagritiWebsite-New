@@ -72,13 +72,13 @@ const HomePage = () => {
           />
           <div className="explore-btn">
             <Button text="Explore Events" showArrow path="/events" />
-            <Button
+            {/* <Button
               outline
               text="Guest talk"
               buttonColor="white"
               path="/events"
               showArrow
-            />
+            /> */}
           </div>
         </div>
       </div>
