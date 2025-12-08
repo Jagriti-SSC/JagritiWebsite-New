@@ -4,71 +4,45 @@ import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
 import { useFirebase } from "../../context/Firebase";
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import Typewriter from 'typewriter-effect';
 
 function TeamPage() {
   const firebase = useFirebase();
-
   const [data, setData] = useState([]);
   const [memberCount, setMemberCount] = useState(0);
   const [fixedData, setFixedData] = useState([]);
   const [collection, setCollection] = useState([]);
-  const [active, setActive] = useState("Our Team");
-  const [activebtn, setActiveBtn] = useState("Our Team");
+  const [active, setActive] = useState("All");
+  const [activebtn, setActiveBtn] = useState("All");
+  const [loading, setLoading] = useState(true);
 
-  const [width, setWidth] = useState(0);
   const carousel = useRef(null);
-  const innerCarousel = useRef(null);
   const galleryRef = useRef(null);
-  const cardRef = useRef(null);
   const teamPageRef = useRef(null);
-  const spinnerRef = useRef(null);
-  //option to remove drag of teams categories
-  useEffect(() => {
-    const handleResize = () => {
-      const isOverflowing = carousel.current.scrollWidth > carousel.current.offsetWidth;
-      setWidth(isOverflowing ? carousel.current.scrollWidth - carousel.current.offsetWidth : 0);
-    };
 
-    handleResize(); // Call the function initially
-
-    window.addEventListener('resize', handleResize); // Listen for resize events
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Clean up the event listener
-    };
-  }, []);
-
-  // Function to scroll the carousel to the right
-  const scrollToRight = () => {
-    carousel.current.scrollLeft += 150; // Adjust the scroll amount as needed
-  };
-  const scrollToLeft = () => {
-    carousel.current.scrollLeft -= 150; // Adjust the scroll amount as needed
-  };
   // Team Fetching
   const fetchTeamData = async () => {
+    setLoading(true);
     const Data = await firebase.getAllDocuments("team");
-    const sortedData = [...Data].sort((a, b) => {
-      return a.teamRank - b.teamRank;
-    });
-    console.log(sortedData);
-
+    const sortedData = [...Data].sort((a, b) => a.teamRank - b.teamRank);
+    
     setData(sortedData);
     setFixedData(sortedData);
-    setMemberCount(0);
-    sortedData.forEach((item) =>
-      setMemberCount((prev) => prev + item.members.length)
-    );
-    setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
+    
+    // Calculate total members
+    const totalMembers = sortedData.reduce((sum, item) => sum + item.members.length, 0);
+    setMemberCount(totalMembers);
+    
+    // Get unique team titles
+    const uniqueTitles = [...new Set(sortedData.map((item) => item.teamTitle))];
+    setCollection(uniqueTitles);
+    
     setTimeout(() => {
-      if (spinnerRef.current) {
-        spinnerRef.current.style.display = "none";
-      }
-    }, 1200);
+      setLoading(false);
+    }, 800);
   };
 
   useEffect(() => {
@@ -76,141 +50,356 @@ function TeamPage() {
     document.title = "Our Team | Jagriti - IIT (BHU)";
   }, []);
 
-  useEffect(() => {
-    // console.log(carousel.current)
-
-    // setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
-  }, [fixedData]);
-
-  useEffect(() => {
-    const totalCards = Math.floor(
-      galleryRef.current?.offsetWidth / (cardRef.current?.offsetWidth + 20)
-    );
-    console.log(memberCount);
-    if (memberCount < totalCards) {
-      galleryRef.current.style.justifyContent = "flex-start";
-    } else {
-      galleryRef.current.style.justifyContent = "center";
-    }
-    // console.log(totalCards, data.length, data)
-  }, [active, memberCount]);
-
   const gallery_filter = (itemData) => {
-    setMemberCount(0);
-    const filterData = fixedData.filter((item) => {
-      if (item.teamTitle === itemData)
-        setMemberCount((prev) => prev + item.members.length);
-      return item.teamTitle === itemData;
-    });
-
-    setData(filterData);
-    setActive(itemData);
-    setActiveBtn("");
+    if (itemData === "All") {
+      setData(fixedData);
+      const totalMembers = fixedData.reduce((sum, item) => sum + item.members.length, 0);
+      setMemberCount(totalMembers);
+      setActive("All");
+      setActiveBtn("All");
+    } else {
+      const filterData = fixedData.filter((item) => item.teamTitle === itemData);
+      setData(filterData);
+      const filteredMembers = filterData.reduce((sum, item) => sum + item.members.length, 0);
+      setMemberCount(filteredMembers);
+      setActive(itemData);
+      setActiveBtn("");
+    }
   };
-  function setColor() {
-    setMemberCount(0);
-    fixedData.forEach((item, index) => {
-      setMemberCount((prev) => prev + item.members.length);
+
+  const scrollCarousel = (direction) => {
+    if (carousel.current) {
+      const scrollAmount = 200;
+      carousel.current.scrollLeft += direction === 'right' ? scrollAmount : -scrollAmount;
+    }
+  };
+
+  // Group members by team title for "All" view
+  const getGroupedData = () => {
+    if (active !== "All") return null;
+    
+    const grouped = {};
+    fixedData.forEach(item => {
+      if (!grouped[item.teamTitle]) {
+        grouped[item.teamTitle] = [];
+      }
+      grouped[item.teamTitle] = grouped[item.teamTitle].concat(item.members.map(member => ({
+        ...member,
+        teamIcon: item.iconUrl,
+        teamTitle: item.teamTitle
+      })));
     });
-    setData(fixedData);
-    setActiveBtn("Our Team");
-    setActive("Our Team");
-  }
+    
+    return grouped;
+  };
+
+  const groupedData = getGroupedData();
 
   return (
     <div className="bg">
-      <div className="flex items-center justify-center " ref={spinnerRef}>
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
-          </span>
+      {/* Loading Spinner */}
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
         </div>
-      </div>
-      <div className="galleryWrapper" ref={teamPageRef}>
-        <div className="filterItem">
-          <div className="our-team">
-            <h1>{active}</h1>
-          </div> 
+      )}
 
-          <div className="container_carousel">
-            {width > 0 && (<div className="scroll-icon" onClick={scrollToLeft}>
-              <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingRight: 5 }} />
-            </div>)}
-            <motion.div
-              ref={carousel}
-              // className="carousel"
-              // whileTap={{ cursor: "grabbing" }}
-              // style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
-              class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10 "
+      {/* Main Content */}
+      <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" 
+              style={{
+                backgroundImage: `
+                  radial-gradient(circle at 25% 25%, #1a589b 0%, transparent 50%),
+                  radial-gradient(circle at 75% 75%, #4162a8 0%, transparent 50%)
+                `
+              }}
+            />
+          </div>
+
+          <div className="hero-container">
+            {/* Logo
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="logo-container"
             >
-              <div
+              <img 
+                src="/src/assets/img3.jpg" 
+                alt="Jagriti Logo"
+                className="jagriti-logo"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = document.createElement('div');
+                  fallback.className = 'logo-fallback';
+                  fallback.textContent = 'Jagriti';
+                  e.target.parentNode.appendChild(fallback);
+                }}
+              />
+            </motion.div> */}
 
-                className="inner-carousel"
-                ref={innerCarousel}
-                // drag="x"
-                // dragConstraints={{
-                //   right: 0,
-                //   left: -width,
-                // }}
+            {/* Main Title */}
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="hero-main-title"
+            >
+              Meet Our <span className="hero-highlight">Team</span>
+            </motion.h1>
+
+            {/* Typewriter Section */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="typewriter-container"
+            >
+              <div className="typewriter-wrapper">
+                <Typewriter
+                  options={{
+                    strings: [
+                      "We Enlighten...",
+                      "We Educate...", 
+                      "We Empower...",
+                      "Together for Social Change",
+                      "Raising Awareness Together",
+                      "Building a Better Tomorrow"
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    delay: 60,
+                    deleteSpeed: 40,
+                    cursor: '|',
+                    cursorClassName: 'typewriter-cursor'
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="hero-description"
+            >
+              <p className="description-text">
+                The passionate individuals behind Jagriti's mission to enlighten, educate, and empower through social awareness
+              </p>
+            </motion.div>
+
+            {/* Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="hero-buttons"
+            >
+              <button 
+                onClick={() => {
+                  const filterSection = document.querySelector('.filter-section');
+                  if (filterSection) {
+                    filterSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="primary-button"
               >
-                <button
-                  onClick={setColor}
-                // className={activebtn === "Our Team" ? "selected" : " "}
-                >
-                  All
-                </button>
+                Meet Our Team
+              </button>
+              <button 
+                onClick={() => {
+                  window.open('/about', '_self');
+                }}
+                className="secondary-button"
+              >
+                Our Mission
+              </button>
+            </motion.div>
 
+            {/* Stats */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="hero-stats-container"
+            >
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <div className="stat-number">{collection.length}</div>
+                  <div className="stat-label">Departments</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">{memberCount}</div>
+                  <div className="stat-label">Team Members</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">50+</div>
+                  <div className="stat-label">Events</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">5+</div>
+                  <div className="stat-label">Years</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.1, repeat: Infinity, repeatDelay: 2 }}
+              className="scroll-indicator"
+              onClick={() => {
+                const filterSection = document.querySelector('.filter-section');
+                if (filterSection) {
+                  filterSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              <div className="scroll-arrow"></div>
+            </motion.div>
+          </div>
+
+          {/* Floating Elements */}
+          <div className="floating-elements">
+            <div className="floating-element element-1"></div>
+            <div className="floating-element element-2"></div>
+            <div className="floating-element element-3"></div>
+            <div className="floating-element element-4"></div>
+          </div>
+        </section>
+
+        {/* Filter Carousel */}
+        <div className="filter-section">
+          <div className="carousel-container">
+            <button 
+              className="scroll-btn left"
+              onClick={() => scrollCarousel('left')}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            
+            <div className="carousel" ref={carousel}>
+              <div className="carousel-inner">
+                <button
+                  onClick={() => gallery_filter("All")}
+                  className={`filter-btn ${active === "All" ? "active" : ""}`}
+                >
+                  All Teams
+                </button>
                 {collection.map((item, index) => (
                   <button
                     key={index}
-                    onClick={() => {
-                      gallery_filter(item);
-                    }}
-                    className={active === item ? "selected" : " "}
+                    onClick={() => gallery_filter(item)}
+                    className={`filter-btn ${active === item ? "active" : ""}`}
                   >
                     {item}
                   </button>
                 ))}
               </div>
-            </motion.div>
-            {width > 0 && (
-              <div className="scroll-icon" onClick={scrollToRight}>
-                <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingLeft: 5 }} />
-              </div>
-            )}</div>
+            </div>
+            
+            <button 
+              className="scroll-btn right"
+              onClick={() => scrollCarousel('right')}
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </div>
         </div>
-        <motion.div layout className="galleryContainer" ref={galleryRef}>
-          <AnimatePresence>
-            {data.map((item, index) =>
-              item.members.map((member) => (
-                <motion.div
-                  animate={{ opacity: 1, scale: 1 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  transition={{ duration: 0.36 }}
-                  layout
-                  key={uuidv4()}
-                  className="galleryItem"
-                  ref={cardRef}
+
+        {/* Team Members Grid */}
+        <div className="team-content">
+          {active === "All" && groupedData ? (
+            // Grouped view for All Teams
+            Object.entries(groupedData).map(([teamTitle, members]) => (
+              <div key={teamTitle} className="team-group">
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="team-group-title"
                 >
-                  <TeamCard
-                    name={member.name}
-                    image={member.imageUrl}
-                    post={item.teamTitle}
-                    icon={item.iconUrl}
-                    gmail={member.email}
-                    instagram={member.instagram}
-                    linkedin={member.linkedin}
-                  />
+                  {teamTitle}
+                </motion.h2>
+                <motion.div 
+                  layout
+                  className="galleryContainer" 
+                  ref={galleryRef}
+                >
+                  <AnimatePresence>
+                    {members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          post={member.teamTitle}
+                          icon={member.teamIcon}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </motion.div>
-              ))
-            )}
-          </AnimatePresence>
-        </motion.div>
+              </div>
+            ))
+          ) : (
+            // Single team view
+            <div className="team-group">
+              <motion.h2 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="team-group-title"
+              >
+                {active}
+              </motion.h2>
+              <motion.div 
+                layout
+                className="galleryContainer" 
+                ref={galleryRef}
+              >
+                <AnimatePresence>
+                  {data.map((item) =>
+                    item.members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          post={item.teamTitle}
+                          icon={item.iconUrl}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
