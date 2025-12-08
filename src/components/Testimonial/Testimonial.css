@@ -2,8 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .testimonial{
-  margin-top: 3%;
+  margin-top: 0; /* remove top margin to avoid white band */
   margin-bottom: 8%;
+  background: #f6fbff; /* unified background color for the whole section */
+  border-radius: 16px;
+  padding: 36px 0 24px; /* add top padding instead so color fills */
 }
 
 .upper-content {
@@ -57,91 +60,221 @@ body {
 } */
 
 .swiper-slide {
-  background: white;
-  border-right: 3px solid white;
+  background: transparent;
+  border-right: none;
   border-radius: 16px;
-  box-shadow: 0px 12px 35px rgba(26, 88, 155, 0.25);
+  box-shadow: none;
+  display: flex;
+  align-items: stretch; /* ensure uniform card height alignment */
+  justify-content: center;
+  height: 100%;
 }
 
-.swiper-content-img img {
-  display: block;
-  margin: auto;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-.content {
+.testimonial-card {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(120%) blur(6px);
+  border: 1px solid rgba(26, 88, 155, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(10, 35, 60, 0.10);
+  width: 100%;
+  max-width: 520px;
+  height: 100%; /* make all cards equal height within slide */
+  justify-content: flex-start;
+}
+/* hover lift removed to restore prior look */
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
-.content h1 {
+.avatar-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 3px solid #1a589b; /* medium solid border */
+  background: transparent;
+  display: inline-flex;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.person-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.person-name {
   font-family: "Montserrat";
-  font-style: normal;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 26px;
   color: #0b1641;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 5px;
+}
+.person-role {
+  font-family: "Poppins";
+  font-size: 15px;
+  line-height: 20px;
+  color: #6c6c6c;
+}
+.person-role::after {
+  content: "—";
+  display: block;
+  color: #1a589b;
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 1;
 }
 
-.content h4 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #a9a9a9;
-  text-align: center;
-  margin-bottom: 18px;
+.quote-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  justify-items: center;
+  gap: 6px;
 }
-
-.content p {
+.quote-mark {
+  font-family: "Montserrat";
+  font-size: 26px;
+  line-height: 1;
+  color: #1a589b;
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+.quote-text {
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: justify;
+  font-size: 17px;
+  line-height: 26px;
   color: #212121;
-  padding-left: 70px;
-  padding-right: 70px;
+  text-align: center;
+  padding: 0 6px;
+}
+.quote-text.clamped {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.read-more-btn {
+  align-self: center;
+  font-family: "Poppins";
+  font-size: 14px;
+  color: #1a589b;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+}
+.read-more-btn:hover {
+  text-decoration: underline;
 }
 
 .swiper {
   min-width: 175px;
   width: 80%;
-  max-height: 560px;
-  height: 480px;
+  height: 280px; /* fixed track height for vertical centering */
   border-radius: 16px;
-  box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
+  box-shadow: none;
+  padding: 8px 0;
+  overflow: visible; /* allow card shadows to render outside */
 }
 
 .swiper-main-content {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 4px; /* even tighter gutter so nav buttons sit closer */
 }
 
-.prev-btn button {
-  background-image: url("../../assets/testimonials/left_arrow.webp");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  margin-left: 120px;
-  margin-top: 180px;
-  width: 100px;
-  height: 100px;
+.nav-btn {
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1a589b 0%, #144677 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(20, 70, 119, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  position: relative;
+}
+.nav-btn.prev { margin-left: 70px; }
+.nav-btn.next { margin-right: 70px; }
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,255,255,0.05));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+.nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(20, 70, 119, 0.45);
+}
+.nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(20, 70, 119, 0.35);
+}
+.nav-btn.prev,
+.nav-btn.next {
+  background-image: none;
+}
+.nav-btn.prev::before,
+.nav-btn.next::before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-top: 3px solid #1A589B;
+  border-right: 3px solid #1A589B;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.nav-btn.prev::before {
+  transform: translate(-50%, -50%) rotate(225deg);
+}
+.nav-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.4), 0 12px 24px rgba(20, 70, 119, 0.4);
 }
 
-.next-btn button {
-  background-image: url("../../assets/testimonials/right_arrow.webp");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  margin-right: 120px;
-  margin-top: 180px;
-  width: 100px;
-  height: 100px;
+/* Swiper pagination dots */
+.swiper-pagination-bullet {
+  background: #a9c9e7;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background: #1a589b;
 }
 
 @media (max-width: 414px) {
@@ -161,21 +294,16 @@ body {
     padding-right: 10px;
   }
   .swiper {
-    height: 500px;
-    width: 70%;
+    width: 92%;
+    height: 300px;
   }
-  .prev-btn button {
-    margin-left: 0px;
-    margin-top: 170px;
-    width: 80px;
-    height: 80px;
+  .nav-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
   }
-  .next-btn button {
-    margin-right: 0px;
-    margin-top: 170px;
-    width: 80px;
-    height: 80px;
-  }
+  .nav-btn.prev { margin-left: 2px; }
+  .nav-btn.next { margin-right: 2px; }
   .upper-content {
     gap: 1.5rem;
   }
@@ -195,18 +323,13 @@ body {
     padding-right: 20px;
   }
   .swiper {
-    height: 530px;
+    width: 90%;
+    height: 300px;
   }
-  .prev-btn button {
-    margin-left: 0px;
-    margin-top: 200px;
-    width: 90px;
-    height: 90px;
+  .nav-btn {
+    width: 46px;
+    height: 46px;
   }
-  .next-btn button {
-    margin-right: 0px;
-    margin-top: 200px;
-    width: 90px;
-    height: 90px;
-  }
+  .nav-btn.prev { margin-left: 4px; }
+  .nav-btn.next { margin-right: 4px; }
 }
