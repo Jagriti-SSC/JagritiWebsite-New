@@ -41,7 +41,7 @@ export default function Example() {
                 What are the dates for Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                This year Jagriti will be held from the 2nd to the 4th of January.
+                This year Jagriti will be held from the 6th to the 8th of February.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 3}>
