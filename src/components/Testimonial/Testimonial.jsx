@@ -105,7 +105,7 @@ function Testimonial() {
         name: "Deboshree Bhattacharya",
         role: "Chief Administrative Officer, UPAY",
         quote:
-          "If the students can't reach school, let the school get them. UPAY envisions removing the disparities in education and strives to make education for all through Footpathshala and Reach and Teach.",
+          "If the students can't reach school, let the school get them.",
         image: Deboshree_Bhattacharya,
       },
       {
