@@ -107,10 +107,10 @@ const Events2Page = () => {
               className="events2-header"
             >
               <h1 className="events2-title">EVENTS</h1>
-              <p className="events2-subtitle">
+              {/* <p className="events2-subtitle">
                 Join our exciting events and showcase your skills !!<br/>
                 <b>Click on any card to learn more.</b>
-              </p>
+              </p> */}
               <div className="events2-divider">
                 <span className="events2-divider-icon">✨</span>
               </div>
