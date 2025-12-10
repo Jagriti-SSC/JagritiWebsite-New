@@ -333,3 +333,112 @@ body {
   .nav-btn.prev { margin-left: 4px; }
   .nav-btn.next { margin-right: 4px; }
 }
+
+/* -------------------------
+   Dark mode overrides
+   (applies when <html class="dark-mode"> is present)
+   ------------------------- */
+
+.dark-mode body {
+  background: #0f1724;  /* soft dark background */
+  color: #e6eef8;
+}
+
+/* whole testimonial block background (same soft dark as page) */
+.dark-mode .testimonial {
+  background: #0f1724;
+}
+
+/* heading color similar to other dark sections */
+.dark-mode .testimonial-heading {
+  color: #5aa0ff;
+}
+
+/* paragraph text softened for dark background */
+.dark-mode .testimonial-para {
+  color: #cbd8e8;
+}
+
+/* swiper slide stays transparent, cards stay STRONG dark */
+.dark-mode .testimonial-card {
+  background: #020617; /* stronger dark for component */
+  border-color: rgba(90, 160, 255, 0.4);
+  box-shadow: 0 10px 28px rgba(3, 7, 18, 0.9);
+}
+
+/* avatar ring keeps brand blue */
+.dark-mode .avatar-ring {
+  border-color: #5aa0ff;
+}
+
+/* person meta text */
+.dark-mode .person-name {
+  color: #e6eef8;
+}
+.dark-mode .person-role {
+  color: #9ca3af;
+}
+.dark-mode .person-role::after {
+  color: #5aa0ff;
+}
+
+/* quote visuals */
+.dark-mode .quote-mark {
+  color: #5aa0ff;
+  opacity: 0.55;
+}
+.dark-mode .quote-text {
+  color: #e6eef8;
+}
+
+/* read more link */
+.dark-mode .read-more-btn {
+  color: #5aa0ff;
+}
+.dark-mode .read-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* swiper stays transparent */
+.dark-mode .swiper {
+  box-shadow: none;
+}
+
+/* nav buttons keep blue theme */
+.dark-mode .nav-btn {
+  background: linear-gradient(180deg, #1a589b 0%, #144677 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
+}
+
+.dark-mode .nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.95);
+}
+
+.dark-mode .nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.8);
+}
+
+/* arrow visibility on dark */
+.dark-mode .nav-btn.prev::before,
+.dark-mode .nav-btn.next::before {
+  border-top-color: #5aa0ff;
+  border-right-color: #5aa0ff;
+}
+
+/* focus ring tuned */
+.dark-mode .nav-btn:focus {
+  box-shadow:
+    0 0 0 3px rgba(90, 160, 255, 0.6),
+    0 14px 28px rgba(15, 23, 42, 0.95);
+}
+
+/* pagination bullets */
+.dark-mode .swiper-pagination-bullet {
+  background: #334155;
+}
+.dark-mode .swiper-pagination-bullet-active {
+  background: #5aa0ff;
+}

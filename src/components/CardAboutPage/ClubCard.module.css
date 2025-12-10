@@ -1,9 +1,104 @@
 .club_card {
+  /* layout / box */
+  margin: 1.25rem auto;          /* my-5-ish */
+  padding: 2.5rem 2rem 2.5rem;   /* pb-10 px-8 */
+  width: min(480px, 75vw);
+  border-radius: 16px;
+  background: #ffffff;
   box-shadow: 0px 12px 37px rgba(26, 88, 155, 0.25);
-  border-radius: 16px 16px 16px 16px;
-  transition: ease-in 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  transition:
+    background-color 260ms ease,
+    color 260ms ease,
+    box-shadow 260ms ease,
+    transform 100ms ease-in;
 }
-.club_card:hover{
+
+.club_card:hover {
   transform: scale(1.05);
 }
 
+/* height on large screens (lg:h-[min(450px,75vh)]) */
+@media (min-width: 1024px) {
+  .club_card {
+    height: min(450px, 75vh);
+  }
+}
+
+/* ===========================
+   Inner content (light mode)
+   =========================== */
+
+.avatar_wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.club_img {
+  width: 130px;
+  height: 130px;
+  border-radius: 999px;
+  object-fit: contain;
+  display: block;
+}
+
+.club_title {
+  margin-top: 2rem;        /* mt-8 */
+  padding: 0.75rem 0;      /* p-3 */
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;        /* font-bold */
+  font-size: 1.5rem;       /* text-2xl */
+  line-height: 1.3;
+  text-align: center;
+  color: #000000;          /* text-black */
+}
+
+.description_wrapper {
+  overflow: hidden;        /* overflow-hidden */
+}
+
+.club_description {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;        /* font-normal */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #4b5563;          /* text-gray-700-ish */
+}
+
+/* ===========================
+   Dark mode (using soft bg + strong card)
+   <html class="dark-mode">
+   =========================== */
+
+/* strong dark card on top of soft dark page */
+:global(.dark-mode) .club_card {
+  background: #020617; /* strong dark */
+  box-shadow: 0px 12px 37px rgba(3, 7, 18, 0.85);
+  border: 1px solid rgba(90, 160, 255, 0.35);
+}
+
+/* title text in dark */
+:global(.dark-mode) .club_title {
+  color: #e6eef8;
+}
+
+/* description text in dark */
+:global(.dark-mode) .club_description {
+  color: #cbd8e8;
+}
+
+/* optional: slight glow on logo wrapper */
+:global(.dark-mode) .avatar_wrapper {
+  box-shadow: 0 0 0 2px rgba(90, 160, 255, 0.35);
+}

@@ -95,3 +95,53 @@
     height: 200px;
   }
 }
+
+/* ============================
+   PROFILE PAGE BACKGROUND
+   ============================ */
+
+/* assumes bg.png is available via /bg.png in public;
+   if not, keep using the React import inline, or adjust path */
+.profile-page-wrapper {
+  background-image: url("./bg.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 210vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark mode: same image, but darker + subtle overlay-like feel */
+html.dark-mode .profile-page-wrapper {
+  filter: brightness(0.75);
+}
+
+/* Make cards adapt slightly in dark mode */
+html.dark-mode .profile-page-wrapper section {
+  background-color: rgba(15, 23, 42, 0.96); /* deep slate */
+  color: #e5e7eb;
+}
+
+/* Preserve headings accent color */
+html.dark-mode .profile-page-wrapper h1 {
+  color: #60a5fa;
+}
+
+/* buttons look fine already (MUI), no change needed */
+
+/* ============================
+   Smooth transitions (optional)
+   ============================ */
+
+html,
+body,
+.profile-page-wrapper,
+.profile-page-wrapper section {
+  transition:
+    background-color 0.35s ease-in-out,
+    background-image 0.45s ease-in-out,
+    color 0.30s ease-in-out,
+    border-color 0.30s ease-in-out,
+    box-shadow 0.30s ease-in-out,
+    filter 0.35s ease-in-out;
+}

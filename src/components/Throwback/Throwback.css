@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* Smooth transitions for themeable properties */
+html, body, .throwback, .throwback-wrapper, .throwback_head p, .throwback_content, .throwback_img1, .throwback_img2, .right-wrapper {
+  transition: background-color 360ms ease, color 360ms ease, border-color 300ms ease, box-shadow 360ms ease, transform 260ms ease;
+}
+
+/* -------------------------
+   Light mode (original)
+   ------------------------- */
+
 .head {
   display: flex;
   justify-content: center;
@@ -53,11 +65,7 @@
   /* height: 5vh; */
 }
 
-/* .throwback_img2size {
-  width: 440px;
-  
-} */
-
+/* Responsive rules (light) */
 @media (max-width: 650px) {
 
   .throwback-wrapper {
@@ -65,9 +73,6 @@
     flex-direction: column;
     padding: 0 10px;
   }
-  /* .throwback_content {
-    order: 2;
-  } */
   .throwback_img1 {
     order: 2;
     flex:2;
@@ -104,7 +109,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 375px;
+    width: 375px;
   }
   
   .right-wrapper {
@@ -120,17 +125,13 @@
     line-height: 20px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
     width: 150px;
     float: right;
   }
-
 }
-
-
 
 @media screen and (max-width:780px) and (min-width:725px) {
   .throwback-wrapper {
@@ -143,7 +144,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 400px;
+    width: 400px;
   }
   
   .right-wrapper {
@@ -159,16 +160,13 @@
     line-height: 22px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
     width: 170px;
     float: right;
   }
-
 }
-
 
 @media screen and (max-width:880px) and (min-width:780px) {
   .throwback-wrapper {
@@ -181,7 +179,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 425px;
+    width: 425px;
   }
   
   .right-wrapper {
@@ -197,19 +195,13 @@
     line-height: 22px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
     width: 190px;
     float: right;
   }
-
 }
-
-
-
-
 
 @media screen and (max-width:980px) and (min-width:880px) {
   .throwback-wrapper {
@@ -222,7 +214,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 450px;
+    width: 450px;
   }
   
   .right-wrapper {
@@ -238,17 +230,13 @@
     line-height: 24px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
     width: 225px;
     float: right;
   }
-
 }
-
-
 
 @media screen and (max-width:1100px) and (min-width:980px) {
   .throwback-wrapper {
@@ -261,7 +249,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 550px;
+    width: 550px;
   }
   
   .right-wrapper {
@@ -277,14 +265,12 @@
     line-height: 26px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
     width: 250px;
     float: right;
   }
-
 }
 
 @media screen and (max-width:1300px) and (min-width:1100px) {
@@ -298,7 +284,7 @@
     align-self: flex-end;
   }
   .throwback_img1size {
-  width: 650px;
+    width: 650px;
   }
   
   .right-wrapper {
@@ -314,7 +300,6 @@
     line-height: 27px;
     color: #0b1641;
     text-align: center;
-    /* flex:1; */
   }
   
   .throwback_img2size {
@@ -323,33 +308,254 @@
   }
 }
 
-/*@media (max-width: 414px) {
-  .throwback_head p {
-    margin: 30px 0px;
-    text-align: center;
+/* -------------------------
+   Dark mode overrides
+   (applies when <html class="dark-mode"> is present)
+   ------------------------- */
 
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 550;
-    font-size: 28px;
-    line-height: 36px;
-    color: #1a589b;
+.dark-mode body {
+  background: #0f1724;
+  color: #e6eef8;
+}
+
+/* container spacing stays same */
+.dark-mode .throwback {
+  margin: 7% 0%;
+}
+
+/* heading color adjusted for dark */
+.dark-mode .throwback_head p {
+  color: #5aa0ff;
+}
+
+/* wrapper background unaffected, keep layout */
+.dark-mode .throwback-wrapper {
+  /* no structural change */
+  padding: 0px 65px;
+}
+
+/* left image block */
+.dark-mode .throwback_img1 {
+  align-self: flex-end;
+}
+
+/* right column */
+.dark-mode .right-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+
+/* content text color in dark */
+.dark-mode .throwback_content {
+  color: #cbd8e8; /* softer text */
+  text-align: center;
+}
+
+/* small image container */
+.dark-mode .throwback_img2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* responsive dark tweaks */
+@media (max-width: 650px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
   }
-  .throwback-wrapper {
+  .dark-mode .throwback_img1 {
+    order: 2;
+    flex:2;
+  }
+  .dark-mode .right-wrapper {
+    order: 1;
+    flex:1;
+  }
+  .dark-mode .throwback_content {
+    font-size: 15px;
+    line-height: 25px;
+    text-align: start;
+    padding-top: 10px;
+    padding-bottom:10px;
+    order:2;
+    margin-bottom: 15px;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    order: 1;
+    float: none;
+    width: 250px;
+    margin:0 auto;
+  }
+}
+
+@media screen and (max-width:725px) and (min-width:650px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 30px;
+  }
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
+  }
+  .dark-mode .throwback_img1size {
+    width: 375px;
+  }
+  .dark-mode .right-wrapper {
     display: flex;
     flex-direction: column;
   }
-  .throwback-wrapper:nth-child(1) {
-    order: 2;
+  .dark-mode .throwback_content {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #cbd8e8;
   }
-  .throwback-wrapper:nth-child(2) {
-    order: 1;
+  .dark-mode .throwback_img2size {
+    width: 150px;
+    float: right;
   }
+}
 
-  .right-wrapper:nth-child(1) {
-    order: 2;
+@media screen and (max-width:780px) and (min-width:725px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
   }
-  .right-wrapper:nth-child(2) {
-    order: 1;
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
   }
-}*/
+  .dark-mode .throwback_img1size {
+    width: 400px;
+  }
+  .dark-mode .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .dark-mode .throwback_content {
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    width: 170px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:880px) and (min-width:780px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 30px;
+  }
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
+  }
+  .dark-mode .throwback_img1size {
+    width: 425px;
+  }
+  .dark-mode .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .dark-mode .throwback_content {
+    font-size: 13px;
+    line-height: 22px;
+    text-align: center;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    width: 190px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:980px) and (min-width:880px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
+  }
+  .dark-mode .throwback_img1size {
+    width: 450px;
+  }
+  .dark-mode .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .dark-mode .throwback_content {
+    font-size: 13px;
+    line-height: 24px;
+    text-align: center;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    width: 225px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:1100px) and (min-width:980px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
+  }
+  .dark-mode .throwback_img1size {
+    width: 550px;
+  }
+  .dark-mode .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .dark-mode .throwback_content {
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    width: 250px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:1300px) and (min-width:1100px) {
+  .dark-mode .throwback-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 50px;
+  }
+  .dark-mode .throwback_img1 {
+    align-self: flex-end;
+  }
+  .dark-mode .throwback_img1size {
+    width: 650px;
+  }
+  .dark-mode .right-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .dark-mode .throwback_content {
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+    color: #cbd8e8;
+  }
+  .dark-mode .throwback_img2size {
+    width: 300px;
+    float: right;
+  }
+}

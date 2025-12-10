@@ -1,26 +1,48 @@
 .bg {
   background: url('/public/assets/bg.png');
   background-size: cover;
-  min-height: "210vh";
+  background-position: center;
+  min-height: 210vh; /* removed quotes */
 }
+
+/* smooth transitions for themeable bits */
+html,
+body,
+.bg,
+.our-team h1,
+.inner-carousel button,
+.galleryWrapper,
+.galleryItem img,
+.card,
+.card h1,
+.card p {
+  transition:
+    background-color 320ms ease,
+    color 320ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    filter 260ms ease;
+}
+
 .card:hover h1,
 .card:hover p {
   opacity: 1;
 }
+
 .container_carousel {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Optional: adjust alignment as needed */
+  align-items: center;
 }
+
 .scroll-icon {
   cursor: pointer;
-  size: 50;
   padding-bottom: 2;
-  /* Add additional styling as needed */
 }
+
 .galleryWrapper {
-    padding: 1.0% 7%;
- }
+  padding: 1.0% 7%;
+}
 
 .galleryItem img {
   width: 100%;
@@ -31,28 +53,21 @@
 
 .galleryContainer {
   display: flex;
-  align-items:center;
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-
+  align-items: center;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: center;
   gap: 20px;
 }
-.carousel
-{
-  margin:  0 10px;
+
+.carousel {
+  margin: 0 10px;
   overflow: hidden;
   white-space: nowrap;
   cursor: grab;
-  
 }
 
 .inner-carousel {
   display: flex;
-  
-  /* height:6vh; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
   align-items: center;
   margin-bottom: 20px;
   gap: 10px;
@@ -60,7 +75,6 @@
 
 .inner-carousel button {
   margin-right: 0.8rem;
-  /* min-width: 5rem; */
   width: 100%;
   height: 100%;
   padding: 0.3rem 0.8rem;
@@ -72,29 +86,26 @@
   border: 1.5px solid rgb(65, 98, 168);
   font-weight: 550;
   cursor: pointer;
- 
 }
 
-/* .filterItem ul button:hover {
-  background: rgb(65, 98, 168);
-  border: 2px solid rgb(65, 98, 168);
-  color: azure;
-} */
 .filterItem .selected {
   background: rgb(65, 98, 168);
   border: 2px solid rgb(65, 98, 168);
   color: azure;
 }
+
 .galleryItem img {
   border-radius: 15px;
 }
+
 .position-title {
   display: flex;
   justify-content: center;
   font-family: "Poppins";
   font-size: 1.2rem;
 }
-/* BUTTON */
+
+/* TEAM CARD */
 .card {
   width: 230px;
   height: 265px;
@@ -105,9 +116,11 @@
   font-family: inherit;
   z-index: 1;
 }
+
 .img {
   padding: 1.5rem;
 }
+
 .img img {
   display: flex;
   width: 120px;
@@ -139,30 +152,96 @@
   font-size: 18px;
 }
 
-.card:hover h1,
-.card:hover p {
-  opacity: 1;
-}
 .our-team {
   width: 100%;
   display: flex;
   justify-content: center;
   font-size: 4rem;
-  /* font-family: "Poppins"; */
   padding-bottom: 1rem;
 }
+
 .our-team h1 {
   margin: 20px 0px;
   text-align: center;
   font-family: "Montserrat";
-  /* font-style: normal; */
   font-weight: 700;
   font-size: 40px;
   line-height: 44px;
   color: #1a589b;
 }
+
 @media screen and (max-width: 450px) {
   .our-team {
     font-size: 2.5rem;
   }
+}
+
+/* ==========================
+   DARK MODE
+   ========================== */
+
+/* swap background image in dark mode if you have bgDark.png */
+.dark-mode .bg {
+  background: url('/public/assets/bgDark.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* section heading */
+.dark-mode .our-team h1 {
+  color: #e6eef8;
+  text-shadow: 0 0 18px rgba(15, 23, 42, 0.8);
+}
+
+/* filter buttons */
+.dark-mode .inner-carousel button {
+  background: rgba(15, 23, 42, 0.96);
+  color: #e6eef8;
+  border-color: #384559;
+  box-shadow: 0 8px 20px rgba(3, 7, 18, 0.9);
+}
+
+/* selected filter button */
+.dark-mode .filterItem .selected {
+  background: #5aa0ff;
+  border-color: #5aa0ff;
+  color: #020617;
+}
+
+/* scroll chevron icons (override inline color) */
+.dark-mode .scroll-icon svg {
+  color: #e6eef8 !important;
+}
+
+/* gallery images – small boost so they pop on darker bg */
+.dark-mode .galleryItem img {
+  filter: brightness(1.02) contrast(1.03);
+}
+
+/* team card in dark mode – a bit crisper but same vibe */
+.dark-mode .card {
+  background: #020617;
+  color: #e6eef8;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+}
+
+.dark-mode .card h1,
+.dark-mode .card p {
+  color: #e6eef8;
+}
+
+/* avatar circle in card */
+.dark-mode .img img {
+  border-color: #e5e7eb;
+  background-color: #0b1120;
+}
+
+/* links/icons inside card on hover text etc. */
+.dark-mode .link-team {
+  color: #e5e7eb;
+}
+
+/* optional: slightly brighten page content group */
+.dark-mode .galleryWrapper {
+  filter: brightness(1.01);
 }

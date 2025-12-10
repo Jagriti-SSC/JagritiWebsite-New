@@ -1,7 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* outer wrapper so we can do future theming if needed */
+.ca-wrapper {
+  position: relative;
+}
+
+/* LIGHT MODE skewed gradient band */
 .skewed-bg {
   background: linear-gradient(260.35deg, #1a589b 13.84%, #1b78dc 89.85%);
   padding: 30vh 0;
   transform: skew(0deg, -10deg) translateY(-125px);
   position: relative;
   z-index: -1;
+  transition: background 360ms ease, box-shadow 360ms ease, filter 360ms ease;
+}
+
+/* ==========================
+   DARK MODE
+   (when <html class="dark-mode">)
+   ========================== */
+
+.dark-mode .ca-wrapper {
+  /* just in case, keep text readable around form */
+  color: #e6eef8;
+}
+
+/* darker, richer gradient for skewed band */
+.dark-mode .skewed-bg {
+  background: linear-gradient(
+    260deg,
+    #020617 8%,
+    #0f1724 40%,
+    #1d4ed8 80%,
+    #38bdf8 100%
+  );
+  box-shadow: 0 -40px 80px rgba(15, 23, 42, 0.9);
+  filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.35));
 }

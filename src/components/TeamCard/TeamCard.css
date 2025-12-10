@@ -1,22 +1,25 @@
 :root {
-  --clr-neutral-900: hsl(207, 19%, 9%);
-  --clr-neutral-100: hsl(0, 0%, 100%);
-  --clr-accent-400: hsl(142, 90%, 61%);
+  --clr-neutral-100: #ffffff;
 }
 
+/* ==========================
+   RESET
+   ========================== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* ==========================
+   CARD WRAPPER
+   ========================== */
 .cardbox {
   color: var(--clr-neutral-100);
   background-size: cover;
   padding: 10rem 0 0;
   min-width: 28ch;
   max-width: 35ch;
-  /* width: 30ch; */
   margin: 10px;
   flex: 100%;
   border-radius: 0.5rem;
@@ -24,7 +27,7 @@
   position: relative;
 
   transition: transform 500ms ease;
-  background-color: antiquewhite;
+  background-color: #000; /* just fallback */
 }
 
 .cardbox:hover,
@@ -32,29 +35,49 @@
   transform: scale(1.05);
 }
 
+/* ==========================
+   CONTENT AREA
+   ========================== */
 .card-content {
   --padding: 2rem;
-
   padding: var(--padding);
+
+  /* stronger fade so text is readable on all images */
   background: linear-gradient(
-    hsl(0 0% 0% / 0),
-    hsl(20 0% 0% / 0.3) 20%,
-    hsl(0 0% 0% / 1)
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.6) 25%,
+    rgba(0, 0, 0, 0.9)
   );
 }
 
 .cardbox:hover .card-content > *:not(.card-title),
 .cardbox:focus-within .card-content > *:not(.card-title) {
   opacity: 1;
-  transition-delay: 1000ms;
+  transition-delay: 300ms;
 }
 
+/* ==========================
+   CARD TITLE
+   ========================== */
 .card-title {
+  color: white !important;
   position: relative;
-  width: max-content;
-  font-size: x-large;
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.4rem;
   font-weight: 600;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* restrict to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+  margin-bottom: 8px;
 }
+
 
 .card-title::after {
   content: "";
@@ -63,72 +86,87 @@
   left: calc(var(--padding) * -1);
   bottom: 0px;
   width: calc(100% + var(--padding));
-  background-color: #1b7adf;
+  background-color: #5aa0ff;
 }
+
 .cardbox:hover .card-title::after,
 .cardbox:focus-within .card-title::after {
   transform: scaleX(1);
 }
 
+/* ==========================
+   POST TEXT
+   ========================== */
 .card-body {
-  color: white;
+  color: white !important;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: 0px;
   font-size: large;
   font-weight: bold;
 }
 
+/* ==========================
+   HOVER ANIMATION (DESKTOP ONLY)
+   ========================== */
 @media (hover) {
   .card-content {
     transform: translateY(52%);
     transition: transform 500ms ease;
   }
+
   .cardbox:hover .card-content,
   .cardbox:focus-within .card-content {
     transform: translateY(0);
-    transition-delay: 500ms;
+    transition-delay: 300ms;
   }
 
-  .cardbox:focus-within .card-content {
-    transition-duration: 0ms;
-  }
   .card-content > *:not(.card-title) {
     opacity: 0;
-    transition: opacity 500ms linear;
+    transition: opacity 400ms linear;
   }
+
   .card-title::after {
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 500ms ease;
-    transition-delay: 500ms;
+    transition: transform 300ms ease;
   }
 }
 
+/* ==========================
+   ACTION BUTTONS (ICONS)
+   ========================== */
 .btn {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 14px;
   cursor: pointer;
-
-  padding: 0.5em 1.25em;
-
-  margin-top: 1px;
 }
+
+.btn svg {
+  color: white !important;          /* ALWAYS white */
+  transition: opacity 200ms ease;
+}
+
+.btn a:hover svg {
+  opacity: 0.8;
+}
+
+/* ==========================
+   POST ICON
+   ========================== */
 .teamPost {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 10px;
 }
+
 .teamPost img {
-  /* background-color: #1a589b; */
-  /* margin: auto; */
-  /* color:#1a589b;  */
   height: 33px;
-  /* background-size: cover; */
-  /* border-radius: 12px; */
   width: 33px;
 }
+
+/* spacing for small screens */
 @media (max-width: 816px) {
   .cardbox {
     margin-bottom: 1rem;

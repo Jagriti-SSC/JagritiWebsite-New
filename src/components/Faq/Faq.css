@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* basic layout – Tailwind is still used for spacing, this just refines look */
+.faq-section {
+  transition: background-color 260ms ease, color 260ms ease;
+}
+
+.faq-title {
+  transition: color 260ms ease;
+}
+
+/* ensure content and accordion column don't fight layout on different screens */
+.faq-content {
+  transition: background-color 260ms ease;
+}
+
+.faq-hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-hero-img {
+  max-width: 420px;
+  width: min(420px, 80vw);
+  transition: filter 260ms ease;
+}
+
+.faq-accordion-column {
+  padding-inline: 0.5rem;
+}
+
+/* card-like accordion block */
+.faq-accordion {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition:
+    background-color 260ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+/* Accordion header */
+.faq-accordion-header {
+  font-size: 1.02rem;
+  color: #0b1641;
+  padding-inline: 1.25rem;
+  transition: color 260ms ease, background-color 260ms ease;
+}
+
+/* Accordion body */
+.faq-accordion-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4b5563;
+  padding-inline: 1.25rem;
+  padding-bottom: 1rem;
+  transition: color 260ms ease, background-color 260ms ease;
+}
+
+/* =======================================
+   DARK MODE (with .dark-mode on <html>)
+   ======================================= */
+
+.dark-mode .faq-section {
+  color: #e6eef8;
+}
+
+/* heading */
+.dark-mode .faq-title {
+  color: #e6eef8;
+}
+
+/* image – slightly dim so it fits dark bg */
+.dark-mode .faq-hero-img {
+  filter: brightness(0.9) contrast(1.05);
+}
+
+/* accordion container in dark mode – strong dark card */
+.dark-mode .faq-accordion {
+  background: #020617;
+  border-color: #1f2937;
+  box-shadow: 0 14px 30px rgba(3, 7, 18, 0.9);
+}
+
+/* accordion header in dark mode */
+.dark-mode .faq-accordion-header {
+  color: #e6eef8;
+}
+
+/* accordion body text in dark mode */
+.dark-mode .faq-accordion-body {
+  color: #cbd8e8;
+}
+
+/* just in case inner <span> or strong text inherits wrong color */
+.dark-mode .faq-accordion-body span {
+  color: #e6eef8;
+}

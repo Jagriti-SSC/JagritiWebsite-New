@@ -1,0 +1,79 @@
+/* Smooth transitions for themeable parts */
+.ca-faq,
+.ca-faq-title,
+.ca-faq-content,
+.ca-accordion-header,
+.ca-accordion-body {
+  transition:
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease,
+    filter 300ms ease;
+}
+
+/* ===========================
+   LIGHT MODE (original feel)
+=========================== */
+.ca-accordion-header {
+  color: #0b1641;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+.ca-accordion-body {
+  color: #0b1641;
+}
+
+/* ===========================
+   DARK MODE (soft + flat)
+=========================== */
+
+.dark-mode .ca-faq {
+  background-color: transparent; /* since page bg already exists */
+}
+
+/* main heading */
+.dark-mode .ca-faq-title {
+  color: #e6eef8;
+}
+
+/* hero image — slightly dimmer */
+.dark-mode .ca-faq-hero {
+  filter: brightness(0.92) contrast(1.05);
+}
+
+/* accordion header changes */
+.dark-mode .ca-accordion-header {
+  background-color: transparent;
+  color: #e4ebf5;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* body under header */
+.dark-mode .ca-accordion-body {
+  background-color: transparent;
+  color: #cbd8e8;
+  border-bottom: 1px solid rgba(255,255,255,0.13);
+  padding-bottom: 14px;
+}
+
+/* space gap mimic */
+.dark-mode .ca-faq-accordion-wrap .mt-4,
+.dark-mode .ca-faq-accordion-wrap .mb-4 {
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+/* Chevron SVG from Material Tailwind */
+.dark-mode .ca-accordion-header svg {
+  color: #5aa0ff;
+}
+
+/* secondary styling (optional but looks cleaner) */
+.dark-mode .ca-faq-content {
+  filter: brightness(0.98);
+}
+
+/* bottom wave image just tiny darker */
+.dark-mode .ca-faq-wave {
+  filter: brightness(0.88);
+}

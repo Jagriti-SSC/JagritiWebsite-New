@@ -22,3 +22,222 @@
 .navitem:hover::after {
   width: 100%;
 }
+
+/* =========================
+   THEME TOGGLE SHARED STYLES
+   ========================= */
+
+html, body, header, nav, .main-box, .card, .container {
+  transition:
+    background-color 360ms ease,
+    color 360ms ease,
+    border-color 360ms ease,
+    box-shadow 360ms ease;
+}
+
+/* Toggle button base */
+.theme-toggle-btn {
+  padding: 8px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+/* Icon sizing & color */
+.theme-icon {
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 1;
+  transition:
+    transform 420ms cubic-bezier(.2,.9,.2,1),
+    opacity 220ms ease;
+  display: inline-block;
+}
+
+.theme-toggle-btn .is-dark .theme-icon {
+  transform: rotate(360deg) scale(1.06);
+  opacity: 1;
+}
+
+.theme-toggle-btn.is-light .theme-icon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* Focus ring */
+.theme-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90, 160, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================
+   MOBILE NAVBAR & DRAWER
+   ========================= */
+
+/* right side (toggle + hamburger) */
+.navbar-mobile-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* hamburger btn (keep same look as before) */
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* small tweak for mobile toggle so it sits nicely */
+.mobile-theme-toggle {
+  padding: 6px;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}
+
+.iccon{
+    color: #000000;
+}
+
+/* Drawer container */
+.mobile-drawer {
+  background-color: #ffffff;         /* light mode */
+  color: #000000;
+  box-shadow: -12px 0 30px rgba(15, 23, 42, 0.18);
+  border-radius: 0;
+  transition:
+    background-color 360ms ease,
+    color 360ms ease,
+    box-shadow 360ms ease;
+}
+
+/* Close button (top-right) */
+.mobile-drawer-close-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 260ms ease,
+    transform 200ms ease;
+}
+
+.mobile-drawer-close-btn:hover {
+  background-color: #111827;
+  transform: translateY(-1px);
+}
+
+.mobile-drawer-close-btn svg {
+  display: block;
+}
+
+/* Drawer links */
+.mobile-drawer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #000000;
+  text-decoration: none;
+  transition:
+    color 260ms ease,
+    background-color 260ms ease;
+}
+
+.mobile-drawer-link:hover {
+  color: #1a589b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Divider lines */
+.mobile-drawer-divider {
+  height: 1px;
+  border: 0;
+  background-color: #000000;
+}
+
+/* =========================
+   DARK MODE OVERRIDES (MOBILE ONLY)
+   ========================= */
+
+.dark-mode .mobile-drawer {
+  background-color: #020617; /* strong dark only for the sidebar */
+  color: #E5E7EB;
+  box-shadow: -14px 0 40px rgba(0, 0, 0, 0.75);
+}
+
+.dark-mode .mobile-drawer-close-btn {
+  background-color: #111827;
+  color: #F9FAFB;
+}
+
+.dark-mode .mobile-drawer-close-btn:hover {
+  background-color: #1F2933;
+}
+
+.dark-mode .mobile-drawer-link {
+  color: #E5E7EB;
+}
+
+.dark-mode .mobile-drawer-link:hover {
+  color: #93C5FD;
+}
+
+.dark-mode .mobile-drawer-divider {
+  background-color: #4B5563;
+}
+
+/* Keep old selector in case something still references it, but it's harmless */
+#drawer-right-example {
+  transition: background-color 360ms ease, color 360ms ease;
+}
+#drawer-right-example a {
+  transition: color 300ms ease;
+}
+
+/* Bottom-right theme toggle inside mobile drawer */
+.mobile-drawer-theme-toggle {
+  position: absolute;
+  right: 1rem;
+  bottom: 1.25rem;
+}
+
+/* Slightly smaller padding on mobile toggle is nice */
+.mobile-drawer-theme-toggle .theme-toggle-btn {
+  padding: 6px;
+}
+
+/* Optional: adjust button border in light/dark */
+.mobile-drawer-theme-toggle .theme-toggle-btn {
+  border-color: rgba(148, 163, 184, 0.35);
+  background-color: rgba(15, 23, 42, 0.18);
+}
+
+.dark-mode .mobile-drawer-theme-toggle .theme-toggle-btn {
+  border-color: rgba(148, 163, 184, 0.45);
+  background-color: rgba(15, 23, 42, 0.65);
+}
+
