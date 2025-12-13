@@ -3,14 +3,15 @@ import { v4 as uuidv4 } from "uuid";
 import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
-import { useFirebase } from "../../context/Firebase";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Typewriter from 'typewriter-effect';
 
+// Import local data (adjust the path as needed)
+import teamData from "../../data/teamData.js"; // or from "./teamData.js" depending on your structure
+
 function TeamPage() {
-  const firebase = useFirebase();
   const [data, setData] = useState([]);
   const [memberCount, setMemberCount] = useState(0);
   const [fixedData, setFixedData] = useState([]);
@@ -23,11 +24,13 @@ function TeamPage() {
   const galleryRef = useRef(null);
   const teamPageRef = useRef(null);
 
-  // Team Fetching
-  const fetchTeamData = async () => {
+  // Team Fetching from local data
+  const fetchTeamData = () => {
     setLoading(true);
-    const Data = await firebase.getAllDocuments("team");
-    const sortedData = [...Data].sort((a, b) => a.teamRank - b.teamRank);
+    
+    // Use imported local data
+    const localData = teamData || [];
+    const sortedData = [...localData].sort((a, b) => a.teamRank - b.teamRank);
     
     setData(sortedData);
     setFixedData(sortedData);
@@ -37,8 +40,8 @@ function TeamPage() {
     setMemberCount(totalMembers);
     
     // Get unique team titles
-    const uniqueTitles = [...new Set(sortedData.map((item) => item.teamTitle))];
-    setCollection(uniqueTitles);
+    const uniqueTitles = ["All", ...new Set(sortedData.map((item) => item.teamTitle))];
+    setCollection(uniqueTitles.filter(title => title !== "All"));
     
     setTimeout(() => {
       setLoading(false);
@@ -120,27 +123,6 @@ function TeamPage() {
           </div>
 
           <div className="hero-container">
-            {/* Logo
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="logo-container"
-            >
-              <img 
-                src="/src/assets/img3.jpg" 
-                alt="Jagriti Logo"
-                className="jagriti-logo"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  const fallback = document.createElement('div');
-                  fallback.className = 'logo-fallback';
-                  fallback.textContent = 'Jagriti';
-                  e.target.parentNode.appendChild(fallback);
-                }}
-              />
-            </motion.div> */}
-
             {/* Main Title */}
             <motion.h1 
               initial={{ opacity: 0, y: -20 }}
