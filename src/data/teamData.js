@@ -1,142 +1,170 @@
 // src/data/teamData.js
 const teamData = [
   {
-    teamTitle: "Leadership",
+    teamTitle: "Convenors",
     teamRank: 1,
-    iconUrl: "/icons/leadership.svg", // or "/icons/leadership.png"
     members: [
       {
         name: "Sri Pranathi",
-        imageUrl: "/team-images/sri-pranathi.jpg",
+        imageUrl: "/team/Sri Pranathi.jpg",
         email: "sripranathicheruvu@gmail.com",
         instagram: "sripranathiii",
-        linkedin: ""
+        linkedin: "",
+        role: "Convener"
       },
       {
         name: "Sk Md Kaif",
-        imageUrl: "/team-images/sk-md-kaif.jpg",
+        imageUrl: "/team/Sk Md Kaif.jpg",
         email: "skmd.kaif.cd.cse23@itbhu.ac.in",
         instagram: "",
-        linkedin: ""
+        linkedin: "",
+        role: "Co-Convener"
+      },
+      {
+        name: "Himanshu Malav",
+        imageUrl: "/team/Himanshu Malav.jpg",
+        email: "himanshu.malav.min23@itbhu.ac.in",
+        instagram: "looking_4_mlv",
+        linkedin: "https://www.linkedin.com/in/himanshu-malav-bb345a287/",
+        role: "Co-Convenor"
       }
     ]
   },
   {
-    teamTitle: "Executive",
+    teamTitle: "Council Secretary",
     teamRank: 2,
-    iconUrl: "/icons/executive.svg",
     members: [
       {
         name: "Adarsh Sharma",
-        imageUrl: "/team-images/adarsh-sharma.jpg",
+        imageUrl: "/team/Adarsh Sharma.jpg",
         email: "adarsh.sharma.mst22@itbhu.ac.in",
         instagram: "adarshsharma_iit",
-        linkedin: "https://www.linkedin.com/in/adarshsharmaiitbhu/"
+        linkedin: "https://www.linkedin.com/in/adarshsharmaiitbhu/",
+        role: "General Secretary"
+      },
+      {
+        name: "Simran Sharma",
+        imageUrl: "/team/Simran Sharma.jpg",
+        email: "simran.sharma.cd.civ23@itbhu.ac.in",
+        instagram: "si.mrun",
+        linkedin: "https://www.linkedin.com/in/simran-sharma-iitbhu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        role: "Joint General Secretary"
       }
     ]
   },
   {
-    teamTitle: "Events",
+    teamTitle: "Events Team",
     teamRank: 3,
-    iconUrl: "/icons/events.svg",
     members: [
       {
         name: "Rounak Sarkar",
-        imageUrl: "/team-images/rounak-sarkar.jpg",
+        imageUrl: "/team/Rounak Sarkar.jpg",
         email: "rounaksarkar9679@gmail.com",
         instagram: "ro_un_a_k",
-        linkedin: "https://www.linkedin.com/in/rounak-sarkar-9b6250288?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        linkedin: "https://www.linkedin.com/in/rounak-sarkar-9b6250288?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        role: "Events Head"
       },
       {
         name: "Utsav Gautam",
-        imageUrl: "/team-images/utsav-gautam.jpg",
-        email: "u01533002@gmail.com",
+        imageUrl: "/team/Utsav Gautam.jpg",
+        email: "utsav.gautam.eee23@itbhu.ac.in",
         instagram: "",
-        linkedin: ""
+        linkedin: "",
+        role: "Events Team"
       },
       {
         name: "Ayush kumar",
-        imageUrl: "/team-images/ayush-kumar.jpg",
+        imageUrl: "/team/Ayushkumar.jpg",
         email: "ayush.kumar.cd.phy23@itbhu.ac.in",
         instagram: "_aayushku",
-        linkedin: "https://www.linkedin.com/in/mr-ayush-kumar-305a012b6?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        linkedin: "https://www.linkedin.com/in/mr-ayush-kumar-305a012b6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        role: "Event team"
       }
     ]
   },
   {
-    teamTitle: "Content",
+    teamTitle: "Content Team",
     teamRank: 4,
-    iconUrl: "/icons/content.svg",
     members: [
       {
         name: "Vanshika Srivastava",
-        imageUrl: "/team-images/vanshika-srivastava.jpg",
-        email: "vanshikasrivastav25@gmail.com",
+        imageUrl: "/team/Vanshika Srivastava.jpg",
+        email: "vanshika.srivastava.mst23@itbhu.ac.in",
         instagram: "",
-        linkedin: ""
+        linkedin: "",
+        role: "Content Team Head"
       },
       {
         name: "S Adithyaraj",
-        imageUrl: "/team-images/s-adithyaraj.jpg",
+        imageUrl: "/team/S Adithyaraj.jpg",
         email: "s.adithyaraj.mst23@itbhu.ac.in",
         instagram: "1_adithya_1",
-        linkedin: "https://www.linkedin.com/in/sadithyaraj?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        linkedin: "https://www.linkedin.com/in/sadithyaraj?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        role: "Content Head"
       }
     ]
   },
   {
-    teamTitle: "Design",
+    teamTitle: "Design Team",
     teamRank: 5,
-    iconUrl: "/icons/design.svg",
     members: [
       {
         name: "Aditya Kumar",
-        imageUrl: "/team-images/aditya-kumar.jpg",
+        imageUrl: "/team/Aditya Kumar.jpg",
         email: "aditya.kumar.cer23@itbhu.ac.in",
         instagram: "adi12_73",
-        linkedin: ""
+        linkedin: "",
+        role: "Design team head"
       }
     ]
   },
   {
-    teamTitle: "Marketing",
+    teamTitle: "Marketing Team",
     teamRank: 6,
-    iconUrl: "/icons/marketing.svg",
     members: [
       {
         name: "Imran Khandakar",
-        imageUrl: "/team-images/imran-khandakar.jpg",
-        email: "imran.khandakar.cd.cse23@itbhu.ac.in",
+        imageUrl: "/team/Imran Khandakar.jpg",
+        email: "zubin677@gmail.com",
         instagram: "imran_khandakar07",
-        linkedin: "https://www.linkedin.com/in/imran-khandakar-b09b48317/"
+        linkedin: "https://www.linkedin.com/in/imran-khandakar-b09b48317/",
+        role: "Marketing Head"
       }
     ]
   },
   {
-    teamTitle: "Public Relations",
+    teamTitle: "PR Team",
     teamRank: 7,
-    iconUrl: "/icons/pr.svg",
     members: [
       {
         name: "Maheshwari",
-        imageUrl: "/team-images/maheshwari.jpg",
+        imageUrl: "/team/Maheshwari.jpg",
         email: "khandagale.maheshwarib.mst23@itbhu.ac.in",
         instagram: "",
-        linkedin: "https://www.linkedin.com/in/maheshwari-khandagale-67a112285"
+        linkedin: "https://www.linkedin.com/in/maheshwari-khandagale-67a112285",
+        role: "Pr head"
+      },
+      {
+        name: "Rishi Raj",
+        imageUrl: "/team/Rishi Raj.jpg",
+        email: "rishi.raj.met23@itbhu.ac.in",
+        instagram: "rishi1218raj",
+        linkedin: "https://www.linkedin.com/in/rishi-raj-5013a728a/",
+        role: "Public Relations Head"
       }
     ]
   },
   {
-    teamTitle: "Publicity",
+    teamTitle: "Publicity Team",
     teamRank: 8,
-    iconUrl: "/icons/publicity.svg",
     members: [
       {
         name: "Md Kaif",
-        imageUrl: "/team-images/md-kaif.jpg",
-        email: "mdkaif93411@gmail.com",
+        imageUrl: "/team/Md Kaif.jpg",
+        email: "md.kaif.met23@itbhu.ac.in",
         instagram: "muhammadkaif1804",
-        linkedin: ""
+        linkedin: "",
+        role: "Publicity Head"
       }
     ]
   }

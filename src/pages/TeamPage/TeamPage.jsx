@@ -4,44 +4,65 @@ import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
 import Footer from "../../components/footer/Footer";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Typewriter from 'typewriter-effect';
 
-// Import local data (adjust the path as needed)
-import teamData from "../../data/teamData.js"; // or from "./teamData.js" depending on your structure
+// FontAwesome Imports for the Diamond Grid Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faLaptopCode, // Tech
+  faPenNib,     // Creative/Content
+  faBullhorn,   // PR/Marketing
+  faUsers,      // HR/All
+  faCalendarCheck, // Events
+  faHandHoldingHeart, // Social/Volunteers
+  faCamera,     // Media
+  faSitemap,    // Management/Logistics
+  faLayerGroup  // Default/Misc
+} from '@fortawesome/free-solid-svg-icons';
+
+// Import local data
+import teamData from "../../data/teamData.js"; 
 
 function TeamPage() {
   const [data, setData] = useState([]);
-  const [memberCount, setMemberCount] = useState(0);
   const [fixedData, setFixedData] = useState([]);
   const [collection, setCollection] = useState([]);
   const [active, setActive] = useState("All");
-  const [activebtn, setActiveBtn] = useState("All");
   const [loading, setLoading] = useState(true);
 
-  const carousel = useRef(null);
   const galleryRef = useRef(null);
   const teamPageRef = useRef(null);
+
+  // Helper function to map Team Titles to Icons
+  const getTeamIcon = (title) => {
+    const lowerTitle = title.toLowerCase();
+    
+    if (lowerTitle === "all") return faLayerGroup;
+    if (lowerTitle.includes("tech") || lowerTitle.includes("web") || lowerTitle.includes("code")) return faLaptopCode;
+    if (lowerTitle.includes("creat") || lowerTitle.includes("design") || lowerTitle.includes("art")) return faPenNib;
+    if (lowerTitle.includes("content") || lowerTitle.includes("edit") || lowerTitle.includes("write")) return faPenNib;
+    if (lowerTitle.includes("pr") || lowerTitle.includes("public") || lowerTitle.includes("market") || lowerTitle.includes("outreach")) return faBullhorn;
+    if (lowerTitle.includes("event") || lowerTitle.includes("manag") || lowerTitle.includes("logist")) return faCalendarCheck;
+    if (lowerTitle.includes("media") || lowerTitle.includes("photo") || lowerTitle.includes("video")) return faCamera;
+    if (lowerTitle.includes("social") || lowerTitle.includes("volunt") || lowerTitle.includes("ngo")) return faHandHoldingHeart;
+    if (lowerTitle.includes("head") || lowerTitle.includes("lead") || lowerTitle.includes("core")) return faSitemap;
+    
+    return faUsers; // Default fallback
+  };
 
   // Team Fetching from local data
   const fetchTeamData = () => {
     setLoading(true);
     
-    // Use imported local data
     const localData = teamData || [];
     const sortedData = [...localData].sort((a, b) => a.teamRank - b.teamRank);
     
     setData(sortedData);
     setFixedData(sortedData);
     
-    // Calculate total members
-    const totalMembers = sortedData.reduce((sum, item) => sum + item.members.length, 0);
-    setMemberCount(totalMembers);
-    
     // Get unique team titles
     const uniqueTitles = ["All", ...new Set(sortedData.map((item) => item.teamTitle))];
-    setCollection(uniqueTitles.filter(title => title !== "All"));
+    setCollection(uniqueTitles.filter(title => title !== "All")); // Filter out "All" as we handle it manually
     
     setTimeout(() => {
       setLoading(false);
@@ -56,24 +77,11 @@ function TeamPage() {
   const gallery_filter = (itemData) => {
     if (itemData === "All") {
       setData(fixedData);
-      const totalMembers = fixedData.reduce((sum, item) => sum + item.members.length, 0);
-      setMemberCount(totalMembers);
       setActive("All");
-      setActiveBtn("All");
     } else {
       const filterData = fixedData.filter((item) => item.teamTitle === itemData);
       setData(filterData);
-      const filteredMembers = filterData.reduce((sum, item) => sum + item.members.length, 0);
-      setMemberCount(filteredMembers);
       setActive(itemData);
-      setActiveBtn("");
-    }
-  };
-
-  const scrollCarousel = (direction) => {
-    if (carousel.current) {
-      const scrollAmount = 200;
-      carousel.current.scrollLeft += direction === 'right' ? scrollAmount : -scrollAmount;
     }
   };
 
@@ -88,7 +96,6 @@ function TeamPage() {
       }
       grouped[item.teamTitle] = grouped[item.teamTitle].concat(item.members.map(member => ({
         ...member,
-        teamIcon: item.iconUrl,
         teamTitle: item.teamTitle
       })));
     });
@@ -124,14 +131,24 @@ function TeamPage() {
 
           <div className="hero-container">
             {/* Main Title */}
-            <motion.h1 
+            <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="hero-main-title"
+              className="hero-title-container"
             >
-              Meet Our <span className="hero-highlight">Team</span>
-            </motion.h1>
+              <h1 className="hero-main-title cursive-font">
+                Meet Our <span className="hero-highlight cursive-font">Team</span>
+              </h1>
+              <motion.div 
+                className="hero-subscript"
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+              >
+                The Heart of Jagriti
+              </motion.div>
+            </motion.div>
 
             {/* Typewriter Section */}
             <motion.div 
@@ -140,16 +157,16 @@ function TeamPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="typewriter-container"
             >
-              <div className="typewriter-wrapper">
+              <div className="typewriter-wrapper cursive-typewriter">
                 <Typewriter
                   options={{
                     strings: [
-                      "We Enlighten...",
-                      "We Educate...", 
-                      "We Empower...",
-                      "Together for Social Change",
-                      "Raising Awareness Together",
-                      "Building a Better Tomorrow"
+                      "Passionate Changemakers",
+                      "Dedicated Volunteers", 
+                      "Creative Minds at Work",
+                      "Building Social Awareness",
+                      "Together for a Better Tomorrow",
+                      "Empowering Through Education"
                     ],
                     autoStart: true,
                     loop: true,
@@ -169,67 +186,12 @@ function TeamPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="hero-description"
             >
-              <p className="description-text">
-                The passionate individuals behind Jagriti's mission to enlighten, educate, and empower through social awareness
+              <p className="description-text cursive-font-light">
+                A diverse group of passionate individuals united by a common goal: to enlighten, educate, and empower through meaningful social initiatives.
               </p>
             </motion.div>
 
-            {/* Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="hero-buttons"
-            >
-              <button 
-                onClick={() => {
-                  const filterSection = document.querySelector('.filter-section');
-                  if (filterSection) {
-                    filterSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="primary-button"
-              >
-                Meet Our Team
-              </button>
-              <button 
-                onClick={() => {
-                  window.open('/about', '_self');
-                }}
-                className="secondary-button"
-              >
-                Our Mission
-              </button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="hero-stats-container"
-            >
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <div className="stat-number">{collection.length}</div>
-                  <div className="stat-label">Departments</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">{memberCount}</div>
-                  <div className="stat-label">Team Members</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">50+</div>
-                  <div className="stat-label">Events</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">5+</div>
-                  <div className="stat-label">Years</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Scroll Indicator */}
+            {/* SCROLL INDICATOR */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -255,42 +217,39 @@ function TeamPage() {
           </div>
         </section>
 
-        {/* Filter Carousel */}
+        {/* --- NEW DIAMOND GRID FILTER SECTION --- */}
         <div className="filter-section">
-          <div className="carousel-container">
-            <button 
-              className="scroll-btn left"
-              onClick={() => scrollCarousel('left')}
-            >
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </button>
+          <div className="diamond-grid-container">
             
-            <div className="carousel" ref={carousel}>
-              <div className="carousel-inner">
-                <button
-                  onClick={() => gallery_filter("All")}
-                  className={`filter-btn ${active === "All" ? "active" : ""}`}
-                >
-                  All Teams
-                </button>
-                {collection.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => gallery_filter(item)}
-                    className={`filter-btn ${active === item ? "active" : ""}`}
-                  >
-                    {item}
-                  </button>
-                ))}
+            {/* "All" Diamond */}
+            <div 
+              className={`diamond-wrapper ${active === "All" ? "active" : ""}`}
+              onClick={() => gallery_filter("All")}
+            >
+              <div className="diamond-shape">
+                <div className="diamond-content">
+                  <FontAwesomeIcon icon={faLayerGroup} className="diamond-icon" />
+                </div>
               </div>
+              <span className="diamond-label">All Teams</span>
             </div>
-            
-            <button 
-              className="scroll-btn right"
-              onClick={() => scrollCarousel('right')}
-            >
-              <FontAwesomeIcon icon={faChevronRight} />
-            </button>
+
+            {/* Dynamic Team Diamonds */}
+            {collection.map((item, index) => (
+              <div 
+                key={index}
+                className={`diamond-wrapper ${active === item ? "active" : ""}`}
+                onClick={() => gallery_filter(item)}
+              >
+                <div className="diamond-shape">
+                  <div className="diamond-content">
+                    <FontAwesomeIcon icon={getTeamIcon(item)} className="diamond-icon" />
+                  </div>
+                </div>
+                <span className="diamond-label">{item}</span>
+              </div>
+            ))}
+
           </div>
         </div>
 
@@ -326,8 +285,7 @@ function TeamPage() {
                         <TeamCard
                           name={member.name}
                           image={member.imageUrl}
-                          post={member.teamTitle}
-                          icon={member.teamIcon}
+                          role={member.role}
                           gmail={member.email}
                           instagram={member.instagram}
                           linkedin={member.linkedin}
@@ -368,8 +326,7 @@ function TeamPage() {
                         <TeamCard
                           name={member.name}
                           image={member.imageUrl}
-                          post={item.teamTitle}
-                          icon={item.iconUrl}
+                          role={member.role}
                           gmail={member.email}
                           instagram={member.instagram}
                           linkedin={member.linkedin}

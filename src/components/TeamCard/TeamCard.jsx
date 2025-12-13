@@ -5,14 +5,17 @@ import { Instagram } from "@styled-icons/boxicons-logos/Instagram";
 import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin";
 
 function TeamCard(props) {
-  // console.log(props.image);
+  // Check if name is long (more than 15 characters or contains spaces indicating multiple words)
+  const isLongName = props.name.length > 15 || props.name.includes(" ");
+  const nameClass = isLongName ? "card-title long-name" : "card-title";
+  const imagePath = props.image ? encodeURI(props.image) : "";
+  
   return (
-    <div className="cardbox" style={{ backgroundImage: `url(${props.image})` }}>
-      <div className="card-content">
-        <h2 className="card-title">{props.name}</h2>
+        <div className="cardbox" style={{ backgroundImage: `url('${imagePath}')` }}>      
+        <div className="card-content">
+        <h2 className={nameClass}>{props.name}</h2>
         <div className="teamPost">
-          <img src={props.icon} alt="logo" />
-          <p className="card-body">{props.post}</p>
+          <p className="card-role">{props.role}</p>
         </div>
 
         <div className="btn">
@@ -20,14 +23,14 @@ function TeamCard(props) {
             <Gmail className=" h-8 text-white hover:text-red"></Gmail>
           </a>
           <a
-            href={"//" + props.linkedin}
+            href={props.linkedin && props.linkedin.startsWith("http") ? props.linkedin : "//" + props.linkedin}
             target="_blank"
             rel="noopener noreferrer"
           >
             <Linkedin className=" h-8 text-white hover:text-blue"></Linkedin>
           </a>
           <a
-            href={"//" + props.instagram}
+            href={props.instagram ? "https://instagram.com/" + props.instagram.replace("@", "") : "#"}
             target="_blank"
             rel="noopener noreferrer"
           >
