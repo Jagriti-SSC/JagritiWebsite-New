@@ -128,16 +128,6 @@ function TeamPage() {
       <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
         {/* Hero Section */}
         <section className="hero-section">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" 
-              style={{
-                backgroundImage: `
-                  radial-gradient(circle at 25% 25%, #1a589b 0%, transparent 50%),
-                  radial-gradient(circle at 75% 75%, #4162a8 0%, transparent 50%)
-                `
-              }}
-            />
-          </div>
 
           <div className="hero-container">
             {/* Main Title */}
