@@ -3,72 +3,70 @@ import { v4 as uuidv4 } from "uuid";
 import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
-import { useFirebase } from "../../context/Firebase";
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import Typewriter from 'typewriter-effect';
+
+// FontAwesome Imports for the Diamond Grid Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faLaptopCode, // Tech
+  faPenNib,     // Creative/Content
+  faBullhorn,   // PR/Marketing
+  faUsers,      // HR/All
+  faCalendarCheck, // Events
+  faHandHoldingHeart, // Social/Volunteers
+  faCamera,     // Media
+  faSitemap,    // Management/Logistics
+  faLayerGroup  // Default/Misc
+} from '@fortawesome/free-solid-svg-icons';
+
+// Import local data
+import teamData from "../../data/teamData.js"; 
 
 function TeamPage() {
-  const firebase = useFirebase();
-
   const [data, setData] = useState([]);
-  const [memberCount, setMemberCount] = useState(0);
   const [fixedData, setFixedData] = useState([]);
   const [collection, setCollection] = useState([]);
-  const [active, setActive] = useState("Our Team");
-  const [activebtn, setActiveBtn] = useState("Our Team");
+  const [active, setActive] = useState("All");
+  const [loading, setLoading] = useState(true);
 
-  const [width, setWidth] = useState(0);
-  const carousel = useRef(null);
-  const innerCarousel = useRef(null);
   const galleryRef = useRef(null);
-  const cardRef = useRef(null);
   const teamPageRef = useRef(null);
-  const spinnerRef = useRef(null);
-  //option to remove drag of teams categories
-  useEffect(() => {
-    const handleResize = () => {
-      const isOverflowing = carousel.current.scrollWidth > carousel.current.offsetWidth;
-      setWidth(isOverflowing ? carousel.current.scrollWidth - carousel.current.offsetWidth : 0);
-    };
 
-    handleResize(); // Call the function initially
-
-    window.addEventListener('resize', handleResize); // Listen for resize events
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Clean up the event listener
-    };
-  }, []);
-
-  // Function to scroll the carousel to the right
-  const scrollToRight = () => {
-    carousel.current.scrollLeft += 150; // Adjust the scroll amount as needed
+  // Helper function to map Team Titles to Icons
+  const getTeamIcon = (title) => {
+    const lowerTitle = title.toLowerCase();
+    
+    if (lowerTitle === "all") return faLayerGroup;
+    if (lowerTitle.includes("tech") || lowerTitle.includes("web") || lowerTitle.includes("code")) return faLaptopCode;
+    if (lowerTitle.includes("creat") || lowerTitle.includes("design") || lowerTitle.includes("art")) return faPenNib;
+    if (lowerTitle.includes("content") || lowerTitle.includes("edit") || lowerTitle.includes("write")) return faPenNib;
+    if (lowerTitle.includes("pr") || lowerTitle.includes("public") || lowerTitle.includes("market") || lowerTitle.includes("outreach")) return faBullhorn;
+    if (lowerTitle.includes("event") || lowerTitle.includes("manag") || lowerTitle.includes("logist")) return faCalendarCheck;
+    if (lowerTitle.includes("media") || lowerTitle.includes("photo") || lowerTitle.includes("video")) return faCamera;
+    if (lowerTitle.includes("social") || lowerTitle.includes("volunt") || lowerTitle.includes("ngo")) return faHandHoldingHeart;
+    if (lowerTitle.includes("head") || lowerTitle.includes("lead") || lowerTitle.includes("core")) return faSitemap;
+    
+    return faUsers; // Default fallback
   };
-  const scrollToLeft = () => {
-    carousel.current.scrollLeft -= 150; // Adjust the scroll amount as needed
-  };
-  // Team Fetching
-  const fetchTeamData = async () => {
-    const Data = await firebase.getAllDocuments("team");
-    const sortedData = [...Data].sort((a, b) => {
-      return a.teamRank - b.teamRank;
-    });
-    console.log(sortedData);
 
+  // Team Fetching from local data
+  const fetchTeamData = () => {
+    setLoading(true);
+    
+    const localData = teamData || [];
+    const sortedData = [...localData].sort((a, b) => a.teamRank - b.teamRank);
+    
     setData(sortedData);
     setFixedData(sortedData);
-    setMemberCount(0);
-    sortedData.forEach((item) =>
-      setMemberCount((prev) => prev + item.members.length)
-    );
-    setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
+    
+    // Get unique team titles
+    const uniqueTitles = ["All", ...new Set(sortedData.map((item) => item.teamTitle))];
+    setCollection(uniqueTitles.filter(title => title !== "All")); // Filter out "All" as we handle it manually
+    
     setTimeout(() => {
-      if (spinnerRef.current) {
-        spinnerRef.current.style.display = "none";
-      }
-    }, 1200);
+      setLoading(false);
+    }, 800);
   };
 
   useEffect(() => {
@@ -76,141 +74,271 @@ function TeamPage() {
     document.title = "Our Team | Jagriti - IIT (BHU)";
   }, []);
 
-  useEffect(() => {
-    // console.log(carousel.current)
-
-    // setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
-  }, [fixedData]);
-
-  useEffect(() => {
-    const totalCards = Math.floor(
-      galleryRef.current?.offsetWidth / (cardRef.current?.offsetWidth + 20)
-    );
-    console.log(memberCount);
-    if (memberCount < totalCards) {
-      galleryRef.current.style.justifyContent = "flex-start";
-    } else {
-      galleryRef.current.style.justifyContent = "center";
-    }
-    // console.log(totalCards, data.length, data)
-  }, [active, memberCount]);
-
   const gallery_filter = (itemData) => {
-    setMemberCount(0);
-    const filterData = fixedData.filter((item) => {
-      if (item.teamTitle === itemData)
-        setMemberCount((prev) => prev + item.members.length);
-      return item.teamTitle === itemData;
-    });
-
-    setData(filterData);
-    setActive(itemData);
-    setActiveBtn("");
+    if (itemData === "All") {
+      setData(fixedData);
+      setActive("All");
+    } else {
+      const filterData = fixedData.filter((item) => item.teamTitle === itemData);
+      setData(filterData);
+      setActive(itemData);
+    }
   };
-  function setColor() {
-    setMemberCount(0);
-    fixedData.forEach((item, index) => {
-      setMemberCount((prev) => prev + item.members.length);
+
+  // Group members by team title for "All" view
+  const getGroupedData = () => {
+    if (active !== "All") return null;
+    
+    const grouped = {};
+    fixedData.forEach(item => {
+      if (!grouped[item.teamTitle]) {
+        grouped[item.teamTitle] = [];
+      }
+      grouped[item.teamTitle] = grouped[item.teamTitle].concat(item.members.map(member => ({
+        ...member,
+        teamTitle: item.teamTitle
+      })));
     });
-    setData(fixedData);
-    setActiveBtn("Our Team");
-    setActive("Our Team");
-  }
+    
+    return grouped;
+  };
+
+  const groupedData = getGroupedData();
 
   return (
     <div className="bg">
-      <div className="flex items-center justify-center " ref={spinnerRef}>
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
-          </span>
+      {/* Loading Spinner */}
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
         </div>
-      </div>
-      <div className="galleryWrapper" ref={teamPageRef}>
-        <div className="filterItem">
-          <div className="our-team">
-            <h1>{active}</h1>
-          </div> 
+      )}
 
-          <div className="container_carousel">
-            {width > 0 && (<div className="scroll-icon" onClick={scrollToLeft}>
-              <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingRight: 5 }} />
-            </div>)}
-            <motion.div
-              ref={carousel}
-              // className="carousel"
-              // whileTap={{ cursor: "grabbing" }}
-              // style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
-              class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10 "
+      {/* Main Content */}
+      <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" 
+              style={{
+                backgroundImage: `
+                  radial-gradient(circle at 25% 25%, #1a589b 0%, transparent 50%),
+                  radial-gradient(circle at 75% 75%, #4162a8 0%, transparent 50%)
+                `
+              }}
+            />
+          </div>
+
+          <div className="hero-container">
+            {/* Main Title */}
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="hero-title-container"
             >
-              <div
-
-                className="inner-carousel"
-                ref={innerCarousel}
-                // drag="x"
-                // dragConstraints={{
-                //   right: 0,
-                //   left: -width,
-                // }}
+              <h1 className="hero-main-title cursive-font">
+                Meet Our <span className="hero-highlight cursive-font">Team</span>
+              </h1>
+              <motion.div 
+                className="hero-subscript"
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
               >
-                <button
-                  onClick={setColor}
-                // className={activebtn === "Our Team" ? "selected" : " "}
-                >
-                  All
-                </button>
+                The Heart of Jagriti
+              </motion.div>
+            </motion.div>
 
-                {collection.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      gallery_filter(item);
-                    }}
-                    className={active === item ? "selected" : " "}
-                  >
-                    {item}
-                  </button>
-                ))}
+            {/* Typewriter Section */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="typewriter-container"
+            >
+              <div className="typewriter-wrapper cursive-typewriter">
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Passionate Changemakers",
+                      "Dedicated Volunteers", 
+                      "Creative Minds at Work",
+                      "Building Social Awareness",
+                      "Together for a Better Tomorrow",
+                      "Empowering Through Education"
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    delay: 60,
+                    deleteSpeed: 40,
+                    cursor: '|',
+                    cursorClassName: 'typewriter-cursor'
+                  }}
+                />
               </div>
             </motion.div>
-            {width > 0 && (
-              <div className="scroll-icon" onClick={scrollToRight}>
-                <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingLeft: 5 }} />
+
+            {/* Description */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="hero-description"
+            >
+              <p className="description-text cursive-font-light">
+                A diverse group of passionate individuals united by a common goal: to enlighten, educate, and empower through meaningful social initiatives.
+              </p>
+            </motion.div>
+
+            {/* SCROLL INDICATOR */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.1, repeat: Infinity, repeatDelay: 2 }}
+              className="scroll-indicator"
+              onClick={() => {
+                const filterSection = document.querySelector('.filter-section');
+                if (filterSection) {
+                  filterSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              <div className="scroll-arrow"></div>
+            </motion.div>
+          </div>
+
+          {/* Floating Elements */}
+          <div className="floating-elements">
+            <div className="floating-element element-1"></div>
+            <div className="floating-element element-2"></div>
+            <div className="floating-element element-3"></div>
+            <div className="floating-element element-4"></div>
+          </div>
+        </section>
+
+        {/* --- NEW DIAMOND GRID FILTER SECTION --- */}
+        <div className="filter-section">
+          <div className="diamond-grid-container">
+            
+            {/* "All" Diamond */}
+            <div 
+              className={`diamond-wrapper ${active === "All" ? "active" : ""}`}
+              onClick={() => gallery_filter("All")}
+            >
+              <div className="diamond-shape">
+                <div className="diamond-content">
+                  <FontAwesomeIcon icon={faLayerGroup} className="diamond-icon" />
+                </div>
               </div>
-            )}</div>
+              <span className="diamond-label">All Teams</span>
+            </div>
+
+            {/* Dynamic Team Diamonds */}
+            {collection.map((item, index) => (
+              <div 
+                key={index}
+                className={`diamond-wrapper ${active === item ? "active" : ""}`}
+                onClick={() => gallery_filter(item)}
+              >
+                <div className="diamond-shape">
+                  <div className="diamond-content">
+                    <FontAwesomeIcon icon={getTeamIcon(item)} className="diamond-icon" />
+                  </div>
+                </div>
+                <span className="diamond-label">{item}</span>
+              </div>
+            ))}
+
+          </div>
         </div>
-        <motion.div layout className="galleryContainer" ref={galleryRef}>
-          <AnimatePresence>
-            {data.map((item, index) =>
-              item.members.map((member) => (
-                <motion.div
-                  animate={{ opacity: 1, scale: 1 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  transition={{ duration: 0.36 }}
-                  layout
-                  key={uuidv4()}
-                  className="galleryItem"
-                  ref={cardRef}
+
+        {/* Team Members Grid */}
+        <div className="team-content">
+          {active === "All" && groupedData ? (
+            // Grouped view for All Teams
+            Object.entries(groupedData).map(([teamTitle, members]) => (
+              <div key={teamTitle} className="team-group">
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="team-group-title"
                 >
-                  <TeamCard
-                    name={member.name}
-                    image={member.imageUrl}
-                    post={item.teamTitle}
-                    icon={item.iconUrl}
-                    gmail={member.email}
-                    instagram={member.instagram}
-                    linkedin={member.linkedin}
-                  />
+                  {teamTitle}
+                </motion.h2>
+                <motion.div 
+                  layout
+                  className="galleryContainer" 
+                  ref={galleryRef}
+                >
+                  <AnimatePresence>
+                    {members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          role={member.role}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </motion.div>
-              ))
-            )}
-          </AnimatePresence>
-        </motion.div>
+              </div>
+            ))
+          ) : (
+            // Single team view
+            <div className="team-group">
+              <motion.h2 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="team-group-title"
+              >
+                {active}
+              </motion.h2>
+              <motion.div 
+                layout
+                className="galleryContainer" 
+                ref={galleryRef}
+              >
+                <AnimatePresence>
+                  {data.map((item) =>
+                    item.members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          role={member.role}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          )}
+        </div>
       </div>
       <Footer />
     </div>

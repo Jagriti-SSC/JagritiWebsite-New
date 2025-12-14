@@ -13,16 +13,15 @@
 .cardbox {
   color: var(--clr-neutral-100);
   background-size: cover;
+  background-position: center;
   padding: 10rem 0 0;
   min-width: 28ch;
   max-width: 35ch;
-  /* width: 30ch; */
   margin: 10px;
   flex: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
-
   transition: transform 500ms ease;
   background-color: antiquewhite;
 }
@@ -34,7 +33,6 @@
 
 .card-content {
   --padding: 2rem;
-
   padding: var(--padding);
   background: linear-gradient(
     hsl(0 0% 0% / 0),
@@ -52,8 +50,27 @@
 .card-title {
   position: relative;
   width: max-content;
-  font-size: x-large;
+  max-width: 100%;
+  color: white;
+  font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+}
+
+.card-title.long-name {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.cardbox:hover .card-title.long-name {
+  font-size: 1.2rem;
+  line-height: 1.1;
 }
 
 .card-title::after {
@@ -61,22 +78,24 @@
   position: absolute;
   height: 3px;
   left: calc(var(--padding) * -1);
-  bottom: 0px;
+  bottom: -5px;
   width: calc(100% + var(--padding));
   background-color: #1b7adf;
 }
+
 .cardbox:hover .card-title::after,
 .cardbox:focus-within .card-title::after {
   transform: scaleX(1);
 }
 
-.card-body {
+.card-role {
   color: white;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: 0px;
-  font-size: large;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.9;
 }
 
 @media (hover) {
@@ -84,6 +103,7 @@
     transform: translateY(52%);
     transition: transform 500ms ease;
   }
+  
   .cardbox:hover .card-content,
   .cardbox:focus-within .card-content {
     transform: translateY(0);
@@ -93,10 +113,12 @@
   .cardbox:focus-within .card-content {
     transition-duration: 0ms;
   }
+  
   .card-content > *:not(.card-title) {
     opacity: 0;
     transition: opacity 500ms linear;
   }
+  
   .card-title::after {
     transform: scaleX(0);
     transform-origin: left;
@@ -110,25 +132,21 @@
   align-items: center;
   justify-content: space-evenly;
   cursor: pointer;
-
   padding: 0.5em 1.25em;
-
   margin-top: 1px;
 }
+
 .teamPost {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
+
+/* Remove the img styles since we're not using icons anymore */
 .teamPost img {
-  /* background-color: #1a589b; */
-  /* margin: auto; */
-  /* color:#1a589b;  */
-  height: 33px;
-  /* background-size: cover; */
-  /* border-radius: 12px; */
-  width: 33px;
+  display: none;
 }
+
 @media (max-width: 816px) {
   .cardbox {
     margin-bottom: 1rem;

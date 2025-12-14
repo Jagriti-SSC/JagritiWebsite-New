@@ -1,168 +1,571 @@
 .bg {
   background: url('/public/assets/bg.png');
   background-size: cover;
-  min-height: "210vh";
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  position: relative;
 }
-.card:hover h1,
-.card:hover p {
+
+/* Team Page Content */
+.team-page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  /* Reduced height to close gap */
+  min-height: 50vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 0rem; /* Removed bottom padding */
+  background: transparent;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Title Container */
+.hero-title-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hero-main-title {
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 0;
+  transition: all 0.3s ease;
+  line-height: 1;
+  position: relative;
+}
+
+.hero-main-title:hover {
+  transform: translateY(-2px);
+}
+
+.hero-main-title:hover .hero-highlight {
+  font-size: 3.2rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.hero-highlight {
+  color: #3b82f6;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.hero-subscript {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.hero-main-title:hover ~ .hero-subscript {
+  transform: translateY(5px);
+  opacity: 0.7;
+}
+
+/* Cursive fonts */
+.cursive-font {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cursive-font-light {
+  font-family: 'Lucida Handwriting', 'Bradley Hand', 'Comic Sans MS', cursive;
+  font-weight: 300;
+}
+
+.cursive-typewriter {
+  font-family: 'Monotype Corsiva', 'Apple Chancery', 'URW Chancery L', cursive;
+}
+
+/* Typewriter */
+.typewriter-container {
+  margin-bottom: 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-wrapper {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #4162a8;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Typewriter__wrapper {
+  color: #1a589b;
+  font-weight: 700;
+}
+
+.Typewriter__cursor {
+  color: #4162a8;
+  font-weight: bold;
+}
+
+/* Description */
+.hero-description {
+  max-width: 800px;
+  margin: 0 auto 1rem; /* Reduced bottom margin */
+}
+
+.description-text {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* REMOVED SCROLL INDICATOR STYLES */
+
+/* --- Floating Elements --- */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(26, 88, 155, 0.05);
+}
+
+.element-1 { width: 100px; height: 100px; top: 20%; left: 10%; animation: float 20s infinite linear; }
+.element-2 { width: 150px; height: 150px; bottom: 20%; right: 10%; animation: float 25s infinite linear reverse; }
+.element-3 { width: 80px; height: 80px; top: 50%; left: 15%; animation: float 18s infinite linear; }
+.element-4 { width: 120px; height: 120px; top: 30%; right: 15%; animation: float 22s infinite linear reverse; }
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(100px, 100px) rotate(360deg); }
+}
+
+/* =========================================
+   DIAMOND GRID FILTER SECTION
+   ========================================= */
+
+.filter-section {
+  /* Reduced top padding significantly to decrease gap */
+  padding: 0.5rem 0 2rem; 
+  position: relative;
+  background: transparent;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.diamond-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 1.5rem; 
+}
+
+/* Wrapper */
+.diamond-wrapper {
+  position: relative;
+  width: 110px;  
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+  margin: 15px;
+}
+
+.diamond-wrapper:hover {
+  transform: translateY(-8px) scale(1.05);
+  z-index: 10;
+}
+
+/* Diamond Shape */
+.diamond-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;  
+  height: 80px; 
+  background: white;
+  border: 2px solid #e0e0e0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon Content */
+.diamond-content {
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diamond-icon {
+  font-size: 1.8rem;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+/* Label */
+.diamond-label {
+  position: absolute;
+  top: 100%; 
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  text-align: center;
+  margin-top: 5px; 
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  opacity: 0.8;
+}
+
+/* --- Active & Hover States --- */
+
+.diamond-wrapper:hover .diamond-shape {
+  border-color: #1a589b;
+  box-shadow: 0 10px 25px rgba(26, 88, 155, 0.2);
+  background: #f8fbff;
+}
+
+.diamond-wrapper:hover .diamond-icon {
+  color: #1a589b;
+}
+
+.diamond-wrapper:hover .diamond-label {
+  color: #1a589b;
   opacity: 1;
 }
-.container_carousel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Optional: adjust alignment as needed */
-}
-.scroll-icon {
-  cursor: pointer;
-  size: 50;
-  padding-bottom: 2;
-  /* Add additional styling as needed */
-}
-.galleryWrapper {
-    padding: 1.0% 7%;
- }
 
-.galleryItem img {
-  width: 100%;
-  height: 35vh;
-  object-fit: cover;
-  border-radius: 1rem;
+.diamond-wrapper.active .diamond-shape {
+  background: linear-gradient(135deg, #1a589b, #4162a8);
+  border-color: #1a589b;
+  box-shadow: 0 10px 30px rgba(26, 88, 155, 0.3);
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+}
+
+.diamond-wrapper.active .diamond-icon {
+  color: white;
+}
+
+.diamond-wrapper.active .diamond-label {
+  color: #1a589b;
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* --- Team Content --- */
+.team-content {
+  padding: 2rem 0 4rem;
+}
+
+.team-group {
+  margin-bottom: 4rem;
+}
+
+.team-group:last-child {
+  margin-bottom: 2rem;
+}
+
+.team-group-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  color: #1a589b;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid rgba(26, 88, 155, 0.1);
+  position: relative;
+}
+
+.team-group-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #1a589b, #4162a8);
 }
 
 .galleryContainer {
-  display: flex;
-  align-items:center;
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-
-  flex-wrap: wrap;
-  justify-content:center;
-  gap: 20px;
-}
-.carousel
-{
-  margin:  0 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: grab;
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
 }
 
-.inner-carousel {
+.galleryItem {
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover {
+  transform: translateY(-10px);
+}
+
+/* Remove unused classes */
+.card, .img, .link-team, .heading, .position-title {
+  display: none;
+}
+
+/* Loading Spinner */
+.spinner-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
-  
-  /* height:6vh; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
   align-items: center;
-  margin-bottom: 20px;
-  gap: 10px;
-}
-
-.inner-carousel button {
-  margin-right: 0.8rem;
-  /* min-width: 5rem; */
-  width: 100%;
-  height: 100%;
-  padding: 0.3rem 0.8rem;
-  border: none;
-  background: white;
-  color: rgb(65, 98, 168);
-  border-radius: 8px;
-  font-family: "Poppins";
-  border: 1.5px solid rgb(65, 98, 168);
-  font-weight: 550;
-  cursor: pointer;
- 
-}
-
-/* .filterItem ul button:hover {
-  background: rgb(65, 98, 168);
-  border: 2px solid rgb(65, 98, 168);
-  color: azure;
-} */
-.filterItem .selected {
-  background: rgb(65, 98, 168);
-  border: 2px solid rgb(65, 98, 168);
-  color: azure;
-}
-.galleryItem img {
-  border-radius: 15px;
-}
-.position-title {
-  display: flex;
   justify-content: center;
-  font-family: "Poppins";
-  font-size: 1.2rem;
+  z-index: 1000;
 }
-/* BUTTON */
-.card {
-  width: 230px;
-  height: 265px;
-  background: #07182e;
-  border-radius: 5px;
-  text-align: center;
-  color: #f0f0f0;
-  font-family: inherit;
-  z-index: 1;
-}
-.img {
-  padding: 1.5rem;
-}
-.img img {
-  display: flex;
-  width: 120px;
-  height: 120px;
-  margin: auto;
-  border: 1px solid #f0f0f0;
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1a589b;
   border-radius: 50%;
-  font-size: 11px;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s;
-  z-index: 9;
-  background-color: #152f50;
+  animation: spin 1s linear infinite;
 }
 
-.link-team {
-  opacity: 0;
-  transition: all 0.5s;
-  display: flex;
-  font-size: 1.3rem;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.heading {
-  padding: 10px;
-  font-weight: 500;
-  font-size: 18px;
+/* --- Responsive Design --- */
+
+@media screen and (max-width: 1024px) {
+  .hero-main-title {
+    font-size: 3.5rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 2rem;
+  }
+
+  .diamond-grid-container {
+    gap: 1rem;
+    max-width: 700px;
+  }
 }
 
-.card:hover h1,
-.card:hover p {
-  opacity: 1;
+@media screen and (max-width: 768px) {
+  .hero-section {
+    min-height: 40vh; /* Reduced further for mobile */
+    padding: 3rem 1rem 0;
+  }
+  
+  .hero-main-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subscript {
+    font-size: 1rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.8rem;
+    height: 50px;
+  }
+  
+  .team-page-content {
+    padding: 0 1rem 3rem;
+  }
+
+  /* Responsive Diamond Grid */
+  .filter-section {
+    padding: 1rem 0;
+  }
+  
+  .diamond-grid-container {
+    gap: 0.5rem;
+  }
+  
+  .diamond-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+  }
+
+  .diamond-shape {
+    width: 60px;
+    height: 60px;
+  }
+
+  .diamond-icon {
+    font-size: 1.4rem;
+  }
+
+  .diamond-label {
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
 }
-.our-team {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 4rem;
-  /* font-family: "Poppins"; */
-  padding-bottom: 1rem;
+
+/* --- Responsive Design --- */
+
+@media screen and (max-width: 1024px) {
+  .hero-main-title {
+    font-size: 3.5rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 2rem;
+  }
+
+  .diamond-grid-container {
+    gap: 1rem;
+    max-width: 700px;
+  }
 }
-.our-team h1 {
-  margin: 20px 0px;
-  text-align: center;
-  font-family: "Montserrat";
-  /* font-style: normal; */
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 44px;
-  color: #1a589b;
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    min-height: 40vh;
+    padding: 3rem 1rem 0;
+  }
+  
+  .hero-main-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subscript {
+    font-size: 1rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.8rem;
+    height: 50px;
+  }
+  
+  .team-page-content {
+    padding: 0 1rem 3rem;
+  }
+
+  /* Responsive Diamond Grid */
+  .filter-section {
+    padding: 1rem 0;
+  }
+  
+  .diamond-grid-container {
+    gap: 0.5rem;
+    /* Add vertical space for labels on tablet too just in case */
+    row-gap: 2.5rem; 
+  }
+  
+  .diamond-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 0; /* Rely on gap instead of margin */
+  }
+
+  .diamond-shape {
+    width: 60px;
+    height: 60px;
+  }
+
+  .diamond-icon {
+    font-size: 1.4rem;
+  }
+
+  .diamond-label {
+    font-size: 0.75rem;
+    margin-top: 2px;
+    /* Allow wrapping on smaller screens */
+    white-space: normal; 
+    line-height: 1.1;
+    width: 120%; /* Allow text to be slightly wider than the diamond */
+  }
+
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
 }
-@media screen and (max-width: 450px) {
-  .our-team {
-    font-size: 2.5rem;
+
+@media screen and (max-width: 480px) {
+  .hero-main-title {
+    font-size: 2.2rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.4rem;
+    height: 40px;
+  }
+  
+  .team-group-title {
+    font-size: 1.8rem;
+  }
+
+  /* FIX: Solve overlapping titles */
+  .diamond-grid-container {
+    /* Large row-gap creates space for the labels between rows */
+    row-gap: 3.5rem; 
+    /* Small column-gap keeps diamonds close horizontally */
+    column-gap: 0.5rem;
+  }
+  
+  .diamond-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0; 
+  }
+
+  /* Update label to wrap text nicely */
+  .diamond-label {
+    white-space: normal; /* Forces text to wrap to next line */
+    width: 140%; /* Allow label to extend wider than the diamond */
+    font-size: 0.7rem;
+    line-height: 1.1;
+    top: 105%; /* Push down slightly */
+  }
+
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
   }
 }
