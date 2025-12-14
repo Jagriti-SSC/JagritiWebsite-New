@@ -17,7 +17,13 @@ import {
   faHandHoldingHeart, // Social/Volunteers
   faCamera,     // Media
   faSitemap,    // Management/Logistics
-  faLayerGroup  // Default/Misc
+  faLayerGroup,  // Default/Misc
+  faUserTie,    // Convenors
+  faBriefcase,  // Council Secretary
+  faPalette,    // Design
+  faNewspaper,  // Content
+  faChartLine,  // Marketing
+  faHandshake   // PR
 } from '@fortawesome/free-solid-svg-icons';
 
 // Import local data
@@ -38,10 +44,14 @@ function TeamPage() {
     const lowerTitle = title.toLowerCase();
     
     if (lowerTitle === "all") return faLayerGroup;
+    if (lowerTitle.includes("conven")) return faUserTie;
+    if (lowerTitle.includes("secret") || lowerTitle.includes("council")) return faBriefcase;
     if (lowerTitle.includes("tech") || lowerTitle.includes("web") || lowerTitle.includes("code")) return faLaptopCode;
-    if (lowerTitle.includes("creat") || lowerTitle.includes("design") || lowerTitle.includes("art")) return faPenNib;
-    if (lowerTitle.includes("content") || lowerTitle.includes("edit") || lowerTitle.includes("write")) return faPenNib;
-    if (lowerTitle.includes("pr") || lowerTitle.includes("public") || lowerTitle.includes("market") || lowerTitle.includes("outreach")) return faBullhorn;
+    if (lowerTitle.includes("design") || lowerTitle.includes("art") || lowerTitle.includes("creat")) return faPalette;
+    if (lowerTitle.includes("content") || lowerTitle.includes("edit") || lowerTitle.includes("write")) return faNewspaper;
+    if (lowerTitle.includes("market")) return faChartLine;
+    if (lowerTitle.includes("pr") || lowerTitle.includes("relation")) return faHandshake;
+    if (lowerTitle.includes("public") || lowerTitle.includes("outreach")) return faBullhorn;
     if (lowerTitle.includes("event") || lowerTitle.includes("manag") || lowerTitle.includes("logist")) return faCalendarCheck;
     if (lowerTitle.includes("media") || lowerTitle.includes("photo") || lowerTitle.includes("video")) return faCamera;
     if (lowerTitle.includes("social") || lowerTitle.includes("volunt") || lowerTitle.includes("ngo")) return faHandHoldingHeart;
@@ -118,16 +128,6 @@ function TeamPage() {
       <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
         {/* Hero Section */}
         <section className="hero-section">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" 
-              style={{
-                backgroundImage: `
-                  radial-gradient(circle at 25% 25%, #1a589b 0%, transparent 50%),
-                  radial-gradient(circle at 75% 75%, #4162a8 0%, transparent 50%)
-                `
-              }}
-            />
-          </div>
 
           <div className="hero-container">
             {/* Main Title */}

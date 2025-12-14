@@ -19,23 +19,29 @@ function TeamCard(props) {
         </div>
 
         <div className="btn">
-          <a href={"mailto:" + props.gmail}>
-            <Gmail className=" h-8 text-white hover:text-red"></Gmail>
-          </a>
-          <a
-            href={props.linkedin && props.linkedin.startsWith("http") ? props.linkedin : "//" + props.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin className=" h-8 text-white hover:text-blue"></Linkedin>
-          </a>
-          <a
-            href={props.instagram ? "https://instagram.com/" + props.instagram.replace("@", "") : "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className=" h-8 text-white hover:text-pink-400"></Instagram>
-          </a>
+          {props.gmail && (
+            <a href={"mailto:" + props.gmail}>
+              <Gmail className=" h-8 text-white hover:text-red"></Gmail>
+            </a>
+          )}
+          {props.linkedin && (
+            <a
+              href={props.linkedin.startsWith("http") ? props.linkedin : "//" + props.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className=" h-8 text-white hover:text-blue"></Linkedin>
+            </a>
+          )}
+          {props.instagram && (
+            <a
+              href={"https://instagram.com/" + props.instagram.replace("@", "")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className=" h-8 text-white hover:text-pink-400"></Instagram>
+            </a>
+          )}
         </div>
       </div>
     </div>
