@@ -43,6 +43,14 @@ const teamData = [
         role: "General Secretary"
       },
       {
+        name: "Suranjan Kumar ",
+        imageUrl: "/team/Suranjan.png",
+        email: "suranjan.kumar.civ23@itbhu.ac.in",
+        instagram: "suranjan.26",
+        linkedin: "https://www.linkedin.com/in/suranjan-kumar-a72a19355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        role: "Joint General Secretary"
+      },
+      {
         name: "Simran Sharma",
         imageUrl: "/team/Simran Sharma.jpg",
         email: "simran.sharma.cd.civ23@itbhu.ac.in",
@@ -62,7 +70,7 @@ const teamData = [
         email: "rounaksarkar9679@gmail.com",
         instagram: "ro_un_a_k",
         linkedin: "https://www.linkedin.com/in/rounak-sarkar-9b6250288?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-        role: "Events Head"
+        role: "Events Team"
       },
       {
         name: "Utsav Gautam",
@@ -73,12 +81,12 @@ const teamData = [
         role: "Events Team"
       },
       {
-        name: "Ayush kumar",
+        name: "Ayush Kumar",
         imageUrl: "/team/Ayushkumar.jpg",
         email: "ayush.kumar.cd.phy23@itbhu.ac.in",
         instagram: "_aayushku",
         linkedin: "https://www.linkedin.com/in/mr-ayush-kumar-305a012b6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-        role: "Event team"
+        role: "Events Team"
       }
     ]
   },
@@ -92,7 +100,7 @@ const teamData = [
         email: "vanshika.srivastava.mst23@itbhu.ac.in",
         instagram: "",
         linkedin: "",
-        role: "Content Team Head"
+        role: "Content Team"
       },
       {
         name: "S Adithyaraj",
@@ -100,7 +108,7 @@ const teamData = [
         email: "s.adithyaraj.mst23@itbhu.ac.in",
         instagram: "1_adithya_1",
         linkedin: "https://www.linkedin.com/in/sadithyaraj?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-        role: "Content Head"
+        role: "Content Team"
       }
     ]
   },
@@ -114,7 +122,7 @@ const teamData = [
         email: "aditya.kumar.cer23@itbhu.ac.in",
         instagram: "adi12_73",
         linkedin: "",
-        role: "Design team head"
+        role: "Design Team"
       }
     ]
   },
@@ -128,7 +136,7 @@ const teamData = [
         email: "zubin677@gmail.com",
         instagram: "imran_khandakar07",
         linkedin: "https://www.linkedin.com/in/imran-khandakar-b09b48317/",
-        role: "Marketing Head"
+        role: "Marketing Team"
       }
     ]
   },
@@ -142,7 +150,7 @@ const teamData = [
         email: "khandagale.maheshwarib.mst23@itbhu.ac.in",
         instagram: "",
         linkedin: "https://www.linkedin.com/in/maheshwari-khandagale-67a112285",
-        role: "Pr head"
+        role: "PR Team"
       },
       {
         name: "Rishi Raj",
@@ -150,7 +158,7 @@ const teamData = [
         email: "rishi.raj.met23@itbhu.ac.in",
         instagram: "rishi1218raj",
         linkedin: "https://www.linkedin.com/in/rishi-raj-5013a728a/",
-        role: "Public Relations Head"
+        role: "PR Team"
       }
     ]
   },
@@ -164,7 +172,7 @@ const teamData = [
         email: "md.kaif.met23@itbhu.ac.in",
         instagram: "muhammadkaif1804",
         linkedin: "",
-        role: "Publicity Head"
+        role: "Publicity Team"
       }
     ]
   }
