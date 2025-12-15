@@ -122,6 +122,14 @@ const Navbar = () => {
                 </li>
                 <li className="place-self-center">
                   <Link
+                    to="/sponsors"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
+                  >
+                    Sponsors
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
                     to="/events"
                     className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
                   >
@@ -329,6 +337,16 @@ const Navbar = () => {
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
                         <span className="whitespace-nowrap">Team</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/sponsors"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Sponsors</span>
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
