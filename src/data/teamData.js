@@ -91,6 +91,27 @@ const teamData = [
     ]
   },
   {
+    teamTitle: "Tech Team",
+    teamRank: 3.5,
+    members: [
+      {
+        name: "Roshan Mittal",
+        imageUrl: "",
+        email: "roshan.mittal.che23@itbhu.ac.in",
+        instagram: "roshanmittal_",
+        linkedin: "www.linkedin.com/in/roshanmittal",
+        role: "Tech Team"
+      },{
+        name: "Tejas Ashri",
+        imageUrl: "",
+        email: "tejasashri2004@gmail.com",
+        instagram: "tejas_ashri",
+        linkedin: "https://www.linkedin.com/in/tejas-ashri-326882216/",
+        role: "Tech Team"
+      }
+    ]
+  },
+  {
     teamTitle: "Content Team",
     teamRank: 4,
     members: [
