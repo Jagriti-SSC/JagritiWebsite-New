@@ -75,7 +75,7 @@
   font-size: 1.2rem;
   opacity: 0.8;
   margin-top: 0.5rem;
-  font-weight: 300;
+  font-weight: 700;
   transition: all 0.3s ease;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .cursive-font-light {
-  font-family: 'Lucida Handwriting', 'Bradley Hand', 'Comic Sans MS', cursive;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
 }
 
@@ -135,7 +135,7 @@
 
 .description-text {
   font-size: 1.2rem;
-  color: #555;
+  color: #000000;
   line-height: 1.6;
   margin: 0;
 }
