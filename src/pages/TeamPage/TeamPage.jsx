@@ -128,125 +128,89 @@ function TeamPage() {
       <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
         {/* Hero Section */}
         <section className="hero-section">
-
           <div className="hero-container">
-            {/* Main Title */}
-            <motion.div 
+            
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="hero-title-container"
+              transition={{ duration: 0.5 }}
             >
-              <h1 className="hero-main-title cursive-font">
-                Meet Our <span className="hero-highlight cursive-font">Team</span>
-              </h1>
-              <motion.div 
-                className="hero-subscript"
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-              >
-                The Heart of Jagriti
-              </motion.div>
+              <span className="tech-badge">
+                &lt; SYSTEM_READY /&gt;
+              </span>
             </motion.div>
 
-            {/* Typewriter Section */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="hero-title-container"
+            >
+              <h1 className="hero-main-title">
+                JAGRITI <span className="hero-highlight">TEAM</span>
+              </h1>
+            </motion.div>
+
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="typewriter-container"
             >
-              <div className="typewriter-wrapper cursive-typewriter">
+              <div className="typewriter-wrapper" style={{ fontFamily: "'Courier New', monospace", color: "#1a589b" }}>
+                <span style={{ marginRight: '10px' }}>$</span>
                 <Typewriter
                   options={{
                     strings: [
-                      "Passionate Changemakers",
-                      "Dedicated Volunteers", 
-                      "Creative Minds at Work",
-                      "Building Social Awareness",
-                      "Together for a Better Tomorrow",
-                      "Empowering Through Education"
+                      "initiate_change()",
+                      "deploy_solutions()", 
+                      "empower_users()",
+                      "execute_vision()"
                     ],
                     autoStart: true,
                     loop: true,
-                    delay: 60,
-                    deleteSpeed: 40,
-                    cursor: '|',
-                    cursorClassName: 'typewriter-cursor'
+                    delay: 50,
+                    deleteSpeed: 30,
                   }}
                 />
               </div>
             </motion.div>
 
-            {/* Description */}
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
               className="hero-description"
             >
-              <p className="description-text cursive-font-light">
-                A diverse group of passionate individuals united by a common goal: to enlighten, educate, and empower through meaningful social initiatives.
+              <p className="description-text">
+                The architects, developers, and visionaries building the future of social impact.
               </p>
             </motion.div>
-
-            {/* SCROLL INDICATOR */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.1, repeat: Infinity, repeatDelay: 2 }}
-              className="scroll-indicator"
-              onClick={() => {
-                const filterSection = document.querySelector('.filter-section');
-                if (filterSection) {
-                  filterSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              <div className="scroll-arrow"></div>
-            </motion.div>
-          </div>
-
-          {/* Floating Elements */}
-          <div className="floating-elements">
-            <div className="floating-element element-1"></div>
-            <div className="floating-element element-2"></div>
-            <div className="floating-element element-3"></div>
-            <div className="floating-element element-4"></div>
           </div>
         </section>
 
-        {/* --- NEW DIAMOND GRID FILTER SECTION --- */}
+        {/* --- NEW MODERN FILTER SECTION --- */}
         <div className="filter-section">
-          <div className="diamond-grid-container">
+          <div className="filter-container">
             
-            {/* "All" Diamond */}
+            {/* "All" Tab */}
             <div 
-              className={`diamond-wrapper ${active === "All" ? "active" : ""}`}
+              className={`filter-tab ${active === "All" ? "active" : ""}`}
               onClick={() => gallery_filter("All")}
             >
-              <div className="diamond-shape">
-                <div className="diamond-content">
-                  <FontAwesomeIcon icon={faLayerGroup} className="diamond-icon" />
-                </div>
-              </div>
-              <span className="diamond-label">All Teams</span>
+              <FontAwesomeIcon icon={faLayerGroup} className="filter-icon" />
+              <span>All Teams</span>
             </div>
 
-            {/* Dynamic Team Diamonds */}
+            {/* Dynamic Team Tabs */}
             {collection.map((item, index) => (
               <div 
                 key={index}
-                className={`diamond-wrapper ${active === item ? "active" : ""}`}
+                className={`filter-tab ${active === item ? "active" : ""}`}
                 onClick={() => gallery_filter(item)}
               >
-                <div className="diamond-shape">
-                  <div className="diamond-content">
-                    <FontAwesomeIcon icon={getTeamIcon(item)} className="diamond-icon" />
-                  </div>
-                </div>
-                <span className="diamond-label">{item}</span>
+                <FontAwesomeIcon icon={getTeamIcon(item)} className="filter-icon" />
+                <span>{item}</span>
               </div>
             ))}
 

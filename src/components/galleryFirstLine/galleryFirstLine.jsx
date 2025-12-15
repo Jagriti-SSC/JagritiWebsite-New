@@ -44,20 +44,20 @@ const GalleryFirstLine = () => {
       </div >
       <Marquee style={{overflow:"hidden"}} gradient={false} speed="25" className="py-5 w-full mx-auto relative" >
         
-        <p className="cursor-pointer mx-10 ">One Frame One Cause</p>
-        <p className="cursor-pointer mx-10 ">Visual Catalysts</p>
-        <p className="cursor-pointer mx-10 ">AI Hackathon</p>
-        <p className="cursor-pointer mx-10 ">Spot The Green</p>
-        <p className="cursor-pointer mx-10 ">Social Entrepreneurship Hackathon</p>
-        <p className="cursor-pointer mx-10 ">Beautiful Impact</p>
-        <p className="cursor-pointer mx-10 ">Page Painting</p>
-        <p className="cursor-pointer mx-10 ">Eye Checkup</p>
-        <p className="cursor-pointer mx-10 ">Policy Challenge</p>
-        <p className="cursor-pointer mx-10 ">Global Debate</p>
-        <p className="cursor-pointer mx-10 ">NGO Activity</p>
-        <p className="cursor-pointer mx-10 ">Kulhad/Gullak Painting</p>
-        <p className="cursor-pointer mx-10 ">Leadership Symposium</p>
-        <p className="cursor-pointer mx-10 ">Self Defence Workshop</p>
+        <p className="cursor-pointer mx-10 font-bold">One Frame One Cause</p>
+        <p className="cursor-pointer mx-10 font-bold">Visual Catalysts</p>
+        <p className="cursor-pointer mx-10 font-bold">AI Hackathon</p>
+        <p className="cursor-pointer mx-10 font-bold">Spot The Green</p>
+        <p className="cursor-pointer mx-10 font-bold">Social Entrepreneurship Hackathon</p>
+        <p className="cursor-pointer mx-10 font-bold">Beautiful Impact</p>
+        <p className="cursor-pointer mx-10 font-bold">Page Painting</p>
+        <p className="cursor-pointer mx-10 font-bold">Eye Checkup</p>
+        <p className="cursor-pointer mx-10 font-bold">Policy Challenge</p>
+        <p className="cursor-pointer mx-10 font-bold">Global Debate</p>
+        <p className="cursor-pointer mx-10 font-bold">NGO Activity</p>
+        <p className="cursor-pointer mx-10 font-bold">Kulhad/Gullak Painting</p>
+        <p className="cursor-pointer mx-10 font-bold">Leadership Symposium</p>
+        <p className="cursor-pointer mx-10 font-bold">Self Defence Workshop</p>
 
       </Marquee>
       <Marquee style={{overflow:"hidden"}} direction="right" gradient={false} speed="35" className="py-5 w-full mx-auto relative" >
