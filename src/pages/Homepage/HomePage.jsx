@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import "./HomePage.css";
-import Sponsor from "../../components/Sponsor/Sponsor";
 import Throwback from "../../components/Throwback/Throwback";
 import jagriti from "../../assets/Jagriti_white.webp";
 import Clock from "../../components/Clock/Clock";
@@ -88,7 +87,6 @@ const HomePage = () => {
 
       <Throwback></Throwback>
 
-      <Sponsor></Sponsor>
       <Footer />
     </>
   );
