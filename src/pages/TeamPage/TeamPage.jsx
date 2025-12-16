@@ -3,72 +3,80 @@ import { v4 as uuidv4 } from "uuid";
 import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
-import { useFirebase } from "../../context/Firebase";
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import Typewriter from 'typewriter-effect';
+
+// FontAwesome Imports for the Diamond Grid Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faLaptopCode, // Tech
+  faPenNib,     // Creative/Content
+  faBullhorn,   // PR/Marketing
+  faUsers,      // HR/All
+  faCalendarCheck, // Events
+  faHandHoldingHeart, // Social/Volunteers
+  faCamera,     // Media
+  faSitemap,    // Management/Logistics
+  faLayerGroup,  // Default/Misc
+  faUserTie,    // Convenors
+  faBriefcase,  // Council Secretary
+  faPalette,    // Design
+  faNewspaper,  // Content
+  faChartLine,  // Marketing
+  faHandshake   // PR
+} from '@fortawesome/free-solid-svg-icons';
+
+// Import local data
+import teamData from "../../data/teamData.js"; 
 
 function TeamPage() {
-  const firebase = useFirebase();
-
   const [data, setData] = useState([]);
-  const [memberCount, setMemberCount] = useState(0);
   const [fixedData, setFixedData] = useState([]);
   const [collection, setCollection] = useState([]);
-  const [active, setActive] = useState("Our Team");
-  const [activebtn, setActiveBtn] = useState("Our Team");
+  const [active, setActive] = useState("All");
+  const [loading, setLoading] = useState(true);
 
-  const [width, setWidth] = useState(0);
-  const carousel = useRef(null);
-  const innerCarousel = useRef(null);
   const galleryRef = useRef(null);
-  const cardRef = useRef(null);
   const teamPageRef = useRef(null);
-  const spinnerRef = useRef(null);
-  //option to remove drag of teams categories
-  useEffect(() => {
-    const handleResize = () => {
-      const isOverflowing = carousel.current.scrollWidth > carousel.current.offsetWidth;
-      setWidth(isOverflowing ? carousel.current.scrollWidth - carousel.current.offsetWidth : 0);
-    };
 
-    handleResize(); // Call the function initially
-
-    window.addEventListener('resize', handleResize); // Listen for resize events
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Clean up the event listener
-    };
-  }, []);
-
-  // Function to scroll the carousel to the right
-  const scrollToRight = () => {
-    carousel.current.scrollLeft += 150; // Adjust the scroll amount as needed
+  // Helper function to map Team Titles to Icons
+  const getTeamIcon = (title) => {
+    const lowerTitle = title.toLowerCase();
+    
+    if (lowerTitle === "all") return faLayerGroup;
+    if (lowerTitle.includes("conven")) return faUserTie;
+    if (lowerTitle.includes("secret") || lowerTitle.includes("council")) return faBriefcase;
+    if (lowerTitle.includes("tech") || lowerTitle.includes("web") || lowerTitle.includes("code")) return faLaptopCode;
+    if (lowerTitle.includes("design") || lowerTitle.includes("art") || lowerTitle.includes("creat")) return faPalette;
+    if (lowerTitle.includes("content") || lowerTitle.includes("edit") || lowerTitle.includes("write")) return faNewspaper;
+    if (lowerTitle.includes("market")) return faChartLine;
+    if (lowerTitle.includes("pr") || lowerTitle.includes("relation")) return faHandshake;
+    if (lowerTitle.includes("public") || lowerTitle.includes("outreach")) return faBullhorn;
+    if (lowerTitle.includes("event") || lowerTitle.includes("manag") || lowerTitle.includes("logist")) return faCalendarCheck;
+    if (lowerTitle.includes("media") || lowerTitle.includes("photo") || lowerTitle.includes("video")) return faCamera;
+    if (lowerTitle.includes("social") || lowerTitle.includes("volunt") || lowerTitle.includes("ngo")) return faHandHoldingHeart;
+    if (lowerTitle.includes("head") || lowerTitle.includes("lead") || lowerTitle.includes("core")) return faSitemap;
+    
+    return faUsers; // Default fallback
   };
-  const scrollToLeft = () => {
-    carousel.current.scrollLeft -= 150; // Adjust the scroll amount as needed
-  };
-  // Team Fetching
-  const fetchTeamData = async () => {
-    const Data = await firebase.getAllDocuments("team");
-    const sortedData = [...Data].sort((a, b) => {
-      return a.teamRank - b.teamRank;
-    });
-    console.log(sortedData);
 
+  // Team Fetching from local data
+  const fetchTeamData = () => {
+    setLoading(true);
+    
+    const localData = teamData || [];
+    const sortedData = [...localData].sort((a, b) => a.teamRank - b.teamRank);
+    
     setData(sortedData);
     setFixedData(sortedData);
-    setMemberCount(0);
-    sortedData.forEach((item) =>
-      setMemberCount((prev) => prev + item.members.length)
-    );
-    setCollection([...new Set(sortedData.map((item) => item.teamTitle))]);
+    
+    // Get unique team titles
+    const uniqueTitles = ["All", ...new Set(sortedData.map((item) => item.teamTitle))];
+    setCollection(uniqueTitles.filter(title => title !== "All")); // Filter out "All" as we handle it manually
+    
     setTimeout(() => {
-      if (spinnerRef.current) {
-        spinnerRef.current.style.display = "none";
-      }
-    }, 1200);
+      setLoading(false);
+    }, 800);
   };
 
   useEffect(() => {
@@ -76,141 +84,225 @@ function TeamPage() {
     document.title = "Our Team | Jagriti - IIT (BHU)";
   }, []);
 
-  useEffect(() => {
-    // console.log(carousel.current)
-
-    // setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
-    console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
-  }, [fixedData]);
-
-  useEffect(() => {
-    const totalCards = Math.floor(
-      galleryRef.current?.offsetWidth / (cardRef.current?.offsetWidth + 20)
-    );
-    console.log(memberCount);
-    if (memberCount < totalCards) {
-      galleryRef.current.style.justifyContent = "flex-start";
-    } else {
-      galleryRef.current.style.justifyContent = "center";
-    }
-    // console.log(totalCards, data.length, data)
-  }, [active, memberCount]);
-
   const gallery_filter = (itemData) => {
-    setMemberCount(0);
-    const filterData = fixedData.filter((item) => {
-      if (item.teamTitle === itemData)
-        setMemberCount((prev) => prev + item.members.length);
-      return item.teamTitle === itemData;
-    });
-
-    setData(filterData);
-    setActive(itemData);
-    setActiveBtn("");
+    if (itemData === "All") {
+      setData(fixedData);
+      setActive("All");
+    } else {
+      const filterData = fixedData.filter((item) => item.teamTitle === itemData);
+      setData(filterData);
+      setActive(itemData);
+    }
   };
-  function setColor() {
-    setMemberCount(0);
-    fixedData.forEach((item, index) => {
-      setMemberCount((prev) => prev + item.members.length);
+
+  // Group members by team title for "All" view
+  const getGroupedData = () => {
+    if (active !== "All") return null;
+    
+    const grouped = {};
+    fixedData.forEach(item => {
+      if (!grouped[item.teamTitle]) {
+        grouped[item.teamTitle] = [];
+      }
+      grouped[item.teamTitle] = grouped[item.teamTitle].concat(item.members.map(member => ({
+        ...member,
+        teamTitle: item.teamTitle
+      })));
     });
-    setData(fixedData);
-    setActiveBtn("Our Team");
-    setActive("Our Team");
-  }
+    
+    return grouped;
+  };
+
+  const groupedData = getGroupedData();
 
   return (
     <div className="bg">
-      <div className="flex items-center justify-center " ref={spinnerRef}>
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-            Loading...
-          </span>
+      {/* Loading Spinner */}
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
         </div>
-      </div>
-      <div className="galleryWrapper" ref={teamPageRef}>
-        <div className="filterItem">
-          <div className="our-team">
-            <h1>{active}</h1>
-          </div> 
+      )}
 
-          <div className="container_carousel">
-            {width > 0 && (<div className="scroll-icon" onClick={scrollToLeft}>
-              <FontAwesomeIcon icon={faChevronLeft} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingRight: 5 }} />
-            </div>)}
+      {/* Main Content */}
+      <div className={`team-page-content ${loading ? 'loading' : ''}`} ref={teamPageRef}>
+        {/* Hero Section */}
+        <section className="hero-section">
+          <div className="hero-container">
+            
             <motion.div
-              ref={carousel}
-              // className="carousel"
-              // whileTap={{ cursor: "grabbing" }}
-              // style={{ overflowX: width > 0 ? 'scroll' : 'hidden' }}
-              class="flex overflow-x-auto hide-scrollbar justify-between m-4 items-center mb-4 space-x-10 "
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <div
+              <span className="tech-badge">
+                &lt; CORE_TEAM /&gt;
+              </span>
+            </motion.div>
 
-                className="inner-carousel"
-                ref={innerCarousel}
-                // drag="x"
-                // dragConstraints={{
-                //   right: 0,
-                //   left: -width,
-                // }}
-              >
-                <button
-                  onClick={setColor}
-                // className={activebtn === "Our Team" ? "selected" : " "}
-                >
-                  All
-                </button>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="hero-title-container"
+            >
+              <h1 className="hero-main-title">
+                JAGRITI <span className="hero-highlight">TEAM</span>
+              </h1>
+            </motion.div>
 
-                {collection.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      gallery_filter(item);
-                    }}
-                    className={active === item ? "selected" : " "}
-                  >
-                    {item}
-                  </button>
-                ))}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="typewriter-container"
+            >
+              <div className="typewriter-wrapper" style={{ fontFamily: "'Courier New', monospace", color: "#1a589b" }}>
+                <span style={{ marginRight: '10px' }}>$</span>
+                <Typewriter
+                  options={{
+                    strings: [
+                      "initiate_change()",
+                      "deploy_solutions()", 
+                      "empower_users()",
+                      "execute_vision()"
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 30,
+                  }}
+                />
               </div>
             </motion.div>
-            {width > 0 && (
-              <div className="scroll-icon" onClick={scrollToRight}>
-                <FontAwesomeIcon icon={faChevronRight} style={{ fontSize: '40px', color: 'rgb(65, 98, 168)', paddingBottom: 15, paddingLeft: 5 }} />
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="hero-description"
+            >
+              <p className="description-text">
+                The architects, developers, and visionaries building the future of social impact.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* --- NEW MODERN FILTER SECTION --- */}
+        <div className="filter-section">
+          <div className="filter-container">
+            
+            {/* "All" Tab */}
+            <div 
+              className={`filter-tab ${active === "All" ? "active" : ""}`}
+              onClick={() => gallery_filter("All")}
+            >
+              <FontAwesomeIcon icon={faLayerGroup} className="filter-icon" />
+              <span>All Teams</span>
+            </div>
+
+            {/* Dynamic Team Tabs */}
+            {collection.map((item, index) => (
+              <div 
+                key={index}
+                className={`filter-tab ${active === item ? "active" : ""}`}
+                onClick={() => gallery_filter(item)}
+              >
+                <FontAwesomeIcon icon={getTeamIcon(item)} className="filter-icon" />
+                <span>{item}</span>
               </div>
-            )}</div>
+            ))}
+
+          </div>
         </div>
-        <motion.div layout className="galleryContainer" ref={galleryRef}>
-          <AnimatePresence>
-            {data.map((item, index) =>
-              item.members.map((member) => (
-                <motion.div
-                  animate={{ opacity: 1, scale: 1 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  transition={{ duration: 0.36 }}
-                  layout
-                  key={uuidv4()}
-                  className="galleryItem"
-                  ref={cardRef}
+
+        {/* Team Members Grid */}
+        <div className="team-content">
+          {active === "All" && groupedData ? (
+            // Grouped view for All Teams
+            Object.entries(groupedData).map(([teamTitle, members]) => (
+              <div key={teamTitle} className="team-group">
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="team-group-title"
                 >
-                  <TeamCard
-                    name={member.name}
-                    image={member.imageUrl}
-                    post={item.teamTitle}
-                    icon={item.iconUrl}
-                    gmail={member.email}
-                    instagram={member.instagram}
-                    linkedin={member.linkedin}
-                  />
+                  {teamTitle}
+                </motion.h2>
+                <motion.div 
+                  layout
+                  className="galleryContainer" 
+                  ref={galleryRef}
+                >
+                  <AnimatePresence>
+                    {members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          role={member.role}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </motion.div>
-              ))
-            )}
-          </AnimatePresence>
-        </motion.div>
+              </div>
+            ))
+          ) : (
+            // Single team view
+            <div className="team-group">
+              <motion.h2 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="team-group-title"
+              >
+                {active}
+              </motion.h2>
+              <motion.div 
+                layout
+                className="galleryContainer" 
+                ref={galleryRef}
+              >
+                <AnimatePresence>
+                  {data.map((item) =>
+                    item.members.map((member) => (
+                      <motion.div
+                        key={uuidv4()}
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="galleryItem"
+                      >
+                        <TeamCard
+                          name={member.name}
+                          image={member.imageUrl}
+                          role={member.role}
+                          gmail={member.email}
+                          instagram={member.instagram}
+                          linkedin={member.linkedin}
+                        />
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </div>
+          )}
+        </div>
       </div>
       <Footer />
     </div>

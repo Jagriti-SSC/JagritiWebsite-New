@@ -11,6 +11,7 @@ import EventsPage from "./pages/EventsPage/EventsPage";
 import Events2Page from "./pages/Events2Page/Events2Page";
 import HomePage from "./pages/Homepage/HomePage";
 import TeamPage from "./pages/TeamPage/TeamPage";
+import SponsorsPage from "./pages/SponsorsPage/SponsorsPage";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import FaqPage from "./pages/FaqPage/FaqPage";
@@ -40,6 +41,7 @@ function App() {
           {/* <Route exact path="/events" element={<EventsPage />} /> made new event page */}
           <Route exact path="/events" element={<Events2Page />} />
           <Route exact path="/team" element={<TeamPage />} />
+          <Route exact path="/sponsors" element={<SponsorsPage />} />
           <Route exact path="/faqs" element={<FaqPage />} />
           <Route exact path="/gallery" element={<GalleryPage />} />
           <Route

@@ -1,168 +1,314 @@
 .bg {
   background: url('/public/assets/bg.png');
   background-size: cover;
-  min-height: "210vh";
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  position: relative;
 }
-.card:hover h1,
-.card:hover p {
-  opacity: 1;
-}
-.container_carousel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Optional: adjust alignment as needed */
-}
-.scroll-icon {
-  cursor: pointer;
-  size: 50;
-  padding-bottom: 2;
-  /* Add additional styling as needed */
-}
-.galleryWrapper {
-    padding: 1.0% 7%;
- }
 
-.galleryItem img {
+/* Team Page Content */
+.team-page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* =========================================
+   TECH HERO SECTION
+   ========================================= */
+
+.hero-section {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(#e5e7eb 1px, transparent 1px),
+    linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+  background-size: 40px 40px;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, #ffffff 90%);
+  pointer-events: none;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
   width: 100%;
-  height: 35vh;
-  object-fit: cover;
-  border-radius: 1rem;
+  text-align: center;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(26, 88, 155, 0.1);
+  color: #1a589b;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(26, 88, 155, 0.2);
+  letter-spacing: 2px;
+}
+
+.hero-main-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+  letter-spacing: -3px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero-highlight {
+  color: transparent;
+  -webkit-text-stroke: 2px #1a589b;
+  position: relative;
+}
+
+.hero-highlight::before {
+  content: 'TEAM';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #1a589b;
+  width: 0%;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  white-space: nowrap;
+  -webkit-text-stroke: 0;
+}
+
+.hero-main-title:hover .hero-highlight::before {
+  width: 100%;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  color: #64748b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Filter Section - Tech Style */
+.filter-section {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+  margin: 0 -2rem 2rem;
+  border-bottom: 1px solid #1a589b;
+}
+
+.filter-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.filter-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.filter-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px; /* Sharper corners */
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  font-family: 'Courier New', monospace; /* Tech font */
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-tab:hover {
+  color: #1a589b;
+  border-color: #1a589b;
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(26, 88, 155, 0.1);
+}
+
+.filter-tab.active {
+  background: #1a589b;
+  color: white;
+  border-color: #1a589b;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.filter-icon {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+  }
+}
+
+/* --- Team Content --- */
+.team-content {
+  padding: 0 0 4rem;
+}
+
+.team-group {
+  margin-bottom: 5rem;
+}
+
+.team-group-title {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1a589b;
+  display: inline-block;
+  position: relative;
+}
+
+.team-group-title::before {
+  content: '// ';
+  color: #1a589b;
 }
 
 .galleryContainer {
-  display: flex;
-  align-items:center;
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-
-  flex-wrap: wrap;
-  justify-content:center;
-  gap: 20px;
-}
-.carousel
-{
-  margin:  0 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: grab;
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 20px 0;
 }
 
-.inner-carousel {
+
+
+.galleryItem {
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover {
+  transform: translateY(-10px);
+}
+
+/* Remove unused classes */
+.card, .img, .link-team, .heading, .position-title {
+  display: none;
+}
+
+/* Loading Spinner */
+.spinner-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
-  
-  /* height:6vh; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); */
   align-items: center;
-  margin-bottom: 20px;
-  gap: 10px;
-}
-
-.inner-carousel button {
-  margin-right: 0.8rem;
-  /* min-width: 5rem; */
-  width: 100%;
-  height: 100%;
-  padding: 0.3rem 0.8rem;
-  border: none;
-  background: white;
-  color: rgb(65, 98, 168);
-  border-radius: 8px;
-  font-family: "Poppins";
-  border: 1.5px solid rgb(65, 98, 168);
-  font-weight: 550;
-  cursor: pointer;
- 
-}
-
-/* .filterItem ul button:hover {
-  background: rgb(65, 98, 168);
-  border: 2px solid rgb(65, 98, 168);
-  color: azure;
-} */
-.filterItem .selected {
-  background: rgb(65, 98, 168);
-  border: 2px solid rgb(65, 98, 168);
-  color: azure;
-}
-.galleryItem img {
-  border-radius: 15px;
-}
-.position-title {
-  display: flex;
   justify-content: center;
-  font-family: "Poppins";
-  font-size: 1.2rem;
+  z-index: 1000;
 }
-/* BUTTON */
-.card {
-  width: 230px;
-  height: 265px;
-  background: #07182e;
-  border-radius: 5px;
-  text-align: center;
-  color: #f0f0f0;
-  font-family: inherit;
-  z-index: 1;
-}
-.img {
-  padding: 1.5rem;
-}
-.img img {
-  display: flex;
-  width: 120px;
-  height: 120px;
-  margin: auto;
-  border: 1px solid #f0f0f0;
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1a589b;
   border-radius: 50%;
-  font-size: 11px;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s;
-  z-index: 9;
-  background-color: #152f50;
+  animation: spin 1s linear infinite;
 }
 
-.link-team {
-  opacity: 0;
-  transition: all 0.5s;
-  display: flex;
-  font-size: 1.3rem;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.heading {
-  padding: 10px;
-  font-weight: 500;
-  font-size: 18px;
+/* --- Responsive Design --- */
+
+@media screen and (max-width: 1024px) {
+  .hero-main-title {
+    font-size: 3.5rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 2rem;
+  }
 }
 
-.card:hover h1,
-.card:hover p {
-  opacity: 1;
+@media screen and (max-width: 768px) {
+  .hero-section {
+    min-height: 40vh;
+    padding: 3rem 1rem 0;
+  }
+  
+  .hero-main-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subscript {
+    font-size: 1rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.8rem;
+    height: 50px;
+  }
+  
+  .team-page-content {
+    padding: 0 1rem 3rem;
+  }
+
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
 }
-.our-team {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 4rem;
-  /* font-family: "Poppins"; */
-  padding-bottom: 1rem;
-}
-.our-team h1 {
-  margin: 20px 0px;
-  text-align: center;
-  font-family: "Montserrat";
-  /* font-style: normal; */
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 44px;
-  color: #1a589b;
-}
-@media screen and (max-width: 450px) {
-  .our-team {
-    font-size: 2.5rem;
+
+@media screen and (max-width: 480px) {
+  .hero-main-title {
+    font-size: 2.2rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.4rem;
+    height: 40px;
+  }
+  
+  .team-group-title {
+    font-size: 1.8rem;
+  }
+
+  .galleryContainer {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
   }
 }
