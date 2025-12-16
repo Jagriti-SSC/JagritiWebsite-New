@@ -136,7 +136,7 @@ function TeamPage() {
               transition={{ duration: 0.5 }}
             >
               <span className="tech-badge">
-                &lt; SYSTEM_READY /&gt;
+                &lt; CORE_TEAM /&gt;
               </span>
             </motion.div>
 
