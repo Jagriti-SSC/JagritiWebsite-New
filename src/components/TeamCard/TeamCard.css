@@ -167,4 +167,10 @@
   .member-role {
     font-size: 0.75rem;
   }
+
+  .social-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  }
 }

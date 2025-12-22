@@ -151,30 +151,7 @@ function TeamPage() {
               </h1>
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="typewriter-container"
-            >
-              <div className="typewriter-wrapper" style={{ fontFamily: "'Courier New', monospace", color: "#1a589b" }}>
-                <span style={{ marginRight: '10px' }}>$</span>
-                <Typewriter
-                  options={{
-                    strings: [
-                      "initiate_change()",
-                      "deploy_solutions()", 
-                      "empower_users()",
-                      "execute_vision()"
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    delay: 50,
-                    deleteSpeed: 30,
-                  }}
-                />
-              </div>
-            </motion.div>
+
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
