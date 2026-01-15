@@ -5,35 +5,48 @@ import { Instagram } from "@styled-icons/boxicons-logos/Instagram";
 import { Linkedin } from "@styled-icons/boxicons-logos/Linkedin";
 
 function TeamCard(props) {
-  // console.log(props.image);
+  const imagePath = props.image ? encodeURI(props.image) : "";
+  
   return (
-    <div className="cardbox" style={{ backgroundImage: `url(${props.image})` }}>
-      <div className="card-content">
-        <h2 className="card-title">{props.name}</h2>
-        <div className="teamPost">
-          <img src={props.icon} alt="logo" />
-          <p className="card-body">{props.post}</p>
+    <div className="team-card-modern">
+      <div className="image-container">
+        <img src={imagePath} alt={props.name} className="card-image" loading="lazy" />
+        <div className="social-overlay">
+          <div className="social-icons">
+            {props.gmail && (
+              <a href={"mailto:" + props.gmail} className="social-link gmail" aria-label="Email">
+                <Gmail />
+              </a>
+            )}
+            {props.linkedin && (
+              <a
+                href={props.linkedin.startsWith("http") ? props.linkedin : "//" + props.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link linkedin"
+                aria-label="LinkedIn"
+              >
+                <Linkedin />
+              </a>
+            )}
+            {props.instagram && (
+              <a
+                href={"https://instagram.com/" + props.instagram.replace("@", "")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link instagram"
+                aria-label="Instagram"
+              >
+                <Instagram />
+              </a>
+            )}
+          </div>
         </div>
-
-        <div className="btn">
-          <a href={"mailto:" + props.gmail}>
-            <Gmail className=" h-8 text-white hover:text-red"></Gmail>
-          </a>
-          <a
-            href={"//" + props.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Linkedin className=" h-8 text-white hover:text-blue"></Linkedin>
-          </a>
-          <a
-            href={"//" + props.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className=" h-8 text-white hover:text-pink-400"></Instagram>
-          </a>
-        </div>
+      </div>
+      
+      <div className="info-container">
+        <h3 className="member-name">{props.name}</h3>
+        <p className="member-role">{props.role}</p>
       </div>
     </div>
   );

@@ -1,174 +1,176 @@
-:root {
-  --clr-neutral-100: #ffffff;
-}
-
-/* ==========================
-   RESET
-   ========================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* ==========================
-   CARD WRAPPER
-   ========================== */
-.cardbox {
-  color: var(--clr-neutral-100);
-  background-size: cover;
-  padding: 10rem 0 0;
-  min-width: 28ch;
-  max-width: 35ch;
-  margin: 10px;
-  flex: 100%;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative;
-
-  transition: transform 500ms ease;
-  background-color: #000; /* just fallback */
-}
-
-.cardbox:hover,
-.cardbox:focus-within {
-  transform: scale(1.05);
-}
-
-/* ==========================
-   CONTENT AREA
-   ========================== */
-.card-content {
-  --padding: 2rem;
-  padding: var(--padding);
-
-  /* stronger fade so text is readable on all images */
-  background: linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.6) 25%,
-    rgba(0, 0, 0, 0.9)
-  );
-}
-
-.cardbox:hover .card-content > *:not(.card-title),
-.cardbox:focus-within .card-content > *:not(.card-title) {
-  opacity: 1;
-  transition-delay: 300ms;
-}
-
-/* ==========================
-   CARD TITLE
-   ========================== */
-.card-title {
-  color: white !important;
-  position: relative;
+.team-card-modern {
   width: 100%;
-  max-width: 100%;
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 1.2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;   /* restrict to 2 lines */
-  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: default;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
   overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  hyphens: auto;
-  text-align: center;
-  margin-bottom: 8px;
 }
 
-
-.card-title::after {
-  content: "";
+.team-card-modern::before {
+  content: '';
   position: absolute;
-  height: 3px;
-  left: calc(var(--padding) * -1);
-  bottom: 0px;
-  width: calc(100% + var(--padding));
-  background-color: #5aa0ff;
+  top: 0; left: 0; width: 100%; height: 4px;
+  background: #1a589b;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 10;
 }
 
-.cardbox:hover .card-title::after,
-.cardbox:focus-within .card-title::after {
+.team-card-modern:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+  border-color: #1a589b;
+}
+
+.team-card-modern:hover::before {
   transform: scaleX(1);
 }
 
-/* ==========================
-   POST TEXT
-   ========================== */
-.card-body {
-  color: white !important;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: large;
-  font-weight: bold;
+.image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* ==========================
-   HOVER ANIMATION (DESKTOP ONLY)
-   ========================== */
-@media (hover) {
-  .card-content {
-    transform: translateY(52%);
-    transition: transform 500ms ease;
-  }
-
-  .cardbox:hover .card-content,
-  .cardbox:focus-within .card-content {
-    transform: translateY(0);
-    transition-delay: 300ms;
-  }
-
-  .card-content > *:not(.card-title) {
-    opacity: 0;
-    transition: opacity 400ms linear;
-  }
-
-  .card-title::after {
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 300ms ease;
-  }
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0%);
+  transition: filter 0.4s ease, transform 0.5s ease;
 }
 
-/* ==========================
-   ACTION BUTTONS (ICONS)
-   ========================== */
-.btn {
+.team-card-modern:hover .card-image {
+  filter: grayscale(100%);
+  transform: scale(1.03);
+}
+
+.social-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.team-card-modern:hover .social-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px; /* Square with slight radius */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  cursor: pointer;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
-.btn svg {
-  color: white !important;          /* ALWAYS white */
-  transition: opacity 200ms ease;
+.social-link:hover {
+  background: #1a589b;
+  color: white;
+  border-color: #1a589b;
+  transform: translateY(-2px);
 }
 
-.btn a:hover svg {
-  opacity: 0.8;
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
-/* ==========================
-   POST ICON
-   ========================== */
-.teamPost {
+.info-container {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  background: #fff;
+  position: relative;
+}
+
+/* Tech decoration lines */
+.info-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: 
+    linear-gradient(to left, #cbd5e1 1px, transparent 1px),
+    linear-gradient(to top, #cbd5e1 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.member-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.4rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.member-role {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #1a589b;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.teamPost img {
-  height: 33px;
-  width: 33px;
+.member-role::before {
+  content: '[';
+  margin-right: 4px;
+  color: #94a3b8;
 }
 
-/* spacing for small screens */
-@media (max-width: 816px) {
-  .cardbox {
-    margin-bottom: 1rem;
+.member-role::after {
+  content: ']';
+  margin-left: 4px;
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .member-name {
+    font-size: 1.1rem;
+  }
+  
+  .member-role {
+    font-size: 0.75rem;
+  }
+
+  .social-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   }
 }

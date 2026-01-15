@@ -109,81 +109,78 @@ const Navbar = () => {
             DESKTOP NAVBAR (unchanged styles)
            ========================= */}
         {isDesktopView && (
-          <nav
-            className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
-          >
-            <div className="flex flex-wrap items-center justify-between ml-20 py-5">
-              <Link to="/" className="items-center ">
-                <img
-                  src="/assets/Jagriti_nav_logo.webp"
-                  className="h-5 smd:h-9"
-                  alt="Jagriti_Logo"
-                />
-              </Link>
-              <div
-                className="hidden w-full smd:block smd:w-auto"
-                id="navbar-default"
-              >
-                <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
-                  <li className="place-self-center">
-                    <Link
-                      to="/about"
-                      className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
-                    >
-                      About
-                    </Link>
-                  </li>
-                  <li className="place-self-center">
-                    <Link
-                      to="/team"
-                      className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
-                    >
-                      Team
-                    </Link>
-                  </li>
-                  <li className="place-self-center">
-                    <Link
-                      to="/events"
-                      className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
-                    >
-                      Events
-                    </Link>
-                  </li>
-                  <li className="place-self-center">
-                    <Link
-                      to="/gallery"
-                      className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
-                    >
-                      Gallery
-                    </Link>
-                  </li>
-                  <li className="place-self-center">
-                    <Link
-                      to="/faqs"
-                      className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
-                    >
-                      FAQs
-                    </Link>
-                  </li>
-                  <li className="place-self-center">
-                    <Link
-                      to="/CampusAmbassador"
-                      className="navitem block py-2 pl-3 pr-4 text-white rounded-[10px] smd:p-0"
-                      style={{
-                        outline: "1px solid white",
-                        padding: "5px",
-                      }}
-                    >
-                      CA Program
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      "place-self-center" +
-                      (localStorage.getItem("user") == null
-                        ? " "
-                        : " w-[0px] m-0")
-                    }
+        <nav
+          className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
+        >
+          <div className="flex flex-wrap items-center justify-between ml-20 py-5">
+            <Link to="/" className="items-center ">
+              <img
+                src="/assets/Jagriti_nav_logo.webp"
+                className="h-5 smd:h-9"
+                alt="Jagriti_Logo"
+              />
+            </Link>
+            <div
+              className="hidden w-full smd:block smd:w-auto"
+              id="navbar-default"
+            >
+              <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
+                <li className="place-self-center">
+                  <Link
+                    to="/about"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/team"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
+                  >
+                    Team
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/sponsors"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
+                  >
+                    Sponsors
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/events"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
+                  >
+                    Events
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/gallery"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/faqs"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
+                  >
+                    FAQs
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/CampusAmbassador"
+                    className="navitem block py-2 pl-3 pr-4 text-white rounded-[10px] smd:p-0"
+                    style={{
+                      outline: "1px solid white",
+                      padding: "5px",
+                    }}
                   >
                     <Link
                       className={`navitem block  pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${
@@ -335,37 +332,85 @@ const Navbar = () => {
                     ></path>
                   </svg>
                 </button>
-              </div>
-
-              {/* MOBILE DRAWER */}
-              {toggle ? (
-                <div
-                  id="drawer-right-example"
-                  className="fixed top-0 right-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform mobile-drawer"
-                >
-                  <button
-                    ref={closeButton}
-                    onClick={() => setToggle(false)}
-                    type="button"
-                    className="mobile-drawer-close-btn inline-flex items-center"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span className="sr-only">Close menu</span>
-                  </button>
-
-                  <div className="py-4 overflow-y-auto">
-                    <ul className="space-y-6 text-center">
-                      <li className="mt-8">
+                <div className="py-4 overflow-y-auto">
+                  <ul className="space-y-6 text-center">
+                    <li className="mt-8">
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/about"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">About</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/team"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Team</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/sponsors"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Sponsors</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/events"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Events</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/gallery"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Gallery</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/faqs"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">FAQs</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/CampusAmbassador"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">CA Program</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    {(localStorage.getItem("user") == null) ? (
+                      <><li
+                        className={"place-self-center mt-[10px]" +
+                          (localStorage.getItem("user") == null
+                            ? " "
+                            : " w-[0px] h-[0px] m-0")}
+                      >
                         <Link
                           onClick={() => closeButton.current.click()}
                           to="/about"
