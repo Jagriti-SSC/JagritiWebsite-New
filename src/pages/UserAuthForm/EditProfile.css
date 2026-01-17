@@ -1,0 +1,272 @@
+/* ============================
+   EDIT PROFILE PAGE LAYOUT
+   ============================ */
+
+.edit-profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 0;
+}
+
+/* Main card (desktop + mobile variants) */
+
+.edit-profile-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 960px;
+  margin: 50px auto;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop card */
+
+.edit-profile-card-desktop {
+  display: flex;
+}
+
+/* Mobile card */
+
+.edit-profile-card-mobile {
+  display: flex;
+}
+
+/* Header */
+
+.edit-profile-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-profile-title {
+  margin: 20px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.edit-profile-subtitle {
+  margin: 20px 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Main row (desktop) */
+
+.edit-profile-main-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Form */
+
+.edit-profile-form {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 16px;
+}
+
+.edit-profile-form-desktop {
+  width: 50%;
+}
+
+.edit-profile-form-mobile {
+  width: 100%;
+}
+
+/* Field group for label + file input */
+
+.edit-profile-field {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-profile-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.edit-profile-file-input {
+  padding: 6px;
+}
+
+/* Select wrapper */
+
+.edit-profile-select-wrapper {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.edit-profile-select {
+  font-size: 0.95rem;
+}
+
+/* Illustration */
+
+.edit-profile-illustration-desktop {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.edit-profile-illustration-mobile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.edit-profile-illustration-img {
+  max-height: 250px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Error */
+
+.edit-profile-error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Submit button */
+
+.edit-profile-submit-btn {
+  margin-top: 28px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: #1a589b; /* blue */
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.edit-profile-submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.edit-profile-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Mobile layout specifics */
+
+.edit-profile-mobile-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 767px) {
+  .edit-profile-card-desktop {
+    display: none;
+  }
+
+  .edit-profile-card-mobile {
+    display: flex;
+  }
+
+  .edit-profile-card {
+    width: 85%;
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-profile-card-mobile {
+    display: none;
+  }
+
+  .edit-profile-card-desktop {
+    display: flex;
+  }
+}
+
+/* ============================
+   DARK MODE (html.dark-mode)
+   ============================ */
+
+html.dark-mode .edit-profile-page {
+  background-color: #020617; /* very dark slate */
+}
+
+html.dark-mode .edit-profile-card {
+  background-color: rgba(15, 23, 42, 0.96);
+  border-color: #1f2937;
+  color: #e5e7eb;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+}
+
+html.dark-mode .edit-profile-title,
+html.dark-mode .edit-profile-subtitle,
+html.dark-mode .edit-profile-label {
+  color: #e5e7eb;
+}
+
+/* keep blue accent button but slightly brighter in dark mode */
+
+html.dark-mode .edit-profile-submit-btn {
+  background-color: #2563eb;
+  color: #f9fafb;
+}
+
+html.dark-mode .edit-profile-submit-btn:hover:not(:disabled) {
+  opacity: 0.95;
+}
+
+/* optional light edge around illustration in dark mode */
+
+html.dark-mode .edit-profile-illustration-img {
+  background-color: #F2F6FF;          /* solid white box */
+  padding: 16px;                      /* thickness of the box around image */
+  border-radius: 16px;                /* rounded corners, tweak as you like */
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.7); /* thin border-like outline */
+}
+
+/* Error color tweak */
+
+html.dark-mode .edit-profile-error {
+  color: #fecaca;
+}
+
+/* ============================
+   SMOOTH THEME TRANSITION
+   ============================ */
+
+html,
+body,
+.edit-profile-page,
+.edit-profile-card,
+.edit-profile-submit-btn,
+.edit-profile-illustration-img {
+  transition:
+    background-color 0.35s ease-in-out,
+    color 0.35s ease-in-out,
+    border-color 0.35s ease-in-out,
+    box-shadow 0.35s ease-in-out,
+    filter 0.35s ease-in-out;
+}

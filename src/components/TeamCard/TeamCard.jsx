@@ -12,7 +12,7 @@ function TeamCard(props) {
       <div className="image-container">
         <img src={imagePath} alt={props.name} className="card-image" loading="lazy" />
         <div className="social-overlay">
-          <div className="social-icons">
+          {/* <div className="social-icons">
             {props.gmail && (
               <a href={"mailto:" + props.gmail} className="social-link gmail" aria-label="Email">
                 <Gmail />
@@ -40,7 +40,7 @@ function TeamCard(props) {
                 <Instagram />
               </a>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
       
