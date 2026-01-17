@@ -1,12 +1,17 @@
-/* GalleryPage.css */
+/* =========================
+   GalleryPage.css
+   ========================= */
+
 .gallery-bg {
-  background: url('/public/assets/bg.png');
+  background-image: url('/public/assets/bg.png');
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
   position: relative;
+  transition: background-image 260ms ease;
 }
 
 .gallery-container {
@@ -16,6 +21,8 @@
   position: relative;
   z-index: 1;
 }
+
+/* ---------- Header ---------- */
 
 .gallery-header {
   text-align: center;
@@ -33,6 +40,8 @@
   margin-bottom: 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
+
+/* ---------- Quote Card ---------- */
 
 .gallery-quote-container {
   max-width: 800px;
@@ -57,7 +66,7 @@
   color: #1a589b;
   text-align: center;
   line-height: 1.8;
-  font-weight: 700; /* Bold as requested */
+  font-weight: 700;
 }
 
 .quote-icon {
@@ -78,29 +87,26 @@
   right: 1.5rem;
 }
 
-/* Masonry Grid */
+/* ---------- Masonry Grid ---------- */
+
 .gallery-grid {
   columns: 1;
   column-gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
-  .gallery-grid {
-    columns: 2;
-  }
+  .gallery-grid { columns: 2; }
 }
 
 @media (min-width: 1024px) {
-  .gallery-grid {
-    columns: 3;
-  }
+  .gallery-grid { columns: 3; }
 }
 
 @media (min-width: 1280px) {
-  .gallery-grid {
-    columns: 4;
-  }
+  .gallery-grid { columns: 4; }
 }
+
+/* ---------- Gallery Card ---------- */
 
 .gallery-item {
   break-inside: avoid;
@@ -109,9 +115,9 @@
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  background: #ffffff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  background: #fff;
 }
 
 .gallery-item:hover {
@@ -131,13 +137,11 @@
   transform: scale(1.05);
 }
 
-/* Overlay on hover */
+/* ---------- Hover Overlay ---------- */
+
 .gallery-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(26, 88, 155, 0.2);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -151,7 +155,7 @@
 }
 
 .zoom-icon {
-  color: white;
+  color: #ffffff;
   font-size: 2rem;
   transform: scale(0);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -161,13 +165,11 @@
   transform: scale(1);
 }
 
-/* Lightbox */
+/* ---------- Lightbox ---------- */
+
 .lightbox-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.95);
   z-index: 9999;
   display: flex;
@@ -197,8 +199,8 @@
   max-width: 100%;
   max-height: 90vh;
   border-radius: 8px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
   object-fit: contain;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
 .lightbox-close {
@@ -224,17 +226,92 @@
   transform: rotate(90deg);
 }
 
+/* ---------- Mobile ---------- */
+
 @media (max-width: 768px) {
   .gallery-title {
     font-size: 2.5rem;
   }
-  
+
   .gallery-quote-container {
     padding: 2rem;
   }
-  
+
   .lightbox-close {
     top: -50px;
     right: 0;
   }
+}
+
+/* =======================================
+   DARK MODE – Gallery Page
+   (.dark-mode on <html>)
+   ======================================= */
+
+/* ✅ BACKGROUND IMAGE TOGGLE */
+.dark-mode .gallery-bg {
+  background-image: url('/public/assets/bgDark.png');
+}
+
+/* title */
+.dark-mode .gallery-title {
+  color: #e6eef8;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* quote card */
+.dark-mode .gallery-quote-container {
+  background: rgba(2, 6, 23, 0.85);
+  border: 1px solid #1f2937;
+  box-shadow: 0 16px 36px rgba(3, 7, 18, 0.85);
+}
+
+.dark-mode .gallery-quote-text {
+  color: #cbd8e8;
+}
+
+.dark-mode .quote-icon {
+  color: #e6eef8;
+  opacity: 0.25;
+}
+
+/* gallery card */
+.dark-mode .gallery-item {
+  background: #020617;
+  box-shadow: 0 8px 22px rgba(3, 7, 18, 0.8);
+}
+
+.dark-mode .gallery-item:hover {
+  box-shadow: 0 18px 36px rgba(3, 7, 18, 0.95);
+}
+
+/* image tuning */
+.dark-mode .gallery-img {
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* hover overlay */
+.dark-mode .gallery-overlay {
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.dark-mode .zoom-icon {
+  color: #e6eef8;
+}
+
+/* lightbox refinement */
+.dark-mode .lightbox-overlay {
+  background: rgba(2, 6, 23, 0.97);
+}
+
+.dark-mode .lightbox-img {
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+.dark-mode .lightbox-close {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.16);
 }

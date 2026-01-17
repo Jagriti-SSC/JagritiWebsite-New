@@ -4,7 +4,7 @@ import "./TeamPage.css";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamCard from "../../components/TeamCard/TeamCard";
 import Footer from "../../components/footer/Footer";
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 
 // FontAwesome Imports for the Diamond Grid Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

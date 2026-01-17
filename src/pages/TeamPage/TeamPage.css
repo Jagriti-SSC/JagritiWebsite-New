@@ -1,10 +1,15 @@
+/* =========================
+   Team Page Background
+   ========================= */
+
 .bg {
-  background: url('/public/assets/bg.png');
+  background-image: url('/public/assets/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   min-height: 100vh;
   position: relative;
+  transition: background-image 260ms ease;
 }
 
 /* Team Page Content */
@@ -15,7 +20,7 @@
 }
 
 /* =========================================
-   TECH HERO SECTION
+   HERO SECTION
    ========================================= */
 
 .hero-section {
@@ -26,7 +31,7 @@
   justify-content: center;
   padding: 4rem 2rem;
   background-color: #ffffff;
-  background-image: 
+  background-image:
     linear-gradient(#e5e7eb 1px, transparent 1px),
     linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
   background-size: 40px 40px;
@@ -36,7 +41,7 @@
 .hero-section::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: radial-gradient(circle at center, transparent 0%, #ffffff 90%);
   pointer-events: none;
 }
@@ -83,14 +88,12 @@
 .hero-highlight::before {
   content: 'TEAM';
   position: absolute;
-  left: 0;
-  top: 0;
+  inset: 0;
   color: #1a589b;
   width: 0%;
   overflow: hidden;
   transition: width 0.5s ease;
   white-space: nowrap;
-  -webkit-text-stroke: 0;
 }
 
 .hero-main-title:hover .hero-highlight::before {
@@ -106,32 +109,26 @@
   line-height: 1.6;
 }
 
-/* Filter Section - Tech Style */
+/* =========================================
+   FILTER SECTION
+   ========================================= */
+
 .filter-section {
   padding: 2rem 0;
-  position: relative;
-  z-index: 10;
-  background: transparent;
   margin: 0 -2rem 2rem;
   border-bottom: 1px solid #1a589b;
 }
 
 .filter-container {
-  max-width: 100%;
-  margin: 0 auto;
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
   gap: 1.5rem;
   overflow-x: auto;
   padding: 0.5rem 2rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
 .filter-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .filter-tab {
@@ -139,10 +136,9 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 1.2rem;
-  border-radius: 4px; /* Sharper corners */
   background: #f8fafc;
   border: 1px solid #cbd5e1;
-  font-family: 'Courier New', monospace; /* Tech font */
+  font-family: 'Courier New', monospace;
   font-size: 0.85rem;
   font-weight: 600;
   color: #64748b;
@@ -151,43 +147,26 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .filter-tab:hover {
+  background: #ffffff;
   color: #1a589b;
   border-color: #1a589b;
-  background: #fff;
   transform: translateY(-2px);
-  box-shadow: 4px 4px 0px rgba(26, 88, 155, 0.1);
+  box-shadow: 4px 4px 0 rgba(26, 88, 155, 0.1);
 }
 
 .filter-tab.active {
   background: #1a589b;
-  color: white;
+  color: #ffffff;
   border-color: #1a589b;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.filter-icon {
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .filter-section {
-    margin: 0 -1rem 2rem;
-  }
-  
-  .filter-container {
-    padding: 0.5rem 1rem;
-    gap: 1rem;
-  }
-}
-
-/* --- Team Content --- */
-.team-content {
-  padding: 0 0 4rem;
-}
+/* =========================================
+   TEAM CONTENT
+   ========================================= */
 
 .team-group {
   margin-bottom: 5rem;
@@ -199,10 +178,8 @@
   font-weight: 700;
   color: #0f172a;
   margin-bottom: 2.5rem;
-  padding-bottom: 0.5rem;
   border-bottom: 2px solid #1a589b;
   display: inline-block;
-  position: relative;
 }
 
 .team-group-title::before {
@@ -214,28 +191,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 40px;
-  padding: 20px 0;
 }
 
+/* =========================================
+   LOADING SPINNER
+   ========================================= */
 
-
-.galleryItem {
-  transition: transform 0.3s ease;
-}
-
-.galleryItem:hover {
-  transform: translateY(-10px);
-}
-
-/* Remove unused classes */
-.card, .img, .link-team, .heading, .position-title {
-  display: none;
-}
-
-/* Loading Spinner */
 .spinner-container {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(255, 255, 255, 0.95);
   display: flex;
   align-items: center;
@@ -244,7 +208,8 @@
 }
 
 .spinner {
-  width: 50px; height: 50px;
+  width: 50px;
+  height: 50px;
   border: 4px solid #f3f3f3;
   border-top: 4px solid #1a589b;
   border-radius: 50%;
@@ -252,138 +217,103 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* --- Responsive Design --- */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
-@media screen and (max-width: 1024px) {
-  .hero-main-title {
-    font-size: 3.5rem;
-  }
-  
-  .typewriter-wrapper {
-    font-size: 2rem;
-  }
+@media (max-width: 1024px) {
+  .hero-main-title { font-size: 3.5rem; }
 }
 
-@media screen and (max-width: 768px) {
-  .hero-section {
-    min-height: 40vh;
-    padding: 3rem 1rem 0;
-  }
-  
-  .hero-main-title {
-    font-size: 3.6rem;
-  }
-  
-  .hero-subscript {
-    font-size: 1rem;
-  }
-  
-  .typewriter-wrapper {
-    font-size: 1.8rem;
-    height: 50px;
-  }
-  
-  .team-page-content {
-    padding: 0 1rem 3rem;
-  }
-
-  .galleryContainer {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-  }
+@media (max-width: 768px) {
+  .hero-section { min-height: 40vh; }
+  .hero-main-title { font-size: 3.6rem; }
+  .team-page-content { padding: 0 1rem 3rem; }
 }
 
-@media screen and (max-width: 480px) {
-  .hero-main-title {
-    font-size: 3.1rem;
-  }
-  
-  .typewriter-wrapper {
-    font-size: 1.4rem;
-    height: 40px;
-  }
-  
-  .team-group-title {
-    font-size: 1.8rem;
-  }
-
-  .galleryContainer {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 1rem;
-  }
+@media (max-width: 480px) {
+  .hero-main-title { font-size: 3.1rem; }
+  .team-group-title { font-size: 1.8rem; }
 }
 
-/* ==========================
+/* =========================================
    DARK MODE
-   ========================== */
+   (.dark-mode on <html>)
+   ========================================= */
 
-/* swap background image in dark mode if you have bgDark.png */
+/* background swap */
 .dark-mode .bg {
-  background: url('/public/assets/bgDark.png');
-  background-size: cover;
-  background-position: center;
+  background-image: url('/public/assets/bgDark.png');
 }
 
-/* section heading */
-.dark-mode .our-team h1 {
+/* hero */
+.dark-mode .hero-section {
+  background-color: #020617;
+  background-image:
+    linear-gradient(#1f2937 1px, transparent 1px),
+    linear-gradient(90deg, #1f2937 1px, transparent 1px);
+}
+
+.dark-mode .hero-section::before {
+  background: radial-gradient(circle at center, transparent 0%, #020617 85%);
+}
+
+.dark-mode .tech-badge {
+  background: rgba(90, 160, 255, 0.15);
   color: #e6eef8;
-  text-shadow: 0 0 18px rgba(15, 23, 42, 0.8);
+  border-color: rgba(90, 160, 255, 0.3);
 }
 
-/* filter buttons */
-.dark-mode .inner-carousel button {
+.dark-mode .hero-main-title {
+  color: #e6eef8;
+}
+
+.dark-mode .hero-highlight {
+  -webkit-text-stroke: 2px #5aa0ff;
+}
+
+.dark-mode .hero-highlight::before {
+  color: #5aa0ff;
+}
+
+.dark-mode .hero-description {
+  color: #cbd8e8;
+}
+
+/* filters */
+.dark-mode .filter-tab {
   background: rgba(15, 23, 42, 0.96);
-  color: #e6eef8;
-  border-color: #384559;
-  box-shadow: 0 8px 20px rgba(3, 7, 18, 0.9);
+  color: #cbd8e8;
+  border-color: #334155;
 }
 
-/* selected filter button */
-.dark-mode .filterItem .selected {
-  background: #5aa0ff;
-  border-color: #5aa0ff;
-  color: #020617;
-}
-
-/* scroll chevron icons (override inline color) */
-.dark-mode .scroll-icon svg {
-  color: #e6eef8 !important;
-}
-
-/* gallery images – small boost so they pop on darker bg */
-.dark-mode .galleryItem img {
-  filter: brightness(1.02) contrast(1.03);
-}
-
-/* team card in dark mode – a bit crisper but same vibe */
-.dark-mode .card {
+.dark-mode .filter-tab:hover {
   background: #020617;
   color: #e6eef8;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+  border-color: #5aa0ff;
 }
 
-.dark-mode .card h1,
-.dark-mode .card p {
+.dark-mode .filter-tab.active {
+  background: #5aa0ff;
+  color: #020617;
+  border-color: #5aa0ff;
+}
+
+/* headings */
+.dark-mode .team-group-title {
   color: #e6eef8;
+  border-color: #5aa0ff;
 }
 
-/* avatar circle in card */
-.dark-mode .img img {
-  border-color: #e5e7eb;
-  background-color: #0b1120;
+/* spinner */
+.dark-mode .spinner-container {
+  background: rgba(2, 6, 23, 0.95);
 }
 
-/* links/icons inside card on hover text etc. */
-.dark-mode .link-team {
-  color: #e5e7eb;
-}
-
-/* optional: slightly brighten page content group */
-.dark-mode .galleryWrapper {
-  filter: brightness(1.01);
+.dark-mode .spinner {
+  border-color: #1f2937;
+  border-top-color: #5aa0ff;
 }
