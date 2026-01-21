@@ -2,41 +2,100 @@ import React, { useState, useEffect, useRef } from "react";
 import Button from "../UI/button/Button";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./Navbar.css";
+import { useAuth } from "../../context/AuthContext";
+import profile_default from "./profile.png";
+import { auth } from "../../context/Firebase";
 
 const Navbar = () => {
   let curr = useLocation();
-  console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
-
+  // console.log(curr.pathname); // Use the current pathname for conditional changes in the Navbar styles.
+  const [isDesktopView, setIsDesktopView] = useState(window.innerWidth >= 900);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 900);
   const closeButton = useRef(null);
   const openButton = useRef(null);
   const [navbar_bg, setNavbar_bg] = useState("bg-transparent");
   const [toggle, setToggle] = useState(false);
 
+  const { loading } = useAuth();
+
+  // Add an event listener to update the boolean variables on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktopView(window.innerWidth >= 900);
+      setIsMobileView(window.innerWidth < 900);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const changeNavbarColor = () => {
       if (curr.pathname !== "/") {
-        setNavbar_bg("bg-light-black");
+        setNavbar_bg("bg-main-navbar");
       } else {
         setNavbar_bg("bg-transparent");
       }
     };
     changeNavbarColor();
   }, [curr.pathname]);
+  console.log(localStorage.getItem("user"));
 
-  // const [toggle, setToggle] = useState(false);
+  const userString = localStorage.getItem("user");
 
+  const userObject = JSON.parse(userString);
+  const profile_img = userObject?.photoURL;
+
+  const accessToken = userObject?.stsTokenManager?.accessToken;
+
+  console.log("Access Token:", accessToken);
+
+  useEffect(() => {
+    console.log(accessToken);
+  }, [loading]);
+  const [userDetails, setUserDetails] = useState({});
+  const fetchUserData = async () => {
+    try {
+      const url = process.env.REACT_APP_BASE_URL
+      const response = await fetch(`${url}/auth/user`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: auth.currentUser.email }),
+      });
+      if (response != null) {
+        const data = await response.json();
+        setUserDetails(data)
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (auth.currentUser) {
+        await fetchUserData();
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <header>
         {/* Desktop Navbar */}
+        {isDesktopView && (
         <nav
-          className={`hidden smd:block ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
+          className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
         >
-          <div className="container flex flex-wrap items-center justify-between mx-auto">
-            <Link to="/" className="items-center">
+          <div className="flex flex-wrap items-center justify-between ml-20 py-5">
+            <Link to="/" className="items-center ">
               <img
                 src="/assets/Jagriti_nav_logo.webp"
-                className="h-6 mr-3 smd:h-9"
+                className="h-5 smd:h-9"
                 alt="Jagriti_Logo"
               />
             </Link>
@@ -44,7 +103,7 @@ const Navbar = () => {
               className="hidden w-full smd:block smd:w-auto"
               id="navbar-default"
             >
-              <ul className="flex flex-col p-4 mt-4 smd:flex-row smd:space-x-8 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
+              <ul className="flex flex-col mt-4 smd:flex-row smd:space-x-6 smd:mt-0 smd:text-sm smd:font-medium smd:bg-transparent">
                 <li className="place-self-center">
                   <Link
                     to="/about"
@@ -53,14 +112,22 @@ const Navbar = () => {
                     About
                   </Link>
                 </li>
-                {/* <li className="place-self-center">
+                <li className="place-self-center">
                   <Link
                     to="/team"
                     className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
                   >
                     Team
                   </Link>
-                </li> */}
+                </li>
+                <li className="place-self-center">
+                  <Link
+                    to="/sponsors"
+                    className="navitem block py-2 pl-3 pr-4 text-white  smd:p-0"
+                  >
+                    Sponsors
+                  </Link>
+                </li>
                 <li className="place-self-center">
                   <Link
                     to="/events"
@@ -71,25 +138,124 @@ const Navbar = () => {
                 </li>
                 <li className="place-self-center">
                   <Link
+                    to="/gallery"
+                    className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+                <li className="place-self-center">
+                  <Link
                     to="/faqs"
                     className="navitem block py-2 pl-3 pr-4 text-white smd:p-0"
                   >
                     FAQs
                   </Link>
                 </li>
-                <li>
-                  <Button
-                    text="Join CA Program"
-                    outline={true}
-                    buttonColor={"white"}
-                    path={"/ca"}
-                  />
+                <li className="place-self-center">
+                  <Link
+                    to="/CampusAmbassador"
+                    className="navitem block py-2 pl-3 pr-4 text-white rounded-[10px] smd:p-0"
+                    style={{
+                      outline: "1px solid white",
+                      padding: "5px",
+                    }}
+                  >
+                    CA Program
+                  </Link>
+                </li>
+                <li
+                  className={
+                    "place-self-center" +
+                    (localStorage.getItem("user") == null
+                      ? " "
+                      : " w-[0px] m-0")
+                  }
+                >
+                  <Link
+                    className={`navitem block  pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signin"
+                      ? "bg-white"
+                      : "bg-transparent"
+                      }`}
+                    to="/signin"
+                    style={{
+                      width:
+                        localStorage.getItem("user") != null ? "0px" : null,
+                      display:
+                        localStorage.getItem("user") != null ? "contents" : "",
+                      fontSize:
+                        localStorage.getItem("user") != null ? "0px" : "",
+                      color:
+                        curr.pathname === "/signin" ? "black" : "white",
+                      padding: "5px",
+                    }}
+
+                  >
+                    Sign In
+                  </Link>
+                </li>
+                <li
+                  className={
+                    "place-self-center" +
+                    (localStorage.getItem("user") == null
+                      ? " "
+                      : " w-[0px] m-0")
+                  }
+                >
+                  <Link
+                    className={`navitem block pl-3 pr-4 text-white rounded-[10px] py-2.5 smd:p-0 ${curr.pathname === "/signup"
+                      ? "bg-white"
+                      : "bg-transparent"
+                      }`}
+                    to="/signup"
+                    style={{
+                      width:
+                        localStorage.getItem("user") != null ? "0px" : null,
+                      display:
+                        localStorage.getItem("user") != null ? "contents" : "",
+                      fontSize:
+                        localStorage.getItem("user") != null ? "0px" : "",
+                      color:
+                        curr.pathname === "/signup" ? "black" : "white",
+                      padding: "5px",
+                    }}
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+                <li
+                  className={
+                    "place-self-center " +
+                    (localStorage.getItem("user") == null ? " w-[0px] m-0" : "")
+                  }
+                >
+                  <button
+                    className="rounded-full w-10 h-10 ml-8 mr-20"
+                    style={{
+                      width:
+                        localStorage.getItem("user") == null ? "0px" : null,
+                      display:
+                        localStorage.getItem("user") == null ? "contents" : "",
+                      fontSize:
+                        localStorage.getItem("user") == null ? "0px" : "",
+                    }}
+                  >
+                    <Link to="/profile">
+                      <img
+                        alt="profile_img"
+                        src={`${userDetails.imgUrl ? userDetails.imgUrl : profile_img}`}
+                        className="w-full h-full object-cover rounded-full"
+                      />
+                    </Link>
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
+        )}
         {/* Mobile Navbar */}
+        {isMobileView && (
         <nav
           className={`smd:hidden ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
         >
@@ -104,26 +270,26 @@ const Navbar = () => {
             </Link>
             {/* <!-- drawer init and show --> */}
             {/* {!toggle ? ( */}
-              <div className="text-center" onClick={() => setToggle(true)}>
-                <button
-                  ref={openButton}
-                  className="text-white bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
-                  type="button"
+            <div className="text-center" onClick={() => setToggle(true)}>
+              <button
+                ref={openButton}
+                className="text-white bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
+                type="button"
+              >
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  <span className="sr-only">Open main menu</span>
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    fillRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
             {/* ) : null} */}
 
             {/* <!-- drawer component --> */}
@@ -164,7 +330,7 @@ const Navbar = () => {
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
-                    {/* <li>
+                    <li>
                       <Link
                         onClick={() => closeButton.current.click()}
                         to="/team"
@@ -173,7 +339,17 @@ const Navbar = () => {
                         <span className="whitespace-nowrap">Team</span>
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li> */}
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/sponsors"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Sponsors</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
                     <li>
                       <Link
                         onClick={() => closeButton.current.click()}
@@ -181,6 +357,16 @@ const Navbar = () => {
                         className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
                       >
                         <span className="whitespace-nowrap">Events</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/gallery"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">Gallery</span>
                       </Link>
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
@@ -195,21 +381,102 @@ const Navbar = () => {
                       <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
                     <li>
-                      <Button
-                        text="Join CA Program"
-                        outline={true}
-                        buttonColor={"#1A589B"}
-                        customStyle={{ width: 224, fontSize: 14 }}
-                        onPress={() => closeButton.current.click()}
-                        path={"/ca"}
-                      />
+                      <Link
+                        onClick={() => closeButton.current.click()}
+                        to="/CampusAmbassador"
+                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
+                      >
+                        <span className="whitespace-nowrap">CA Program</span>
+                      </Link>
+                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
                     </li>
+                    {(localStorage.getItem("user") == null) ? (
+                      <><li
+                        className={"place-self-center mt-[10px]" +
+                          (localStorage.getItem("user") == null
+                            ? " "
+                            : " w-[0px] h-[0px] m-0")}
+                      >
+                        <Link
+                          className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
+                          to={localStorage.getItem("user") == null ? "/signin" : ""}
+                          style={{
+                            width: localStorage.getItem("user") != null ? "0px" : null,
+                            display: localStorage.getItem("user") != null
+                              ? "contents"
+                              : "",
+                            fontSize: localStorage.getItem("user") != null ? "0px" : "",
+                          }}
+                        >
+                          <button className="w-[184px]">Sign In</button>
+                        </Link>
+                        <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                      </li><li
+                        className={"place-self-center mt-[10px]" +
+                          (localStorage.getItem("user") == null
+                            ? " "
+                            : " w-[0px] h-[0px] m-0")}
+                      >
+                          <Link
+                            className={"items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"}
+                            to={localStorage.getItem("user") == null ? "/signup" : ""}
+                            style={{
+                              width: localStorage.getItem("user") != null ? "0px" : null,
+                              display: localStorage.getItem("user") != null
+                                ? "contents"
+                                : "",
+                              fontSize: localStorage.getItem("user") != null ? "0px" : "",
+                            }}
+                          >
+                            <button className="w-[184px]">Sign Up</button>
+                          </Link>
+                          <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                        </li></>
+                    )
+                      :
+                      (
+                        <>                    <li
+                          className={
+                            "place-self-center mt-[10px]" +
+                            (localStorage.getItem("user") == null
+                              ? " w-[0px] h-[0px] m-0"
+                              : "")
+                          }
+                        >
+                          <button
+                            className="rounded-full w-12 h-12 mt-2 "
+                            style={{
+                              width:
+                                localStorage.getItem("user") == null ? "0px" : null,
+                              display:
+                                localStorage.getItem("user") == null
+                                  ? "contents"
+                                  : "",
+                              fontSize:
+                                localStorage.getItem("user") == null ? "0px" : "",
+                            }}
+                          >
+                            <Link to="/profile">
+                              <img
+                                alt="profile_img"
+                                src={`${userDetails.imgUrl ? userDetails.imgUrl : profile_img}`}
+                                className="w-full h-full object-cover rounded-full"
+                              />
+                            </Link>
+                          </button>
+                          <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
+                        </li>
+                        </>
+                      )
+                    }
+
                   </ul>
                 </div>
               </div>
             ) : null}
           </div>
         </nav>
+        )}
       </header>
       <Outlet />
     </>

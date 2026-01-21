@@ -18,18 +18,12 @@ const Button = ({
   const navigate = useNavigate();
   const curr = useLocation();
   let backgroundColor = outline
-    ? "transparent"
+    ? curr.pathname==="/" ? "transparent" : "white"
     : disabled
     ? "#E4E4E4"
     : "#1A589B";
   let textColor = outline ? buttonColor : disabled ? "#696969" : "white";
   let borderColor = disabled ? "#E4E4E4" : buttonColor;
-
-  if (curr.pathname === "/ca") {
-      backgroundColor = "#1A589B";
-      textColor = "white";
-      borderColor = "#1A589B";
-  }
 
   const styles = {
     backgroundColor: backgroundColor,

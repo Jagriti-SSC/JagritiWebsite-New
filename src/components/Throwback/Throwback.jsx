@@ -17,7 +17,7 @@ function Throwback() {
             <div className="throwback_content">
               Here's the glimpse of the previous editions of Jagriti. Exciting
               events ranging from guest talks to competitions were successfully
-              held,inundated with participants from all over India.
+              held, inundated with participants from all over India.
             </div>
             <div className="throwback_img2">
               <img className="throwback_img2size" src={Group1} alt="op" />

@@ -1,10 +1,24 @@
 .navitem {
-  @apply relative ml-10 text-gray-200  tracking-[1px] font-extrabold
-         hover:text-light-blue-800;
+  position: relative;
+  margin-left: 10px;
+  color: #E5E7EB; /* text-gray-200 */
+  letter-spacing: 1px; /* tracking-[1px] */
+  font-weight: 800; /* font-extrabold */
+  transition: color 0.3s;
 }
+
 .navitem::after {
-  @apply content-[''] bg-light-blue-800 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300;
+  content: '';
+  background-color: #93C5FD; /* bg-light-blue-800 */
+  height: 3px;
+  width: 0%;
+  left: 0;
+  bottom: -5px;
+  border-radius: 8px; /* rounded-xl */
+  position: absolute;
+  transition: width 0.3s;
 }
+
 .navitem:hover::after {
-  @apply w-[100%];
+  width: 100%;
 }

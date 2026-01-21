@@ -2,14 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import "./HomePage.css";
-import Sponsor from "../../components/Sponsor/Sponsor";
 import Throwback from "../../components/Throwback/Throwback";
 import jagriti from "../../assets/Jagriti_white.webp";
 import Clock from "../../components/Clock/Clock";
 import Button from "../../components/UI/button/Button";
 import desktop from "../../assets/desktop.webm";
 import Timeline from "../../components/Timeline/Timeline";
-
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const HomePage = () => {
   const [timerDays, setTimerDays] = useState();
@@ -20,7 +20,7 @@ const HomePage = () => {
   let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("April 7,2023").getTime();
+    const countDownDate = new Date("February 6,2026").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -52,7 +52,8 @@ const HomePage = () => {
 
   useEffect(() => {
     startTimer();
-  });
+    document.title = "Jagriti - IIT (BHU)";
+  }, []);
 
   return (
     <>
@@ -70,17 +71,23 @@ const HomePage = () => {
           />
           <div className="explore-btn">
             <Button text="Explore Events" showArrow path="/events" />
-            <Button outline text="Guest talk" buttonColor="white" path="/events" showArrow />
+            {/* <Button
+              outline
+              text="Guest talk"
+              buttonColor="white"
+              path="/events"
+              showArrow
+            /> */}
           </div>
         </div>
       </div>
 
       <Testimonial></Testimonial>
-      <Timeline></Timeline>
+      {/* <Timeline></Timeline> */}
 
-     <Throwback></Throwback>
+      <Throwback></Throwback>
 
-      <Sponsor></Sponsor>
+      <Footer />
     </>
   );
 };

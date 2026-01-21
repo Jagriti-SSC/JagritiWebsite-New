@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const withMT = require("@material-tailwind/react/utils/withMT");
 module.exports = withMT({
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -11,31 +9,56 @@ module.exports = withMT({
         red: "#DC4492",
         yellow: "#FDCC49",
         grey: "#969696",
+        "icolor" :'#F5F5FF',
         "light-black":"#212121",
         "event-grey" : "#D9D9D9",
         "event-text-grey" : "#0B1641",
+        'gry': '#F3F3F3',
+        'dark-gry': '#6B6B6B',
+       
         
 
+        "light-black": "#212121",
+        "main-navbar": "#0B1641",
+        "event-grey": "#D9D9D9",
+        "event-text-grey": "#0B1641",
+        gry: "#F3F3F3",
+        "dark-gry": "#6B6B6B",
       },
       fontFamily: {
         playfair: ["Playfair Display", "serif"],
         opensans: ["Open Sans", "sans-serif"],
-        Montserrat : ["Montserrat","sans-serif"],
-        popins : ["Poppins","sans-serif"]
+        Montserrat: ["Montserrat", "sans-serif"],
+        popins: ["Poppins", "sans-serif"],
+        inter: ["'Inter'", "sans-serif"],
+        gelasio: ["'Gelasio'", "serif"],
       },
-    
     },
     screens: {
       txs: "280px",
-      xxs:"400px",
+      xxs: "400px",
       xs: "480px",
       ss: "620px",
       sm: "768px",
-      smd:"900px",
+      smd: "900px",
       md: "1060px",
       lg: "1200px",
       xl: "1700px",
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.hide-scrollbar::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '.hide-scrollbar': {
+          scrollbarWidth: 'none', /* Firefox 64 */
+          msOverflowStyle: 'none', /* IE and Edge */
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 });

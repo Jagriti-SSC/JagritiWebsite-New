@@ -30,18 +30,18 @@ export default function Example() {
             <Fragment>
               <Accordion open={open === 1}>
                 <AccordionHeader onClick={() => handleOpen(1)} className="font-popins">
-                  What is Jagriti?
+                What is Jagriti?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                JAGRITI is the annual socio-cultural fest of IIT (BHU) Varanasi. It is a three-day event filled with exciting competitions, workshops, performances, and more.
+                Jagriti is the annual socio-cultural fest of IIT (BHU) Varanasi. It is a three-day event filled with exciting competitions, workshops, performances, and more.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 2}>
                 <AccordionHeader onClick={() => handleOpen(2)} className="font-popins">
-                What are the dates for Jagriti ’23?
+                What are the dates for Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                JAGRITI usually takes place in March or April. This year JAGRITI will be held from the 7th to the 9th of April.
+                This year Jagriti will be held from the 6th to the 8th of February.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 3}>
@@ -49,7 +49,7 @@ export default function Example() {
                 Who can participate in Jagriti?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                JAGRITI is open to students from any college or university, as well as the general public. However, some events may have specific eligibility criteria, so it's essential to read the rules and regulations carefully before registering.
+                Jagriti is open to students from any college or university, as well as the general public. However, some events may have specific eligibility criteria, so it's essential to read the rules and regulations carefully before registering.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 4}>
@@ -57,7 +57,7 @@ export default function Example() {
                 What kind of events and competitions can I expect at Jagriti?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                JAGRITI features a wide variety of events and competitions, ranging from cultural performances to guest talks and hackathons. The events list can be found on the official website of JAGRITI.
+                Jagriti features a wide variety of events and competitions, ranging from cultural performances to guest talks and hackathons. The events list can be found on the official website of Jagriti.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 5}>
@@ -65,7 +65,7 @@ export default function Example() {
                 How can I register for Jagriti?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                Registration details for JAGRITI are usually announced on the official website, or social media handles in the weeks leading up to the event. Participants may need to fill out an online form or register on unstop and pay a registration fee, depending on the event.
+                Registration details for Jagriti are usually announced on the official website, or social media handles in the weeks leading up to the event. Participants may need to fill out an online form or register on unstop and pay a registration fee, depending on the event.
                 </AccordionBody>
               </Accordion>
               <Accordion open={open === 6}>
@@ -78,10 +78,10 @@ export default function Example() {
               </Accordion>
               <Accordion open={open === 7}>
                 <AccordionHeader onClick={() => handleOpen(7)} className="font-popins">
-                What is the theme of Jagriti ’23?
+                What is the theme of Jagriti'26?
                 </AccordionHeader>
                 <AccordionBody className="font-popins">
-                The theme of JAGRITI ’23 is <span className="font-extrabold">Breaking Stereotypes</span>. The theme of <span className="font-extrabold">Breaking Stereotypes</span> encourages people to examine their own biases and assumptions and to strive to see individuals for who they truly are, rather than simply relying on preconceived notions.
+                The theme of Jagriti'26 <span className="font-extrabold">will be revealed soon! Stay tuned..</span>.
                 </AccordionBody>
               </Accordion>
               

@@ -1,0 +1,240 @@
+/* GalleryPage.css */
+.gallery-bg {
+  background: url('/public/assets/bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.gallery-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: #1a589b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.gallery-quote-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.gallery-quote-container:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-quote-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #1a589b;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 700; /* Bold as requested */
+}
+
+.quote-icon {
+  color: #1a589b;
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+.quote-left {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.quote-right {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+/* Masonry Grid */
+.gallery-grid {
+  columns: 1;
+  column-gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .gallery-grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    columns: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    columns: 4;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(26, 88, 155, 0.2);
+  z-index: 2;
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+/* Overlay on hover */
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 88, 155, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.zoom-icon {
+  color: white;
+  font-size: 2rem;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover .zoom-icon {
+  transform: scale(1);
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: 2.5rem;
+  }
+  
+  .gallery-quote-container {
+    padding: 2rem;
+  }
+  
+  .lightbox-close {
+    top: -50px;
+    right: 0;
+  }
+}

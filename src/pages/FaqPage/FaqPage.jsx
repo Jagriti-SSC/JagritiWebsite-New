@@ -1,10 +1,19 @@
-import React from 'react'
-import Faq from "../../components/Faq/Faq"
+import React, { useEffect } from "react";
+import Faq from "../../components/Faq/Faq";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const FaqPage = () => {
-  return (
-    <Faq></Faq>
-  )
-}
+  useEffect(() => {
+    document.title = "FAQs | Jagriti IIT (BHU)";
+  }, []);
 
-export default FaqPage
+  return (
+    <>
+      <Faq></Faq>
+      <Footer />
+    </>
+  );
+};
+
+export default FaqPage;
