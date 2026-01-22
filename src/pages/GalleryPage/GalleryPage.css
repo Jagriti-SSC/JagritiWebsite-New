@@ -248,7 +248,7 @@
    (.dark-mode on <html>)
    ======================================= */
 
-/* ✅ BACKGROUND IMAGE TOGGLE */
+/* background */
 .dark-mode .gallery-bg {
   background-image: url('/public/assets/bgDark.png');
 }
@@ -256,62 +256,64 @@
 /* title */
 .dark-mode .gallery-title {
   color: #e6eef8;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 /* quote card */
 .dark-mode .gallery-quote-container {
-  background: rgba(2, 6, 23, 0.85);
+  background: rgba(15, 23, 42, 0.92); /* slate */
   border: 1px solid #1f2937;
-  box-shadow: 0 16px 36px rgba(3, 7, 18, 0.85);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.9);
 }
 
 .dark-mode .gallery-quote-text {
-  color: #cbd8e8;
+  color: #dbe7f5;
 }
 
 .dark-mode .quote-icon {
-  color: #e6eef8;
-  opacity: 0.25;
+  color: #5aa0ff;
+  opacity: 0.22;
 }
 
 /* gallery card */
 .dark-mode .gallery-item {
   background: #020617;
-  box-shadow: 0 8px 22px rgba(3, 7, 18, 0.8);
+  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.85);
 }
 
 .dark-mode .gallery-item:hover {
-  box-shadow: 0 18px 36px rgba(3, 7, 18, 0.95);
+  box-shadow: 0 20px 44px rgba(2, 6, 23, 0.95);
 }
 
-/* image tuning */
+/* images — keep clean */
 .dark-mode .gallery-img {
-  filter: brightness(0.95) contrast(1.05);
+  filter: none;
 }
 
 /* hover overlay */
 .dark-mode .gallery-overlay {
-  background: rgba(2, 6, 23, 0.55);
+  background: rgba(2, 6, 23, 0.65);
 }
 
 .dark-mode .zoom-icon {
-  color: #e6eef8;
+  color: #5aa0ff;
 }
 
-/* lightbox refinement */
+/* lightbox */
 .dark-mode .lightbox-overlay {
   background: rgba(2, 6, 23, 0.97);
 }
 
 .dark-mode .lightbox-img {
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 70px rgba(0, 0, 0, 0.95);
 }
 
+/* close button */
 .dark-mode .lightbox-close {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.85);
+  color: #e6eef8;
 }
 
 .dark-mode .lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(90, 160, 255, 0.2);
 }
