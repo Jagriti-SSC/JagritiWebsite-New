@@ -174,3 +174,89 @@
     background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   }
 }
+
+/* =========================================
+   TEAM CARD – DARK MODE
+   (.dark-mode on <html>)
+   ========================================= */
+
+/* card shell */
+.dark-mode .team-card-modern {
+  background: #020617;
+  border-color: #1f2937;
+}
+
+.dark-mode .team-card-modern:hover {
+  border-color: #5aa0ff;
+  box-shadow: 0 12px 35px -12px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .team-card-modern::before {
+  background: #5aa0ff;
+}
+
+/* image container */
+.dark-mode .image-container {
+  background-color: #020617;
+  border-bottom-color: #1f2937;
+}
+
+/* social overlay */
+.dark-mode .social-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(2, 6, 23, 0.9),
+    transparent
+  );
+}
+
+/* social icons */
+.dark-mode .social-link {
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd8e8;
+  border-color: #1f2937;
+}
+
+.dark-mode .social-link:hover {
+  background: #5aa0ff;
+  color: #020617;
+  border-color: #5aa0ff;
+}
+
+/* info section */
+.dark-mode .info-container {
+  background: #020617;
+}
+
+/* tech decoration grid */
+.dark-mode .info-container::after {
+  background:
+    linear-gradient(to left, #1f2937 1px, transparent 1px),
+    linear-gradient(to top, #1f2937 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* text */
+.dark-mode .member-name {
+  color: #e6eef8;
+}
+
+.dark-mode .member-role {
+  color: #5aa0ff;
+}
+
+.dark-mode .member-role::before,
+.dark-mode .member-role::after {
+  color: #64748b;
+}
+
+/* mobile overlay tweak */
+@media (max-width: 768px) {
+  .dark-mode .social-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(2, 6, 23, 0.85),
+      transparent
+    );
+  }
+}
