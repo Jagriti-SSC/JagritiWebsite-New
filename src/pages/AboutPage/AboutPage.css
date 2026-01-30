@@ -1,38 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 .bg {
-  background: url('/public/assets/bg.png');
-  background-size: cover;
-  min-height: "210vh";
+  position: relative;
+  min-height: 210vh;
+  overflow: hidden; /* keep backgrounds clipped to container */
 }
 
+/* background layers: light (before) + dark (after) */
+.bg::before,
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 450ms ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* light theme image */
+.bg::before {
+  background-image: url("/public/assets/bg.png");
+  opacity: 1;
+}
+
+/* dark theme image */
+.bg::after {
+  background-image: url("/public/assets/bgDark.png");
+  opacity: 0;
+}
+
+/* ensure all content is above the background layers */
+.bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* club cards layout */
 .clubBox {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* margin: 20px 20px; */
   justify-content: space-evenly;
 }
 
 .circular-container1 {
   position: relative;
-  width: 300px; 
-  height: 300px;  
+  width: 300px;
+  height: 300px;
   margin: auto;
-  background: url('/public/assets/Circular1.png') center/cover no-repeat;
+  background: url("/public/assets/Circular1.png") center/cover no-repeat;
   background-position: 35% 35%;
   background-size: 180%;
-  overflow: hidden; /* Crop the content outside the container */
+  overflow: hidden;
 }
 
 .circular-container2 {
   position: relative;
-  width: 300px; 
-  height: 300px;  
+  width: 300px;
+  height: 300px;
   margin: auto;
-
-  background: url('/public/assets/Circular2.png') center/cover no-repeat;
+  background: url("/public/assets/Circular2.png") center/cover no-repeat;
   background-position: 65% 65%;
   background-size: 180%;
-  overflow: hidden; /* Crop the content outside the container */
+  overflow: hidden;
 }
 
 .jaglogo-overlay {
@@ -49,13 +83,51 @@
   transform: translate(-45%, -45%);
 }
 
-.background-element{
+.background-element {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/public/assets/Vector.png') center/cover;
+  background: url("/public/assets/Vector.png") center/cover;
   z-index: -1;
-  opacity: 0.35; /* Adjust the opacity as needed */
+  opacity: 0.35;
+}
+
+/* ==========================
+   Dark mode: crossfade images
+   ========================== */
+
+.dark-mode .bg::before {
+  opacity: 0; /* hide light image */
+}
+
+.dark-mode .bg::after {
+  opacity: 1; /* show dark image */
+}
+
+/* ==========================
+   Text adjustments on Dark Mode
+   ========================== */
+
+.dark-mode .bg h2 {
+  color: #e6eef8; /* bright heading */
+  transition: color 350ms ease;
+}
+
+.dark-mode .bg p {
+  color: #dbe6f5; /* softer body text */
+  transition: color 350ms ease;
+}
+
+.dark-mode .bg hr {
+  background-color: #5aa0ff;
+  transition: background-color 350ms ease;
+}
+
+/* general safety net for stray dark text */
+.dark-mode .bg span,
+.dark-mode .bg h5 {
+  color: #e6eef8;
+  transition: color 350ms ease;
 }
