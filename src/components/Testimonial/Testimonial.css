@@ -3,9 +3,9 @@
 
 .testimonial{
   margin-top: 0; /* remove top margin to avoid white band */
-  margin-bottom: 8%;
+  margin-bottom: 0;
   background: #f6fbff; /* unified background color for the whole section */
-  border-radius: 16px;
+  border-radius: 0;
   padding: 36px 0 24px; /* add top padding instead so color fills */
 }
 
@@ -441,4 +441,54 @@ body {
 }
 .dark-mode .swiper-pagination-bullet-active {
   background: #5aa0ff;
+}
+
+/* Dark Mode Main Section */
+html.dark-mode .testimonial {
+  background: #0f1724;
+}
+
+html.dark-mode .testimonial-heading {
+  color: #5aa0ff;
+}
+
+html.dark-mode .testimonial-para {
+  color: #cbd8e8;
+}
+
+/* Dark Mode Cards */
+html.dark-mode .testimonial-card {
+  background: rgba(30, 41, 59, 0.7); /* Darker semi-transparent background */
+  border-color: rgba(90, 160, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+html.dark-mode .person-name {
+  color: #ffffff;
+}
+
+html.dark-mode .person-role {
+  color: #94a3b8;
+}
+
+html.dark-mode .quote-text {
+  color: #e2e8f0;
+}
+
+html.dark-mode .quote-mark {
+  color: #5aa0ff;
+}
+
+html.dark-mode .read-more-btn {
+  color: #5aa0ff;
+}
+
+html.dark-mode .read-more-btn:hover {
+  text-decoration-color: #5aa0ff;
+}
+
+/* Fix Avatar ring in dark mode */
+html.dark-mode .avatar-ring {
+  border: 2px solid #5aa0ff;
+  box-shadow: 0 4px 12px rgba(90, 160, 255, 0.3);
 }

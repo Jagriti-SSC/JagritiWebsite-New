@@ -9,7 +9,7 @@
 }
 .timing{
     /* width: 100vw; */
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
 .jagriti-img {
   display: block;
   margin-left: auto;
-  /* margin-top: 6%; */
+  margin-top: 20vh;
   margin-right: auto;
   width: 30%;
   margin-bottom: 2rem;

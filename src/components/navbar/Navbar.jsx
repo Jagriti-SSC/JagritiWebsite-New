@@ -110,7 +110,9 @@ const Navbar = () => {
            ========================= */}
         {isDesktopView && (
           <nav
-            className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10`}
+            className={`hidden smd:block ${navbar_bg} px-4 py-4 smd:px-4 font-Montserrat z-10 ${
+              curr.pathname === "/" ? "absolute w-full top-0 left-0" : ""
+            }`}
           >
             <div className="flex flex-wrap items-center justify-between ml-20 py-5">
               <Link to="/" className="items-center ">
@@ -300,7 +302,9 @@ const Navbar = () => {
            ========================= */}
         {isMobileView && (
           <nav
-            className={`smd:hidden ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat`}
+            className={`smd:hidden ${navbar_bg} px-2 smd:px-4 py-2.5 font-Montserrat ${
+              curr.pathname === "/" ? "absolute w-full top-0 left-0 z-50" : ""
+            }`}
           >
             <div className="container flex flex-wrap items-center justify-between mx-auto">
               <Link to="/" className="items-center">
