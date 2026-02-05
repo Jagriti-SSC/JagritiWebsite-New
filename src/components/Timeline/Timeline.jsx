@@ -57,7 +57,7 @@ function Timeline() {
             <b></b>
             <li>09:00 - 12:00: Institute Visit (By Sayhog)</li>
             <li>13:30 - 16:30: Institute Visit (By Sayhog)</li>
-            <li>17:00 - 19:00: Grp Cpt Angad Pratap</li>
+            <li>17:00 - 19:00: Guest Talk: Grp Cpt Angad Pratap</li>
             <li>18:30 - 20:30: Jamming</li>
           </p>
         </VerticalTimelineElement>
