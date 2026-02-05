@@ -27,18 +27,31 @@ import img17 from '../../assets/images/jagriti_img17.webp';
 import img18 from '../../assets/images/jagriti_img18.webp';
 import img19 from '../../assets/images/jagriti_img19.webp';
 import img20 from '../../assets/images/jagriti_img20.webp';
+import img21 from '../../assets/images/jagriti_img21.webp';
+import img22 from '../../assets/images/jagriti_img22.webp';
+import img23 from '../../assets/images/jagriti_img23.webp';
+import img24 from '../../assets/images/jagriti_img24.webp';
+import img25 from '../../assets/images/jagriti_img25.webp';
+import img26 from '../../assets/images/jagriti_img26.webp';
+import img27 from '../../assets/images/jagriti_img27.webp';
+import img28 from '../../assets/images/jagriti_img28.webp';
+import img29 from '../../assets/images/jagriti_img29.webp';
+import img30 from '../../assets/images/jagriti_img30.webp';
 
 const images = [
   img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
-  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20
+  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
+  img21, img22, img23, img24, img25, img26, img27, img28, img29, img30
 ];
 
 const GalleryPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [shuffledImages, setShuffledImages] = useState([]);
 
   useEffect(() => {
     document.title = "Gallery | Jagriti IIT (BHU)";
     window.scrollTo(0, 0);
+    setShuffledImages([...images].sort(() => Math.random() - 0.5));
   }, []);
 
   return (
@@ -66,7 +79,7 @@ const GalleryPage = () => {
 
         {/* Masonry Grid */}
         <div className="gallery-grid">
-          {images.map((img, index) => (
+          {shuffledImages.map((img, index) => (
             <motion.div 
               key={index}
               className="gallery-item"
