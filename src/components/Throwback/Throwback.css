@@ -15,7 +15,10 @@ html, body, .throwback, .throwback-wrapper, .throwback_head p, .throwback_conten
   justify-content: center;
 }
 .throwback{
-  margin: 7% 0%;
+  margin: 0;
+  background: #f6fbff;
+  border-radius: 0;
+  padding: 36px 0 24px;
 }
 .throwback_head p {
   margin: 30px 0px;
@@ -320,7 +323,8 @@ html, body, .throwback, .throwback-wrapper, .throwback_head p, .throwback_conten
 
 /* container spacing stays same */
 .dark-mode .throwback {
-  margin: 7% 0%;
+    margin: 0;
+  background: #0f1724;
 }
 
 /* heading color adjusted for dark */

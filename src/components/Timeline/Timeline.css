@@ -1,6 +1,10 @@
 
 .timeline{
-    margin: 0% 5%;
+    margin: 0;
+    margin-bottom: 0;
+    background: #f6fbff;
+    border-radius: 0;
+    padding: 36px 0 24px;
 }
 
 .TimelineSpan {
