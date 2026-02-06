@@ -26,6 +26,7 @@ import UserInfo from './pages/UserAuthForm/UserInfo.jsx';
 import SecondPage from "./components/EventFormTeam/SecondPage.jsx";
 import { FormProvider } from "./pages/UserAuthForm/FormContext.jsx";
 import { EditProfile } from "./pages/UserAuthForm/editProfile.jsx";
+import UnverifiedQRPage from "./pages/UnverifiedQRPage/UnverifiedQRPage";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/sponsors" element={<SponsorsPage />} />
           <Route exact path="/faqs" element={<FaqPage />} />
           <Route exact path="/gallery" element={<GalleryPage />} />
+          <Route exact path="/unverifiedqr" element={<UnverifiedQRPage />} />
           <Route
             exact
             path="/CampusAmbassador"
