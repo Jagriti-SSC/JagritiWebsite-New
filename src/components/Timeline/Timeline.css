@@ -1,35 +1,113 @@
-
-.timeline{
-    margin: 0;
-    margin-bottom: 0;
-    background: #f6fbff;
-    border-radius: 0;
-    padding: 36px 0 24px;
+.timeline {
+  margin: 0;
+  background: #f6fbff;
+  padding: 36px 0 24px;
 }
 
 .TimelineSpan {
   width: 100%;
   margin-bottom: 1%;
-  
   font-family: "Montserrat";
-  font-style: normal;
   font-weight: 700;
   font-size: 40px;
- 
   color: #1a589b;
-
   text-align: center;
-
 }
 
-.box{
-    font-family: "poppins";
+.box {
+  font-family: "Poppins";
 }
-.title{
-    font-size: 18px;
-    font-weight: 500;
+
+/* ---------- content styles ---------- */
+
+.box-filled .vertical-timeline-element-content {
+  background: #1a589b;
+  color: #ffffff;
 }
-.timeline-content{
-    font-size: 12px;
-    font-weight: 400;
+
+.box-bordered .vertical-timeline-element-content {
+  border: 1px solid #1a589b;
+  color: #1a589b;
+}
+
+.vertical-timeline-element-content-arrow {
+  border-right: 7px solid #1a589b;
+}
+
+/* ---------- icons ---------- */
+
+.icon-filled {
+  background: #1a589b;
+  color: #ffffff;
+}
+
+.icon-outline {
+  background: #ffffff;
+  color: #1a589b;
+  border: 1px solid #1a589b;
+}
+
+/* ---------- text ---------- */
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.title-center {
+  text-align: center;
+}
+
+.timeline-content {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.timeline-date {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   DARK MODE (same system)
+   ========================= */
+
+html.dark-mode .timeline {
+  background: #0f1724;
+}
+
+html.dark-mode .TimelineSpan {
+  color: #5aa0ff;
+}
+
+html.dark-mode .box-filled .vertical-timeline-element-content {
+  background: #020617;
+  color: #e6eef8;
+  border: 1px solid rgba(90, 160, 255, 0.35);
+}
+
+html.dark-mode .box-bordered .vertical-timeline-element-content {
+  background: rgba(30, 41, 59, 0.7);
+  color: #e6eef8;
+  border: 1px solid rgba(90, 160, 255, 0.35);
+}
+
+html.dark-mode .vertical-timeline-element-content-arrow {
+  border-right-color: #5aa0ff;
+}
+
+html.dark-mode .icon-filled {
+  background: #1a589b;
+  color: #ffffff;
+}
+
+html.dark-mode .icon-outline {
+  background: #020617;
+  color: #5aa0ff;
+  border-color: #5aa0ff;
+}
+
+html.dark-mode .title,
+html.dark-mode .timeline-content {
+  color: #e6eef8;
 }
