@@ -323,6 +323,7 @@ const Navbar = () => {
                   className="mobile-menu-btn text-white bg-transparent focus:ring-4 focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 ml-1"
                   type="button"
                   onClick={() => setToggle(true)}
+                  style={{ display: toggle ? "none" : "inline-flex" }}
                 >
                   <span className="sr-only">Open main menu</span>
                   <svg
@@ -337,293 +338,195 @@ const Navbar = () => {
                     ></path>
                   </svg>
                 </button>
+              </div>
+            </div>
 
-                <div className="py-4 overflow-y-auto">
-                  <ul className="space-y-6 text-center">
-                    <li className="mt-8">
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/about"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">About</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/team"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">Team</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/sponsors"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">Sponsors</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/events"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">Events</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/gallery"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">Gallery</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/faqs"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">FAQs</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={() => closeButton.current && closeButton.current.click()}
-                        to="/CampusAmbassador"
-                        className="items-center p-2 text-base hover:underline hover:decoration-4 hover:decoration-blue font-semibold text-black rounded-lg"
-                      >
-                        <span className="whitespace-nowrap">CA Program</span>
-                      </Link>
-                      <hr className="mt-3 h-px bg-black border-0 mx-3"></hr>
-                    </li>
+            {/* Mobile Drawer */}
+            <div
+              id="drawer-right-example"
+              className={`fixed top-0 right-0 z-50 h-screen w-80 bg-white dark:bg-gray-800 transition-transform duration-300 ease-in-out mobile-drawer ${
+                toggle ? "translate-x-0" : "translate-x-full"
+              }`}
+              tabIndex="-1"
+              aria-labelledby="drawer-right-label"
+            >
+              <div className="flex justify-end p-4">
+                <button
+                  ref={closeButton}
+                  type="button"
+                  onClick={() => setToggle(false)}
+                  className="p-2 rounded-lg text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white transition-colors"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L10 8.586 5.707 4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                  <span className="sr-only">Close menu</span>
+                </button>
+              </div>
 
-                    {localStorage.getItem("user") == null ? (
-                      <>
-                        <li
-                          className={
-                            "place-self-center mt-[10px]" +
-                            (localStorage.getItem("user") == null
-                              ? " "
-                              : " w-[0px] h-[0px] m-0")
+              <div className="px-6 py-2 overflow-y-auto h-[calc(100vh-80px)]">
+                <ul className="space-y-4 text-center">
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/about"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">About</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/team"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">Team</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/sponsors"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">Sponsors</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/events"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">Events</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/gallery"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">Gallery</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/faqs"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">FAQs</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() =>
+                        closeButton.current && closeButton.current.click()
+                      }
+                      to="/CampusAmbassador"
+                      className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                    >
+                      <span className="whitespace-nowrap">CA Program</span>
+                    </Link>
+                    <hr className="mobile-drawer-divider mx-3 mt-3" />
+                  </li>
+
+                  {/* ACCOUNT LINKS */}
+                  {localStorage.getItem("user") == null ? (
+                    <>
+                      <li className="place-self-center mt-3">
+                        <Link
+                          className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                          to="/signin"
+                          onClick={() =>
+                            closeButton.current && closeButton.current.click()
                           }
                         >
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/about"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">About</span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-                        <li>
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/team"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">Team</span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-                        <li>
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/events"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">Events</span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-                        <li>
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/gallery"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">Gallery</span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-                        <li>
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/faqs"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">FAQs</span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-                        <li>
-                          <Link
-                            onClick={() => closeButton.current && closeButton.current.click()}
-                            to="/CampusAmbassador"
-                            className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                          >
-                            <span className="whitespace-nowrap">
-                              CA Program
-                            </span>
-                          </Link>
-                          <hr className="mobile-drawer-divider mx-3 mt-3" />
-                        </li>
-
-                        {localStorage.getItem("user") == null ? (
-                          <>
-                            <li
-                              className={
-                                "place-self-center mt-[10px]" +
-                                (localStorage.getItem("user") == null
-                                  ? " "
-                                  : " w-[0px] h-[0px] m-0")
-                              }
-                            >
-                              <Link
-                                className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                                to={
-                                  localStorage.getItem("user") == null
-                                    ? "/signin"
-                                    : ""
-                                }
-                                style={{
-                                  width:
-                                    localStorage.getItem("user") != null
-                                      ? "0px"
-                                      : null,
-                                  display:
-                                    localStorage.getItem("user") != null
-                                      ? "contents"
-                                      : "",
-                                  fontSize:
-                                    localStorage.getItem("user") != null
-                                      ? "0px"
-                                      : "",
-                                }}
-                                onClick={() => closeButton.current && closeButton.current.click()}
-                              >
-                                <button className="w-[184px]">Sign In</button>
-                              </Link>
-                              <hr className="mobile-drawer-divider mx-3 mt-3" />
-                            </li>
-                            <li
-                              className={
-                                "place-self-center mt-[10px]" +
-                                (localStorage.getItem("user") == null
-                                  ? " "
-                                  : " w-[0px] h-[0px] m-0")
-                              }
-                            >
-                              <Link
-                                className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
-                                to={
-                                  localStorage.getItem("user") == null
-                                    ? "/signup"
-                                    : ""
-                                }
-                                style={{
-                                  width:
-                                    localStorage.getItem("user") != null
-                                      ? "0px"
-                                      : null,
-                                  display:
-                                    localStorage.getItem("user") != null
-                                      ? "contents"
-                                      : "",
-                                  fontSize:
-                                    localStorage.getItem("user") != null
-                                      ? "0px"
-                                      : "",
-                                }}
-                                onClick={() => closeButton.current && closeButton.current.click()}
-                              >
-                                <button className="w-[184px]">Sign Up</button>
-                              </Link>
-                              <hr className="mobile-drawer-divider mx-3 mt-3" />
-                            </li>
-                          </>
-                        ) : (
-                          <li
-                            className={
-                              "place-self-center mt-[10px]" +
-                              (localStorage.getItem("user") == null
-                                ? " w-[0px] h-[0px] m-0"
-                                : "")
-                            }
-                          >
-                            <button
-                              className="rounded-full w-12 h-12 mt-2 "
-                              style={{
-                                width:
-                                  localStorage.getItem("user") == null
-                                    ? "0px"
-                                    : null,
-                                display:
-                                  localStorage.getItem("user") == null
-                                    ? "contents"
-                                    : "",
-                                fontSize:
-                                  localStorage.getItem("user") == null
-                                    ? "0px"
-                                    : "",
-                              }}
-                            >
-                              <Link
-                                to="/profile"
-                                onClick={() => closeButton.current && closeButton.current.click()}
-                              >
-                                <img
-                                  alt="profile_img"
-                                  src={`${
-                                    userDetails.imgUrl
-                                      ? userDetails.imgUrl
-                                      : profile_img
-                                  }`}
-                                  className="w-full h-full object-cover rounded-full"
-                                />
-                              </Link>
-                            </button>
-                            <hr className="mobile-drawer-divider mx-3 mt-3" />
-                          </li>
-                        )}
-                      </>
-                    ) : (
-                      // if user exists, you might want to show something else; keeping original structure minimal
-                      null
-                    )}
-                  </ul>
-
-                  {/* MOBILE THEME TOGGLE */}
-                  <button
-                    onClick={handleThemeToggle}
-                    aria-label="Toggle theme"
-                    title="Toggle theme"
-                    className={`theme-toggle-btn mobile-theme-toggle ${
-                      theme ? "is-dark" : "is-light"
-                    }`}
-                  >
-                    {theme ? (
-                      <FaMoon className="theme-icon" />
-                    ) : (
-                      <FaSun className={`theme-icon ${theme ? "" : "iccon"}`} />
-                    )}
-                  </button>
-                </div>
+                          <span className="w-full">Sign In</span>
+                        </Link>
+                        <hr className="mobile-drawer-divider mx-3 mt-3" />
+                      </li>
+                      <li className="place-self-center mt-3">
+                        <Link
+                          className="mobile-drawer-link items-center p-2 text-base font-semibold rounded-lg"
+                          to="/signup"
+                          onClick={() =>
+                            closeButton.current && closeButton.current.click()
+                          }
+                        >
+                          <span className="w-full">Sign Up</span>
+                        </Link>
+                        <hr className="mobile-drawer-divider mx-3 mt-3" />
+                      </li>
+                    </>
+                  ) : (
+                    <li className="place-self-center mt-3">
+                      <Link
+                        to="/profile"
+                        onClick={() =>
+                          closeButton.current && closeButton.current.click()
+                        }
+                        className="inline-block"
+                      >
+                        <img
+                          alt="profile_img"
+                          src={`${
+                            userDetails.imgUrl ? userDetails.imgUrl : profile_img
+                          }`}
+                          className="w-12 h-12 object-cover rounded-full border-2 border-gray-300 dark:border-gray-600"
+                        />
+                      </Link>
+                      <hr className="mobile-drawer-divider mx-3 mt-3" />
+                    </li>
+                  )}
+                </ul>
               </div>
+
+              {/* MOBILE THEME TOGGLE */}
+              <button
+                onClick={handleThemeToggle}
+                aria-label="Toggle theme"
+                title="Toggle theme"
+                className={`theme-toggle-btn mobile-theme-toggle ${
+                  theme ? "is-dark" : "is-light"
+                }`}
+              >
+                {theme ? (
+                  <FaMoon className="theme-icon" />
+                ) : (
+                  <FaSun className={`theme-icon ${theme ? "" : "iccon"}`} />
+                )}
+              </button>
             </div>
           </nav>
         )}
