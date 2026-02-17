@@ -149,9 +149,9 @@ const Events2Page = () => {
                     icon={competition.icon}
                     index={index}
                     registrationLink={competition.registrationLink}
-                  /> */}
-                ))}
-              </div>
+                  /> 
+                ))}  
+              </div> */}
             </div>
           </>
         )}
