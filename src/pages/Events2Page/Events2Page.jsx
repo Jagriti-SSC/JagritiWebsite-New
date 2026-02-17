@@ -139,7 +139,7 @@ const Events2Page = () => {
                 </div>
               </motion.div>
 
-              <div className="events2-grid">
+              {/* <div className="events2-grid">
                 {competitions.map((competition, index) => (
                   <CompetitionCard
                     key={competition.id}
@@ -149,7 +149,7 @@ const Events2Page = () => {
                     icon={competition.icon}
                     index={index}
                     registrationLink={competition.registrationLink}
-                  />
+                  /> */}
                 ))}
               </div>
             </div>
